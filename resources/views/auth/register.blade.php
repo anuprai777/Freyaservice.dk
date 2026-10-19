@@ -1,8 +1,8 @@
 <x-guest-layout>
     <div x-data="{ role: '{{ old('role', 'client') }}' }" class="w-full">
         <div class="mb-6 text-center">
-            <h2 class="text-2xl font-black text-slate-900 tracking-tight">Opret profil hos FreyaService</h2>
-            <p class="text-sm text-slate-600 mt-1">Vælg venligst din profiltype herunder</p>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('Opret profil hos FreyaService') }}</h2>
+            <p class="text-sm text-slate-600 mt-1">{{ __('Vælg venligst din profiltype herunder') }}</p>
 
             <!-- Role Selector Toggle -->
             <div class="grid grid-cols-2 gap-3 p-1.5 mt-4 bg-slate-100 rounded-xl max-w-sm mx-auto border border-slate-200">
@@ -10,13 +10,13 @@
                     :class="role === 'client' ? 'bg-indigo-600 text-white shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-semibold'"
                     class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5">
                     <span>🏢</span>
-                    <span>Virksomhed (Kunde)</span>
+                    <span>{{ __('Virksomhed (Kunde)') }}</span>
                 </button>
                 <button type="button" @click="role = 'worker'"
                     :class="role === 'worker' ? 'bg-indigo-600 text-white shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-semibold'"
                     class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5">
                     <span>👷</span>
-                    <span>Vikar (Arbejdssøgende)</span>
+                    <span>{{ __('Vikar (Arbejdssøgende)') }}</span>
                 </button>
             </div>
         </div>
@@ -95,39 +95,39 @@
                 <div>
                     <x-input-label for="availability_type" :value="__('Ønsket ansættelsesform')" />
                     <select id="availability_type" name="availability_type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
-                        <option value="any">Alle vagttyper (fleksibel)</option>
-                        <option value="temporary">Tilkaldevikar (akut dækning / timer)</option>
-                        <option value="part_time">Deltid (faste dage / weekender)</option>
-                        <option value="full_time">Fuldtid / Fastansættelse</option>
+                        <option value="any">{{ __('Alle vagttyper (fleksibel)') }}</option>
+                        <option value="temporary">{{ __('Tilkaldevikar (akut dækning / timer)') }}</option>
+                        <option value="part_time">{{ __('Deltid (faste dage / weekender)') }}</option>
+                        <option value="full_time">{{ __('Fuldtid / Fastansættelse') }}</option>
                     </select>
                 </div>
 
                 <div>
-                    <span class="block font-medium text-sm text-gray-700 mb-2">Vælg dine kompetencer</span>
+                    <span class="block font-medium text-sm text-gray-700 mb-2">{{ __('Vælg dine kompetencer') }}</span>
                     <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200">
                         <label class="inline-flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="skills[]" value="Tjener" class="rounded border-gray-300 text-indigo-600 shadow-sm">
-                            <span>Tjener / Bartender</span>
+                            <span>{{ __('Tjener / Bartender') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="skills[]" value="Opvasker" class="rounded border-gray-300 text-indigo-600 shadow-sm">
-                            <span>Opvasker / Køkkenhjælp</span>
+                            <span>{{ __('Opvasker / Køkkenhjælp') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="skills[]" value="Rengøring" class="rounded border-gray-300 text-indigo-600 shadow-sm">
-                            <span>Erhvervsrengøring</span>
+                            <span>{{ __('Erhvervsrengøring') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="skills[]" value="Lager" class="rounded border-gray-300 text-indigo-600 shadow-sm">
-                            <span>Lager & Pakkeri</span>
+                            <span>{{ __('Lager & Pakkeri') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="skills[]" value="Kontor" class="rounded border-gray-300 text-indigo-600 shadow-sm">
-                            <span>Kontor / Reception</span>
+                            <span>{{ __('Kontor / Reception') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="skills[]" value="Chauffør" class="rounded border-gray-300 text-indigo-600 shadow-sm">
-                            <span>Bud / Chauffør (B-kørekort)</span>
+                            <span>{{ __('Bud / Chauffør (B-kørekort)') }}</span>
                         </label>
                     </div>
                 </div>

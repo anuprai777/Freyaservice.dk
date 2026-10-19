@@ -70,16 +70,29 @@
                 </div>
             </div>
 
-            <!-- Settings & Role Badge -->
+            <!-- Settings, Language Switcher & Role Badge -->
             <div class="hidden sm:flex sm:items-center sm:ms-6 gap-3">
+
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" title="Skift til Dansk" class="px-2.5 py-1 rounded-lg {{ app()->getLocale() === 'da' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-medium' }} transition flex items-center gap-1.5">
+                        <span>🇩🇰</span>
+                        <span>DA</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" title="Switch to English" class="px-2.5 py-1 rounded-lg {{ app()->getLocale() === 'en' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-medium' }} transition flex items-center gap-1.5">
+                        <span>🇬🇧</span>
+                        <span>EN</span>
+                    </a>
+                </div>
+
                 <!-- Role Tag -->
                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider
                     @if(Auth::user()->isAdmin()) bg-purple-100 text-purple-800 border border-purple-200
                     @elseif(Auth::user()->isClient()) bg-blue-100 text-blue-800 border border-blue-200
                     @else bg-emerald-100 text-emerald-800 border border-emerald-200 @endif">
-                    @if(Auth::user()->isAdmin()) Admin
-                    @elseif(Auth::user()->isClient()) Virksomhed
-                    @else Vikar @endif
+                    @if(Auth::user()->isAdmin()) {{ __('Admin') }}
+                    @elseif(Auth::user()->isClient()) {{ __('Virksomhed') }}
+                    @else {{ __('Vikar') }} @endif
                 </span>
 
                 <x-dropdown align="right" width="48">
@@ -137,11 +150,24 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-slate-50 border-t border-slate-200">
+        <!-- Language Switcher in Mobile Menu -->
+        <div class="px-4 py-3 flex items-center justify-between border-b border-slate-200 bg-white">
+            <span class="text-xs font-bold text-slate-500 uppercase">{{ __('Sprog') }}</span>
+            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs">
+                <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-md {{ app()->getLocale() === 'da' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-700 font-medium' }} transition flex items-center gap-1">
+                    <span>🇩🇰</span> Dansk
+                </a>
+                <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-md {{ app()->getLocale() === 'en' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-700 font-medium' }} transition flex items-center gap-1">
+                    <span>🇬🇧</span> English
+                </a>
+            </div>
+        </div>
+
         <div class="pt-2 pb-3 space-y-1">
             @if(Auth::user()->isAdmin())
                 <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">{{ __('Oversigt') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.requests.index')">{{ __('Forespørgsler') }}</x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.workers.index')">{{ __('Vikarer') }}</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.workers.index')">{{ __('Vikarer (CRM)') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.clients.index')">{{ __('Virksomheder') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.timesheets.index')">{{ __('Timesedler') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.invoices.index')">{{ __('Fakturaer') }}</x-responsive-nav-link>
@@ -161,7 +187,7 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-slate-200 px-4">
+        <div class="pt-4 pb-3 border-t border-slate-200 px-4">
             <div class="font-medium text-base text-slate-800">{{ Auth::user()->name }}</div>
             <div class="font-medium text-xs text-slate-500">{{ Auth::user()->email }}</div>
 
