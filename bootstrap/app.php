@@ -14,7 +14,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->web(append: [
+            \App\Http\Middleware\SetLocale::class,
+        ]);
+
+        $middleware->alias([
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
+            'worker.approved' => \App\Http\Middleware\EnsureWorkerApproved::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

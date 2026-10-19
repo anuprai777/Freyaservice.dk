@@ -1,0 +1,48 @@
+<x-app-layout>
+    <x-slot name="header">
+        <div class="flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-black text-slate-900 tracking-tight">Ansættelseskontrakter</h1>
+                <p class="text-xs text-slate-500 mt-0.5">Dine juridiske kontrakter og vilkår for vikariater gennem FreyaService.</p>
+            </div>
+            <a href="{{ route('worker.dashboard') }}" class="text-xs font-bold text-slate-600 hover:text-slate-900">
+                &larr; Tilbage
+            </a>
+        </div>
+    </x-slot>
+
+    <div class="py-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-6 border-b border-slate-100">
+                <h2 class="text-base font-bold text-slate-900">Aktive og tidligere kontrakter</h2>
+            </div>
+
+            <div class="divide-y divide-slate-100">
+                @forelse($contracts as $c)
+                    <div class="p-6 flex items-center justify-between hover:bg-slate-50/50">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-sm">Kontrakt #{{ $c->contract_number }}</span>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">{{ $c->status }}</span>
+                            </div>
+                            <div class="text-xs text-slate-600 mt-1">
+                                Type: {{ $c->type }} • Timeløn: {{ number_format($c->hourly_rate, 2, ',', '.') }} DKK
+                            </div>
+                            <div class="text-xs text-slate-400 mt-0.5">
+                                Periode: {{ $c->start_date->format('d.m.Y') }} @if($c->end_date) til {{ $c->end_date->format('d.m.Y') }} @endif
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-xs text-slate-400 italic">Digitalt underskrevet</span>
+                        </div>
+                    </div>
+                @empty
+                    <div class="p-8 text-center text-slate-400 text-xs">
+                        Ingen særskilte kontrakter udstedt endnu. Dine vilkår er reguleret af FreyaServices standard vikaraftale.
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </div>
+</x-app-layout>
