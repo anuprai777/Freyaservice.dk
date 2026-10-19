@@ -31,10 +31,16 @@
     <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-4">
-                <span>{{ __('Landsdækkende vikarservice') }}</span>
-                <span class="hidden md:inline">•</span>
-                <span>📞 {{ __('Akut vagttelefon') }}: <a href="tel:+4570203040" class="text-white hover:text-amber-400 font-semibold">+45 70 20 30 40</a></span>
-                <span class="hidden md:inline">•</span>
+                <span class="flex items-center gap-1.5">
+                    <x-heroicon-o-globe-europe-africa class="w-3.5 h-3.5 text-indigo-400" />
+                    <span>{{ __('Landsdækkende vikarservice') }}</span>
+                </span>
+                <span class="hidden md:inline text-slate-700">•</span>
+                <span class="flex items-center gap-1">
+                    <x-heroicon-o-phone class="w-3.5 h-3.5 text-amber-400" />
+                    <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4570203040" class="text-white hover:text-amber-400 font-semibold">+45 70 20 30 40</a></span>
+                </span>
+                <span class="hidden md:inline text-slate-700">•</span>
                 <span>CVR: 44556677</span>
             </div>
             <div class="flex items-center gap-4">
@@ -64,9 +70,7 @@
             <!-- Brand Logo -->
             <a href="/" class="flex items-center gap-3 group">
                 <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
+                    <x-heroicon-s-bolt class="w-6 h-6 text-amber-300" />
                 </div>
                 <div>
                     <span class="text-2xl font-black tracking-tight text-slate-900">Freya<span class="text-indigo-600">Service</span></span>
@@ -76,10 +80,22 @@
 
             <!-- Nav Links -->
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
-                <a href="#services" class="hover:text-indigo-600 transition-colors">{{ __('Ydelser') }}</a>
-                <a href="#industries" class="hover:text-indigo-600 transition-colors">{{ __('Brancher') }}</a>
-                <a href="#how-it-works" class="hover:text-indigo-600 transition-colors">{{ __('Sådan virker det') }}</a>
-                <a href="#contact" class="hover:text-indigo-600 transition-colors">{{ __('Kontakt') }}</a>
+                <a href="#services" class="hover:text-indigo-600 transition-colors flex items-center gap-1.5">
+                    <x-heroicon-o-briefcase class="w-4 h-4 text-slate-400" />
+                    <span>{{ __('Ydelser') }}</span>
+                </a>
+                <a href="#industries" class="hover:text-indigo-600 transition-colors flex items-center gap-1.5">
+                    <x-heroicon-o-building-office-2 class="w-4 h-4 text-slate-400" />
+                    <span>{{ __('Brancher') }}</span>
+                </a>
+                <a href="#how-it-works" class="hover:text-indigo-600 transition-colors flex items-center gap-1.5">
+                    <x-heroicon-o-arrows-pointing-in class="w-4 h-4 text-slate-400" />
+                    <span>{{ __('Sådan virker det') }}</span>
+                </a>
+                <a href="#contact" class="hover:text-indigo-600 transition-colors flex items-center gap-1.5">
+                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-4 h-4 text-slate-400" />
+                    <span>{{ __('Kontakt') }}</span>
+                </a>
             </nav>
 
             <!-- Language Switcher & Auth Buttons -->
@@ -99,16 +115,20 @@
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition">
-                            {{ __('Min Profil / Dashboard') }} &rarr;
+                            <x-heroicon-o-squares-2x2 class="w-4 h-4" />
+                            <span>{{ __('Min Profil / Dashboard') }}</span>
+                            <x-heroicon-o-arrow-right class="w-4 h-4" />
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm font-semibold text-slate-700 hover:text-indigo-600 px-3 py-2 rounded-lg transition">
-                            {{ __('Log ind') }}
+                        <a href="{{ route('login') }}" class="text-sm font-semibold text-slate-700 hover:text-indigo-600 px-3 py-2 rounded-lg transition flex items-center gap-1.5">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-slate-400" />
+                            <span>{{ __('Log ind') }}</span>
                         </a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-slate-900 hover:bg-indigo-600 shadow-sm transition">
-                                {{ __('Opret konto') }}
+                            <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-slate-900 hover:bg-indigo-600 shadow-sm transition">
+                                <x-heroicon-o-user-plus class="w-4 h-4" />
+                                <span>{{ __('Opret konto') }}</span>
                             </a>
                         @endif
                     @endauth
@@ -122,7 +142,8 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7 space-y-6">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-xs font-semibold tracking-wide">
-                    <span>⚡ {{ __('Akut vikardækning på under 2 timer') }}</span>
+                    <x-heroicon-s-bolt class="w-3.5 h-3.5 text-amber-400" />
+                    <span>{{ __('Akut vikardækning på under 2 timer') }}</span>
                 </div>
 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
@@ -136,11 +157,13 @@
                 <!-- Action Bar -->
                 <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                     <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-lg shadow-amber-400/20 transition transform hover:-translate-y-0.5">
+                        <x-heroicon-o-briefcase class="w-5 h-5 text-slate-950" />
                         <span>{{ __('Bestil vikar nu') }}</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <x-heroicon-o-arrow-right class="w-5 h-5" />
                     </a>
 
                     <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm transition">
+                        <x-heroicon-o-user-plus class="w-5 h-5" />
                         <span>{{ __('Tilmeld dig som vikar') }}</span>
                     </a>
                 </div>
@@ -148,16 +171,25 @@
                 <!-- Trust Badges -->
                 <div class="pt-6 grid grid-cols-3 gap-6 border-t border-slate-800 text-slate-300">
                     <div>
-                        <div class="text-2xl font-black text-white">98%</div>
-                        <div class="text-xs text-slate-400 font-medium">{{ __('Tilfredse virksomheder') }}</div>
+                        <div class="flex items-center gap-1.5 text-2xl font-black text-white">
+                            <x-heroicon-s-star class="w-5 h-5 text-amber-400" />
+                            <span>98%</span>
+                        </div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">{{ __('Tilfredse virksomheder') }}</div>
                     </div>
                     <div>
-                        <div class="text-2xl font-black text-white">2.500+</div>
-                        <div class="text-xs text-slate-400 font-medium">{{ __('Aktive vikarer i puljen') }}</div>
+                        <div class="flex items-center gap-1.5 text-2xl font-black text-white">
+                            <x-heroicon-s-user-group class="w-5 h-5 text-indigo-400" />
+                            <span>2.500+</span>
+                        </div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">{{ __('Aktive vikarer i puljen') }}</div>
                     </div>
                     <div>
-                        <div class="text-2xl font-black text-white">25%</div>
-                        <div class="text-xs text-slate-400 font-medium">{{ __('Moms (25%)') }}</div>
+                        <div class="flex items-center gap-1.5 text-2xl font-black text-white">
+                            <x-heroicon-s-receipt-percent class="w-5 h-5 text-emerald-400" />
+                            <span>25%</span>
+                        </div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">{{ __('Moms (25%)') }}</div>
                     </div>
                 </div>
             </div>
@@ -166,7 +198,10 @@
             <div class="lg:col-span-5 bg-white/10 border border-white/20 backdrop-blur-xl p-8 rounded-2xl shadow-2xl">
                 <div class="flex items-center justify-between pb-6 border-b border-white/15">
                     <div>
-                        <h3 class="text-xl font-bold text-white">{{ __('Prøv platformen med et enkelt klik') }}</h3>
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <x-heroicon-o-sparkles class="w-5 h-5 text-amber-300" />
+                            <span>{{ __('Prøv platformen med et enkelt klik') }}</span>
+                        </h3>
                         <p class="text-xs text-slate-300 mt-1">{{ __('Brug en af vores forudkonfigurerede testkonti til at udforske systemet') }}</p>
                     </div>
                     <span class="px-2.5 py-1 rounded bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider">Demo</span>
@@ -176,7 +211,10 @@
                     <!-- Admin Card -->
                     <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10 flex items-center justify-between hover:border-amber-400/50 transition">
                         <div>
-                            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 mb-1">{{ __('Administrator') }}</span>
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 mb-1">
+                                <x-heroicon-s-shield-check class="w-3 h-3 text-purple-400" />
+                                <span>{{ __('Administrator') }}</span>
+                            </span>
                             <div class="text-sm font-semibold text-white">admin@freyaservice.dk</div>
                             <div class="text-xs text-slate-400">{{ __('Adgangskode') }}: <code class="text-amber-300">password</code></div>
                         </div>
@@ -186,7 +224,10 @@
                     <!-- Client Card -->
                     <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10 flex items-center justify-between hover:border-amber-400/50 transition">
                         <div>
-                            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 mb-1">{{ __('Virksomhed (Kunde)') }}</span>
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 mb-1">
+                                <x-heroicon-s-building-office-2 class="w-3 h-3 text-blue-400" />
+                                <span>{{ __('Virksomhed (Kunde)') }}</span>
+                            </span>
                             <div class="text-sm font-semibold text-white">client@hotel-nordic.dk</div>
                             <div class="text-xs text-slate-400">{{ __('Adgangskode') }}: <code class="text-amber-300">password</code></div>
                         </div>
@@ -196,7 +237,10 @@
                     <!-- Worker Card -->
                     <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10 flex items-center justify-between hover:border-amber-400/50 transition">
                         <div>
-                            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 mb-1">{{ __('Vikar (Arbejdstager)') }}</span>
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 mb-1">
+                                <x-heroicon-s-user class="w-3 h-3 text-emerald-400" />
+                                <span>{{ __('Vikar (Arbejdstager)') }}</span>
+                            </span>
                             <div class="text-sm font-semibold text-white">worker@freyaservice.dk</div>
                             <div class="text-xs text-slate-400">{{ __('Adgangskode') }}: <code class="text-amber-300">password</code></div>
                         </div>
@@ -206,7 +250,8 @@
 
                 <div class="mt-6 pt-4 border-t border-white/10 text-center">
                     <a href="{{ route('login') }}" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold shadow-md transition">
-                        {{ __('Log ind direkte som') }} &rarr;
+                        <span>{{ __('Log ind direkte som') }}</span>
+                        <x-heroicon-o-arrow-right class="w-4 h-4" />
                     </a>
                 </div>
             </div>
@@ -216,7 +261,10 @@
     <!-- 3 Core Services -->
     <section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-xs font-bold text-indigo-600 uppercase tracking-widest">{{ __('Vores Bemandingsløsninger') }}</h2>
+            <h2 class="text-xs font-bold text-indigo-600 uppercase tracking-widest flex items-center justify-center gap-1.5">
+                <x-heroicon-o-sparkles class="w-4 h-4 text-indigo-600" />
+                <span>{{ __('Vores Bemandingsløsninger') }}</span>
+            </h2>
             <p class="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{{ __('Vikarer til alle behov') }}</p>
             <p class="mt-4 text-base text-slate-600">{{ __('Hvad enten du mangler en opvasker i aften eller 10 lagermedarbejdere i tre måneder, har vi den rette løsning.') }}</p>
         </div>
@@ -225,48 +273,75 @@
             <!-- 1. Vikardækning -->
             <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all group">
                 <div class="w-14 h-14 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-black text-xl mb-6 group-hover:scale-110 transition-transform">
-                    01
+                    <x-heroicon-o-clock class="w-7 h-7 text-amber-600" />
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">{{ __('Akut og kortvarig vikardækning') }}</h3>
                 <p class="text-sm text-slate-600 leading-relaxed mb-6">
                     {{ __('Dækning fra dag til dag ved akut sygdom, ferie eller uventet spidsbelastning. Vores vikarer er klar med få timers varsel.') }}
                 </p>
-                <ul class="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-4">
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Under 2 timer') }} {{ __('responstid') }}</li>
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Digital time- & QR-registrering') }}</li>
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Overenskomstmæssige vilkår') }}</li>
+                <ul class="text-xs text-slate-600 space-y-2.5 border-t border-slate-100 pt-4">
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Under 2 timer') }} {{ __('responstid') }}</span>
+                    </li>
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Digital time- & QR-registrering') }}</span>
+                    </li>
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Overenskomstmæssige vilkår') }}</span>
+                    </li>
                 </ul>
             </div>
 
             <!-- 2. Deltidspersonale -->
             <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all group">
                 <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-black text-xl mb-6 group-hover:scale-110 transition-transform">
-                    02
+                    <x-heroicon-o-calendar-days class="w-7 h-7 text-indigo-600" />
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">{{ __('Længerevarende vikariater') }}</h3>
                 <p class="text-sm text-slate-600 leading-relaxed mb-6">
                     {{ __('Stabile vikarer til projekter, barselsvikariater eller sæsonarbejde af ugers eller måneders varighed.') }}
                 </p>
-                <ul class="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-4">
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Gennemtestede vikarer') }}</li>
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Ensartet høj kvalitet') }}</li>
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Månedlig samlet fakturering') }}</li>
+                <ul class="text-xs text-slate-600 space-y-2.5 border-t border-slate-100 pt-4">
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Gennemtestede vikarer') }}</span>
+                    </li>
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Ensartet høj kvalitet') }}</span>
+                    </li>
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Månedlig samlet fakturering') }}</span>
+                    </li>
                 </ul>
             </div>
 
             <!-- 3. Rekruttering / Fastansættelse -->
             <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all group">
                 <div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-xl mb-6 group-hover:scale-110 transition-transform">
-                    03
+                    <x-heroicon-o-user-group class="w-7 h-7 text-emerald-600" />
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-3">{{ __('Fast rekruttering & Try & Hire') }}</h3>
                 <p class="text-sm text-slate-600 leading-relaxed mb-6">
                     {{ __('Afprøv en medarbejder i en vikarperiode før fastansættelse. Minimer ansættelsesrisikoen og find det perfekte match.') }}
                 </p>
-                <ul class="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-4">
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Minimer ansættelsesrisiko') }}</li>
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Screenede kandidater med referencer') }}</li>
-                    <li class="flex items-center gap-2 font-medium">✓ {{ __('Fuld digital kontraktstyring') }}</li>
+                <ul class="text-xs text-slate-600 space-y-2.5 border-t border-slate-100 pt-4">
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Minimer ansættelsesrisiko') }}</span>
+                    </li>
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Screenede kandidater med referencer') }}</span>
+                    </li>
+                    <li class="flex items-center gap-2 font-medium">
+                        <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{{ __('Fuld digital kontraktstyring') }}</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -282,23 +357,31 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition">
-                    <div class="text-3xl mb-3">🍽️</div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <x-heroicon-o-cake class="w-8 h-8 text-amber-500" />
+                    </div>
                     <h4 class="font-bold text-slate-900">{{ __('Hotel & Restaurant') }}</h4>
                     <p class="text-xs text-slate-500 mt-1">{{ __('Tjenere, bartendere, kokke, opvaskere og housekeeping til hoteller, restauranter og store events.') }}</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition">
-                    <div class="text-3xl mb-3">🧹</div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <x-heroicon-o-sparkles class="w-8 h-8 text-indigo-500" />
+                    </div>
                     <h4 class="font-bold text-slate-900">{{ __('Rengøring & Facility') }}</h4>
                     <p class="text-xs text-slate-500 mt-1">{{ __('Erhvervsrengøring, vinduespudsning, hotelrengøring og hospitalsrengøring udført af grundige fagfolk.') }}</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition">
-                    <div class="text-3xl mb-3">📦</div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <x-heroicon-o-truck class="w-8 h-8 text-blue-500" />
+                    </div>
                     <h4 class="font-bold text-slate-900">{{ __('Lager & Logistik') }}</h4>
                     <p class="text-xs text-slate-500 mt-1">{{ __('Truckførere, pluk-og-pak medarbejdere samt chauffører til travle distributionscentre og lagre.') }}</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition">
-                    <div class="text-3xl mb-3">💼</div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center hover:shadow-lg transition group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <x-heroicon-o-building-office class="w-8 h-8 text-emerald-500" />
+                    </div>
                     <h4 class="font-bold text-slate-900">{{ __('Kontor & Administration') }}</h4>
                     <p class="text-xs text-slate-500 mt-1">{{ __('Receptionister, kundeservicemedarbejdere, bogholdere og data-entry personale til travle kontorer.') }}</p>
                 </div>
@@ -315,22 +398,30 @@
 
         <div class="grid md:grid-cols-4 gap-8">
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative">
-                <div class="text-indigo-600 font-black text-2xl mb-2">01</div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                    <x-heroicon-o-clipboard-document-check class="w-5 h-5 text-indigo-600" />
+                </div>
                 <h4 class="font-bold text-slate-900 mb-2">{{ __('1. Opret forespørgsel') }}</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">{{ __('Angiv branche, antal medarbejdere, mødetid og adresse på 2 minutter via vores digitale kundeportal.') }}</p>
             </div>
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative">
-                <div class="text-indigo-600 font-black text-2xl mb-2">02</div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                    <x-heroicon-o-cpu-chip class="w-5 h-5 text-indigo-600" />
+                </div>
                 <h4 class="font-bold text-slate-900 mb-2">{{ __('2. Intelligent match') }}</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">{{ __('Vores system og rådgivere matcher straks opgaven med de bedst egnede vikarer baseret på færdigheder og lokation.') }}</p>
             </div>
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative">
-                <div class="text-indigo-600 font-black text-2xl mb-2">03</div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                    <x-heroicon-o-qr-code class="w-5 h-5 text-indigo-600" />
+                </div>
                 <h4 class="font-bold text-slate-900 mb-2">{{ __('3. Vikaren møder op') }}</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">{{ __('Vikaren scanner virksomhedens QR-kode ved ankomst og påbegynder arbejdet punktligt og professionelt.') }}</p>
             </div>
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative">
-                <div class="text-indigo-600 font-black text-2xl mb-2">04</div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+                    <x-heroicon-o-check-badge class="w-5 h-5 text-indigo-600" />
+                </div>
                 <h4 class="font-bold text-slate-900 mb-2">{{ __('4. Godkend & fakturér') }}</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">{{ __('Godkend timesedlen med ét klik. Gennemskuelig faktura med 25% dansk moms og specificerede timer fremsendes automatisk.') }}</p>
             </div>
@@ -345,11 +436,13 @@
                 {{ __('Kontakt vores døgnbemandede vagtcentral eller opret din profil online i dag.') }}
             </p>
             <div class="flex flex-wrap justify-center gap-4 pt-4">
-                <a href="tel:+4570203040" class="px-6 py-3.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-sm hover:bg-amber-300 transition">
-                    📞 {{ __('Ring +45 70 20 30 40') }}
+                <a href="tel:+4570203040" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-sm hover:bg-amber-300 transition">
+                    <x-heroicon-s-phone class="w-4 h-4 text-slate-950" />
+                    <span>{{ __('Ring +45 70 20 30 40') }}</span>
                 </a>
-                <a href="{{ route('register') }}" class="px-6 py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-500 transition">
-                    {{ __('Opret virksomhedskonto') }}
+                <a href="{{ route('register') }}" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-500 transition">
+                    <x-heroicon-o-building-office class="w-4 h-4" />
+                    <span>{{ __('Opret virksomhedskonto') }}</span>
                 </a>
             </div>
         </div>
@@ -359,7 +452,10 @@
     <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="space-y-4">
-                <div class="text-xl font-bold text-white">Freya<span class="text-indigo-400">Service</span></div>
+                <div class="text-xl font-bold text-white flex items-center gap-2">
+                    <x-heroicon-s-bolt class="w-5 h-5 text-indigo-400" />
+                    <span>Freya<span class="text-indigo-400">Service</span></span>
+                </div>
                 <p class="text-xs leading-relaxed">
                     {{ __('Dansk vikarbureau med fokus på fleksibilitet, pålidelighed og digital gennemsigtighed.') }}
                 </p>
@@ -371,26 +467,32 @@
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Virksomheder') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('login') }}" class="hover:text-white">{{ __('Bestil Vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-white">{{ __('Timesedler') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-white">{{ __('Fakturaer') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-white flex items-center gap-1.5"><x-heroicon-o-chevron-right class="w-3 h-3 text-slate-500" />{{ __('Bestil Vikar') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-white flex items-center gap-1.5"><x-heroicon-o-chevron-right class="w-3 h-3 text-slate-500" />{{ __('Timesedler') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-white flex items-center gap-1.5"><x-heroicon-o-chevron-right class="w-3 h-3 text-slate-500" />{{ __('Fakturaer') }}</a></li>
                 </ul>
             </div>
 
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Vikarer') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('register') }}" class="hover:text-white">{{ __('Tilmeld dig som vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-white">{{ __('Ledige Vagter') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-white">{{ __('QR Tjek-ind') }}</a></li>
+                    <li><a href="{{ route('register') }}" class="hover:text-white flex items-center gap-1.5"><x-heroicon-o-chevron-right class="w-3 h-3 text-slate-500" />{{ __('Tilmeld dig som vikar') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-white flex items-center gap-1.5"><x-heroicon-o-chevron-right class="w-3 h-3 text-slate-500" />{{ __('Ledige Vagter') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-white flex items-center gap-1.5"><x-heroicon-o-chevron-right class="w-3 h-3 text-slate-500" />{{ __('QR Tjek-ind') }}</a></li>
                 </ul>
             </div>
 
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('GDPR & Sikkerhed') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li>{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }}</li>
-                    <li>{{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</li>
+                    <li class="flex items-start gap-1.5">
+                        <x-heroicon-s-shield-check class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <span>{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }}</span>
+                    </li>
+                    <li class="flex items-start gap-1.5">
+                        <x-heroicon-s-check class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+                        <span>{{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</span>
+                    </li>
                 </ul>
             </div>
         </div>

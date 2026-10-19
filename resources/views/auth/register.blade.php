@@ -9,13 +9,13 @@
                 <button type="button" @click="role = 'client'"
                     :class="role === 'client' ? 'bg-indigo-600 text-white shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-semibold'"
                     class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5">
-                    <span>🏢</span>
+                    <x-heroicon-o-building-office-2 class="w-4 h-4" />
                     <span>{{ __('Virksomhed (Kunde)') }}</span>
                 </button>
                 <button type="button" @click="role = 'worker'"
                     :class="role === 'worker' ? 'bg-indigo-600 text-white shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-semibold'"
                     class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5">
-                    <span>👷</span>
+                    <x-heroicon-o-user class="w-4 h-4" />
                     <span>{{ __('Vikar (Arbejdssøgende)') }}</span>
                 </button>
             </div>
