@@ -43,7 +43,14 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+            RateLimiter::hit($this->throttleKey(), 60);
+            RateLimiter::hit($this->ipThrottleKey(), 60);
+
+            \Illuminate\Support\Facades\Log::warning('Failed login attempt for credentials', [
+                'email' => $this->string('email'),
+                'ip' => $this->ip(),
+                'user_agent' => $this->userAgent(),
+            ]);
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
@@ -51,6 +58,7 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
+        RateLimiter::clear($this->ipThrottleKey());
     }
 
     /**
@@ -60,6 +68,24 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
+        // 1. IP-wide brute-force rate limit (max 10 attempts per minute across all accounts)
+        if (RateLimiter::tooManyAttempts($this->ipThrottleKey(), 10)) {
+            $seconds = RateLimiter::availableIn($this->ipThrottleKey());
+
+            \Illuminate\Support\Facades\Log::warning('IP login rate limit exceeded', [
+                'ip' => $this->ip(),
+                'seconds' => $seconds,
+            ]);
+
+            throw ValidationException::withMessages([
+                'email' => trans('auth.throttle', [
+                    'seconds' => $seconds,
+                    'minutes' => ceil($seconds / 60),
+                ]),
+            ]);
+        }
+
+        // 2. Account-specific rate limit (max 5 attempts per account/email per minute)
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
@@ -67,6 +93,12 @@ class LoginRequest extends FormRequest
         event(new Lockout($this));
 
         $seconds = RateLimiter::availableIn($this->throttleKey());
+
+        \Illuminate\Support\Facades\Log::warning('Account login rate limit exceeded', [
+            'email' => $this->string('email'),
+            'ip' => $this->ip(),
+            'seconds' => $seconds,
+        ]);
 
         throw ValidationException::withMessages([
             'email' => trans('auth.throttle', [
@@ -77,10 +109,18 @@ class LoginRequest extends FormRequest
     }
 
     /**
-     * Get the rate limiting throttle key for the request.
+     * Get the rate limiting throttle key for the specific user/email.
      */
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+    }
+
+    /**
+     * Get the rate limiting throttle key for the client IP address.
+     */
+    public function ipThrottleKey(): string
+    {
+        return 'login_ip:'.$this->ip();
     }
 }

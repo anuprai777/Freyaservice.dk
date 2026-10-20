@@ -39,6 +39,12 @@ Route::get('/', function () {
 
 Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
+// Public standalone pages (navbar links)
+Route::get('/services', fn () => view('pages.services'))->name('services');
+Route::get('/industries', fn () => view('pages.industries'))->name('industries');
+Route::get('/how-it-works', fn () => view('pages.how-it-works'))->name('how-it-works');
+Route::get('/contact', fn () => view('pages.contact'))->name('contact');
+
 // Unified Dashboard Gateway (routes users based on their role)
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {

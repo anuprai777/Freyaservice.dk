@@ -5,11 +5,8 @@
             <div class="flex items-center">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5">
-                        <div class="w-9 h-9 rounded-xl bg-brand-primary flex items-center justify-center text-white shadow-sm shadow-navy-900/20">
-                            <x-heroicon-s-bolt class="w-5 h-5 text-brand-action" />
-                        </div>
-                        <span class="font-black text-lg tracking-tight text-brand-primary hidden sm:inline">Freya<span class="text-brand-action">Service</span></span>
+                    <a href="{{ route('dashboard') }}" class="flex items-center group">
+                        <img src="{{ asset('images/logo.png') }}" alt="ProService Vikar" class="h-9 w-auto object-contain group-hover:scale-105 transition-transform">
                     </a>
                 </div>
 

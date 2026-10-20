@@ -24,11 +24,8 @@
     <body class="font-sans text-brand-body antialiased bg-brand-bg selection:bg-brand-secondary selection:text-white">
         <!-- Language Switcher in top right corner -->
         <div class="w-full max-w-5xl mx-auto flex justify-between items-center px-4 pt-6">
-            <a href="/" class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-brand-primary flex items-center justify-center text-white font-black text-sm shadow-sm">
-                    FS
-                </div>
-                <span class="font-black text-lg tracking-tight text-brand-primary">Freya<span class="text-brand-action">Service</span></span>
+            <a href="/" class="flex items-center group">
+                <img src="{{ asset('images/logo.png') }}" alt="ProService Vikar" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <!-- Language Switcher -->

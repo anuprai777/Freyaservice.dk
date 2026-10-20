@@ -7,8 +7,13 @@
 /storage/pail
 /vendor
 .env
+.env.*
 .env.backup
 .env.production
+.env.local
+*.pem
+*.key
+credentials.json
 .phpactor.json
 .phpunit.result.cache
 Homestead.json
