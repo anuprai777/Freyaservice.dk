@@ -33,11 +33,11 @@
 
             <!-- Language Switcher -->
             <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl shadow-sm border border-brand-border text-xs">
-                <a href="{{ route('locale.switch', 'da') }}" class="px-2.5 py-1 rounded-lg {{ app()->getLocale() === 'da' ? 'bg-brand-secondary text-white font-bold' : 'text-brand-muted hover:text-brand-secondary font-medium' }} transition flex items-center gap-1.5">
+                <a href="{{ route('locale.switch', 'da') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-secondary text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-xs' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
                     <span>🇩🇰</span>
                     <span>Dansk</span>
                 </a>
-                <a href="{{ route('locale.switch', 'en') }}" class="px-2.5 py-1 rounded-lg {{ app()->getLocale() === 'en' ? 'bg-brand-secondary text-white font-bold' : 'text-brand-muted hover:text-brand-secondary font-medium' }} transition flex items-center gap-1.5">
+                <a href="{{ route('locale.switch', 'en') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-secondary text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-xs' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
                     <span>🇬🇧</span>
                     <span>English</span>
                 </a>
