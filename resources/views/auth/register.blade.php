@@ -1,20 +1,20 @@
 <x-guest-layout>
     <div x-data="{ role: '{{ old('role', 'client') }}' }" class="w-full">
         <div class="mb-6 text-center">
-            <h2 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('Opret profil hos FreyaService') }}</h2>
-            <p class="text-sm text-slate-600 mt-1">{{ __('Vælg venligst din profiltype herunder') }}</p>
+            <h2 class="text-2xl font-black text-brand-primary tracking-tight">{{ __('Opret profil hos FreyaService') }}</h2>
+            <p class="text-xs text-brand-muted mt-1">{{ __('Vælg venligst din profiltype herunder') }}</p>
 
             <!-- Role Selector Toggle -->
-            <div class="grid grid-cols-2 gap-3 p-1.5 mt-4 bg-slate-100 rounded-xl max-w-sm mx-auto border border-slate-200">
+            <div class="grid grid-cols-2 gap-3 p-1.5 mt-4 bg-brand-bg rounded-xl max-w-sm mx-auto border border-brand-border">
                 <button type="button" @click="role = 'client'"
-                    :class="role === 'client' ? 'bg-indigo-600 text-white shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-semibold'"
-                    class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5">
+                    :class="role === 'client' ? 'bg-brand-secondary text-white shadow-sm font-bold' : 'text-brand-muted hover:text-brand-secondary font-semibold'"
+                    class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5 cursor-pointer">
                     <x-heroicon-o-building-office-2 class="w-4 h-4" />
                     <span>{{ __('Virksomhed (Kunde)') }}</span>
                 </button>
                 <button type="button" @click="role = 'worker'"
-                    :class="role === 'worker' ? 'bg-indigo-600 text-white shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-semibold'"
-                    class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5">
+                    :class="role === 'worker' ? 'bg-brand-secondary text-white shadow-sm font-bold' : 'text-brand-muted hover:text-brand-secondary font-semibold'"
+                    class="py-2.5 px-4 rounded-lg text-xs tracking-wide transition flex items-center justify-center gap-1.5 cursor-pointer">
                     <x-heroicon-o-user class="w-4 h-4" />
                     <span>{{ __('Vikar (Arbejdssøgende)') }}</span>
                 </button>
@@ -47,7 +47,7 @@
             </div>
 
             <!-- Client-only Fields -->
-            <div x-show="role === 'client'" x-cloak class="space-y-4 pt-2 border-t border-slate-200">
+            <div x-show="role === 'client'" x-cloak class="space-y-4 pt-2 border-t border-brand-border">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="company_name" :value="__('Virksomhedsnavn')" />
@@ -80,7 +80,7 @@
             </div>
 
             <!-- Worker-only Fields -->
-            <div x-show="role === 'worker'" x-cloak class="space-y-4 pt-2 border-t border-slate-200">
+            <div x-show="role === 'worker'" x-cloak class="space-y-4 pt-2 border-t border-brand-border">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="postcode_worker" :value="__('Dit Postnummer')" />
@@ -94,7 +94,7 @@
 
                 <div>
                     <x-input-label for="availability_type" :value="__('Ønsket ansættelsesform')" />
-                    <select id="availability_type" name="availability_type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                    <select id="availability_type" name="availability_type" class="mt-1 block w-full rounded-xl border-brand-border bg-brand-surface shadow-sm focus:border-brand-secondary focus:ring-brand-secondary text-sm text-brand-body">
                         <option value="any">{{ __('Alle vagttyper (fleksibel)') }}</option>
                         <option value="temporary">{{ __('Tilkaldevikar (akut dækning / timer)') }}</option>
                         <option value="part_time">{{ __('Deltid (faste dage / weekender)') }}</option>
@@ -103,30 +103,30 @@
                 </div>
 
                 <div>
-                    <span class="block font-medium text-sm text-gray-700 mb-2">{{ __('Vælg dine kompetencer') }}</span>
-                    <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                    <span class="block font-semibold text-xs text-brand-secondary uppercase mb-2">{{ __('Vælg dine kompetencer') }}</span>
+                    <div class="grid grid-cols-2 gap-2 text-xs text-brand-body bg-brand-bg p-3 rounded-xl border border-brand-border">
                         <label class="inline-flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="skills[]" value="Tjener" class="rounded border-gray-300 text-indigo-600 shadow-sm">
+                            <input type="checkbox" name="skills[]" value="Tjener" class="rounded border-brand-border text-brand-secondary shadow-sm focus:ring-brand-secondary">
                             <span>{{ __('Tjener / Bartender') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="skills[]" value="Opvasker" class="rounded border-gray-300 text-indigo-600 shadow-sm">
+                            <input type="checkbox" name="skills[]" value="Opvasker" class="rounded border-brand-border text-brand-secondary shadow-sm focus:ring-brand-secondary">
                             <span>{{ __('Opvasker / Køkkenhjælp') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="skills[]" value="Rengøring" class="rounded border-gray-300 text-indigo-600 shadow-sm">
+                            <input type="checkbox" name="skills[]" value="Rengøring" class="rounded border-brand-border text-brand-secondary shadow-sm focus:ring-brand-secondary">
                             <span>{{ __('Erhvervsrengøring') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="skills[]" value="Lager" class="rounded border-gray-300 text-indigo-600 shadow-sm">
+                            <input type="checkbox" name="skills[]" value="Lager" class="rounded border-brand-border text-brand-secondary shadow-sm focus:ring-brand-secondary">
                             <span>{{ __('Lager & Pakkeri') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="skills[]" value="Kontor" class="rounded border-gray-300 text-indigo-600 shadow-sm">
+                            <input type="checkbox" name="skills[]" value="Kontor" class="rounded border-brand-border text-brand-secondary shadow-sm focus:ring-brand-secondary">
                             <span>{{ __('Kontor / Reception') }}</span>
                         </label>
                         <label class="inline-flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" name="skills[]" value="Chauffør" class="rounded border-gray-300 text-indigo-600 shadow-sm">
+                            <input type="checkbox" name="skills[]" value="Chauffør" class="rounded border-brand-border text-brand-secondary shadow-sm focus:ring-brand-secondary">
                             <span>{{ __('Bud / Chauffør (B-kørekort)') }}</span>
                         </label>
                     </div>
@@ -148,22 +148,22 @@
             </div>
 
             <!-- GDPR Consent -->
-            <div class="pt-3 border-t border-slate-200">
+            <div class="pt-3 border-t border-brand-border">
                 <label class="inline-flex items-start gap-2.5 cursor-pointer">
-                    <input type="checkbox" name="gdpr_consent" value="1" required class="mt-1 rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500">
-                    <span class="text-xs text-slate-600 leading-normal">
-                        Jeg giver samtykke til, at FreyaService behandler mine oplysninger i henhold til <a href="#" class="underline text-indigo-600 hover:text-indigo-800">persondatapolitikken (GDPR)</a>. FreyaService indsamler <strong>ikke</strong> CPR-numre, og bankoplysninger opbevares altid krypteret.
+                    <input type="checkbox" name="gdpr_consent" value="1" required class="mt-1 rounded border-brand-border text-brand-secondary shadow-sm focus:ring-brand-secondary">
+                    <span class="text-xs text-brand-muted leading-normal">
+                        Jeg giver samtykke til, at FreyaService behandler mine oplysninger i henhold til <a href="#" class="underline text-brand-secondary hover:text-brand-action">persondatapolitikken (GDPR)</a>. FreyaService indsamler <strong>ikke</strong> CPR-numre, og bankoplysninger opbevares altid krypteret.
                     </span>
                 </label>
                 <x-input-error :messages="$errors->get('gdpr_consent')" class="mt-1" />
             </div>
 
             <div class="flex items-center justify-between pt-4">
-                <a class="underline text-xs text-slate-600 hover:text-slate-900" href="{{ route('login') }}">
+                <a class="underline text-xs text-brand-muted hover:text-brand-secondary transition" href="{{ route('login') }}">
                     {{ __('Har du allerede en konto? Log ind') }}
                 </a>
 
-                <x-primary-button class="ms-4 bg-indigo-600 hover:bg-indigo-700">
+                <x-primary-button class="ms-4">
                     {{ __('Opret Profil') }}
                 </x-primary-button>
             </div>

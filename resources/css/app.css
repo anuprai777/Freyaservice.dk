@@ -1,3 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================================================================
+   Company Brand Theme Custom Variables & Foundation
+   ========================================================================== */
+:root {
+    /* Primary Brand: Navy 900 (Top bar, footers, dark backgrounds, high-contrast text) */
+    --brand-primary: #14263F;
+    --brand-primary-rgb: 20, 38, 63;
+
+    /* Secondary Brand: Navy 700 (Headings, primary links, active borders, text selections) */
+    --brand-secondary: #1F3A5F;
+    --brand-secondary-rgb: 31, 58, 95;
+
+    /* Action / Accent: Orange 500 (Primary CTA buttons, highlight badges, accents) */
+    --brand-action: #E8833A;
+    --brand-action-rgb: 232, 131, 58;
+
+    /* Action Hover: Orange 600 (Button hover & active states) */
+    --brand-action-hover: #D2702A;
+    --brand-action-hover-rgb: 210, 112, 42;
+
+    /* Page Background: Warm Off-White (Main website background, light sections) */
+    --brand-page-bg: #F7F6F2;
+    --brand-page-bg-rgb: 247, 246, 242;
+
+    /* Surface: Pure White (Card backgrounds, inputs, modals) */
+    --brand-surface: #FFFFFF;
+    --brand-surface-rgb: 255, 255, 255;
+
+    /* Border / Divider: Muted Sand (Card borders, table dividers, form input borders) */
+    --brand-border: #E3E0D8;
+    --brand-border-rgb: 227, 224, 216;
+
+    /* Body Text: Slate Charcoal (Standard body paragraph text) */
+    --brand-body-text: #3B4656;
+    --brand-body-text-rgb: 59, 70, 86;
+
+    /* Muted Text: Cool Slate (Subtitles, meta info, placeholders, labels) */
+    --brand-muted-text: #6B7686;
+    --brand-muted-text-rgb: 107, 118, 134;
+
+    /* Success / Valid: Forest Green (Success badges, checkmarks, confirmation notices) */
+    --brand-success: #2F7D5B;
+    --brand-success-rgb: 47, 125, 91;
+
+    /* Danger / Error: Brick Red (Error messages, form validation errors) */
+    --brand-danger: #B3392F;
+    --brand-danger-rgb: 179, 57, 47;
+}
+
+/* Secondary Brand: Text selections */
+::selection {
+    background-color: var(--brand-secondary);
+    color: #FFFFFF;
+}
+
+::-moz-selection {
+    background-color: var(--brand-secondary);
+    color: #FFFFFF;
+}
+
+body {
+    background-color: var(--brand-page-bg);
+    color: var(--brand-body-text);
+}
+
+/* Heading color default: Secondary Brand Navy 700 / Primary Navy 900 */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--brand-secondary);
+}
+
+/* Primary link styling */
+a.brand-link {
+    color: var(--brand-secondary);
+    transition: color 0.15s ease-in-out;
+}
+a.brand-link:hover {
+    color: var(--brand-action);
+}
+
+/* Custom scrollbar for modern browsers */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--brand-page-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--brand-border);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-muted-text);
+}

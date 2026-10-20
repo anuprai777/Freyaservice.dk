@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-slate-200 sticky top-0 z-40">
+<nav x-data="{ open: false }" class="bg-brand-surface border-b border-brand-border sticky top-0 z-40">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,10 +6,10 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-800 flex items-center justify-center text-white shadow-sm shadow-indigo-500/20">
-                            <x-heroicon-s-bolt class="w-5 h-5 text-amber-300" />
+                        <div class="w-9 h-9 rounded-xl bg-brand-primary flex items-center justify-center text-white shadow-sm shadow-navy-900/20">
+                            <x-heroicon-s-bolt class="w-5 h-5 text-brand-action" />
                         </div>
-                        <span class="font-black text-lg tracking-tight text-slate-900 hidden sm:inline">Freya<span class="text-indigo-600">Service</span></span>
+                        <span class="font-black text-lg tracking-tight text-brand-primary hidden sm:inline">Freya<span class="text-brand-action">Service</span></span>
                     </a>
                 </div>
 
@@ -49,8 +49,8 @@
                             <x-heroicon-o-squares-2x2 class="w-4 h-4 mr-1.5" />
                             <span>{{ __('Dashboard') }}</span>
                         </x-nav-link>
-                        <x-nav-link :href="route('client.requests.create')" :active="request()->routeIs('client.requests.create')" class="text-indigo-600 font-bold">
-                            <x-heroicon-o-plus-circle class="w-4 h-4 mr-1.5 text-indigo-600" />
+                        <x-nav-link :href="route('client.requests.create')" :active="request()->routeIs('client.requests.create')" class="text-brand-action font-bold">
+                            <x-heroicon-o-plus-circle class="w-4 h-4 mr-1.5 text-brand-action" />
                             <span>{{ __('Bestil Vikar') }}</span>
                         </x-nav-link>
                         <x-nav-link :href="route('client.invoices.index')" :active="request()->routeIs('client.invoices.*')">
@@ -66,8 +66,8 @@
                             <x-heroicon-o-briefcase class="w-4 h-4 mr-1.5" />
                             <span>{{ __('Ledige Vagter') }}</span>
                         </x-nav-link>
-                        <x-nav-link :href="route('worker.shifts.scan')" :active="request()->routeIs('worker.shifts.*')" class="text-indigo-600 font-bold">
-                            <x-heroicon-o-qr-code class="w-4 h-4 mr-1.5 text-indigo-600" />
+                        <x-nav-link :href="route('worker.shifts.scan')" :active="request()->routeIs('worker.shifts.*')" class="text-brand-action font-bold">
+                            <x-heroicon-o-qr-code class="w-4 h-4 mr-1.5 text-brand-action" />
                             <span>{{ __('QR Tjek-ind') }}</span>
                         </x-nav-link>
                         <x-nav-link :href="route('worker.availability.index')" :active="request()->routeIs('worker.availability.*')">
@@ -90,12 +90,12 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6 gap-3">
 
                 <!-- Language Switcher -->
-                <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2 py-1 rounded-lg {{ app()->getLocale() === 'da' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-medium' }} transition flex items-center gap-1">
+                <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2 py-1 rounded-lg {{ app()->getLocale() === 'da' ? 'bg-brand-secondary text-white shadow-sm font-bold' : 'text-brand-muted hover:text-brand-secondary font-medium' }} transition flex items-center gap-1">
                         <span>🇩🇰</span>
                         <span>DA</span>
                     </a>
-                    <a href="{{ route('locale.switch', 'en') }}" title="English" class="px-2 py-1 rounded-lg {{ app()->getLocale() === 'en' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900 font-medium' }} transition flex items-center gap-1">
+                    <a href="{{ route('locale.switch', 'en') }}" title="English" class="px-2 py-1 rounded-lg {{ app()->getLocale() === 'en' ? 'bg-brand-secondary text-white shadow-sm font-bold' : 'text-brand-muted hover:text-brand-secondary font-medium' }} transition flex items-center gap-1">
                         <span>🇬🇧</span>
                         <span>EN</span>
                     </a>
@@ -103,9 +103,9 @@
 
                 <!-- Role Tag -->
                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider
-                    @if(Auth::user()->isAdmin()) bg-purple-100 text-purple-800 border border-purple-200
-                    @elseif(Auth::user()->isClient()) bg-blue-100 text-blue-800 border border-blue-200
-                    @else bg-emerald-100 text-emerald-800 border border-emerald-200 @endif">
+                    @if(Auth::user()->isAdmin()) bg-navy-900/10 text-navy-900 border border-navy-900/20
+                    @elseif(Auth::user()->isClient()) bg-navy-700/10 text-navy-700 border border-navy-700/20
+                    @else bg-forest/15 text-forest border border-forest/30 @endif">
                     @if(Auth::user()->isAdmin()) {{ __('Admin') }}
                     @elseif(Auth::user()->isClient()) {{ __('Virksomhed') }}
                     @else {{ __('Vikar') }} @endif
@@ -113,10 +113,10 @@
 
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-slate-200 text-sm leading-4 font-semibold rounded-lg text-slate-700 bg-white hover:bg-slate-50 focus:outline-none transition ease-in-out duration-150">
-                            <x-heroicon-o-user class="w-4 h-4 mr-2 text-slate-500" />
+                        <button class="inline-flex items-center px-3 py-2 border border-brand-border text-sm leading-4 font-semibold rounded-lg text-brand-body bg-brand-surface hover:bg-brand-bg focus:outline-none transition ease-in-out duration-150 cursor-pointer">
+                            <x-heroicon-o-user class="w-4 h-4 mr-2 text-brand-muted" />
                             <div>{{ Auth::user()->name }}</div>
-                            <x-heroicon-o-chevron-down class="ms-1.5 h-4 w-4 text-slate-400" />
+                            <x-heroicon-o-chevron-down class="ms-1.5 h-4 w-4 text-brand-muted" />
                         </button>
                     </x-slot>
 
@@ -124,7 +124,7 @@
                         @if(Auth::user()->isWorker())
                             <x-dropdown-link :href="route('worker.profile')">
                                 <div class="flex items-center gap-2">
-                                    <x-heroicon-o-user-circle class="w-4 h-4 text-slate-400" />
+                                    <x-heroicon-o-user-circle class="w-4 h-4 text-brand-muted" />
                                     <span>{{ __('Vikarprofil & Bank') }}</span>
                                 </div>
                             </x-dropdown-link>
@@ -132,27 +132,27 @@
 
                         <x-dropdown-link :href="route('profile.edit')">
                             <div class="flex items-center gap-2">
-                                <x-heroicon-o-cog-6-tooth class="w-4 h-4 text-slate-400" />
+                                <x-heroicon-o-cog-6-tooth class="w-4 h-4 text-brand-muted" />
                                 <span>{{ __('Brugerindstillinger') }}</span>
                             </div>
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('gdpr.export')">
-                            <div class="flex items-center gap-2 text-indigo-600">
-                                <x-heroicon-o-arrow-down-tray class="w-4 h-4 text-indigo-600" />
+                            <div class="flex items-center gap-2 text-brand-secondary">
+                                <x-heroicon-o-arrow-down-tray class="w-4 h-4 text-brand-secondary" />
                                 <span>{{ __('Eksportér GDPR-data') }}</span>
                             </div>
                         </x-dropdown-link>
 
-                        <div class="border-t border-slate-100"></div>
+                        <div class="border-t border-brand-border"></div>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault(); this.closest('form').submit();" class="text-rose-600 hover:text-rose-700">
+                                    onclick="event.preventDefault(); this.closest('form').submit();" class="text-brand-danger hover:text-brick-600">
                                 <div class="flex items-center gap-2">
-                                    <x-heroicon-o-arrow-left-on-rectangle class="w-4 h-4 text-rose-500" />
+                                    <x-heroicon-o-arrow-left-on-rectangle class="w-4 h-4 text-brand-danger" />
                                     <span>{{ __('Log ud') }}</span>
                                 </div>
                             </x-dropdown-link>
@@ -163,7 +163,7 @@
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center lg:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100 focus:outline-none transition">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition">
                     <x-heroicon-o-bars-3 class="h-6 w-6" ::class="{'hidden': open, 'inline-flex': ! open }" />
                     <x-heroicon-o-x-mark class="h-6 w-6" ::class="{'hidden': ! open, 'inline-flex': open }" />
                 </button>
@@ -172,15 +172,15 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden bg-slate-50 border-t border-slate-200">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden bg-brand-bg border-t border-brand-border">
         <!-- Language Switcher in Mobile Menu -->
-        <div class="px-4 py-3 flex items-center justify-between border-b border-slate-200 bg-white">
-            <span class="text-xs font-bold text-slate-500 uppercase">{{ __('Sprog') }}</span>
-            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs">
-                <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-md {{ app()->getLocale() === 'da' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-700 font-medium' }} transition flex items-center gap-1">
+        <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-surface">
+            <span class="text-xs font-bold text-brand-muted uppercase">{{ __('Sprog') }}</span>
+            <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-lg border border-brand-border text-xs">
+                <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-md {{ app()->getLocale() === 'da' ? 'bg-brand-secondary text-white font-bold' : 'text-brand-body font-medium' }} transition flex items-center gap-1">
                     <span>🇩🇰</span> Dansk
                 </a>
-                <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-md {{ app()->getLocale() === 'en' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-700 font-medium' }} transition flex items-center gap-1">
+                <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-md {{ app()->getLocale() === 'en' ? 'bg-brand-secondary text-white font-bold' : 'text-brand-body font-medium' }} transition flex items-center gap-1">
                     <span>🇬🇧</span> English
                 </a>
             </div>
@@ -238,8 +238,8 @@
                     </span>
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('client.requests.create')">
-                    <span class="flex items-center gap-2 text-indigo-600 font-bold">
-                        <x-heroicon-o-plus-circle class="w-4 h-4" />
+                    <span class="flex items-center gap-2 text-brand-action font-bold">
+                        <x-heroicon-o-plus-circle class="w-4 h-4 text-brand-action" />
                         <span>{{ __('+ Bestil Vikar') }}</span>
                     </span>
                 </x-responsive-nav-link>
@@ -263,8 +263,8 @@
                     </span>
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('worker.shifts.scan')">
-                    <span class="flex items-center gap-2 text-indigo-600 font-bold">
-                        <x-heroicon-o-qr-code class="w-4 h-4" />
+                    <span class="flex items-center gap-2 text-brand-action font-bold">
+                        <x-heroicon-o-qr-code class="w-4 h-4 text-brand-action" />
                         <span>{{ __('QR Tjek-ind') }}</span>
                     </span>
                 </x-responsive-nav-link>
@@ -290,28 +290,28 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-3 border-t border-slate-200 px-4">
-            <div class="font-medium text-base text-slate-800">{{ Auth::user()->name }}</div>
-            <div class="font-medium text-xs text-slate-500">{{ Auth::user()->email }}</div>
+        <div class="pt-4 pb-3 border-t border-brand-border px-4">
+            <div class="font-medium text-base text-brand-primary">{{ Auth::user()->name }}</div>
+            <div class="font-medium text-xs text-brand-muted">{{ Auth::user()->email }}</div>
 
             <div class="mt-3 space-y-1">
                 @if(Auth::user()->isWorker())
                     <x-responsive-nav-link :href="route('worker.profile')">
                         <span class="flex items-center gap-2">
-                            <x-heroicon-o-user-circle class="w-4 h-4 text-slate-400" />
+                            <x-heroicon-o-user-circle class="w-4 h-4 text-brand-muted" />
                             <span>{{ __('Vikarprofil & Bank') }}</span>
                         </span>
                     </x-responsive-nav-link>
                 @endif
                 <x-responsive-nav-link :href="route('profile.edit')">
                     <span class="flex items-center gap-2">
-                        <x-heroicon-o-cog-6-tooth class="w-4 h-4 text-slate-400" />
+                        <x-heroicon-o-cog-6-tooth class="w-4 h-4 text-brand-muted" />
                         <span>{{ __('Brugerindstillinger') }}</span>
                     </span>
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('gdpr.export')">
-                    <span class="flex items-center gap-2 text-indigo-600">
-                        <x-heroicon-o-arrow-down-tray class="w-4 h-4" />
+                    <span class="flex items-center gap-2 text-brand-secondary">
+                        <x-heroicon-o-arrow-down-tray class="w-4 h-4 text-brand-secondary" />
                         <span>{{ __('Eksportér GDPR-data') }}</span>
                     </span>
                 </x-responsive-nav-link>
@@ -319,8 +319,8 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                        <span class="flex items-center gap-2 text-rose-600">
-                            <x-heroicon-o-arrow-left-on-rectangle class="w-4 h-4" />
+                        <span class="flex items-center gap-2 text-brand-danger">
+                            <x-heroicon-o-arrow-left-on-rectangle class="w-4 h-4 text-brand-danger" />
                             <span>{{ __('Log ud') }}</span>
                         </span>
                     </x-responsive-nav-link>
