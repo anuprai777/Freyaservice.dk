@@ -49,7 +49,7 @@
     <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="/" class="flex items-center group">
-                <img src="{{ asset('images/logo.png') }}" alt="ProService Vikar" class="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
@@ -130,7 +130,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="space-y-4">
                 <a href="/" class="inline-block group">
-                    <img src="{{ asset('images/logo-white.png') }}" alt="ProService Vikar" class="h-10 w-auto object-contain group-hover:opacity-90 transition">
+                    <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service" class="h-10 w-auto object-contain group-hover:opacity-90 transition">
                 </a>
                 <p class="text-xs leading-relaxed text-sand-200">{{ __('Dansk vikarbureau med fokus på fleksibilitet, pålidelighed og digital gennemsigtighed.') }}</p>
                 <div class="text-xs text-sand-400">CVR: 44556677 • Moms nr. DK44556677</div>

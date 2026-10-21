@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center group">
-                        <img src="{{ asset('images/logo.png') }}" alt="ProService Vikar" class="h-9 w-auto object-contain group-hover:scale-105 transition-transform">
+                        <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-9 w-auto object-contain group-hover:scale-105 transition-transform">
                     </a>
                 </div>
 

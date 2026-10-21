@@ -25,7 +25,7 @@
         <!-- Language Switcher in top right corner -->
         <div class="w-full max-w-5xl mx-auto flex justify-between items-center px-4 pt-6">
             <a href="/" class="flex items-center group">
-                <img src="{{ asset('images/logo.png') }}" alt="ProService Vikar" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
+                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <!-- Language Switcher -->

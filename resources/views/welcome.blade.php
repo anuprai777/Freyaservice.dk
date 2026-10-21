@@ -18,11 +18,6 @@
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
-        @media (prefers-reduced-motion: reduce) {
-            #heroBgVideo {
-                display: none !important;
-            }
-        }
     </style>
 </head>
 <body class="bg-brand-bg text-brand-body antialiased selection:bg-brand-secondary selection:text-white">
@@ -71,7 +66,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="/" class="flex items-center group">
-                <img src="{{ asset('images/logo.png') }}" alt="ProService Vikar" class="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <!-- Nav Links (Secondary Brand Navy 700 on hover, Muted Text Cool Slate #6B7686) -->
@@ -134,44 +129,46 @@
         </div>
     </header>
 
-    <!-- Hero Section with Background Video: Chefs Cooking -->
-    <section class="relative bg-navy-950 text-white pt-20 pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[640px] flex items-center">
-        <!-- Background Video Layer -->
+    <!-- Hero Section with Clear Background Video: Chefs Cooking (Original Brand Styling & Mobile/Desktop Compatible) -->
+    <section id="heroSection" class="relative bg-navy-950 text-white pt-16 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[580px] sm:min-h-[640px] flex items-center">
+        <!-- Background Video Layer: Pure Clear Chef Cooking Video -->
         <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
             <video
+                id="heroBgVideo"
                 autoplay
                 muted
                 loop
                 playsinline
+                webkit-playsinline
+                x5-playsinline="true"
+                x5-video-player-type="h5-page"
                 preload="auto"
+                disablePictureInPicture
+                disableRemotePlayback
+                src="{{ asset('videos/chefs-cooking.mp4') }}"
                 poster="{{ asset('images/chefs-cooking-poster.jpg') }}"
-                class="absolute inset-0 w-full h-full object-cover filter brightness-[0.72] contrast-[1.08] scale-[1.02]"
-                id="heroBgVideo"
+                class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none filter contrast-[1.06] saturate-[1.15] brightness-[1.02]"
             >
                 <source src="{{ asset('videos/chefs-cooking.mp4') }}" type="video/mp4">
-                <source src="{{ asset('videos/chefs-cooking-1.mp4') }}" type="video/mp4">
+                <source src="{{ asset('videos/chefs-cooking-3.mp4') }}" type="video/mp4">
+                <source src="{{ asset('videos/chefs-cooking-2.mp4') }}" type="video/mp4">
             </video>
-
-            <!-- Multi-layer cinematic brand overlays for high text contrast -->
-            <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-900/80 to-navy-950/90"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/60"></div>
-            <div class="absolute top-10 left-10 w-96 h-96 bg-brand-action/10 rounded-full blur-3xl pointer-events-none"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10 w-full">
             <div class="lg:col-span-7 space-y-6">
                 <!-- Highlight badge: Action Orange 500 border & accent -->
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-brand-action/40 text-sand-100 text-xs font-semibold tracking-wide backdrop-blur-sm">
-                    <x-heroicon-s-bolt class="w-3.5 h-3.5 text-brand-action" />
+                    <x-heroicon-s-bolt class="w-3.5 h-3.5 text-brand-action shrink-0" />
                     <span>{{ __('Akut vikardækning på under 2 timer') }}</span>
                 </div>
 
                 <!-- High-contrast headings -->
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
                     {{ __('Fleksibel og professionel vikarservice i hele Danmark') }}
                 </h1>
 
-                <p class="text-lg text-sand-100/90 max-w-2xl leading-relaxed">
+                <p class="text-base sm:text-lg text-sand-100/90 max-w-2xl leading-relaxed">
                     {{ __('Mangler din virksomhed ekstra hænder ved spidsbelastning, sygdom eller sæson? FreyaService matcher dig lynhurtigt med godkendte og motiverede vikarer til hotel, restaurant, rengøring, lager og kontor.') }}
                 </p>
 
@@ -179,38 +176,38 @@
                 <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                     <!-- Primary CTA Button: Orange 500 #E8833A, hover Orange 600 #D2702A -->
                     <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition transform hover:-translate-y-0.5">
-                        <x-heroicon-o-briefcase class="w-5 h-5 text-white" />
+                        <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
                         <span>{{ __('Bestil vikar nu') }}</span>
-                        <x-heroicon-o-arrow-right class="w-5 h-5" />
+                        <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                     </a>
 
                     <!-- Secondary CTA Button: Surface / Outline -->
                     <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-white bg-white/10 hover:bg-white/20 border border-brand-border/40 backdrop-blur-sm transition">
-                        <x-heroicon-o-user-plus class="w-5 h-5" />
+                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0" />
                         <span>{{ __('Tilmeld dig som vikar') }}</span>
                     </a>
                 </div>
 
                 <!-- Trust Badges -->
-                <div class="pt-6 grid grid-cols-3 gap-6 border-t border-navy-800 text-sand-100">
+                <div class="pt-6 grid grid-cols-3 gap-4 sm:gap-6 border-t border-navy-800 text-sand-100">
                     <div>
-                        <div class="flex items-center gap-1.5 text-2xl font-black text-white">
-                            <x-heroicon-s-star class="w-5 h-5 text-brand-action" />
+                        <div class="flex items-center gap-1.5 text-xl sm:text-2xl font-black text-white">
+                            <x-heroicon-s-star class="w-5 h-5 text-brand-action shrink-0" />
                             <span>98%</span>
                         </div>
                         <div class="text-xs text-sand-300 font-medium mt-1">{{ __('Tilfredse virksomheder') }}</div>
                     </div>
                     <div>
-                        <div class="flex items-center gap-1.5 text-2xl font-black text-white">
-                            <x-heroicon-s-user-group class="w-5 h-5 text-sand-100" />
+                        <div class="flex items-center gap-1.5 text-xl sm:text-2xl font-black text-white">
+                            <x-heroicon-s-user-group class="w-5 h-5 text-sand-100 shrink-0" />
                             <span>2.500+</span>
                         </div>
                         <div class="text-xs text-sand-300 font-medium mt-1">{{ __('Aktive vikarer i puljen') }}</div>
                     </div>
                     <div>
-                        <div class="flex items-center gap-1.5 text-2xl font-black text-white">
+                        <div class="flex items-center gap-1.5 text-xl sm:text-2xl font-black text-white">
                             <!-- Success indicator: Forest Green #2F7D5B -->
-                            <x-heroicon-s-receipt-percent class="w-5 h-5 text-forest" />
+                            <x-heroicon-s-receipt-percent class="w-5 h-5 text-forest shrink-0" />
                             <span>25%</span>
                         </div>
                         <div class="text-xs text-sand-300 font-medium mt-1">{{ __('Moms (25%)') }}</div>
@@ -219,11 +216,11 @@
             </div>
 
             <!-- Secure Portal Access Card -->
-            <div class="lg:col-span-5 bg-white/10 border border-white/20 backdrop-blur-xl p-8 rounded-2xl shadow-2xl">
+            <div class="lg:col-span-5 bg-white/10 border border-white/20 backdrop-blur-xl p-6 sm:p-8 rounded-2xl shadow-2xl">
                 <div class="flex items-center justify-between pb-6 border-b border-white/15">
                     <div>
                         <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                            <x-heroicon-o-lock-closed class="w-5 h-5 text-brand-action" />
+                            <x-heroicon-o-lock-closed class="w-5 h-5 text-brand-action shrink-0" />
                             <span>{{ __('Sikker Portal Adgang') }}</span>
                         </h3>
                         <p class="text-xs text-sand-200 mt-1">{{ __('Vælg din portal for at logge ind sikkert') }}</p>
@@ -297,21 +294,126 @@
             </div>
         </div>
 
-        <!-- Live Kitchen Video Status & Pause/Play Control -->
-        <div class="absolute bottom-4 right-6 z-20 hidden md:block">
-            <button
-                type="button"
-                onclick="const v = document.getElementById('heroBgVideo'); if(v.paused){ v.play(); this.querySelector('.video-status-text').textContent='{{ __('Køkken i aktion') }}'; this.querySelector('.video-icon-play').classList.add('hidden'); this.querySelector('.video-icon-pause').classList.remove('hidden'); } else { v.pause(); this.querySelector('.video-status-text').textContent='{{ __('Video pauset') }}'; this.querySelector('.video-icon-pause').classList.add('hidden'); this.querySelector('.video-icon-play').classList.remove('hidden'); }"
-                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-950/70 hover:bg-navy-900/90 border border-white/20 text-xs text-sand-200 hover:text-white backdrop-blur-md transition shadow-md group"
-                title="{{ __('Pause / Afspil baggrundsvideo') }}"
-            >
-                <span class="w-2 h-2 rounded-full bg-emerald-400 group-hover:scale-125 transition-transform animate-pulse"></span>
-                <svg class="video-icon-pause w-3 h-3 text-sand-200" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                <svg class="video-icon-play w-3 h-3 hidden text-sand-200" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <span class="video-status-text font-medium">{{ __('Køkken i aktion') }}</span>
-            </button>
+        <!-- Live Kitchen Video Status Badge (Mobile & Desktop friendly) -->
+        <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-6 z-20 select-none pointer-events-none">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-950/70 border border-white/20 text-xs text-sand-200 backdrop-blur-md shadow-md">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-medium">{{ __('Køkken i aktion') }}</span>
+            </div>
         </div>
     </section>
+
+    <!-- Hero Background Video Cross-Device Autoplay Engine -->
+    <script>
+        (function () {
+            const video = document.getElementById('heroBgVideo');
+            const heroSection = document.getElementById('heroSection');
+            if (!video) return;
+
+            // Strictly enforce muted, inline and infinite loop attributes across iOS/Android/desktop
+            video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.loop = true;
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.setAttribute('x5-playsinline', 'true');
+            video.setAttribute('x5-video-player-type', 'h5-page');
+            video.setAttribute('loop', '');
+
+            let isHeroVisible = true;
+
+            function startInfinitePlayback() {
+                if (!isHeroVisible) return;
+                video.muted = true;
+                video.loop = true;
+                const playPromise = video.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.catch(function () {
+                        // iOS Low Power Mode or browser policy deferral:
+                        // Trigger immediate play on any micro-gesture anywhere on screen
+                        const unlock = function () {
+                            video.muted = true;
+                            video.play().catch(function () {});
+                        };
+                        ['click', 'touchstart', 'touchend', 'scroll', 'keydown', 'pointerdown'].forEach(function (evt) {
+                            window.addEventListener(evt, unlock, { once: true, passive: true });
+                        });
+                    });
+                }
+            }
+
+            // Continuous playback recovery on mobile & desktop
+            video.addEventListener('pause', function () {
+                if (isHeroVisible) {
+                    setTimeout(function () {
+                        if (video.paused && isHeroVisible) {
+                            video.play().catch(function () {});
+                        }
+                    }, 100);
+                }
+            });
+
+            // Ensure infinite loop without stalling on the last frame
+            video.addEventListener('ended', function () {
+                video.currentTime = 0;
+                startInfinitePlayback();
+            });
+
+            video.addEventListener('loadeddata', startInfinitePlayback);
+            video.addEventListener('canplay', startInfinitePlayback);
+
+            // Visibility change (tab switch, app switch, screen lock/unlock)
+            document.addEventListener('visibilitychange', function () {
+                if (!document.hidden && isHeroVisible && video.paused) {
+                    startInfinitePlayback();
+                }
+            });
+
+            // iOS Safari bfcache (back/forward navigation)
+            window.addEventListener('pageshow', function () {
+                if (isHeroVisible && video.paused) {
+                    startInfinitePlayback();
+                }
+            });
+
+            // Focus and orientation change on mobile phones and tablets
+            window.addEventListener('focus', function () {
+                if (isHeroVisible && video.paused) {
+                    startInfinitePlayback();
+                }
+            });
+            window.addEventListener('orientationchange', function () {
+                setTimeout(startInfinitePlayback, 200);
+            });
+
+            // Battery & Performance Optimization:
+            // When hero section scrolls off-screen on mobile, pause to save battery; resume when visible
+            if ('IntersectionObserver' in window && heroSection) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        isHeroVisible = entry.isIntersecting;
+                        if (isHeroVisible) {
+                            startInfinitePlayback();
+                        } else if (!video.paused) {
+                            video.pause();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(heroSection);
+            }
+
+            // Immediate execution across page load lifecycle
+            startInfinitePlayback();
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', startInfinitePlayback);
+            }
+            window.addEventListener('load', startInfinitePlayback);
+        })();
+    </script>
 
     <!-- 3 Core Services (Page Background: Warm Off-White #F7F6F2, Surfaces: Pure White #FFFFFF) -->
     <section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -700,7 +802,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="space-y-4">
                 <a href="/" class="inline-block group">
-                    <img src="{{ asset('images/logo-white.png') }}" alt="ProService Vikar" class="h-10 w-auto object-contain group-hover:opacity-90 transition">
+                    <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service" class="h-10 w-auto object-contain group-hover:opacity-90 transition">
                 </a>
                 <p class="text-xs leading-relaxed text-sand-200">
                     {{ __('Dansk vikarbureau med fokus på fleksibilitet, pålidelighed og digital gennemsigtighed.') }}
