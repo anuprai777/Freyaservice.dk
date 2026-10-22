@@ -124,3 +124,206 @@ html, body {
     }
 }
 
+/* ==========================================================================
+   Dark Mode Theme System & Modern Overrides
+   ========================================================================== */
+html {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+
+    /* Dark Mode Brand Tokens */
+    --brand-primary: #0A111C;
+    --brand-secondary: #E2E8F0;
+    --brand-action: #F0934E;
+    --brand-action-hover: #E8833A;
+    --brand-page-bg: #0B1320;
+    --brand-surface: #131F33;
+    --brand-border: #1E2F4A;
+    --brand-body-text: #CBD5E1;
+    --brand-muted-text: #94A3B8;
+}
+
+html.dark body {
+    background-color: var(--brand-page-bg) !important;
+    color: var(--brand-body-text) !important;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+    color: #F8FAFC !important;
+}
+
+/* Surface & Background overrides in Dark Mode */
+html.dark .bg-white,
+html.dark .bg-brand-surface {
+    background-color: #131F33 !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-sand-50,
+html.dark .bg-brand-bg,
+html.dark .bg-off-white {
+    background-color: #0E1726 !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-sand-100 {
+    background-color: #182740 !important;
+}
+
+/* Border overrides in Dark Mode */
+html.dark .border-slate-200,
+html.dark .border-slate-100,
+html.dark .border-sand-300,
+html.dark .border-brand-border {
+    border-color: #1E2F4A !important;
+}
+
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-sand-300 > :not([hidden]) ~ :not([hidden]) {
+    border-color: #1E2F4A !important;
+}
+
+/* Text overrides in Dark Mode */
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-charcoal-900,
+html.dark .text-navy-900 {
+    color: #F8FAFC !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-charcoal-800,
+html.dark .text-charcoal-700,
+html.dark .text-navy-700,
+html.dark .text-brand-secondary {
+    color: #E2E8F0 !important;
+}
+
+html.dark .text-slate-600,
+html.dark .text-brand-body {
+    color: #CBD5E1 !important;
+}
+
+html.dark .text-slate-500,
+html.dark .text-slate-400,
+html.dark .text-brand-muted,
+html.dark .text-coolslate-500 {
+    color: #94A3B8 !important;
+}
+
+/* Form Controls in Dark Mode */
+html.dark input[type="text"],
+html.dark input[type="email"],
+html.dark input[type="password"],
+html.dark input[type="number"],
+html.dark input[type="search"],
+html.dark input[type="tel"],
+html.dark input[type="date"],
+html.dark input[type="time"],
+html.dark select,
+html.dark textarea {
+    background-color: #0E1726 !important;
+    border-color: #1E2F4A !important;
+    color: #F8FAFC !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+    color: #64748B !important;
+}
+
+/* Table styling in Dark Mode */
+html.dark table thead th {
+    background-color: #0E1726 !important;
+    color: #94A3B8 !important;
+}
+
+html.dark table tbody tr {
+    border-color: #1E2F4A !important;
+}
+
+html.dark table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Shadows in Dark Mode */
+html.dark .shadow-sm,
+html.dark .shadow,
+html.dark .shadow-md,
+html.dark .shadow-lg,
+html.dark .shadow-xl {
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Badges legibility in Dark Mode */
+html.dark .bg-emerald-100 {
+    background-color: rgba(16, 185, 129, 0.18) !important;
+}
+html.dark .text-emerald-800 {
+    color: #6EE7B7 !important;
+}
+html.dark .border-emerald-200 {
+    border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+html.dark .bg-amber-100 {
+    background-color: rgba(245, 158, 11, 0.18) !important;
+}
+html.dark .text-amber-800 {
+    color: #FCD34D !important;
+}
+html.dark .border-amber-200 {
+    border-color: rgba(245, 158, 11, 0.35) !important;
+}
+
+html.dark .bg-blue-100 {
+    background-color: rgba(59, 130, 246, 0.18) !important;
+}
+html.dark .text-blue-800 {
+    color: #93C5FD !important;
+}
+html.dark .border-blue-200 {
+    border-color: rgba(59, 130, 246, 0.35) !important;
+}
+
+html.dark .bg-indigo-100 {
+    background-color: rgba(99, 102, 241, 0.18) !important;
+}
+html.dark .text-indigo-800 {
+    color: #A5B4FC !important;
+}
+html.dark .border-indigo-200 {
+    border-color: rgba(99, 102, 241, 0.35) !important;
+}
+
+html.dark .bg-rose-100 {
+    background-color: rgba(244, 63, 94, 0.18) !important;
+}
+html.dark .text-rose-800 {
+    color: #FDA4AF !important;
+}
+html.dark .border-rose-200 {
+    border-color: rgba(244, 63, 94, 0.35) !important;
+}
+
+/* Dark mode scrollbars */
+html.dark ::-webkit-scrollbar-track {
+    background: #0B1320;
+}
+html.dark ::-webkit-scrollbar-thumb {
+    background: #1E2F4A;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+    background: #334D73;
+}
+
+

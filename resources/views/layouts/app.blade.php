@@ -14,8 +14,20 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Anti-FOUC Dark Mode script -->
+        <script>
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        </script>
     </head>
     <body class="font-sans antialiased bg-brand-bg text-brand-body selection:bg-brand-secondary selection:text-white">
+        <!-- Floating Toast Notifications for Form Success & Alerts -->
+        <x-notification-toast />
+
         <div class="min-h-screen bg-brand-bg">
             @include('layouts.navigation')
 
@@ -33,5 +45,8 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Back to Top Button -->
+        <x-back-to-top />
     </body>
 </html>

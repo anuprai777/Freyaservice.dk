@@ -83,8 +83,11 @@
                 </div>
             </div>
 
-            <!-- Settings, Language Switcher & Role Badge -->
+            <!-- Settings, Language Switcher, Theme & Role Badge -->
             <div class="hidden sm:flex sm:items-center sm:ms-6 gap-3">
+
+                <!-- Dark Mode Toggle -->
+                <x-theme-toggle />
 
                 <!-- Language Switcher -->
                 <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
@@ -158,8 +161,11 @@
                 </x-dropdown>
             </div>
 
-            <!-- Mobile Language Switcher & Hamburger -->
+            <!-- Mobile Controls (Theme, Language & Hamburger) -->
             <div class="-me-2 flex items-center gap-2 lg:hidden">
+                <!-- Mobile Dark Mode Toggle -->
+                <x-theme-toggle />
+
                 <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-lg border border-brand-border text-xs">
                     <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2 py-0.5 rounded transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-brand-surface text-brand-secondary shadow-xs font-bold' : 'text-brand-muted' }}">
                         <span>🇩🇰</span>

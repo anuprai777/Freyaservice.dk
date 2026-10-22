@@ -10,8 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }</style>
+
+    <!-- Anti-FOUC Dark Mode script -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 <body class="bg-brand-bg text-brand-body antialiased selection:bg-brand-secondary selection:text-white">
+    <!-- Floating Toast Notifications for Form Success & Alerts -->
+    <x-notification-toast />
 
     <!-- Top Info Bar -->
     <div class="bg-brand-primary text-sand-100 text-xs py-2 px-4 border-b border-navy-800">
@@ -70,6 +81,9 @@
             </nav>
 
             <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Theme Toggle -->
+                <x-theme-toggle />
+
                 <div class="hidden sm:flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
                     <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-brand-surface text-brand-secondary shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
                         <span>🇩🇰</span><span>DA</span>
@@ -106,16 +120,19 @@
 
         <!-- Mobile Menu -->
         <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="lg:hidden border-t border-brand-border bg-brand-surface shadow-lg">
-            <!-- Mobile Language Selector -->
+            <!-- Mobile Language & Theme Selector -->
             <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-bg/60">
-                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
-                <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
-                        <span>🇩🇰</span><span>Dansk</span>
-                    </a>
-                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
-                        <span>🇬🇧</span><span>English</span>
-                    </a>
+                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog & Tema') }}</span>
+                <div class="flex items-center gap-2">
+                    <x-theme-toggle />
+                    <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
+                        <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                            <span>🇩🇰</span><span>Dansk</span>
+                        </a>
+                        <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                            <span>🇬🇧</span><span>English</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -198,5 +215,8 @@
             &copy; {{ date('Y') }} FreyaService.dk — {{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <x-back-to-top />
 </body>
 </html>
