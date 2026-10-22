@@ -14,6 +14,7 @@ export function initLetterCascade() {
         const triggerOnClick = el.hasAttribute('data-trigger-click');
         const staggerFrom = el.getAttribute('data-stagger-from') || 'first';
         const staggerDuration = parseFloat(el.getAttribute('data-stagger-duration') || '0.04');
+        const group = el.getAttribute('data-cascade-group') || '';
 
         el.textContent = '';
         const root = createRoot(el);
@@ -25,8 +26,22 @@ export function initLetterCascade() {
                 triggerOnClick={triggerOnClick}
                 staggerFrom={staggerFrom}
                 staggerDuration={staggerDuration}
+                group={group}
             />
         );
+    });
+
+    // Also attach hover listener to parent containers with data-cascade-parent-group
+    const parentGroups = document.querySelectorAll('[data-cascade-parent-group]');
+    parentGroups.forEach((parentEl) => {
+        if (parentEl.dataset.parentGroupMounted) return;
+        parentEl.dataset.parentGroupMounted = 'true';
+        const groupName = parentEl.getAttribute('data-cascade-parent-group');
+        if (groupName) {
+            parentEl.addEventListener('mouseenter', () => {
+                window.dispatchEvent(new CustomEvent(`cascade:trigger:${groupName}`));
+            });
+        }
     });
 }
 

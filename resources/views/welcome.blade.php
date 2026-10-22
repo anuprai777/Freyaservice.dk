@@ -235,11 +235,11 @@
                     <span>{{ __('Akut vikardækning på under 2 timer') }}</span>
                 </div>
 
-                <!-- High-contrast headings with LetterCascade animation -->
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
-                    <x-letter-cascade :text="__('Fleksibel & professionel')" class="text-brand-action inline-block cursor-pointer select-none" />
+                <!-- High-contrast headings with LetterCascade animation synchronized at once -->
+                <h1 data-cascade-parent-group="hero-title" class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white cursor-pointer select-none">
+                    <x-letter-cascade :text="__('Fleksibel & professionel')" class="text-brand-action inline-block" group="hero-title" />
                     <span class="block mt-1 sm:mt-2">
-                        <x-letter-cascade :text="__('vikarservice i hele Danmark')" class="text-white inline-block cursor-pointer select-none" />
+                        <x-letter-cascade :text="__('vikarservice i hele Danmark')" class="text-white inline-block" group="hero-title" />
                     </span>
                 </h1>
 

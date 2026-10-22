@@ -7,7 +7,7 @@ import {
     stagger,
     useAnimate,
 } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface LetterCascadeProps {
     /** The text to animate */
@@ -26,6 +26,8 @@ interface LetterCascadeProps {
     damping?: number;
     /** Trigger the animation on click instead of hover */
     triggerOnClick?: boolean;
+    /** Optional synchronization group ID to trigger multiple cascades together */
+    group?: string;
     /** Callback when the full animation cycle completes */
     onComplete?: () => void;
 }
@@ -39,6 +41,7 @@ export function LetterCascade({
     stiffness = 220,
     damping = 16,
     triggerOnClick = false,
+    group,
     onComplete,
 }: LetterCascadeProps) {
     const [scope, animate] = useAnimate();
@@ -115,6 +118,27 @@ export function LetterCascade({
         onComplete,
     ]);
 
+    const handleInteraction = useCallback(() => {
+        if (group && typeof window !== "undefined") {
+            window.dispatchEvent(new CustomEvent(`cascade:trigger:${group}`));
+        } else {
+            trigger();
+        }
+    }, [group, trigger]);
+
+    useEffect(() => {
+        if (!group || typeof window === "undefined") return;
+
+        const handleGroupEvent = () => {
+            trigger();
+        };
+
+        window.addEventListener(`cascade:trigger:${group}`, handleGroupEvent);
+        return () => {
+            window.removeEventListener(`cascade:trigger:${group}`, handleGroupEvent);
+        };
+    }, [group, trigger]);
+
     return (
         <span
             ref={scope}
@@ -122,7 +146,7 @@ export function LetterCascade({
                 "inline-flex cursor-pointer select-none items-center justify-center",
                 className
             )}
-            {...(triggerOnClick ? { onClick: trigger } : { onMouseEnter: trigger })}
+            {...(triggerOnClick ? { onClick: handleInteraction } : { onMouseEnter: handleInteraction })}
             aria-label={text}
         >
             {text.split("").map((letter, i) => (
