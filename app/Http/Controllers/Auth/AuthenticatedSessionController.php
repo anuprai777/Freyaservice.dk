@@ -29,15 +29,30 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = $request->user();
-        if ($user->isAdmin()) {
-            return redirect()->intended(route('admin.dashboard'));
-        } elseif ($user->isClient()) {
-            return redirect()->intended(route('client.dashboard'));
-        } elseif ($user->isWorker()) {
-            return redirect()->intended(route('worker.dashboard'));
+
+        $defaultRoute = match ($user->role) {
+            'admin' => route('admin.dashboard'),
+            'client' => route('client.dashboard'),
+            'worker' => route('worker.dashboard'),
+            default => route('dashboard'),
+        };
+
+        // If a previously stored intended URL was from a different portal role, clear it
+        $intendedUrl = session()->get('url.intended');
+        if ($intendedUrl) {
+            $isInvalidIntended = match ($user->role) {
+                'admin' => str_contains($intendedUrl, '/client') || str_contains($intendedUrl, '/worker'),
+                'client' => str_contains($intendedUrl, '/admin') || str_contains($intendedUrl, '/worker'),
+                'worker' => str_contains($intendedUrl, '/admin') || str_contains($intendedUrl, '/client'),
+                default => false,
+            };
+
+            if ($isInvalidIntended) {
+                session()->forget('url.intended');
+            }
         }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended($defaultRoute);
     }
 
     /**

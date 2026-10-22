@@ -101,14 +101,22 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Write the real password hash directly via DB::table() to bypass the
+        // Write distinctive password hashes directly via DB::table() to bypass the
         // Eloquent 'hashed' cast (which would otherwise double-hash the value).
         // Also mark all seed accounts as email-verified so login works immediately.
-        DB::table('users')
-            ->whereIn('role', ['admin', 'client', 'worker'])
-            ->update([
-                'password'          => $hashedPw,
-                'email_verified_at' => now(),
-            ]);
+        DB::table('users')->where('id', $admin->id)->update([
+            'password'          => Hash::make('admin123'),
+            'email_verified_at' => now(),
+        ]);
+
+        DB::table('users')->where('id', $clientUser->id)->update([
+            'password'          => Hash::make('client123'),
+            'email_verified_at' => now(),
+        ]);
+
+        DB::table('users')->where('id', $workerUser->id)->update([
+            'password'          => Hash::make('worker123'),
+            'email_verified_at' => now(),
+        ]);
     }
 }
