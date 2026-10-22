@@ -237,8 +237,10 @@
 
                 <!-- High-contrast headings with LetterCascade animation -->
                 <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
-                    <x-letter-cascade text="Fleksibel & professionel" class="text-brand-action inline-block cursor-pointer select-none" />
-                    <span class="block mt-1 sm:mt-2">{{ __('vikarservice i hele Danmark') }}</span>
+                    <x-letter-cascade :text="__('Fleksibel & professionel')" class="text-brand-action inline-block cursor-pointer select-none" />
+                    <span class="block mt-1 sm:mt-2">
+                        <x-letter-cascade :text="__('vikarservice i hele Danmark')" class="text-white inline-block cursor-pointer select-none" />
+                    </span>
                 </h1>
 
                 <p class="text-base sm:text-lg text-sand-100/90 max-w-2xl leading-relaxed">
