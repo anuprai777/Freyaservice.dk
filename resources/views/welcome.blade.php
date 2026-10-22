@@ -24,29 +24,29 @@
 
     <!-- Top Danish / English Info Bar (Primary Brand: Navy 900 #14263F, Warm Off-White #F7F6F2 text) -->
     <div class="bg-brand-primary text-sand-100 text-xs py-2 px-4 border-b border-navy-800">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center gap-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-4 text-center sm:text-left">
                 <span class="flex items-center gap-1.5">
                     <x-heroicon-o-globe-europe-africa class="w-3.5 h-3.5 text-sand-300" />
                     <span>{{ __('Landsdækkende vikarservice') }}</span>
                 </span>
-                <span class="hidden md:inline text-navy-700">•</span>
+                <span class="hidden sm:inline text-navy-700">•</span>
                 <span class="flex items-center gap-1">
                     <x-heroicon-o-phone class="w-3.5 h-3.5 text-brand-action" />
                     <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4570203040" class="text-white hover:text-brand-action font-semibold">+45 70 20 30 40</a></span>
                 </span>
                 <span class="hidden md:inline text-navy-700">•</span>
-                <span class="text-sand-300">CVR: 44556677</span>
+                <span class="hidden sm:inline text-sand-300">CVR: 44556677</span>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 sm:gap-4">
                 <!-- Success indicator: Forest Green #2F7D5B -->
-                <span class="text-forest-100 font-medium flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-forest animate-pulse"></span>
+                <span class="text-forest-100 font-medium flex items-center gap-1.5 text-[11px] sm:text-xs">
+                    <span class="w-2 h-2 rounded-full bg-forest animate-pulse shrink-0"></span>
                     <span>{{ __('Vikarer klar til udrykning 24/7') }}</span>
                 </span>
 
                 <!-- Top bar language switch -->
-                <div class="flex items-center gap-1.5 text-xs font-medium" role="group" aria-label="Sprogvælger">
+                <div class="flex items-center gap-1 text-xs font-medium" role="group" aria-label="Sprogvælger">
                     <a href="{{ route('locale.switch', 'da') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-sand-300 hover:text-white' }}" aria-label="Skift til dansk">
                         <span>🇩🇰</span>
                         <span>DA</span>
@@ -62,11 +62,11 @@
     </div>
 
     <!-- Navigation (Surface: Pure White #FFFFFF, Border: Muted Sand #E3E0D8) -->
-    <header class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center group">
-                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+            <a href="/" class="flex items-center group shrink-0">
+                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <!-- Nav Links (Secondary Brand Navy 700 on hover, Muted Text Cool Slate #6B7686) -->
@@ -90,9 +90,9 @@
             </nav>
 
             <!-- Language Switcher & Auth Buttons -->
-            <div class="flex items-center gap-3">
-                <!-- Language Switcher Pill -->
-                <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Desktop Language Switcher Pill -->
+                <div class="hidden sm:flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
                     <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-brand-surface text-brand-secondary shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
                         <span>🇩🇰</span>
                         <span>DA</span>
@@ -105,26 +105,98 @@
 
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
-                            <x-heroicon-o-squares-2x2 class="w-4 h-4" />
-                            <span>{{ __('Min Profil / Dashboard') }}</span>
-                            <x-heroicon-o-arrow-right class="w-4 h-4" />
+                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                            <x-heroicon-o-squares-2x2 class="w-4 h-4 shrink-0" />
+                            <span class="hidden sm:inline">{{ __('Min Profil / Dashboard') }}</span>
+                            <span class="sm:hidden">{{ __('Dashboard') }}</span>
+                            <x-heroicon-o-arrow-right class="w-3.5 h-3.5 hidden sm:inline shrink-0" />
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm font-bold text-brand-secondary hover:text-brand-action px-3 py-2 rounded-lg transition flex items-center gap-1.5">
+                        <a href="{{ route('login') }}" class="hidden lg:flex text-sm font-bold text-brand-secondary hover:text-brand-action px-3 py-2 rounded-lg transition items-center gap-1.5">
                             <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" />
                             <span>{{ __('Log ind') }}</span>
                         </a>
 
                         @if (Route::has('register'))
                             <!-- Primary CTA Button: Action / Accent Orange 500 #E8833A, hover Orange 600 #D2702A -->
-                            <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
+                            <a href="{{ route('register') }}" class="hidden lg:inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
                                 <x-heroicon-o-user-plus class="w-4 h-4" />
                                 <span>{{ __('Opret konto') }}</span>
                             </a>
                         @endif
                     @endauth
                 @endif
+
+                <!-- Mobile Hamburger Toggle Button -->
+                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-xl text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition" aria-label="Menu">
+                    <x-heroicon-o-bars-3 class="h-6 w-6" x-show="!mobileOpen" />
+                    <x-heroicon-o-x-mark class="h-6 w-6" x-show="mobileOpen" x-cloak />
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div x-show="mobileOpen" x-cloak
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-2"
+             class="lg:hidden border-t border-brand-border bg-brand-surface shadow-xl">
+            <!-- Mobile Language Selector -->
+            <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-bg/60">
+                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
+                <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                        <span>🇩🇰</span><span>Dansk</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                        <span>🇬🇧</span><span>English</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Links -->
+            <div class="px-4 py-3 space-y-1">
+                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                    <x-heroicon-o-briefcase class="w-5 h-5 text-brand-action" />
+                    <span>{{ __('Ydelser') }}</span>
+                </a>
+                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-brand-action" />
+                    <span>{{ __('Brancher') }}</span>
+                </a>
+                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                    <x-heroicon-o-arrows-pointing-in class="w-5 h-5 text-brand-action" />
+                    <span>{{ __('Sådan virker det') }}</span>
+                </a>
+                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5 text-brand-action" />
+                    <span>{{ __('Kontakt') }}</span>
+                </a>
+            </div>
+
+            <!-- Mobile Auth / CTA -->
+            <div class="p-4 border-t border-brand-border">
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
+                        <x-heroicon-o-squares-2x2 class="w-5 h-5" />
+                        <span>{{ __('Gå til Dashboard') }}</span>
+                        <x-heroicon-o-arrow-right class="w-4 h-4" />
+                    </a>
+                @else
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-brand-secondary bg-brand-bg hover:bg-slate-100 border border-brand-border transition">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" />
+                            <span>{{ __('Log ind') }}</span>
+                        </a>
+                        <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                            <x-heroicon-o-user-plus class="w-4 h-4" />
+                            <span>{{ __('Opret konto') }}</span>
+                        </a>
+                    </div>
+                @endauth
             </div>
         </div>
     </header>
@@ -189,28 +261,28 @@
                 </div>
 
                 <!-- Trust Badges -->
-                <div class="pt-6 grid grid-cols-3 gap-4 sm:gap-6 border-t border-navy-800 text-sand-100">
+                <div class="pt-6 grid grid-cols-3 gap-2 sm:gap-6 border-t border-navy-800 text-sand-100">
                     <div>
-                        <div class="flex items-center gap-1.5 text-xl sm:text-2xl font-black text-white">
-                            <x-heroicon-s-star class="w-5 h-5 text-brand-action shrink-0" />
+                        <div class="flex items-center gap-1 sm:gap-1.5 text-lg sm:text-2xl font-black text-white">
+                            <x-heroicon-s-star class="w-4 h-4 sm:w-5 sm:h-5 text-brand-action shrink-0" />
                             <span>98%</span>
                         </div>
-                        <div class="text-xs text-sand-300 font-medium mt-1">{{ __('Tilfredse virksomheder') }}</div>
+                        <div class="text-[10px] sm:text-xs text-sand-300 font-medium mt-1 leading-tight">{{ __('Tilfredse virksomheder') }}</div>
                     </div>
                     <div>
-                        <div class="flex items-center gap-1.5 text-xl sm:text-2xl font-black text-white">
-                            <x-heroicon-s-user-group class="w-5 h-5 text-sand-100 shrink-0" />
+                        <div class="flex items-center gap-1 sm:gap-1.5 text-lg sm:text-2xl font-black text-white">
+                            <x-heroicon-s-user-group class="w-4 h-4 sm:w-5 sm:h-5 text-sand-100 shrink-0" />
                             <span>2.500+</span>
                         </div>
-                        <div class="text-xs text-sand-300 font-medium mt-1">{{ __('Aktive vikarer i puljen') }}</div>
+                        <div class="text-[10px] sm:text-xs text-sand-300 font-medium mt-1 leading-tight">{{ __('Aktive vikarer i puljen') }}</div>
                     </div>
                     <div>
-                        <div class="flex items-center gap-1.5 text-xl sm:text-2xl font-black text-white">
+                        <div class="flex items-center gap-1 sm:gap-1.5 text-lg sm:text-2xl font-black text-white">
                             <!-- Success indicator: Forest Green #2F7D5B -->
-                            <x-heroicon-s-receipt-percent class="w-5 h-5 text-forest shrink-0" />
+                            <x-heroicon-s-receipt-percent class="w-4 h-4 sm:w-5 sm:h-5 text-forest shrink-0" />
                             <span>25%</span>
                         </div>
-                        <div class="text-xs text-sand-300 font-medium mt-1">{{ __('Moms (25%)') }}</div>
+                        <div class="text-[10px] sm:text-xs text-sand-300 font-medium mt-1 leading-tight">{{ __('Moms (25%)') }}</div>
                     </div>
                 </div>
             </div>
@@ -673,22 +745,22 @@
             <!-- Trust Bar / Key Metrics Strip -->
             <div class="bg-brand-primary text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden">
                 <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-white/10 to-transparent pointer-events-none"></div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center relative z-10 divide-y md:divide-y-0 md:divide-x divide-white/15">
-                    <div class="pt-4 md:pt-0">
-                        <div class="text-3xl sm:text-4xl font-black text-brand-action tracking-tight">&lt; 2t</div>
-                        <div class="text-xs text-sand-200 font-medium mt-1">{{ __('Gennemsnitlig responstid') }}</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-center relative z-10">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0">
+                        <div class="text-2xl sm:text-4xl font-black text-brand-action tracking-tight">&lt; 2t</div>
+                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Gennemsnitlig responstid') }}</div>
                     </div>
-                    <div class="pt-4 md:pt-0 md:pl-6">
-                        <div class="text-3xl sm:text-4xl font-black text-white tracking-tight">100%</div>
-                        <div class="text-xs text-sand-200 font-medium mt-1">{{ __('Overenskomstdækning') }}</div>
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-white/15 md:pl-6">
+                        <div class="text-2xl sm:text-4xl font-black text-white tracking-tight">100%</div>
+                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Overenskomstdækning') }}</div>
                     </div>
-                    <div class="pt-4 md:pt-0 md:pl-6">
-                        <div class="text-3xl sm:text-4xl font-black text-white tracking-tight">2.500+</div>
-                        <div class="text-xs text-sand-200 font-medium mt-1">{{ __('Kvalificerede vikarer') }}</div>
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-white/15 md:pl-6">
+                        <div class="text-2xl sm:text-4xl font-black text-white tracking-tight">2.500+</div>
+                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Kvalificerede vikarer') }}</div>
                     </div>
-                    <div class="pt-4 md:pt-0 md:pl-6">
-                        <div class="text-3xl sm:text-4xl font-black text-forest-300 tracking-tight">24/7</div>
-                        <div class="text-xs text-sand-200 font-medium mt-1">{{ __('Bemandet vagtcentral') }}</div>
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-white/15 md:pl-6">
+                        <div class="text-2xl sm:text-4xl font-black text-forest-300 tracking-tight">24/7</div>
+                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Bemandet vagtcentral') }}</div>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <h1 class="text-2xl font-black text-slate-900 tracking-tight">Bestil Vikar / Personale</h1>
+                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Bestil Vikar / Personale</h1>
                 <p class="text-xs text-slate-500 mt-0.5">Udfyld formularen herunder for at rekvirere personale fra FreyaService.</p>
             </div>
-            <a href="{{ route('client.dashboard') }}" class="text-xs font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1">
+            <a href="{{ route('client.dashboard') }}" class="inline-flex items-center text-xs font-bold text-slate-600 hover:text-slate-900 gap-1">
                 <span>&larr; Tilbage til dashboard</span>
             </a>
         </div>
@@ -14,9 +14,9 @@
     <div x-data="{
         type: '{{ old('request_type', $selectedType) }}',
         isUrgent: {{ old('is_urgent') ? 'true' : 'false' }}
-    }" class="py-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    }" class="py-6 sm:py-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <form method="POST" action="{{ route('client.requests.store') }}" class="space-y-8 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+        <form method="POST" action="{{ route('client.requests.store') }}" class="space-y-6 sm:space-y-8 bg-white p-4 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
             @csrf
 
             <!-- 1. Request Type Selector -->
@@ -107,7 +107,7 @@
                     <x-input-error :messages="$errors->get('location')" class="mt-2" />
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="postcode" :value="__('Postnummer')" />
                         <x-text-input id="postcode" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode', $client->postcode)" required />
@@ -214,11 +214,11 @@
             </div>
 
             <!-- Submit Buttons -->
-            <div class="pt-6 border-t border-slate-200 flex items-center justify-end gap-3">
-                <a href="{{ route('client.dashboard') }}" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
+            <div class="pt-6 border-t border-slate-200 flex flex-col-reverse sm:flex-row items-center justify-end gap-3">
+                <a href="{{ route('client.dashboard') }}" class="w-full sm:w-auto text-center px-5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition min-h-[44px] flex items-center justify-center">
                     Annuller
                 </a>
-                <button type="submit" class="px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition transform hover:-translate-y-0.5">
+                <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition transform hover:-translate-y-0.5 min-h-[44px] flex items-center justify-center">
                     Send Forespørgsel &rarr;
                 </button>
             </div>

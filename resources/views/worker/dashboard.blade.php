@@ -14,8 +14,8 @@
                 <h1 class="text-2xl font-black text-slate-900 tracking-tight">Velkommen, {{ Auth::user()->name }}</h1>
                 <p class="text-xs text-slate-500 mt-0.5">By: {{ $worker->city }} • Løn: {{ number_format($worker->hourly_rate, 2, ',', '.') }} DKK/t • Rådighed: {{ $worker->availability_type }}</p>
             </div>
-            <div class="flex items-center gap-3">
-                <a href="{{ route('worker.shifts.scan') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold shadow-sm transition">
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <a href="{{ route('worker.shifts.scan') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold shadow-sm transition">
                     <span>📷 Scan QR Tjek-ind</span>
                 </a>
             </div>
@@ -143,16 +143,16 @@
                                 @endif
                             </div>
 
-                            <div class="pt-2 border-t border-slate-200/60 flex items-center justify-end gap-2">
-                                <form method="POST" action="{{ route('worker.offers.decline', $offer) }}">
+                            <div class="pt-2 border-t border-slate-200/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2">
+                                <form method="POST" action="{{ route('worker.offers.decline', $offer) }}" class="w-full sm:w-auto">
                                     @csrf
-                                    <button type="submit" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-200 transition">
+                                    <button type="submit" class="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-200 transition text-center">
                                         Afvis
                                     </button>
                                 </form>
-                                <form method="POST" action="{{ route('worker.offers.accept', $offer) }}">
+                                <form method="POST" action="{{ route('worker.offers.accept', $offer) }}" class="w-full sm:w-auto">
                                     @csrf
-                                    <button type="submit" class="px-4 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition">
+                                    <button type="submit" class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition text-center">
                                         Accepter vagt
                                     </button>
                                 </form>
@@ -171,7 +171,7 @@
                 <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
                             <h3 class="text-sm font-bold text-slate-900">{{ $asgn->staffRequest->role }}</h3>
                             <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-200 text-slate-700">{{ $asgn->status->label() }}</span>
                         </div>
@@ -184,8 +184,8 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-2">
-                        <a href="{{ route('worker.shifts.scan') }}" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <a href="{{ route('worker.shifts.scan') }}" class="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl text-xs font-bold bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">
                             📷 Tjek ind via QR
                         </a>
                     </div>

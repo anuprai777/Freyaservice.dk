@@ -96,3 +96,31 @@ a.brand-link:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--brand-muted-text);
 }
+
+/* Alpine.js cloak: Prevents layout shift and unstyled flash on mobile / desktop */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Prevent horizontal page overflow on small mobile screens without breaking sticky headers */
+html, body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* Hide scrollbar utility for clean mobile horizontal scroll lists */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Mobile tap target improvement */
+@media (max-width: 640px) {
+    button, a, input, select, textarea {
+        touch-action: manipulation;
+    }
+}
+

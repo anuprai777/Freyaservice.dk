@@ -1,47 +1,102 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <h1 class="text-2xl font-black text-slate-900 tracking-tight">Fakturaer & Forbrug</h1>
+                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Fakturaer & Forbrug</h1>
                 <p class="text-xs text-slate-500 mt-0.5">Oversigt over fakturerede vikartimer, 25% dansk moms og betalingsstatus.</p>
             </div>
-            <a href="{{ route('client.dashboard') }}" class="text-xs font-bold text-slate-600 hover:text-slate-900">
+            <a href="{{ route('client.dashboard') }}" class="inline-flex items-center text-xs font-bold text-slate-600 hover:text-slate-900">
                 &larr; Tilbage til dashboard
             </a>
         </div>
     </x-slot>
 
-    <div class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="py-6 sm:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
 
         <!-- Expenditure Summary Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Forbrug i denne måned</span>
-                <span class="text-2xl font-black text-slate-900 mt-1 block">{{ number_format($thisMonthSpent, 2, ',', '.') }} kr.</span>
+                <span class="text-xl sm:text-2xl font-black text-slate-900 mt-1 block">{{ number_format($thisMonthSpent, 2, ',', '.') }} kr.</span>
                 <span class="text-[11px] text-slate-500 mt-1 block">Inkl. 25% moms</span>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Samlet faktureret</span>
-                <span class="text-2xl font-black text-indigo-600 mt-1 block">{{ number_format($totalSpent, 2, ',', '.') }} kr.</span>
+                <span class="text-xl sm:text-2xl font-black text-indigo-600 mt-1 block">{{ number_format($totalSpent, 2, ',', '.') }} kr.</span>
                 <span class="text-[11px] text-slate-500 mt-1 block">Historisk total ekskl./inkl. moms</span>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Godkendte vikartimer</span>
-                <span class="text-2xl font-black text-emerald-600 mt-1 block">{{ number_format($totalHours, 1, ',', '.') }} timer</span>
+                <span class="text-xl sm:text-2xl font-black text-emerald-600 mt-1 block">{{ number_format($totalHours, 1, ',', '.') }} timer</span>
                 <span class="text-[11px] text-slate-500 mt-1 block">Udført af FreyaService vikarer</span>
             </div>
         </div>
 
         <!-- Invoices List -->
         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+            <div class="p-4 sm:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <h2 class="text-base font-bold text-slate-900">Fakturaoversigt</h2>
                 <span class="text-xs text-slate-500">Valuta: DKK • Betalingsbetingelse: Netto 14 dage</span>
             </div>
 
-            <div class="overflow-x-auto">
+            <!-- Mobile Card View (md:hidden) -->
+            <div class="md:hidden divide-y divide-slate-100">
+                @forelse($invoices as $inv)
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-center justify-between gap-2">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Faktura</span>
+                                <span class="font-bold text-slate-900 text-sm">{{ $inv->invoice_number }}</span>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase
+                                @if($inv->status->value === 'paid') bg-emerald-100 text-emerald-800
+                                @elseif($inv->status->value === 'overdue') bg-rose-100 text-rose-800
+                                @else bg-blue-100 text-blue-800 @endif">
+                                {{ $inv->status->label() }}
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 text-xs py-2 border-y border-slate-100 bg-slate-50/50 -mx-4 px-4">
+                            <div>
+                                <span class="text-slate-400 text-[11px] block">Dato:</span>
+                                <span class="font-medium text-slate-700">{{ $inv->issue_date->format('d.m.Y') }}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[11px] block">Forfald:</span>
+                                <span class="font-medium text-slate-700">{{ $inv->due_date->format('d.m.Y') }}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[11px] block">Ekskl. moms:</span>
+                                <span class="font-medium text-slate-700">{{ number_format($inv->subtotal, 2, ',', '.') }} kr.</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[11px] block">Moms (25%):</span>
+                                <span class="font-medium text-slate-700">{{ number_format($inv->vat_amount, 2, ',', '.') }} kr.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-1">
+                            <div>
+                                <span class="text-[11px] text-slate-400 block uppercase font-semibold">Total inkl. moms</span>
+                                <span class="text-base font-black text-slate-900">{{ number_format($inv->total, 2, ',', '.') }} kr.</span>
+                            </div>
+                            <a href="{{ route('client.invoices.download', $inv) }}" class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition min-h-[40px]">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                <span>PDF</span>
+                            </a>
+                        </div>
+                    </div>
+                @empty
+                    <div class="p-6 text-center text-xs text-slate-400">
+                        Ingen fakturaer udstedt endnu. Fakturaer genereres automatisk, når timesedler godkendes.
+                    </div>
+                @endforelse
+            </div>
+
+            <!-- Desktop Table View (hidden md:block) -->
+            <div class="hidden md:block overflow-x-auto">
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[11px]">
                         <tr>

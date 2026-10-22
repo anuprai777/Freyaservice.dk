@@ -15,24 +15,26 @@
 
     <!-- Top Info Bar -->
     <div class="bg-brand-primary text-sand-100 text-xs py-2 px-4 border-b border-navy-800">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center gap-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-4 text-center sm:text-left">
                 <span class="flex items-center gap-1.5">
                     <x-heroicon-o-globe-europe-africa class="w-3.5 h-3.5 text-sand-300" />
                     <span>{{ __('Landsdækkende vikarservice') }}</span>
                 </span>
-                <span class="hidden md:inline text-navy-700">•</span>
+                <span class="hidden sm:inline text-navy-700">•</span>
                 <span class="flex items-center gap-1">
                     <x-heroicon-o-phone class="w-3.5 h-3.5 text-brand-action" />
                     <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4570203040" class="text-white hover:text-brand-action font-semibold">+45 70 20 30 40</a></span>
                 </span>
+                <span class="hidden md:inline text-navy-700">•</span>
+                <span class="hidden sm:inline text-sand-300">CVR: 44556677</span>
             </div>
-            <div class="flex items-center gap-4">
-                <span class="text-forest-100 font-medium flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-forest animate-pulse"></span>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <span class="text-forest-100 font-medium flex items-center gap-1.5 text-[11px] sm:text-xs">
+                    <span class="w-2 h-2 rounded-full bg-forest animate-pulse shrink-0"></span>
                     <span>{{ __('Vikarer klar til udrykning 24/7') }}</span>
                 </span>
-                <div class="flex items-center gap-1.5 text-xs font-medium" role="group">
+                <div class="flex items-center gap-1 text-xs font-medium" role="group">
                     <a href="{{ route('locale.switch', 'da') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-sand-300 hover:text-white' }}">
                         <span>🇩🇰</span><span>DA</span>
                     </a>
@@ -47,9 +49,9 @@
 
     <!-- Main Navbar -->
     <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="/" class="flex items-center group">
-                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center group shrink-0">
+                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
@@ -67,7 +69,7 @@
                 </a>
             </nav>
 
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 sm:gap-3">
                 <div class="hidden sm:flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
                     <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-brand-surface text-brand-secondary shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
                         <span>🇩🇰</span><span>DA</span>
@@ -78,8 +80,10 @@
                 </div>
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
-                            <x-heroicon-o-squares-2x2 class="w-4 h-4" /><span>{{ __('Min Profil / Dashboard') }}</span>
+                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                            <x-heroicon-o-squares-2x2 class="w-4 h-4 shrink-0" />
+                            <span class="hidden sm:inline">{{ __('Min Profil / Dashboard') }}</span>
+                            <span class="sm:hidden">{{ __('Dashboard') }}</span>
                         </a>
                     @else
                         <a href="{{ route('login') }}" class="hidden lg:flex text-sm font-bold text-brand-secondary hover:text-brand-action px-3 py-2 rounded-lg transition items-center gap-1.5">
@@ -93,7 +97,7 @@
                     @endauth
                 @endif
                 <!-- Mobile toggle -->
-                <button @click="mobileOpen = !mobileOpen" class="lg:hidden p-2 rounded-md text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition">
+                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden p-2 rounded-xl text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition" aria-label="Menu">
                     <x-heroicon-o-bars-3 class="h-6 w-6" x-show="!mobileOpen" />
                     <x-heroicon-o-x-mark class="h-6 w-6" x-show="mobileOpen" x-cloak />
                 </button>
@@ -101,24 +105,55 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="lg:hidden border-t border-brand-border bg-brand-surface shadow-lg">
-            <div class="px-4 py-4 space-y-1">
-                <a href="{{ route('services') }}" class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-muted hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-briefcase class="w-4 h-4" />{{ __('Ydelser') }}
+        <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="lg:hidden border-t border-brand-border bg-brand-surface shadow-lg">
+            <!-- Mobile Language Selector -->
+            <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-bg/60">
+                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
+                <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                        <span>🇩🇰</span><span>Dansk</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                        <span>🇬🇧</span><span>English</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="px-4 py-3 space-y-1">
+                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
+                    <x-heroicon-o-briefcase class="w-5 h-5 text-brand-action" />{{ __('Ydelser') }}
                 </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-muted hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-building-office-2 class="w-4 h-4" />{{ __('Brancher') }}
+                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
+                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-brand-action" />{{ __('Brancher') }}
                 </a>
-                <a href="{{ route('how-it-works') }}" class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('how-it-works') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-muted hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-arrows-pointing-in class="w-4 h-4" />{{ __('Sådan virker det') }}
+                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition {{ request()->routeIs('how-it-works') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
+                    <x-heroicon-o-arrows-pointing-in class="w-5 h-5 text-brand-action" />{{ __('Sådan virker det') }}
                 </a>
-                <a href="{{ route('contact') }}" class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('contact') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-muted hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-4 h-4" />{{ __('Kontakt') }}
+                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition {{ request()->routeIs('contact') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
+                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5 text-brand-action" />{{ __('Kontakt') }}
                 </a>
             </div>
-            <div class="px-4 pb-4 pt-2 border-t border-brand-border flex gap-2">
-                <a href="{{ route('login') }}" class="flex-1 text-center text-sm font-bold text-brand-secondary border border-brand-border px-3 py-2 rounded-lg hover:bg-brand-bg transition">{{ __('Log ind') }}</a>
-                <a href="{{ route('register') }}" class="flex-1 text-center text-sm font-bold text-white bg-brand-action px-3 py-2 rounded-lg hover:bg-brand-action-hover transition">{{ __('Opret konto') }}</a>
+
+            <!-- Mobile Auth / CTA -->
+            <div class="p-4 border-t border-brand-border">
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
+                        <x-heroicon-o-squares-2x2 class="w-5 h-5" />
+                        <span>{{ __('Gå til Dashboard') }}</span>
+                        <x-heroicon-o-arrow-right class="w-4 h-4" />
+                    </a>
+                @else
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-brand-secondary bg-brand-bg hover:bg-slate-100 border border-brand-border transition">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" />
+                            <span>{{ __('Log ind') }}</span>
+                        </a>
+                        <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                            <x-heroicon-o-user-plus class="w-4 h-4" />
+                            <span>{{ __('Opret konto') }}</span>
+                        </a>
+                    </div>
+                @endauth
             </div>
         </div>
     </header>
