@@ -12,10 +12,10 @@ enum DocumentType: string
     public function label(): string
     {
         return match ($this) {
-            self::WORK_PERMIT => 'Arbejdstilladelse',
-            self::CERTIFICATE => 'Certifikat / Hygiejnebevis / Kørekort',
-            self::ID => 'Legitimation / Pas / Opholdskort',
-            self::CONTRACT => 'Underskrevet ansættelseskontrakt',
+            self::WORK_PERMIT => __('Arbejdstilladelse'),
+            self::CERTIFICATE => __('Certifikat / Hygiejnebevis / Kørekort'),
+            self::ID => __('Legitimation / Pas / Opholdskort'),
+            self::CONTRACT => __('Underskrevet ansættelseskontrakt'),
         };
     }
 }

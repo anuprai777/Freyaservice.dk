@@ -11,9 +11,9 @@ enum DocumentStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::PENDING => 'Afventer verifikation',
-            self::APPROVED => 'Godkendt',
-            self::REJECTED => 'Afvist',
+            self::PENDING => __('Afventer verifikation'),
+            self::APPROVED => __('Godkendt'),
+            self::REJECTED => __('Afvist'),
         };
     }
 }

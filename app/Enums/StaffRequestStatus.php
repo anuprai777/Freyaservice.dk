@@ -14,12 +14,12 @@ enum StaffRequestStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::NEW => 'Ny forespørgsel',
-            self::IN_PROGRESS => 'Under behandling',
-            self::MATCHED => 'Vikar matchet',
-            self::ACTIVE => 'Aktiv på lokation',
-            self::COMPLETED => 'Afsluttet',
-            self::CANCELLED => 'Annulleret',
+            self::NEW => __('Ny forespørgsel'),
+            self::IN_PROGRESS => __('Under behandling'),
+            self::MATCHED => __('Vikar matchet'),
+            self::ACTIVE => __('Aktiv på lokation'),
+            self::COMPLETED => __('Afsluttet'),
+            self::CANCELLED => __('Annulleret'),
         };
     }
 

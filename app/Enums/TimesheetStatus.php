@@ -11,9 +11,9 @@ enum TimesheetStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::SUBMITTED => 'Afventer kundegodkendelse',
-            self::APPROVED => 'Godkendt',
-            self::REJECTED => 'Afvist med begrundelse',
+            self::SUBMITTED => __('Afventer kundegodkendelse'),
+            self::APPROVED => __('Godkendt'),
+            self::REJECTED => __('Afvist med begrundelse'),
         };
     }
 }

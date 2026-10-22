@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-black text-slate-900 tracking-tight">QR Tjek-ind på Lokation</h1>
-                <p class="text-xs text-slate-500 mt-0.5">Scan kundens QR-kode på arbejdspladsen for at starte din vagt.</p>
+                <h1 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('QR Tjek-ind på Lokation') }}</h1>
+                <p class="text-xs text-slate-500 mt-0.5">{{ __('Scan kundens QR-kode på arbejdspladsen for at starte din vagt.') }}</p>
             </div>
             <a href="{{ route('worker.dashboard') }}" class="text-xs font-bold text-slate-600 hover:text-slate-900">
-                &larr; Tilbage
+                &larr; {{ __('Tilbage') }}
             </a>
         </div>
     </x-slot>
@@ -25,9 +25,9 @@
             </div>
 
             <div>
-                <h2 class="text-base font-bold text-slate-900">Scan QR-kode hos kunden</h2>
+                <h2 class="text-base font-bold text-slate-900">{{ __('Scan QR-kode hos kunden') }}</h2>
                 <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                    Når du ankommer til kundens lokation, beder du om at se deres FreyaService QR-kode og scanner den med dit kamera eller indtaster koden nedenfor.
+                    {{ __('Når du ankommer til kundens lokation, beder du om at se deres FreyaService QR-kode og scanner den med dit kamera eller indtaster koden nedenfor.') }}
                 </p>
             </div>
 
@@ -35,17 +35,17 @@
             <div class="pt-4 border-t border-slate-100 text-left">
                 <form method="GET" action="{{ route('worker.shifts.scan') }}" class="space-y-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Vagt-ID (fra kundens skærm)</label>
-                        <input type="number" name="shift" required class="w-full text-xs rounded-xl border-slate-300" placeholder="Eks. 1">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('Vagt-ID (fra kundens skærm)') }}</label>
+                        <input type="number" name="shift" required class="w-full text-xs rounded-xl border-slate-300" placeholder="{{ __('Eks. 1') }}">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Sikkerhedstoken</label>
-                        <input type="text" name="token" required class="w-full text-xs rounded-xl border-slate-300" placeholder="Indtast 40-tegns kode">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('Sikkerhedstoken') }}</label>
+                        <input type="text" name="token" required class="w-full text-xs rounded-xl border-slate-300" placeholder="{{ __('Indtast 40-tegns kode') }}">
                     </div>
 
                     <button type="submit" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm transition">
-                        Valider og Tjek Ind &rarr;
+                        {{ __('Valider og Tjek Ind') }} &rarr;
                     </button>
                 </form>
             </div>

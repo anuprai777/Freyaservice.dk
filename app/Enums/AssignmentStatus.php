@@ -14,12 +14,12 @@ enum AssignmentStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::OFFERED => 'Tilbudt vikar',
-            self::ACCEPTED => 'Accepteret',
-            self::DECLINED => 'Afvist',
-            self::ACTIVE => 'Aktiv på vagt',
-            self::COMPLETED => 'Gennemført',
-            self::CANCELLED => 'Annulleret',
+            self::OFFERED => __('Tilbudt vikar'),
+            self::ACCEPTED => __('Accepteret'),
+            self::DECLINED => __('Afvist'),
+            self::ACTIVE => __('Aktiv på vagt'),
+            self::COMPLETED => __('Gennemført'),
+            self::CANCELLED => __('Annulleret'),
         };
     }
 }

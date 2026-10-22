@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-black text-slate-900 tracking-tight">Virksomheder & Kunder (CRM)</h1>
-                <p class="text-xs text-slate-500 mt-0.5">Oversigt over registrerede virksomheder, CVR-numre og bemandingshistorik.</p>
+                <h1 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('Virksomheder & Kunder (CRM)') }}</h1>
+                <p class="text-xs text-slate-500 mt-0.5">{{ __('Oversigt over registrerede virksomheder, CVR-numre og bemandingshistorik.') }}</p>
             </div>
             <a href="{{ route('admin.dashboard') }}" class="text-xs font-bold text-slate-600 hover:text-slate-900">
-                &larr; Tilbage
+                &larr; {{ __('Tilbage') }}
             </a>
         </div>
     </x-slot>
@@ -16,8 +16,8 @@
         <!-- Search Bar -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row gap-4 justify-between items-stretch sm:items-center">
             <form method="GET" action="{{ route('admin.clients.index') }}" class="flex gap-2 items-center flex-1">
-                <input type="text" name="search" value="{{ $search }}" placeholder="Søg firmanavn, CVR, by eller kontaktperson..." class="text-xs rounded-xl border-slate-300 w-full sm:w-80">
-                <button type="submit" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs">Søg</button>
+                <input type="text" name="search" value="{{ $search }}" placeholder="{{ __('Søg firmanavn, CVR, by eller kontaktperson...') }}" class="text-xs rounded-xl border-slate-300 w-full sm:w-80">
+                <button type="submit" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs">{{ __('Søg') }}</button>
             </form>
         </div>
 
@@ -27,13 +27,13 @@
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[11px]">
                         <tr>
-                            <th class="p-4">Virksomhed</th>
-                            <th class="p-4">CVR</th>
-                            <th class="p-4">Kontaktperson</th>
-                            <th class="p-4">Lokation</th>
-                            <th class="p-4">Ordrer</th>
-                            <th class="p-4">Status</th>
-                            <th class="p-4 text-right">Handlinger</th>
+                            <th class="p-4">{{ __('Virksomhed') }}</th>
+                            <th class="p-4">{{ __('CVR') }}</th>
+                            <th class="p-4">{{ __('Kontaktperson') }}</th>
+                            <th class="p-4">{{ __('Lokation') }}</th>
+                            <th class="p-4">{{ __('Ordrer') }}</th>
+                            <th class="p-4">{{ __('Status') }}</th>
+                            <th class="p-4 text-right">{{ __('Handlinger') }}</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
@@ -52,19 +52,19 @@
                                         @if($c->status === 'active') bg-emerald-100 text-emerald-800
                                         @elseif($c->status === 'pending') bg-amber-100 text-amber-800
                                         @else bg-rose-100 text-rose-800 @endif">
-                                        {{ $c->status }}
+                                        {{ __($c->status) }}
                                     </span>
                                 </td>
                                 <td class="p-4 text-right">
                                     <a href="{{ route('admin.clients.show', $c) }}" class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold">
-                                        Se profil &rarr;
+                                        {{ __('Se profil') }} &rarr;
                                     </a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
                                 <td colspan="7" class="p-8 text-center text-slate-400">
-                                    Ingen virksomheder fundet.
+                                    {{ __('Ingen virksomheder fundet.') }}
                                 </td>
                             </tr>
                         @endforelse

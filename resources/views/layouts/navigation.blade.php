@@ -158,8 +158,19 @@
                 </x-dropdown>
             </div>
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center lg:hidden">
+            <!-- Mobile Language Switcher & Hamburger -->
+            <div class="-me-2 flex items-center gap-2 lg:hidden">
+                <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-lg border border-brand-border text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2 py-0.5 rounded transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-brand-surface text-brand-secondary shadow-xs font-bold' : 'text-brand-muted' }}">
+                        <span>🇩🇰</span>
+                        <span>DA</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" title="English" class="px-2 py-0.5 rounded transition flex items-center gap-1 {{ app()->getLocale() === 'en' ? 'bg-brand-surface text-brand-secondary shadow-xs font-bold' : 'text-brand-muted' }}">
+                        <span>🇬🇧</span>
+                        <span>EN</span>
+                    </a>
+                </div>
+
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition">
                     <x-heroicon-o-bars-3 class="h-6 w-6" ::class="{'hidden': open, 'inline-flex': ! open }" />
                     <x-heroicon-o-x-mark class="h-6 w-6" ::class="{'hidden': ! open, 'inline-flex': open }" />

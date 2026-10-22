@@ -11,9 +11,9 @@ enum StaffRequestReason: string
     public function label(): string
     {
         return match ($this) {
-            self::ABSENCE => 'Sygdom / Feriefravær',
-            self::PEAK => 'Spidsbelastning / Høj sæson',
-            self::PERMANENT_NEED => 'Permanent behov / Rekruttering',
+            self::ABSENCE => __('Sygdom / Feriefravær'),
+            self::PEAK => __('Spidsbelastning / Høj sæson'),
+            self::PERMANENT_NEED => __('Permanent behov / Rekruttering'),
         };
     }
 }

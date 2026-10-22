@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Bestil Vikar / Personale</h1>
-                <p class="text-xs text-slate-500 mt-0.5">Udfyld formularen herunder for at rekvirere personale fra FreyaService.</p>
+                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">{{ __('Bestil Vikar / Personale') }}</h1>
+                <p class="text-xs text-slate-500 mt-0.5">{{ __('Udfyld formularen herunder for at rekvirere personale fra FreyaService.') }}</p>
             </div>
             <a href="{{ route('client.dashboard') }}" class="inline-flex items-center text-xs font-bold text-slate-600 hover:text-slate-900 gap-1">
-                <span>&larr; Tilbage til dashboard</span>
+                <span>&larr; {{ __('Tilbage til dashboard') }}</span>
             </a>
         </div>
     </x-slot>
@@ -21,7 +21,7 @@
 
             <!-- 1. Request Type Selector -->
             <div>
-                <label class="block text-sm font-bold text-slate-900 mb-3">1. Vælg type af bemanding</label>
+                <label class="block text-sm font-bold text-slate-900 mb-3">{{ __('1. Vælg type af bemanding') }}</label>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <!-- Temporary -->
                     <label @click="type = 'temporary_cover'"
@@ -32,8 +32,8 @@
                             <span class="text-lg">⏱️</span>
                         </div>
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">Akut / Midlertidig Vikar</div>
-                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">Tilkaldevikarer til timer, enkelte dage eller uger ved sygdom eller spidsbelastning.</div>
+                            <div class="font-bold text-slate-900 text-sm">{{ __('Akut / Midlertidig Vikar') }}</div>
+                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">{{ __('Tilkaldevikarer til timer, enkelte dage eller uger ved sygdom eller spidsbelastning.') }}</div>
                         </div>
                     </label>
 
@@ -46,8 +46,8 @@
                             <span class="text-lg">📅</span>
                         </div>
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">Fast Deltidspersonale</div>
-                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">Faste ugentlige vagter eller weekender på en løbende aftale.</div>
+                            <div class="font-bold text-slate-900 text-sm">{{ __('Fast Deltidspersonale') }}</div>
+                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">{{ __('Faste ugentlige vagter eller weekender på en løbende aftale.') }}</div>
                         </div>
                     </label>
 
@@ -60,8 +60,8 @@
                             <span class="text-lg">🤝</span>
                         </div>
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">Fuldtid / Rekruttering</div>
-                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">Langtidsplacering eller Try & Hire med henblik på fastansættelse.</div>
+                            <div class="font-bold text-slate-900 text-sm">{{ __('Fuldtid / Rekruttering') }}</div>
+                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">{{ __('Langtidsplacering eller Try & Hire med henblik på fastansættelse.') }}</div>
                         </div>
                     </label>
                 </div>
@@ -70,12 +70,12 @@
 
             <!-- 2. Role, Workers Needed & Reason -->
             <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">2. Stillingsbetegnelse og antal</label>
+                <label class="block text-sm font-bold text-slate-900">{{ __('2. Stillingsbetegnelse og antal') }}</label>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="sm:col-span-2">
                         <x-input-label for="role" :value="__('Stilling / Fagområde')" />
-                        <x-text-input id="role" class="block mt-1 w-full" type="text" name="role" :value="old('role')" placeholder="F.eks. Tjener, Opvasker, Rengøringsassistent, Lagermedarbejder" required />
+                        <x-text-input id="role" class="block mt-1 w-full" type="text" name="role" :value="old('role')" placeholder="{{ __('F.eks. Tjener, Opvasker, Rengøringsassistent, Lagermedarbejder') }}" required />
                         <x-input-error :messages="$errors->get('role')" class="mt-2" />
                     </div>
 
@@ -89,9 +89,9 @@
                 <div>
                     <x-input-label for="reason" :value="__('Årsag til forespørgsel')" />
                     <select id="reason" name="reason" class="mt-1 block w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
-                        <option value="absence" {{ old('reason') === 'absence' ? 'selected' : '' }}>Sygdom / Ferie blandt egne medarbejdere</option>
-                        <option value="peak" {{ old('reason') === 'peak' ? 'selected' : '' }}>Spidsbelastning / Sæsonpeak / Stort arrangement</option>
-                        <option value="permanent_need" {{ old('reason') === 'permanent_need' ? 'selected' : '' }}>Permanent behov / Afprøvning forud for fastansættelse</option>
+                        <option value="absence" {{ old('reason') === 'absence' ? 'selected' : '' }}>{{ __('Sygdom / Ferie blandt egne medarbejdere') }}</option>
+                        <option value="peak" {{ old('reason') === 'peak' ? 'selected' : '' }}>{{ __('Spidsbelastning / Sæsonpeak / Stort arrangement') }}</option>
+                        <option value="permanent_need" {{ old('reason') === 'permanent_need' ? 'selected' : '' }}>{{ __('Permanent behov / Afprøvning forud for fastansættelse') }}</option>
                     </select>
                     <x-input-error :messages="$errors->get('reason')" class="mt-2" />
                 </div>
@@ -99,11 +99,11 @@
 
             <!-- 3. Work Location -->
             <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">3. Arbejdslokation</label>
+                <label class="block text-sm font-bold text-slate-900">{{ __('3. Arbejdslokation') }}</label>
 
                 <div>
                     <x-input-label for="location" :value="__('Adresse / Afdeling')" />
-                    <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location', $client->address)" placeholder="Adresse hvor arbejdet udføres" required />
+                    <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location', $client->address)" placeholder="{{ __('Adresse hvor arbejdet udføres') }}" required />
                     <x-input-error :messages="$errors->get('location')" class="mt-2" />
                 </div>
 
@@ -123,7 +123,7 @@
 
             <!-- 4. Schedule & Dates -->
             <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">4. Tidsplan og arbejdstider</label>
+                <label class="block text-sm font-bold text-slate-900">{{ __('4. Tidsplan og arbejdstider') }}</label>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -153,13 +153,13 @@
                 <div x-show="type === 'part_time' || type === 'full_time'" x-cloak class="space-y-4 pt-2">
                     <div>
                         <x-input-label for="hours_per_week" :value="__('Forventet antal timer om ugen')" />
-                        <x-text-input id="hours_per_week" class="block mt-1 w-full" type="number" step="0.5" name="hours_per_week" :value="old('hours_per_week', 20)" placeholder="F.eks. 15-37 timer" />
+                        <x-text-input id="hours_per_week" class="block mt-1 w-full" type="number" step="0.5" name="hours_per_week" :value="old('hours_per_week', 20)" placeholder="{{ __('F.eks. 15-37 timer') }}" />
                     </div>
 
                     <div>
-                        <span class="block text-xs font-semibold text-slate-700 mb-2">Faste ugedage</span>
+                        <span class="block text-xs font-semibold text-slate-700 mb-2">{{ __('Faste ugedage') }}</span>
                         <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 text-xs">
-                            @foreach([1=>'Man', 2=>'Tir', 3=>'Ons', 4=>'Tor', 5=>'Fre', 6=>'Lør', 0=>'Søn'] as $dayKey => $dayName)
+                            @foreach([1=>__('Man'), 2=>__('Tir'), 3=>__('Ons'), 4=>__('Tor'), 5=>__('Fre'), 6=>__('Lør'), 0=>__('Søn')] as $dayKey => $dayName)
                                 <label class="p-2.5 rounded-lg border border-slate-200 text-center cursor-pointer hover:bg-slate-50 flex flex-col items-center gap-1">
                                     <input type="checkbox" name="recurring_days[]" value="{{ $dayKey }}" class="rounded text-indigo-600 focus:ring-indigo-500">
                                     <span>{{ $dayName }}</span>
@@ -172,26 +172,26 @@
 
             <!-- 5. Uniform, Instructions, and Preferred Worker -->
             <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">5. Yderligere detaljer og instruktioner</label>
+                <label class="block text-sm font-bold text-slate-900">{{ __('5. Yderligere detaljer og instruktioner') }}</label>
 
                 <div>
                     <x-input-label for="dress_code" :value="__('Dresscode / Arbejdstøj')" />
-                    <x-text-input id="dress_code" class="block mt-1 w-full" type="text" name="dress_code" :value="old('dress_code')" placeholder="F.eks. Sorte bukser og hvid skjorte / Sikkerhedssko påkrævet" />
+                    <x-text-input id="dress_code" class="block mt-1 w-full" type="text" name="dress_code" :value="old('dress_code')" placeholder="{{ __('F.eks. Sorte bukser og hvid skjorte / Sikkerhedssko påkrævet') }}" />
                 </div>
 
                 <div>
                     <x-input-label for="instructions" :value="__('Særlige instrukser eller adgangsforhold')" />
-                    <textarea id="instructions" name="instructions" rows="3" class="w-full text-xs rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500" placeholder="F.eks. Henvendelse i vareindleveringen bag bygningen, kontakt Thomas ved ankomst...">{{ old('instructions') }}</textarea>
+                    <textarea id="instructions" name="instructions" rows="3" class="w-full text-xs rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500" placeholder="{{ __('F.eks. Henvendelse i vareindleveringen bag bygningen, kontakt Thomas ved ankomst...') }}">{{ old('instructions') }}</textarea>
                 </div>
 
                 <!-- Favourite Worker Selector -->
                 <div>
                     <x-input-label for="preferred_worker_id" :value="__('Foretrukken vikar (valgfrit)')" />
                     <select id="preferred_worker_id" name="preferred_worker_id" class="mt-1 block w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
-                        <option value="">Ingen specifik vikar (FreyaService finder bedste match)</option>
+                        <option value="">{{ __('Ingen specifik vikar (FreyaService finder bedste match)') }}</option>
                         @foreach($favouriteWorkers as $fav)
                             <option value="{{ $fav->id }}" {{ old('preferred_worker_id') == $fav->id ? 'selected' : '' }}>
-                                ★ {{ $fav->user->name }} (Rating: {{ $fav->rating_avg }} - {{ implode(', ', array_slice($fav->skills ?? [], 0, 3)) }})
+                                ★ {{ $fav->user->name }} ({{ __('Rating:') }} {{ $fav->rating_avg }} - {{ implode(', ', array_slice($fav->skills ?? [], 0, 3)) }})
                             </option>
                         @endforeach
                     </select>
@@ -204,10 +204,10 @@
                     <input type="checkbox" name="is_urgent" value="1" x-model="isUrgent" class="mt-1 rounded text-rose-600 focus:ring-rose-500">
                     <div>
                         <span class="text-sm font-bold text-rose-900 flex items-center gap-1.5">
-                            <span>⚡ Akut behov (Udrykning inden for få timer)</span>
+                            <span>⚡ {{ __('Akut behov (Udrykning inden for få timer)') }}</span>
                         </span>
                         <p class="text-xs text-rose-700 mt-0.5">
-                            Aktiver dette hvis du har brug for øjeblikkelig vikardækning. FreyaServices vagttelefon og vagtkoordinator prioriterer din ordre med højeste hastighed.
+                            {{ __('Aktiver dette hvis du har brug for øjeblikkelig vikardækning. FreyaServices vagttelefon og vagtkoordinator prioriterer din ordre med højeste hastighed.') }}
                         </p>
                     </div>
                 </label>
@@ -216,10 +216,10 @@
             <!-- Submit Buttons -->
             <div class="pt-6 border-t border-slate-200 flex flex-col-reverse sm:flex-row items-center justify-end gap-3">
                 <a href="{{ route('client.dashboard') }}" class="w-full sm:w-auto text-center px-5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition min-h-[44px] flex items-center justify-center">
-                    Annuller
+                    {{ __('Annuller') }}
                 </a>
                 <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition transform hover:-translate-y-0.5 min-h-[44px] flex items-center justify-center">
-                    Send Forespørgsel &rarr;
+                    {{ __('Send Forespørgsel') }} &rarr;
                 </button>
             </div>
         </form>

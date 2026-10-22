@@ -11,9 +11,9 @@ enum StaffRequestType: string
     public function label(): string
     {
         return match ($this) {
-            self::TEMPORARY_COVER => 'Midlertidig vikardækning',
-            self::PART_TIME => 'Fast deltidspersonale',
-            self::FULL_TIME => 'Fastansættelse / Fuldtid',
+            self::TEMPORARY_COVER => __('Midlertidig vikardækning'),
+            self::PART_TIME => __('Fast deltidspersonale'),
+            self::FULL_TIME => __('Fastansættelse / Fuldtid'),
         };
     }
 }

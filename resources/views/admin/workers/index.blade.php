@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-black text-slate-900 tracking-tight">Vikarer & Kandidater (CRM)</h1>
-                <p class="text-xs text-slate-500 mt-0.5">Godkend registreringer, spor arbejdstilladelser og administrer vikarstatus.</p>
+                <h1 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('Vikarer & Kandidater (CRM)') }}</h1>
+                <p class="text-xs text-slate-500 mt-0.5">{{ __('Godkend registreringer, spor arbejdstilladelser og administrer vikarstatus.') }}</p>
             </div>
             <a href="{{ route('admin.dashboard') }}" class="text-xs font-bold text-slate-600 hover:text-slate-900">
-                &larr; Tilbage
+                &larr; {{ __('Tilbage') }}
             </a>
         </div>
     </x-slot>
@@ -22,17 +22,17 @@
         <!-- Filter Bar -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row gap-4 justify-between items-stretch sm:items-center">
             <form method="GET" action="{{ route('admin.workers.index') }}" class="flex flex-wrap gap-2 items-center flex-1">
-                <input type="text" name="search" value="{{ $search }}" placeholder="Søg navn, e-mail, by eller postnr..." class="text-xs rounded-xl border-slate-300 w-full sm:w-64">
+                <input type="text" name="search" value="{{ $search }}" placeholder="{{ __('Søg navn, e-mail, by eller postnr...') }}" class="text-xs rounded-xl border-slate-300 w-full sm:w-64">
 
                 <select name="status" class="text-xs rounded-xl border-slate-300">
-                    <option value="all">Alle statusser</option>
-                    <option value="pending" {{ $status === 'pending' ? 'selected' : '' }}>Afventer godkendelse</option>
-                    <option value="approved" {{ $status === 'approved' ? 'selected' : '' }}>Godkendt</option>
-                    <option value="suspended" {{ $status === 'suspended' ? 'selected' : '' }}>Suspenderet</option>
-                    <option value="blocked" {{ $status === 'blocked' ? 'selected' : '' }}>Blokeret</option>
+                    <option value="all">{{ __('Alle statusser') }}</option>
+                    <option value="pending" {{ $status === 'pending' ? 'selected' : '' }}>{{ __('Afventer godkendelse') }}</option>
+                    <option value="approved" {{ $status === 'approved' ? 'selected' : '' }}>{{ __('Godkendt') }}</option>
+                    <option value="suspended" {{ $status === 'suspended' ? 'selected' : '' }}>{{ __('Suspenderet') }}</option>
+                    <option value="blocked" {{ $status === 'blocked' ? 'selected' : '' }}>{{ __('Blokeret') }}</option>
                 </select>
 
-                <button type="submit" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs">Filtrer</button>
+                <button type="submit" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs">{{ __('Filtrer') }}</button>
             </form>
         </div>
 
@@ -42,13 +42,13 @@
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[11px]">
                         <tr>
-                            <th class="p-4">Vikar</th>
-                            <th class="p-4">Lokation</th>
-                            <th class="p-4">Kompetencer</th>
-                            <th class="p-4">Rating</th>
-                            <th class="p-4">Timeløn</th>
-                            <th class="p-4">Status</th>
-                            <th class="p-4 text-right">Handlinger</th>
+                            <th class="p-4">{{ __('Vikar') }}</th>
+                            <th class="p-4">{{ __('Lokation') }}</th>
+                            <th class="p-4">{{ __('Kompetencer') }}</th>
+                            <th class="p-4">{{ __('Rating') }}</th>
+                            <th class="p-4">{{ __('Timeløn') }}</th>
+                            <th class="p-4">{{ __('Status') }}</th>
+                            <th class="p-4 text-right">{{ __('Handlinger') }}</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
@@ -62,7 +62,7 @@
                                 <td class="p-4">
                                     <div class="flex flex-wrap gap-1 max-w-xs">
                                         @foreach(array_slice((array)$worker->skills, 0, 3) as $s)
-                                            <span class="px-2 py-0.5 rounded text-[10px] bg-slate-100 text-slate-700">{{ $s }}</span>
+                                            <span class="px-2 py-0.5 rounded text-[10px] bg-slate-100 text-slate-700">{{ __($s) }}</span>
                                         @endforeach
                                         @if(count((array)$worker->skills) > 3)
                                             <span class="text-[10px] text-slate-400">+{{ count((array)$worker->skills) - 3 }}</span>
@@ -76,19 +76,19 @@
                                         @if($worker->status === 'approved') bg-emerald-100 text-emerald-800
                                         @elseif($worker->status === 'pending') bg-amber-100 text-amber-800
                                         @else bg-rose-100 text-rose-800 @endif">
-                                        {{ $worker->status }}
+                                        {{ __($worker->status) }}
                                     </span>
                                 </td>
                                 <td class="p-4 text-right">
                                     <a href="{{ route('admin.workers.show', $worker) }}" class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold">
-                                        Administrer &rarr;
+                                        {{ __('Administrer') }} &rarr;
                                     </a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
                                 <td colspan="7" class="p-8 text-center text-slate-400">
-                                    Ingen vikarer fundet.
+                                    {{ __('Ingen vikarer fundet.') }}
                                 </td>
                             </tr>
                         @endforelse

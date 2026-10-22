@@ -12,10 +12,10 @@ enum WorkerStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::PENDING => 'Afventer godkendelse',
-            self::APPROVED => 'Godkendt og aktiv',
-            self::SUSPENDED => 'Suspenderet',
-            self::BLOCKED => 'Blokeret',
+            self::PENDING => __('Afventer godkendelse'),
+            self::APPROVED => __('Godkendt og aktiv'),
+            self::SUSPENDED => __('Suspenderet'),
+            self::BLOCKED => __('Blokeret'),
         };
     }
 }

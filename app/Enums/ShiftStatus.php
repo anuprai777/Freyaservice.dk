@@ -14,12 +14,12 @@ enum ShiftStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::DRAFT => 'Kladde',
-            self::OPEN => 'Åben for match',
-            self::FILLED => 'Besat',
-            self::IN_PROGRESS => 'I gang',
-            self::COMPLETED => 'Fuldført',
-            self::CANCELLED => 'Aflyst',
+            self::DRAFT => __('Kladde'),
+            self::OPEN => __('Åben for match'),
+            self::FILLED => __('Besat'),
+            self::IN_PROGRESS => __('I gang'),
+            self::COMPLETED => __('Fuldført'),
+            self::CANCELLED => __('Aflyst'),
         };
     }
 }

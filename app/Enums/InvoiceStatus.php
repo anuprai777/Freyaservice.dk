@@ -13,11 +13,11 @@ enum InvoiceStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::DRAFT => 'Kladde',
-            self::SENT => 'Afsendt',
-            self::PAID => 'Betalt',
-            self::OVERDUE => 'Forfalden',
-            self::CANCELLED => 'Krediteret / Annulleret',
+            self::DRAFT => __('Kladde'),
+            self::SENT => __('Afsendt'),
+            self::PAID => __('Betalt'),
+            self::OVERDUE => __('Forfalden'),
+            self::CANCELLED => __('Krediteret / Annulleret'),
         };
     }
 }
