@@ -56,26 +56,10 @@ class LoginRequest extends FormRequest
         $matchedUser = null;
 
         foreach ($candidates as $candidate) {
-            // Direct bcrypt hash verification
+            // Direct bcrypt hash verification against each account's single password
             if (\Illuminate\Support\Facades\Hash::check($password, $candidate->password)) {
                 $matchedUser = $candidate;
                 break;
-            }
-
-            // Intuitive convenience aliases for demo/seed accounts
-            if ($candidate->email === 'freyaservicevikar@gmail.com') {
-                if ($candidate->role === 'admin' && in_array(strtolower($password), ['admin123', 'admin', 'freyaadmin'], true)) {
-                    $matchedUser = $candidate;
-                    break;
-                }
-                if ($candidate->role === 'client' && in_array(strtolower($password), ['client123', 'client', 'freyaclient'], true)) {
-                    $matchedUser = $candidate;
-                    break;
-                }
-                if ($candidate->role === 'worker' && in_array(strtolower($password), ['worker123', 'worker', 'freyaworker'], true)) {
-                    $matchedUser = $candidate;
-                    break;
-                }
             }
         }
 
