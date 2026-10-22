@@ -14,15 +14,6 @@
     <!-- Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Anti-FOUC Dark Mode script -->
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
-
     <style>
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -72,8 +63,7 @@
         </div>
     </div>
 
-    <!-- Navigation (Surface: Pure White #FFFFFF, Border: Muted Sand #E3E0D8) -->
-    <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border">
+    <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-brand-surface border-b border-brand-border shadow-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="/" class="flex items-center group shrink-0">
@@ -100,11 +90,8 @@
                 </a>
             </nav>
 
-            <!-- Theme Toggle, Language Switcher & Auth Buttons -->
+            <!-- Language Switcher & Auth Buttons -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <!-- Theme Toggle -->
-                <x-theme-toggle />
-
                 <!-- Desktop Language Switcher Pill -->
                 <div class="hidden sm:flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
                     <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-brand-surface text-brand-secondary shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
@@ -158,19 +145,16 @@
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
              class="lg:hidden border-t border-brand-border bg-brand-surface shadow-xl">
-            <!-- Mobile Language & Theme Selector -->
+            <!-- Mobile Language Selector -->
             <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-bg/60">
-                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog & Tema') }}</span>
-                <div class="flex items-center gap-2">
-                    <x-theme-toggle />
-                    <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
-                        <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
-                            <span>🇩🇰</span><span>Dansk</span>
-                        </a>
-                        <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
-                            <span>🇬🇧</span><span>English</span>
-                        </a>
-                    </div>
+                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
+                <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                        <span>🇩🇰</span><span>Dansk</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                        <span>🇬🇧</span><span>English</span>
+                    </a>
                 </div>
             </div>
 
@@ -247,7 +231,7 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10 w-full">
             <div class="lg:col-span-7 space-y-6">
                 <!-- Highlight badge: Action Orange 500 border & accent -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-brand-action/40 text-sand-100 text-xs font-semibold tracking-wide backdrop-blur-sm">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 border border-brand-action/60 text-sand-100 text-xs font-semibold tracking-wide shadow-sm">
                     <x-heroicon-s-bolt class="w-3.5 h-3.5 text-brand-action shrink-0" />
                     <span>{{ __('Akut vikardækning på under 2 timer') }}</span>
                 </div>
@@ -273,8 +257,8 @@
                         <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                     </a>
 
-                    <!-- Secondary CTA Button: Surface / Outline -->
-                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-white bg-white/10 hover:bg-white/20 border border-brand-border/40 backdrop-blur-sm transition">
+                    <!-- Secondary CTA Button: Surface / Solid Outline -->
+                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-white bg-navy-800 hover:bg-navy-700 border border-navy-600 shadow-sm transition">
                         <x-heroicon-o-user-plus class="w-5 h-5 shrink-0" />
                         <span>{{ __('Tilmeld dig som vikar') }}</span>
                     </a>
@@ -307,9 +291,9 @@
                 </div>
             </div>
 
-            <!-- Secure Portal Access Card -->
-            <div class="lg:col-span-5 bg-white/10 border border-white/20 backdrop-blur-xl p-6 sm:p-8 rounded-2xl shadow-2xl">
-                <div class="flex items-center justify-between pb-6 border-b border-white/15">
+            <!-- Secure Portal Access Card (Solid, Opaque Surface) -->
+            <div class="lg:col-span-5 bg-navy-900 border border-navy-700 p-6 sm:p-8 rounded-2xl shadow-2xl">
+                <div class="flex items-center justify-between pb-6 border-b border-navy-800">
                     <div>
                         <h3 class="text-xl font-bold text-white flex items-center gap-2">
                             <x-heroicon-o-lock-closed class="w-5 h-5 text-brand-action shrink-0" />
@@ -317,7 +301,7 @@
                         </h3>
                         <p class="text-xs text-sand-200 mt-1">{{ __('Vælg din portal for at logge ind sikkert') }}</p>
                     </div>
-                    <span class="px-2.5 py-1 rounded bg-forest/80 text-white font-black text-xs uppercase tracking-wider flex items-center gap-1">
+                    <span class="px-2.5 py-1 rounded bg-forest text-white font-black text-xs uppercase tracking-wider flex items-center gap-1">
                         <x-heroicon-s-shield-check class="w-3.5 h-3.5" />
                         SSL
                     </span>
@@ -325,9 +309,9 @@
 
                 <div class="space-y-4 pt-6">
                     <!-- Admin Card -->
-                    <div class="p-4 rounded-xl bg-brand-primary/80 border border-white/15 flex items-center justify-between hover:border-brand-action transition group">
+                    <div class="p-4 rounded-xl bg-navy-950 border border-navy-800 flex items-center justify-between hover:border-brand-action transition group">
                         <div>
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-navy-700 text-sand-100 mb-1">
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-navy-800 text-sand-100 mb-1 border border-navy-700">
                                 <x-heroicon-s-shield-check class="w-3 h-3 text-sand-300" />
                                 <span>{{ __('Administrator') }}</span>
                             </span>
@@ -338,13 +322,13 @@
                                 <span class="tracking-widest">••••••••</span>
                             </div>
                         </div>
-                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-white/20 text-white group-hover:bg-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
+                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-navy-800 text-white border border-navy-700 group-hover:bg-brand-action group-hover:border-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
                     </div>
 
                     <!-- Client Card -->
-                    <div class="p-4 rounded-xl bg-brand-primary/80 border border-white/15 flex items-center justify-between hover:border-brand-action transition group">
+                    <div class="p-4 rounded-xl bg-navy-950 border border-navy-800 flex items-center justify-between hover:border-brand-action transition group">
                         <div>
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-navy-700 text-sand-100 mb-1">
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-navy-800 text-sand-100 mb-1 border border-navy-700">
                                 <x-heroicon-s-building-office-2 class="w-3 h-3 text-sand-300" />
                                 <span>{{ __('Virksomhed (Kunde)') }}</span>
                             </span>
@@ -355,13 +339,13 @@
                                 <span class="tracking-widest">••••••••</span>
                             </div>
                         </div>
-                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-white/20 text-white group-hover:bg-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
+                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-navy-800 text-white border border-navy-700 group-hover:bg-brand-action group-hover:border-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
                     </div>
 
                     <!-- Worker Card -->
-                    <div class="p-4 rounded-xl bg-brand-primary/80 border border-white/15 flex items-center justify-between hover:border-brand-action transition group">
+                    <div class="p-4 rounded-xl bg-navy-950 border border-navy-800 flex items-center justify-between hover:border-brand-action transition group">
                         <div>
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-forest-700/60 text-sand-100 mb-1">
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-forest/30 text-forest-100 mb-1 border border-forest/40">
                                 <x-heroicon-s-user class="w-3 h-3 text-forest-100" />
                                 <span>{{ __('Vikar (Arbejdstager)') }}</span>
                             </span>
@@ -372,11 +356,11 @@
                                 <span class="tracking-widest">••••••••</span>
                             </div>
                         </div>
-                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-white/20 text-white group-hover:bg-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
+                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-navy-800 text-white border border-navy-700 group-hover:bg-brand-action group-hover:border-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
                     </div>
                 </div>
 
-                <div class="mt-6 pt-4 border-t border-white/10 text-center">
+                <div class="mt-6 pt-4 border-t border-navy-800 text-center">
                     <a href="{{ route('login') }}" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold shadow-md transition">
                         <x-heroicon-o-lock-closed class="w-4 h-4" />
                         <span>{{ __('Gå til login') }}</span>
@@ -388,7 +372,7 @@
 
         <!-- Live Kitchen Video Status Badge (Mobile & Desktop friendly) -->
         <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-6 z-20 select-none pointer-events-none">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-950/70 border border-white/20 text-xs text-sand-200 backdrop-blur-md shadow-md">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-950 border border-navy-700 text-xs text-sand-200 shadow-md">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span class="font-medium">{{ __('Køkken i aktion') }}</span>
             </div>
@@ -763,22 +747,21 @@
             </div>
 
             <!-- Trust Bar / Key Metrics Strip -->
-            <div class="bg-brand-primary text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden">
-                <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-radial from-white/10 to-transparent pointer-events-none"></div>
+            <div class="bg-brand-primary text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-navy-800">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-center relative z-10">
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 md:border-0 md:bg-transparent md:p-0">
                         <div class="text-2xl sm:text-4xl font-black text-brand-action tracking-tight">&lt; 2t</div>
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Gennemsnitlig responstid') }}</div>
                     </div>
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-white/15 md:pl-6">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-navy-700 md:pl-6">
                         <div class="text-2xl sm:text-4xl font-black text-white tracking-tight">100%</div>
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Overenskomstdækning') }}</div>
                     </div>
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-white/15 md:pl-6">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-navy-700 md:pl-6">
                         <div class="text-2xl sm:text-4xl font-black text-white tracking-tight">2.500+</div>
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Kvalificerede vikarer') }}</div>
                     </div>
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-white/15 md:pl-6">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 md:border-0 md:bg-transparent md:p-0 md:border-l md:border-navy-700 md:pl-6">
                         <div class="text-2xl sm:text-4xl font-black text-forest-300 tracking-tight">24/7</div>
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Bemandet vagtcentral') }}</div>
                     </div>

@@ -10,12 +10,13 @@ class LayoutComponentsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_public_page_includes_theme_toggle_toast_and_back_to_top(): void
+    public function test_public_page_does_not_include_theme_toggle_and_has_toast_and_back_to_top(): void
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('localStorage.getItem(\'theme\')', false);
+        $response->assertDontSee('x-theme-toggle');
+        $response->assertDontSee('localStorage.getItem(\'theme\')', false);
         $response->assertSee('Meddelelser');
         $response->assertSee('Tilbage til toppen');
     }
@@ -41,7 +42,7 @@ class LayoutComponentsTest extends TestCase
         $response->assertSee('Profil opdateret!');
     }
 
-    public function test_auth_pages_include_theme_toggle_and_toast(): void
+    public function test_auth_pages_include_toast_and_back_to_top_without_theme_toggle(): void
     {
         $admin = User::factory()->create([
             'role' => 'admin',
@@ -51,6 +52,7 @@ class LayoutComponentsTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Tilbage til toppen');
-        $response->assertSee('localStorage.getItem(\'theme\')', false);
+        $response->assertDontSee('localStorage.getItem(\'theme\')', false);
+        $response->assertDontSee('x-theme-toggle');
     }
 }

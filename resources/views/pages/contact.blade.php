@@ -4,7 +4,7 @@
     <!-- Hero -->
     <section class="bg-brand-primary text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style="background-image:radial-gradient(rgba(247,246,242,0.07) 1.5px,transparent 0);background-size:24px 24px;">
         <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-brand-action/40 text-sand-100 text-xs font-semibold mb-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 border border-brand-action/60 text-sand-100 text-xs font-semibold mb-6 shadow-sm">
                 <x-heroicon-o-chat-bubble-bottom-center-text class="w-3.5 h-3.5 text-brand-action" /><span>{{ __('Kontakt') }}</span>
             </div>
             <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4">{{ __('Klar til at få hjælp eller starte som vikar?') }}</h1>
@@ -65,9 +65,9 @@
             <!-- CTA Cards -->
             <div class="space-y-6">
                 <h2 class="text-2xl font-extrabold text-brand-secondary">Kom i gang</h2>
-                <div class="bg-brand-primary text-white rounded-2xl p-8 hover:shadow-xl transition">
+                <div class="bg-brand-primary text-white rounded-2xl p-8 hover:shadow-xl transition border border-navy-800">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-xl bg-navy-800 border border-navy-700 flex items-center justify-center">
                             <x-heroicon-o-building-office class="w-5 h-5 text-brand-action" />
                         </div>
                         <h3 class="font-bold text-lg">{{ __('Virksomhed (Kunde)') }}</h3>
@@ -77,7 +77,7 @@
                         <a href="{{ route('register') }}" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold transition">
                             <x-heroicon-o-user-plus class="w-4 h-4" />{{ __('Opret virksomhedskonto') }}
                         </a>
-                        <a href="tel:+4570203040" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-bold transition">
+                        <a href="tel:+4570203040" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-navy-800 hover:bg-navy-700 border border-navy-600 text-white text-sm font-bold transition">
                             <x-heroicon-o-phone class="w-4 h-4" />Ring nu
                         </a>
                     </div>

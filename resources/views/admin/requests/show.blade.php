@@ -92,7 +92,7 @@
                             </button>
 
                             <!-- Modal -->
-                            <div x-show="openShift" x-cloak class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+                            <div x-show="openShift" x-cloak class="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">
                                 <div @click.away="openShift = false" class="bg-white rounded-2xl max-w-md w-full p-6 text-left shadow-2xl">
                                     <h3 class="text-base font-bold text-slate-900">{{ __('Tilføj ny vagt') }}</h3>
                                     <form method="POST" action="{{ route('admin.requests.add-shift', $staffRequest) }}" class="mt-4 space-y-3">

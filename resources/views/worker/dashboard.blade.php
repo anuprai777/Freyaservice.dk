@@ -15,7 +15,7 @@
                 <p class="text-xs text-slate-500 mt-0.5">{{ __('By') }}: {{ $worker->city }} • {{ __('Løn') }}: {{ number_format($worker->hourly_rate, 2, ',', '.') }} {{ __('DKK/t') }} • {{ __('Rådighed') }}: {{ $worker->availability_type }}</p>
             </div>
             <div class="flex items-center gap-3 w-full sm:w-auto">
-                <a href="{{ route('worker.shifts.scan') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold shadow-sm transition">
+                <a href="{{ route('worker.shifts.scan') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold shadow-sm transition">
                     <span>📷 {{ __('Scan QR Tjek-ind') }}</span>
                 </a>
             </div>
@@ -43,26 +43,26 @@
 
         <!-- Active Clock-In Live Banner (if worker is currently clocked in) -->
         @if($currentTimesheet)
-            <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-2xl p-6 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="bg-forest-600 text-white rounded-2xl p-6 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-white text-xs font-bold mb-2">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-forest-800 border border-forest-500 text-white text-xs font-bold mb-2 shadow-xs">
                         <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
                         {{ __('Aktiv vagt i gang') }}
                     </span>
                     <h2 class="text-xl font-bold">{{ $currentTimesheet->shift->title ?? __('Vikarvagt') }}</h2>
-                    <p class="text-xs text-emerald-100 mt-1">
+                    <p class="text-xs text-forest-100 mt-1">
                         {{ __('Kunde') }}: {{ $currentTimesheet->shift->staffRequest->client->company_name ?? '' }} • {{ __('Stemplet ind kl.') }} {{ $currentTimesheet->clock_in->format('H:i') }} ({{ __('Dato') }}: {{ $currentTimesheet->clock_in->format('d.m.Y') }})
                     </p>
                 </div>
 
                 <!-- Clock out button & modal -->
                 <div x-data="{ openClockOut: false }">
-                    <button type="button" @click="openClockOut = true" class="px-5 py-2.5 rounded-xl bg-white text-emerald-800 hover:bg-emerald-50 font-bold text-sm shadow transition">
+                    <button type="button" @click="openClockOut = true" class="px-5 py-2.5 rounded-xl bg-white text-forest-800 hover:bg-forest-50 font-bold text-sm shadow transition">
                         {{ __('Stempel ud nu') }} &rarr;
                     </button>
 
                     <!-- Clock out modal -->
-                    <div x-show="openClockOut" x-cloak class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div x-show="openClockOut" x-cloak class="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">
                         <div @click.away="openClockOut = false" class="bg-white rounded-2xl max-w-sm w-full p-6 text-left text-slate-800 shadow-2xl">
                             <h3 class="text-base font-bold text-slate-900">{{ __('Afslut vagt & Stempel ud') }}</h3>
                             <p class="text-xs text-slate-500 mt-1">{{ __('Angiv eventuel pausetid, før timesedlen sendes til kundens godkendelse.') }}</p>
@@ -81,7 +81,7 @@
 
                                 <div class="flex justify-end gap-2 pt-2">
                                     <button type="button" @click="openClockOut = false" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100">{{ __('Annuller') }}</button>
-                                    <button type="submit" class="px-4 py-2 rounded-lg text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700">{{ __('Bekræft & Stempel ud') }}</button>
+                                    <button type="submit" class="px-4 py-2 rounded-lg text-xs font-bold bg-forest-600 text-white hover:bg-forest-700">{{ __('Bekræft & Stempel ud') }}</button>
                                 </div>
                             </form>
                         </div>
@@ -100,26 +100,26 @@
 
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Udførte timer') }}</span>
-                <span class="text-2xl font-black text-indigo-600 mt-1 block">{{ number_format($totalCompletedHours, 1, ',', '.') }} {{ __('timer') }}</span>
+                <span class="text-2xl font-black text-brand-secondary mt-1 block">{{ number_format($totalCompletedHours, 1, ',', '.') }} {{ __('timer') }}</span>
                 <span class="text-[11px] text-slate-500 mt-1 block">{{ __('Godkendt af kunder') }}</span>
             </div>
 
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Nye vagttilbud') }}</span>
-                <span class="text-2xl font-black text-amber-500 mt-1 block">{{ $pendingOffers->count() }} {{ __('tilbud') }}</span>
-                <span class="text-[11px] text-slate-500 mt-1 block"><a href="{{ route('worker.offers.index') }}" class="text-indigo-600 font-bold hover:underline">{{ __('Se og accepter vagter') }} &rarr;</a></span>
+                <span class="text-2xl font-black text-brand-action mt-1 block">{{ $pendingOffers->count() }} {{ __('tilbud') }}</span>
+                <span class="text-[11px] text-slate-500 mt-1 block"><a href="{{ route('worker.offers.index') }}" class="text-brand-action font-bold hover:underline">{{ __('Se og accepter vagter') }} &rarr;</a></span>
             </div>
         </div>
 
         <!-- Pending Offers Queue -->
         @if($pendingOffers->isNotEmpty())
-            <div class="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm space-y-4">
+            <div class="bg-white rounded-2xl p-6 border border-action-200 shadow-sm space-y-4">
                 <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                     <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-action animate-ping"></span>
                         <span>{{ __('Vagttilbud til dig') }} ({{ $pendingOffers->count() }})</span>
                     </h2>
-                    <a href="{{ route('worker.offers.index') }}" class="text-xs font-bold text-indigo-600 hover:underline">{{ __('Se alle') }}</a>
+                    <a href="{{ route('worker.offers.index') }}" class="text-xs font-bold text-brand-secondary hover:text-brand-action transition">{{ __('Se alle') }}</a>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-4">
@@ -152,7 +152,7 @@
                                 </form>
                                 <form method="POST" action="{{ route('worker.offers.accept', $offer) }}" class="w-full sm:w-auto">
                                     @csrf
-                                    <button type="submit" class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition text-center">
+                                    <button type="submit" class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold bg-brand-action hover:bg-brand-action-hover text-white shadow-sm transition text-center">
                                         {{ __('Accepter vagt') }}
                                     </button>
                                 </form>
@@ -185,14 +185,14 @@
                     </div>
 
                     <div class="flex items-center gap-2 w-full sm:w-auto">
-                        <a href="{{ route('worker.shifts.scan') }}" class="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl text-xs font-bold bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">
+                        <a href="{{ route('worker.shifts.scan') }}" class="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl text-xs font-bold bg-sand-100 text-brand-secondary hover:bg-sand-200 transition">
                             📷 {{ __('Tjek ind via QR') }}
                         </a>
                     </div>
                 </div>
             @empty
                 <div class="text-center py-8 text-slate-400 text-xs">
-                    {{ __('Du har ingen aktive opgaver i øjeblikket. Tjek') }} <a href="{{ route('worker.offers.index') }}" class="text-indigo-600 font-bold hover:underline">{{ __('Ledige Vagter') }}</a> {{ __('for at finde nye opgaver.') }}
+                    {{ __('Du har ingen aktive opgaver i øjeblikket. Tjek') }} <a href="{{ route('worker.offers.index') }}" class="text-brand-action font-bold hover:underline">{{ __('Ledige Vagter') }}</a> {{ __('for at finde nye opgaver.') }}
                 </div>
             @endforelse
         </div>

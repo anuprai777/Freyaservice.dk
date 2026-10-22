@@ -26,12 +26,12 @@ enum StaffRequestStatus: string
     public function badgeClasses(): string
     {
         return match ($this) {
-            self::NEW => 'bg-amber-100 text-amber-800 border-amber-200',
-            self::IN_PROGRESS => 'bg-blue-100 text-blue-800 border-blue-200',
-            self::MATCHED => 'bg-indigo-100 text-indigo-800 border-indigo-200',
-            self::ACTIVE => 'bg-emerald-100 text-emerald-800 border-emerald-200',
-            self::COMPLETED => 'bg-slate-100 text-slate-800 border-slate-200',
-            self::CANCELLED => 'bg-rose-100 text-rose-800 border-rose-200',
+            self::NEW => 'bg-action-50 text-action-700 border-action-200',
+            self::IN_PROGRESS => 'bg-navy-50 text-navy-700 border-navy-100',
+            self::MATCHED => 'bg-navy-100 text-navy-900 border-navy-200',
+            self::ACTIVE => 'bg-forest-50 text-forest-700 border-forest-200',
+            self::COMPLETED => 'bg-sand-100 text-charcoal-700 border-sand-300',
+            self::CANCELLED => 'bg-brick-50 text-brick-700 border-brick-200',
         };
     }
 }

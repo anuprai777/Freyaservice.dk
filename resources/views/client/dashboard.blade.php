@@ -6,7 +6,7 @@
                 <p class="text-xs text-slate-500 mt-0.5">CVR: {{ $client->cvr }} • {{ __('Kontakt') }}: {{ $client->contact_person }} ({{ $client->phone }})</p>
             </div>
             <div class="w-full sm:w-auto flex items-center gap-3">
-                <a href="{{ route('client.requests.create') }}" class="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold shadow-sm transition">
+                <a href="{{ route('client.requests.create') }}" class="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold shadow-sm transition">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                     <span>{{ __('Bestil Vikar') }}</span>
                 </a>
@@ -33,13 +33,13 @@
 
         <!-- Flash Messages -->
         @if(session('success'))
-            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold flex items-center gap-2">
+            <div class="p-4 rounded-xl bg-forest-50 border border-forest-200 text-forest-800 text-sm font-semibold flex items-center gap-2">
                 <span>✓</span>
                 <span>{{ session('success') }}</span>
             </div>
         @endif
         @if(session('warning'))
-            <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-semibold flex items-center gap-2">
+            <div class="p-4 rounded-xl bg-action-50 border border-action-200 text-action-800 text-sm font-semibold flex items-center gap-2">
                 <span>⚠️</span>
                 <span>{{ session('warning') }}</span>
             </div>
@@ -47,15 +47,15 @@
 
         <!-- Action Banner: Active Shifts QR Code Generation for Clock-in -->
         @if($activeShifts->isNotEmpty())
-            <div class="bg-gradient-to-r from-slate-900 to-indigo-950 rounded-2xl p-5 sm:p-6 text-white shadow-lg border border-indigo-900/50">
+            <div class="bg-brand-primary rounded-2xl p-5 sm:p-6 text-white shadow-lg border border-navy-800">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold mb-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-forest-500/20 text-forest-100 text-xs font-bold mb-2">
+                            <span class="w-2 h-2 rounded-full bg-forest-400 animate-ping"></span>
                             {{ __('Aktive vagter i dag') }}
                         </div>
                         <h2 class="text-lg sm:text-xl font-bold">{{ __('QR-koder til medarbejder tjek-ind') }}</h2>
-                        <p class="text-xs text-slate-300 mt-1 max-w-xl">
+                        <p class="text-xs text-sand-200 mt-1 max-w-xl">
                             {{ __('Vis QR-koden på skærmen ved receptionen eller indgangen, så tilknyttede vikarer kan scanne og stemple ind med det samme.') }}
                         </p>
                     </div>
@@ -64,7 +64,7 @@
                         @foreach($activeShifts as $shift)
                             <button type="button"
                                 @click="activeQrShift = '{{ $shift->id }}'; activeQrToken = '{{ $shift->qr_secret_token }}'; activeQrTitle = '{{ addslashes($shift->staffRequest->role) }} - {{ $shift->start_at->format('H:i') }} til {{ $shift->end_at->format('H:i') }}'"
-                                class="w-full sm:w-auto justify-center px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white shadow-sm flex items-center gap-2 transition min-h-[40px]">
+                                class="w-full sm:w-auto justify-center px-4 py-2.5 rounded-xl bg-brand-action hover:bg-brand-action-hover text-xs font-bold text-white shadow-sm flex items-center gap-2 transition min-h-[40px]">
                                 <span>📱 {{ __('Vis QR') }}: {{ $shift->staffRequest->role }} ({{ $shift->start_at->format('H:i') }})</span>
                             </button>
                         @endforeach
@@ -114,8 +114,8 @@
                                     <span class="font-medium text-slate-700">{{ $ts->break_minutes }} {{ __('min') }}</span>
                                 </div>
                                 <div>
-                                    <span class="text-slate-400 text-[11px] block">{{ __('Total tid') }}:</span>
-                                    <span class="font-bold text-indigo-700">{{ number_format($ts->hours, 2, ',', '.') }} {{ __('timer') }}</span>
+                                    <span class="text-coolslate-500 text-[11px] block">{{ __('Total tid') }}:</span>
+                                    <span class="font-bold text-brand-secondary">{{ number_format($ts->hours, 2, ',', '.') }} {{ __('timer') }}</span>
                                 </div>
                             </div>
 
@@ -134,7 +134,7 @@
                                 </button>
 
                                 <!-- Rejection Modal -->
-                                <div x-show="openReject" x-cloak class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+                                <div x-show="openReject" x-cloak class="fixed inset-0 z-50 bg-slate-900/80 flex items-center justify-center p-4">
                                     <div @click.away="openReject = false" class="bg-white rounded-2xl max-w-md w-full p-6 text-left shadow-2xl">
                                         <h3 class="text-base font-bold text-slate-900">{{ __('Afvis timeseddel') }}</h3>
                                         <p class="text-xs text-slate-500 mt-1">{{ __('Angiv venligst en begrundelse til vikaren og administrationen:') }}</p>
@@ -177,7 +177,7 @@
                                     <td class="p-3 text-slate-700">{{ $ts->clock_in->format('d. M Y') }}</td>
                                     <td class="p-3 text-slate-700">{{ $ts->clock_in->format('H:i') }} - {{ $ts->clock_out ? $ts->clock_out->format('H:i') : __('Aktiv') }}</td>
                                     <td class="p-3 text-slate-700">{{ $ts->break_minutes }} {{ __('min') }}</td>
-                                    <td class="p-3 font-bold text-indigo-700">{{ number_format($ts->hours, 2, ',', '.') }} {{ __('timer') }}</td>
+                                    <td class="p-3 font-bold text-brand-secondary">{{ number_format($ts->hours, 2, ',', '.') }} {{ __('timer') }}</td>
                                     <td class="p-3 text-right">
                                         <div class="inline-flex items-center gap-2">
                                             <!-- Approve Form -->
@@ -195,7 +195,7 @@
                                                 </button>
 
                                                 <!-- Rejection Modal -->
-                                                <div x-show="openReject" x-cloak class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+                                                <div x-show="openReject" x-cloak class="fixed inset-0 z-50 bg-slate-900/80 flex items-center justify-center p-4">
                                                     <div @click.away="openReject = false" class="bg-white rounded-2xl max-w-md w-full p-6 text-left shadow-2xl">
                                                         <h3 class="text-base font-bold text-slate-900">{{ __('Afvis timeseddel') }}</h3>
                                                         <p class="text-xs text-slate-500 mt-1">{{ __('Angiv venligst en begrundelse til vikaren og administrationen:') }}</p>
@@ -231,20 +231,20 @@
 
                 <!-- Status Filter Tabs (horizontally scrollable on mobile) -->
                 <div class="w-full sm:w-auto overflow-x-auto scrollbar-none pb-1 sm:pb-0">
-                    <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl text-xs font-semibold text-slate-600 min-w-max">
-                        <a href="{{ route('client.dashboard', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'all' ? 'bg-white text-indigo-600 shadow-sm font-bold' : 'hover:text-slate-900' }}">
+                    <div class="flex items-center gap-1.5 p-1 bg-sand-100 rounded-xl text-xs font-semibold text-charcoal-700 min-w-max">
+                        <a href="{{ route('client.dashboard', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'all' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
                             {{ __('Alle') }} ({{ $counts['all'] }})
                         </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'new']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'new' ? 'bg-white text-indigo-600 shadow-sm font-bold' : 'hover:text-slate-900' }}">
+                        <a href="{{ route('client.dashboard', ['status' => 'new']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'new' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
                             {{ __('Nye') }} ({{ $counts['new'] }})
                         </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'in_progress']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'in_progress' ? 'bg-white text-indigo-600 shadow-sm font-bold' : 'hover:text-slate-900' }}">
+                        <a href="{{ route('client.dashboard', ['status' => 'in_progress']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'in_progress' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
                             {{ __('Under match') }} ({{ $counts['in_progress'] }})
                         </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'matched']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'matched' ? 'bg-white text-indigo-600 shadow-sm font-bold' : 'hover:text-slate-900' }}">
+                        <a href="{{ route('client.dashboard', ['status' => 'matched']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'matched' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
                             {{ __('Matchet') }} ({{ $counts['matched'] }})
                         </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'active']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'active' ? 'bg-white text-indigo-600 shadow-sm font-bold' : 'hover:text-slate-900' }}">
+                        <a href="{{ route('client.dashboard', ['status' => 'active']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'active' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
                             {{ __('Aktive') }} ({{ $counts['active'] }})
                         </a>
                     </div>
@@ -254,7 +254,7 @@
             <!-- Requests Grid -->
             <div class="grid md:grid-cols-2 gap-4">
                 @forelse($requests as $req)
-                    <div class="p-5 rounded-xl border border-slate-200 hover:border-indigo-300 transition-all bg-slate-50/50 hover:bg-white flex flex-col justify-between space-y-4">
+                    <div class="p-5 rounded-xl border border-sand-300 hover:border-sand-400 transition-all bg-sand-50/50 hover:bg-white flex flex-col justify-between space-y-4">
                         <div>
                             <div class="flex justify-between items-start gap-2 mb-2">
                                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold border {{ $req->status->badgeClasses() }}">
@@ -303,7 +303,7 @@
 
                         <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
                             <span class="text-[11px] text-slate-400">{{ __('Oprettet') }} {{ $req->created_at->diffForHumans() }}</span>
-                            <a href="{{ route('client.requests.show', $req) }}" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                            <a href="{{ route('client.requests.show', $req) }}" class="text-xs font-bold text-brand-secondary hover:text-brand-action transition flex items-center gap-1">
                                 <span>{{ __('Se detaljer & QR') }}</span>
                                 <span>&rarr;</span>
                             </a>
@@ -313,7 +313,7 @@
                     <div class="md:col-span-2 text-center py-12 text-slate-400 text-sm">
                         {{ __('Ingen forespørgsler fundet med denne status.') }}
                         <div class="mt-3">
-                            <a href="{{ route('client.requests.create') }}" class="text-indigo-600 font-bold hover:underline">{{ __('Opret en ny bemandingsforespørgsel') }}</a>
+                            <a href="{{ route('client.requests.create') }}" class="text-brand-action font-bold hover:underline">{{ __('Opret en ny bemandingsforespørgsel') }}</a>
                         </div>
                     </div>
                 @endforelse
@@ -325,13 +325,13 @@
         </div>
 
         <!-- QR Code Modal (Live shift scanning) -->
-        <div x-show="activeQrShift !== null" x-cloak class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4">
+        <div x-show="activeQrShift !== null" x-cloak class="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">
             <div @click.away="activeQrShift = null" class="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-8 text-center shadow-2xl relative border border-slate-200">
                 <button type="button" @click="activeQrShift = null" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
 
-                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-3">
+                <div class="w-12 h-12 rounded-2xl bg-action-50 text-brand-action flex items-center justify-center mx-auto mb-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
                 </div>
 

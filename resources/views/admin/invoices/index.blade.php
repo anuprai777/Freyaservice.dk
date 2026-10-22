@@ -16,7 +16,7 @@
                         <span>+ {{ __('Opret Faktura') }}</span>
                     </button>
 
-                    <div x-show="openGen" x-cloak class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div x-show="openGen" x-cloak class="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">
                         <div @click.away="openGen = false" class="bg-white rounded-2xl max-w-md w-full p-6 text-left shadow-2xl space-y-4">
                             <h3 class="text-base font-bold text-slate-900">{{ __('Opret ny kundefaktura') }}</h3>
                             <p class="text-xs text-slate-500">{{ __('Systemet samler alle godkendte, uafregnede timesedler for den valgte virksomhed og beregner 25% moms.') }}</p>

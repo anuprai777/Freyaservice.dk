@@ -130,19 +130,19 @@
             x-transition:leave-end="opacity-0 -translate-y-2 scale-95"
             @mouseenter="toast.isPaused = true"
             @mouseleave="toast.isPaused = false"
-            class="pointer-events-auto relative overflow-hidden rounded-2xl bg-white/95 dark:bg-[#131F33]/95 backdrop-blur-md shadow-xl border border-brand-border/80 dark:border-[#1E2F4A] p-4 flex gap-3 items-start transition-all"
+            class="pointer-events-auto relative overflow-hidden rounded-2xl bg-white shadow-xl border border-sand-300 p-4 flex gap-3 items-start transition-all"
             :class="{
-                'border-l-4 border-l-emerald-500': toast.type === 'success',
-                'border-l-4 border-l-amber-500': toast.type === 'warning',
-                'border-l-4 border-l-rose-500': toast.type === 'error',
-                'border-l-4 border-l-blue-500': toast.type === 'info',
+                'border-l-4 border-l-forest-500': toast.type === 'success',
+                'border-l-4 border-l-action-500': toast.type === 'warning',
+                'border-l-4 border-l-brick-500': toast.type === 'error',
+                'border-l-4 border-l-navy-700': toast.type === 'info',
             }"
         >
             <!-- Toast Icon -->
             <div class="shrink-0 pt-0.5">
                 <!-- Success Icon -->
                 <template x-if="toast.type === 'success'">
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-forest-100 text-forest-600">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                         </svg>
@@ -151,7 +151,7 @@
 
                 <!-- Warning Icon -->
                 <template x-if="toast.type === 'warning'">
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-action-100 text-action-600">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                         </svg>
@@ -160,7 +160,7 @@
 
                 <!-- Error Icon -->
                 <template x-if="toast.type === 'error'">
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-brick-100 text-brick-600">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                         </svg>
@@ -169,7 +169,7 @@
 
                 <!-- Info Icon -->
                 <template x-if="toast.type === 'info'">
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-navy-100 text-navy-700">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                         </svg>
@@ -179,8 +179,8 @@
 
             <!-- Toast Content -->
             <div class="flex-1 min-w-0 pr-2">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-100" x-text="toast.title"></h4>
-                <p class="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed break-words" x-text="toast.message"></p>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-charcoal-900" x-text="toast.title"></h4>
+                <p class="mt-1 text-sm text-charcoal-700 leading-relaxed break-words" x-text="toast.message"></p>
             </div>
 
             <!-- Dismiss Button -->
@@ -188,7 +188,7 @@
                 type="button"
                 @click="removeToast(toast.id)"
                 aria-label="{{ __('Luk meddelelse') }}"
-                class="shrink-0 p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+                class="shrink-0 p-1 rounded-lg text-coolslate-500 hover:text-charcoal-900 hover:bg-sand-100 transition-colors"
             >
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -196,15 +196,15 @@
             </button>
 
             <!-- Countdown Progress Bar -->
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-slate-100 dark:bg-slate-800/80">
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-sand-100">
                 <div
                     class="h-full transition-all ease-linear"
                     :style="`width: ${toast.progress}%`"
                     :class="{
-                        'bg-emerald-500': toast.type === 'success',
-                        'bg-amber-500': toast.type === 'warning',
-                        'bg-rose-500': toast.type === 'error',
-                        'bg-blue-500': toast.type === 'info',
+                        'bg-forest-500': toast.type === 'success',
+                        'bg-action-500': toast.type === 'warning',
+                        'bg-brick-500': toast.type === 'error',
+                        'bg-navy-700': toast.type === 'info',
                     }"
                 ></div>
             </div>

@@ -87,7 +87,7 @@
                                                         {{ __('Afvis') }}
                                                     </button>
 
-                                                    <div x-show="openReject" x-cloak class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+                                                    <div x-show="openReject" x-cloak class="fixed inset-0 z-50 bg-slate-900/80 flex items-center justify-center p-4">
                                                         <div @click.away="openReject = false" class="bg-white rounded-2xl max-w-sm w-full p-6 text-left shadow-2xl">
                                                             <h3 class="text-sm font-bold text-slate-900">{{ __('Afvis dokument') }}</h3>
                                                             <form method="POST" action="{{ route('admin.documents.verify', $doc) }}" class="mt-3 space-y-3">

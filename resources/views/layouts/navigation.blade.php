@@ -83,11 +83,8 @@
                 </div>
             </div>
 
-            <!-- Settings, Language Switcher, Theme & Role Badge -->
+            <!-- Settings, Language Switcher & Role Badge -->
             <div class="hidden sm:flex sm:items-center sm:ms-6 gap-3">
-
-                <!-- Dark Mode Toggle -->
-                <x-theme-toggle />
 
                 <!-- Language Switcher -->
                 <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-xl border border-brand-border text-xs">
@@ -103,9 +100,9 @@
 
                 <!-- Role Tag -->
                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider
-                    @if(Auth::user()->isAdmin()) bg-navy-900/10 text-navy-900 border border-navy-900/20
-                    @elseif(Auth::user()->isClient()) bg-navy-700/10 text-navy-700 border border-navy-700/20
-                    @else bg-forest/15 text-forest border border-forest/30 @endif">
+                    @if(Auth::user()->isAdmin()) bg-sand-200 text-navy-900 border border-sand-300
+                    @elseif(Auth::user()->isClient()) bg-navy-100 text-navy-900 border border-navy-200
+                    @else bg-forest-50 text-forest border border-forest-200 @endif">
                     @if(Auth::user()->isAdmin()) {{ __('Admin') }}
                     @elseif(Auth::user()->isClient()) {{ __('Virksomhed') }}
                     @else {{ __('Vikar') }} @endif
@@ -161,11 +158,8 @@
                 </x-dropdown>
             </div>
 
-            <!-- Mobile Controls (Theme, Language & Hamburger) -->
+            <!-- Mobile Language Switcher & Hamburger -->
             <div class="-me-2 flex items-center gap-2 lg:hidden">
-                <!-- Mobile Dark Mode Toggle -->
-                <x-theme-toggle />
-
                 <div class="flex items-center gap-1 bg-brand-bg p-1 rounded-lg border border-brand-border text-xs">
                     <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2 py-0.5 rounded transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-brand-surface text-brand-secondary shadow-xs font-bold' : 'text-brand-muted' }}">
                         <span>🇩🇰</span>

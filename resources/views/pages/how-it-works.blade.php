@@ -4,7 +4,7 @@
     <!-- Hero -->
     <section class="bg-brand-primary text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style="background-image:radial-gradient(rgba(247,246,242,0.07) 1.5px,transparent 0);background-size:24px 24px;">
         <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-brand-action/40 text-sand-100 text-xs font-semibold mb-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 border border-brand-action/60 text-sand-100 text-xs font-semibold mb-6 shadow-xs">
                 <x-heroicon-o-arrows-pointing-in class="w-3.5 h-3.5 text-brand-action" /><span>{{ __('Sådan Fungerer Det') }}</span>
             </div>
             <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4">{{ __('Fra behov til bemanding på 4 enkle trin') }}</h1>
@@ -64,7 +64,7 @@
         <div class="grid md:grid-cols-2 gap-8 mb-16">
             <div class="bg-brand-primary text-white rounded-2xl p-8">
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                    <div class="w-10 h-10 rounded-xl bg-navy-800 border border-navy-700 flex items-center justify-center">
                         <x-heroicon-o-building-office class="w-5 h-5 text-brand-action" />
                     </div>
                     <h2 class="text-lg font-bold">{{ __('Virksomhed (Kunde)') }}</h2>

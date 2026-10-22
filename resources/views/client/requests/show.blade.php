@@ -124,7 +124,7 @@
                                                 </button>
 
                                                 <!-- Rate Modal -->
-                                                <div x-show="openRate" x-cloak class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+                                                <div x-show="openRate" x-cloak class="fixed inset-0 z-50 bg-slate-900/80 flex items-center justify-center p-4">
                                                     <div @click.away="openRate = false" class="bg-white rounded-2xl max-w-sm w-full p-6 text-left shadow-2xl">
                                                         <h3 class="text-sm font-bold text-slate-900">{{ __('Bedøm') }} {{ $asgn->worker->user->name }}</h3>
                                                         <form method="POST" action="{{ route('client.ratings.store') }}" class="mt-4 space-y-3">
