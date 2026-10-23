@@ -4,9 +4,6 @@
     <!-- Hero -->
     <section class="bg-brand-primary text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style="background-image:radial-gradient(rgba(247,246,242,0.07) 1.5px,transparent 0);background-size:24px 24px;">
         <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 border border-brand-action/60 text-sand-100 text-xs font-semibold mb-6 shadow-sm">
-                <x-heroicon-o-chat-bubble-bottom-center-text class="w-3.5 h-3.5 text-brand-action" /><span>{{ __('Kontakt') }}</span>
-            </div>
             <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4">{{ __('Klar til at få hjælp eller starte som vikar?') }}</h1>
             <p class="text-lg text-sand-200 max-w-2xl mx-auto">{{ __('Kontakt vores døgnbemandede vagtcentral eller opret din profil online i dag.') }}</p>
         </div>
@@ -74,7 +71,7 @@
                     </div>
                     <p class="text-sand-200 text-sm mb-6 leading-relaxed">Bestil vikarer nemt og hurtigt via vores digitale portal. Opret en gratis virksomhedskonto og få svar inden for 30 minutter.</p>
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="{{ route('register') }}" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold transition">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold transition">
                             <x-heroicon-o-user-plus class="w-4 h-4" />{{ __('Opret virksomhedskonto') }}
                         </a>
                         <a href="tel:+4570203040" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-navy-800 hover:bg-navy-700 border border-navy-600 text-white text-sm font-bold transition">
@@ -92,7 +89,7 @@
                     </div>
                     <p class="text-brand-body text-sm mb-6 leading-relaxed">Søg ledige vagter, angiv din tilgængelighed og bliv en del af vores netværk af godkendte vikarer i hele Danmark.</p>
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="{{ route('register') }}" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-secondary hover:bg-navy-800 text-white text-sm font-bold transition">
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-secondary hover:bg-navy-800 text-white text-sm font-bold transition">
                             <x-heroicon-o-user-plus class="w-4 h-4" />{{ __('Tilmeld dig som vikar') }}
                         </a>
                         <a href="{{ route('login') }}" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-brand-border hover:bg-brand-bg text-brand-secondary text-sm font-bold transition">

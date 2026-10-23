@@ -4,9 +4,6 @@
     <!-- Hero -->
     <section class="bg-brand-primary text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style="background-image:radial-gradient(rgba(247,246,242,0.07) 1.5px,transparent 0);background-size:24px 24px;">
         <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 border border-brand-action/60 text-sand-100 text-xs font-semibold mb-6 shadow-xs">
-                <x-heroicon-o-briefcase class="w-3.5 h-3.5 text-brand-action" /><span>{{ __('Vores Bemandingsløsninger') }}</span>
-            </div>
             <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4">{{ __('Vikarer til alle behov') }}</h1>
             <p class="text-lg text-sand-200 max-w-2xl mx-auto">{{ __('Hvad enten du mangler en opvasker i aften eller 10 lagermedarbejdere i tre måneder, har vi den rette løsning.') }}</p>
         </div>
@@ -57,10 +54,7 @@
         <!-- Why FreyaService Section Makeover -->
         <div class="bg-gradient-to-b from-brand-surface to-brand-bg rounded-3xl border border-brand-border p-8 sm:p-12 mb-16 shadow-sm">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-action/10 border border-brand-action/30 text-brand-action text-xs font-bold mb-3">
-                    <x-heroicon-o-shield-check class="w-4 h-4 text-brand-action" />
-                    <span>{{ __('Vores Værdier & Fordele') }}</span>
-                </div>
+                <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-3">{{ __('Vores Værdier & Fordele') }}</div>
                 <h2 class="text-3xl font-black text-brand-secondary tracking-tight">{{ __('Hvorfor vælge FreyaService?') }}</h2>
                 <p class="text-sm text-brand-muted mt-2">{{ __('Et moderne vikarbureau bygget på gennemsigtighed og kvalitet') }}</p>
             </div>
@@ -112,7 +106,7 @@
         </div>
 
         <div class="text-center">
-            <a href="{{ route('register') }}" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white font-bold text-base shadow-lg shadow-brand-action/30 transition transform hover:-translate-y-0.5">
+            <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white font-bold text-base shadow-lg shadow-brand-action/30 transition transform hover:-translate-y-0.5">
                 <x-heroicon-o-briefcase class="w-5 h-5" /><span>{{ __('Bestil vikar nu') }}</span><x-heroicon-o-arrow-right class="w-5 h-5" />
             </a>
             <p class="text-xs text-brand-muted mt-3">{{ __('Ring +45 70 20 30 40') }} — {{ __('Akut vagttelefon') }}</p>

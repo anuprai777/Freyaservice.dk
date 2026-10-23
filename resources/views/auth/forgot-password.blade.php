@@ -1,24 +1,38 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <x-slot name="title">{{ __('Glemt adgangskode') }}</x-slot>
+
+    <!-- Header -->
+    <div class="mb-5 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-bg border border-brand-border text-xs font-semibold text-brand-secondary mb-3">
+            <span class="w-2 h-2 rounded-full bg-brand-action"></span>
+            <span>{{ __('FreyaService Portal') }}</span>
+        </div>
+        <h2 class="text-2xl font-black text-brand-primary tracking-tight">{{ __('Glemt din adgangskode?') }}</h2>
+        <p class="text-xs text-brand-muted mt-1 leading-relaxed">
+            {{ __('Indtast din registrerede e-mailadresse, så sender vi dig et link til at nulstille din adgangskode.') }}
+        </p>
     </div>
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('password.email') }}" class="space-y-4">
         @csrf
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <x-input-label for="email" :value="__('E-mailadresse')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus placeholder="navn@virksomhed.dk" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+            <a href="{{ route('login') }}" class="text-xs text-brand-muted hover:text-brand-secondary underline transition">
+                &larr; {{ __('Tilbage til login') }}
+            </a>
+
+            <x-primary-button class="w-full sm:w-auto py-2.5 px-5 text-xs">
+                {{ __('Send nulstillingslink') }} &rarr;
             </x-primary-button>
         </div>
     </form>

@@ -165,7 +165,7 @@ export function LetterCascade({
                             backfaceVisibility: "hidden",
                         }}
                     >
-                        {letter}
+                        {letter === " " ? "\u00A0" : letter}
                     </motion.span>
 
                     {/* Echo face — hidden below, flips up into view on trigger */}
@@ -184,7 +184,7 @@ export function LetterCascade({
                             backfaceVisibility: "hidden",
                         }}
                     >
-                        {letter}
+                        {letter === " " ? "\u00A0" : letter}
                     </motion.span>
                 </span>
             ))}

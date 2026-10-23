@@ -4,9 +4,6 @@
     <!-- Hero -->
     <section class="bg-brand-primary text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style="background-image:radial-gradient(rgba(247,246,242,0.07) 1.5px,transparent 0);background-size:24px 24px;">
         <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 border border-brand-action/60 text-sand-100 text-xs font-semibold mb-6 shadow-xs">
-                <x-heroicon-o-arrows-pointing-in class="w-3.5 h-3.5 text-brand-action" /><span>{{ __('Sådan Fungerer Det') }}</span>
-            </div>
             <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4">{{ __('Fra behov til bemanding på 4 enkle trin') }}</h1>
             <p class="text-lg text-sand-200 max-w-2xl mx-auto">{{ __('Simpel, digital og gennemsigtig proces — fra du opretter en forespørgsel til vikaren møder op.') }}</p>
         </div>
@@ -76,7 +73,7 @@
                     <li class="flex items-start gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-brand-action mt-0.5 shrink-0" />Godkend timer med ét klik — ingen papirarbejde</li>
                     <li class="flex items-start gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-brand-action mt-0.5 shrink-0" />Modtag faktura automatisk med specifikation</li>
                 </ul>
-                <a href="{{ route('register') }}" class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold transition">
+                <a href="{{ route('register', ['role' => 'client']) }}" class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold transition">
                     {{ __('Bestil Vikar') }} <x-heroicon-o-arrow-right class="w-4 h-4" />
                 </a>
             </div>
@@ -94,7 +91,7 @@
                     <li class="flex items-start gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-forest mt-0.5 shrink-0" />Scan QR-kode ved ankomst og afgang</li>
                     <li class="flex items-start gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-forest mt-0.5 shrink-0" />Se din indtjening og download lønsedler</li>
                 </ul>
-                <a href="{{ route('register') }}" class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-secondary hover:bg-navy-800 text-white text-sm font-bold transition">
+                <a href="{{ route('register', ['role' => 'worker']) }}" class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-secondary hover:bg-navy-800 text-white text-sm font-bold transition">
                     {{ __('Tilmeld dig som vikar') }} <x-heroicon-o-arrow-right class="w-4 h-4" />
                 </a>
             </div>

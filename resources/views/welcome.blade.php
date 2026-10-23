@@ -6,6 +6,30 @@
     <title>{{ __('FreyaService | Vikarbureau i Danmark – Kvalitetsvikarer til Virksomheder') }}</title>
     <meta name="description" content="{{ __('FreyaService leverer professionelle og pålidelige vikarer til hotel, restaurant, rengøring, lager og logistik samt kontor i hele Danmark.') }}">
 
+    <!-- Favicon & Touch Icon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo-icon.png') }}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FreyaService">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ __('FreyaService | Vikarbureau i Danmark – Kvalitetsvikarer til Virksomheder') }}">
+    <meta property="og:description" content="{{ __('FreyaService leverer professionelle og pålidelige vikarer til hotel, restaurant, rengøring, lager og logistik samt kontor i hele Danmark.') }}">
+    <meta property="og:image" content="{{ asset('images/og-image.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="{{ app()->getLocale() === 'da' ? 'da_DK' : 'en_US' }}">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ __('FreyaService | Vikarbureau i Danmark – Kvalitetsvikarer til Virksomheder') }}">
+    <meta name="twitter:description" content="{{ __('FreyaService leverer professionelle og pålidelige vikarer til hotel, restaurant, rengøring, lager og logistik samt kontor i hele Danmark.') }}">
+    <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +41,11 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .hero-pattern {
+            background-color: #14263F;
+            background-image: radial-gradient(rgba(247, 246, 242, 0.08) 1.5px, transparent 0);
+            background-size: 24px 24px;
         }
     </style>
 </head>
@@ -129,7 +158,7 @@
                 @endif
 
                 <!-- Mobile Hamburger Toggle Button -->
-                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-xl text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition" aria-label="Menu">
+                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden inline-flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-xl text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition" aria-label="Menu">
                     <x-heroicon-o-bars-3 class="h-6 w-6" x-show="!mobileOpen" />
                     <x-heroicon-o-x-mark class="h-6 w-6" x-show="mobileOpen" x-cloak />
                 </button>
@@ -149,10 +178,10 @@
             <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-bg/60">
                 <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
                 <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1.5 min-h-[36px] rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
                         <span>🇩🇰</span><span>Dansk</span>
                     </a>
-                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1.5 min-h-[36px] rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
                         <span>🇬🇧</span><span>English</span>
                     </a>
                 </div>
@@ -160,19 +189,19 @@
 
             <!-- Mobile Navigation Links -->
             <div class="px-4 py-3 space-y-1">
-                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
                     <x-heroicon-o-briefcase class="w-5 h-5 text-brand-action" />
                     <span>{{ __('Ydelser') }}</span>
                 </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
                     <x-heroicon-o-building-office-2 class="w-5 h-5 text-brand-action" />
                     <span>{{ __('Brancher') }}</span>
                 </a>
-                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
                     <x-heroicon-o-arrows-pointing-in class="w-5 h-5 text-brand-action" />
                     <span>{{ __('Sådan virker det') }}</span>
                 </a>
-                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
+                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition text-brand-body hover:bg-brand-bg hover:text-brand-secondary">
                     <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5 text-brand-action" />
                     <span>{{ __('Kontakt') }}</span>
                 </a>
@@ -181,18 +210,18 @@
             <!-- Mobile Auth / CTA -->
             <div class="p-4 border-t border-brand-border">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
+                    <a href="{{ url('/dashboard') }}" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
                         <x-heroicon-o-squares-2x2 class="w-5 h-5" />
                         <span>{{ __('Gå til Dashboard') }}</span>
                         <x-heroicon-o-arrow-right class="w-4 h-4" />
                     </a>
                 @else
                     <div class="grid grid-cols-2 gap-3">
-                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-brand-secondary bg-brand-bg hover:bg-slate-100 border border-brand-border transition">
+                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-xl text-sm font-bold text-brand-secondary bg-brand-bg hover:bg-slate-100 border border-brand-border transition">
                             <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" />
                             <span>{{ __('Log ind') }}</span>
                         </a>
-                        <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                        <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
                             <x-heroicon-o-user-plus class="w-4 h-4" />
                             <span>{{ __('Opret konto') }}</span>
                         </a>
@@ -202,383 +231,241 @@
         </div>
     </header>
 
-    <!-- Hero Section with Clear Background Video: Chefs Cooking (Original Brand Styling & Mobile/Desktop Compatible) -->
-    <section id="heroSection" class="relative bg-navy-950 text-white pt-16 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[580px] sm:min-h-[640px] flex items-center">
-        <!-- Background Video Layer: Pure Clear Chef Cooking Video -->
-        <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
-            <video
-                id="heroBgVideo"
-                autoplay
-                muted
-                loop
-                playsinline
-                webkit-playsinline
-                x5-playsinline="true"
-                x5-video-player-type="h5-page"
-                preload="auto"
-                disablePictureInPicture
-                disableRemotePlayback
-                src="{{ asset('videos/chefs-cooking.mp4') }}"
-                poster="{{ asset('images/chefs-cooking-poster.jpg') }}"
-                class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none filter contrast-[1.06] saturate-[1.15] brightness-[1.02]"
+    @php
+        $isEn = app()->getLocale() === 'en';
+        $words1 = $isEn ? ['Temp', 'Full-time', 'Part-time'] : ['Vikar', 'Fuldtid', 'Deltid'];
+        $words2 = $isEn ? ['Temps', 'Full-timers', 'Part-timers'] : ['Vikarer', 'Fuldtidsansatte', 'Deltidsansatte'];
+    @endphp
+
+    <!-- Hero Section (Centered Design: 3D Flip Headline & Clean Stats) -->
+    <section id="heroSection" class="hero-pattern text-white pt-16 pb-20 sm:pt-24 sm:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
+            
+            <!-- Headline (H1): 3D Flipping Headline with clamp(2rem, 5.6vw, 4rem) and aria-live="polite" -->
+            <h1 
+                id="heroHeadline" 
+                class="font-black tracking-tight leading-[1.18] text-white max-w-4xl mx-auto"
+                style="font-size: clamp(2rem, 5.6vw, 4rem);"
+                aria-live="polite"
+                data-words1='@json($words1)'
+                data-words2='@json($words2)'
             >
-                <source src="{{ asset('videos/chefs-cooking.mp4') }}" type="video/mp4">
-                <source src="{{ asset('videos/chefs-cooking-3.mp4') }}" type="video/mp4">
-                <source src="{{ asset('videos/chefs-cooking-2.mp4') }}" type="video/mp4">
-            </video>
-        </div>
+                @if($isEn)
+                    <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord1" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Temp</span></span> Staffing in Denmark: Qualified <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord2" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Temps</span></span> in Under 2 Hours
+                @else
+                    <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord1" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Vikar</span></span> bemanding i Danmark: Kvalificerede <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord2" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Vikarer</span></span> på under 2 timer
+                @endif
+            </h1>
 
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10 w-full">
-            <div class="lg:col-span-7 space-y-6">
-                <!-- Highlight badge: Action Orange 500 border & accent -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-900 border border-brand-action/60 text-sand-100 text-xs font-semibold tracking-wide shadow-sm">
-                    <x-heroicon-s-bolt class="w-3.5 h-3.5 text-brand-action shrink-0" />
-                    <span>{{ __('Akut vikardækning på under 2 timer') }}</span>
-                </div>
+            <!-- Subtext -->
+            <p class="mt-6 text-base sm:text-lg lg:text-xl text-sand-100/90 max-w-3xl mx-auto leading-relaxed">
+                {{ __('Hotels, restaurants, warehouses and offices across Denmark use Freya Service to find vetted workers fast, with no lock-in or onboarding fees.') }}
+            </p>
 
-                <!-- High-contrast headings with LetterCascade animation synchronized at once -->
-                <h1 data-cascade-parent-group="hero-title" class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white cursor-pointer select-none">
-                    <x-letter-cascade :text="__('Fleksibel & professionel')" class="text-brand-action inline-block" group="hero-title" />
-                    <span class="block mt-1 sm:mt-2">
-                        <x-letter-cascade :text="__('vikarservice i hele Danmark')" class="text-white inline-block" group="hero-title" />
-                    </span>
-                </h1>
-
-                <p class="text-base sm:text-lg text-sand-100/90 max-w-2xl leading-relaxed">
-                    {{ __('Mangler din virksomhed ekstra hænder ved spidsbelastning, sygdom eller sæson? FreyaService matcher dig lynhurtigt med godkendte og motiverede vikarer til hotel, restaurant, rengøring, lager og kontor.') }}
-                </p>
-
-                <!-- Action Bar -->
-                <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                    <!-- Primary CTA Button: Orange 500 #E8833A, hover Orange 600 #D2702A -->
-                    <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition transform hover:-translate-y-0.5">
+            <!-- Action Bar (CTA Buttons) -->
+            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
+                <!-- Primary CTA Button: Orange 500 #E8833A, hover Orange 600 #D2702A -->
+                @auth
+                    @if(auth()->user()->isClient())
+                        <a href="{{ route('client.requests.create') }}" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                            <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
+                            <span>{{ __('Bestil vikar nu') }}</span>
+                            <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
+                        </a>
+                    @else
+                        <a href="{{ route('dashboard') }}" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                            <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
+                            <span>{{ __('Bestil vikar nu') }}</span>
+                            <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
+                        </a>
+                    @endif
+                @else
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition-all transform hover:-translate-y-0.5 min-h-[48px]">
                         <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
                         <span>{{ __('Bestil vikar nu') }}</span>
                         <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                     </a>
+                @endauth
 
-                    <!-- Secondary CTA Button: Surface / Solid Outline -->
-                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-white bg-navy-800 hover:bg-navy-700 border border-navy-600 shadow-sm transition">
+                <!-- Secondary CTA Button: Navy 800 -->
+                @auth
+                    <a href="{{ auth()->user()->isWorker() ? route('worker.dashboard') : route('dashboard') }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-navy-800 hover:bg-navy-700 border border-navy-600 shadow-sm transition min-h-[48px]">
                         <x-heroicon-o-user-plus class="w-5 h-5 shrink-0" />
                         <span>{{ __('Tilmeld dig som vikar') }}</span>
                     </a>
-                </div>
-
-                <!-- Trust Badges -->
-                <div class="pt-6 grid grid-cols-3 gap-2 sm:gap-6 border-t border-navy-800 text-sand-100">
-                    <div>
-                        <div class="flex items-center gap-1 sm:gap-1.5 text-lg sm:text-2xl font-black text-white">
-                            <x-heroicon-s-star class="w-4 h-4 sm:w-5 sm:h-5 text-brand-action shrink-0" />
-                            <span>98%</span>
-                        </div>
-                        <div class="text-[10px] sm:text-xs text-sand-300 font-medium mt-1 leading-tight">{{ __('Tilfredse virksomheder') }}</div>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-1 sm:gap-1.5 text-lg sm:text-2xl font-black text-white">
-                            <x-heroicon-s-user-group class="w-4 h-4 sm:w-5 sm:h-5 text-sand-100 shrink-0" />
-                            <span>2.500+</span>
-                        </div>
-                        <div class="text-[10px] sm:text-xs text-sand-300 font-medium mt-1 leading-tight">{{ __('Aktive vikarer i puljen') }}</div>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-1 sm:gap-1.5 text-lg sm:text-2xl font-black text-white">
-                            <!-- Success indicator: Forest Green #2F7D5B -->
-                            <x-heroicon-s-receipt-percent class="w-4 h-4 sm:w-5 sm:h-5 text-forest shrink-0" />
-                            <span>25%</span>
-                        </div>
-                        <div class="text-[10px] sm:text-xs text-sand-300 font-medium mt-1 leading-tight">{{ __('Moms (25%)') }}</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Secure Portal Access Card (Solid, Opaque Surface) -->
-            <div class="lg:col-span-5 bg-navy-900 border border-navy-700 p-6 sm:p-8 rounded-2xl shadow-2xl">
-                <div class="flex items-center justify-between pb-6 border-b border-navy-800">
-                    <div>
-                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                            <x-heroicon-o-lock-closed class="w-5 h-5 text-brand-action shrink-0" />
-                            <span>{{ __('Sikker Portal Adgang') }}</span>
-                        </h3>
-                        <p class="text-xs text-sand-200 mt-1">{{ __('Vælg din portal for at logge ind sikkert') }}</p>
-                    </div>
-                    <span class="px-2.5 py-1 rounded bg-forest text-white font-black text-xs uppercase tracking-wider flex items-center gap-1">
-                        <x-heroicon-s-shield-check class="w-3.5 h-3.5" />
-                        SSL
-                    </span>
-                </div>
-
-                <div class="space-y-4 pt-6">
-                    <!-- Admin Card -->
-                    <div class="p-4 rounded-xl bg-navy-950 border border-navy-800 flex items-center justify-between hover:border-brand-action transition group">
-                        <div>
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-navy-800 text-sand-100 mb-1 border border-navy-700">
-                                <x-heroicon-s-shield-check class="w-3 h-3 text-sand-300" />
-                                <span>{{ __('Administrator') }}</span>
-                            </span>
-                            <div class="text-xs text-sand-200">{{ __('Adgangskontrol, CRM, match & fakturering') }}</div>
-                            <div class="text-[11px] text-sand-300 flex items-center gap-1 mt-1 font-mono">
-                                <x-heroicon-s-lock-closed class="w-3 h-3 text-sand-400" />
-                                <span>{{ __('Adgangskode beskyttet') }}:</span>
-                                <span class="tracking-widest">••••••••</span>
-                            </div>
-                        </div>
-                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-navy-800 text-white border border-navy-700 group-hover:bg-brand-action group-hover:border-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
-                    </div>
-
-                    <!-- Client Card -->
-                    <div class="p-4 rounded-xl bg-navy-950 border border-navy-800 flex items-center justify-between hover:border-brand-action transition group">
-                        <div>
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-navy-800 text-sand-100 mb-1 border border-navy-700">
-                                <x-heroicon-s-building-office-2 class="w-3 h-3 text-sand-300" />
-                                <span>{{ __('Virksomhed (Kunde)') }}</span>
-                            </span>
-                            <div class="text-xs text-sand-200">{{ __('Bestil vikarer & godkend timer digitalt') }}</div>
-                            <div class="text-[11px] text-sand-300 flex items-center gap-1 mt-1 font-mono">
-                                <x-heroicon-s-lock-closed class="w-3 h-3 text-sand-400" />
-                                <span>{{ __('Adgangskode beskyttet') }}:</span>
-                                <span class="tracking-widest">••••••••</span>
-                            </div>
-                        </div>
-                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-navy-800 text-white border border-navy-700 group-hover:bg-brand-action group-hover:border-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
-                    </div>
-
-                    <!-- Worker Card -->
-                    <div class="p-4 rounded-xl bg-navy-950 border border-navy-800 flex items-center justify-between hover:border-brand-action transition group">
-                        <div>
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-forest/30 text-forest-100 mb-1 border border-forest/40">
-                                <x-heroicon-s-user class="w-3 h-3 text-forest-100" />
-                                <span>{{ __('Vikar (Arbejdstager)') }}</span>
-                            </span>
-                            <div class="text-xs text-sand-200">{{ __('Vagtplan, QR-tjek ind & lønoversigt') }}</div>
-                            <div class="text-[11px] text-sand-300 flex items-center gap-1 mt-1 font-mono">
-                                <x-heroicon-s-lock-closed class="w-3 h-3 text-sand-400" />
-                                <span>{{ __('Adgangskode beskyttet') }}:</span>
-                                <span class="tracking-widest">••••••••</span>
-                            </div>
-                        </div>
-                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-navy-800 text-white border border-navy-700 group-hover:bg-brand-action group-hover:border-brand-action group-hover:text-white transition">{{ __('Log ind') }}</a>
-                    </div>
-                </div>
-
-                <div class="mt-6 pt-4 border-t border-navy-800 text-center">
-                    <a href="{{ route('login') }}" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold shadow-md transition">
-                        <x-heroicon-o-lock-closed class="w-4 h-4" />
-                        <span>{{ __('Gå til login') }}</span>
-                        <x-heroicon-o-arrow-right class="w-4 h-4" />
+                @else
+                    <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-navy-800 hover:bg-navy-700 border border-navy-600 shadow-sm transition min-h-[48px]">
+                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0" />
+                        <span>{{ __('Tilmeld dig som vikar') }}</span>
                     </a>
+                @endauth
+            </div>
+
+            <!-- Trust reassurance checkmarks -->
+            <div class="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-sand-300">
+                <div class="flex items-center gap-1.5">
+                    <x-heroicon-s-check-circle class="w-4 h-4 text-forest-400 shrink-0" />
+                    <span>{{ __('Ingen binding eller oprettelsesgebyr') }}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <x-heroicon-s-check-circle class="w-4 h-4 text-forest-400 shrink-0" />
+                    <span>{{ __('Akut responstid under 2 timer') }}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <x-heroicon-s-check-circle class="w-4 h-4 text-forest-400 shrink-0" />
+                    <span>{{ __('100% overenskomstsikret') }}</span>
                 </div>
             </div>
-        </div>
 
-        <!-- Live Kitchen Video Status Badge (Mobile & Desktop friendly) -->
-        <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-6 z-20 select-none pointer-events-none">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-950 border border-navy-700 text-xs text-sand-200 shadow-md">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-medium">{{ __('Køkken i aktion') }}</span>
+            <!-- Trust Badges (Centered) -->
+            <div class="mt-10 sm:mt-12 pt-8 sm:pt-10 grid grid-cols-3 gap-4 sm:gap-10 border-t border-navy-800 text-sand-100 max-w-2xl mx-auto w-full">
+                <div>
+                    <div class="flex items-center justify-center gap-1 sm:gap-1.5 text-xl sm:text-3xl font-black text-white">
+                        <x-heroicon-s-star class="w-5 h-5 text-brand-action shrink-0" />
+                        <span>98%</span>
+                    </div>
+                    <div class="text-[11px] sm:text-xs text-sand-300 font-medium mt-1">{{ __('Tilfredse virksomheder') }}</div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-center gap-1 sm:gap-1.5 text-xl sm:text-3xl font-black text-white">
+                        <x-heroicon-s-user-group class="w-5 h-5 text-sand-100 shrink-0" />
+                        <span>{{ $isEn ? '2,500+' : '2.500+' }}</span>
+                    </div>
+                    <div class="text-[11px] sm:text-xs text-sand-300 font-medium mt-1">{{ __('Aktive vikarer i puljen') }}</div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-center gap-1 sm:gap-1.5 text-xl sm:text-3xl font-black text-white">
+                        <x-heroicon-s-clock class="w-5 h-5 text-[#5a9e78] shrink-0" />
+                        <span>{{ $isEn ? '< 2 Hours' : '< 2 timer' }}</span>
+                    </div>
+                    <div class="text-[11px] sm:text-xs text-sand-300 font-medium mt-1">{{ __('Gennemsnitlig responstid') }}</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Hero Background Video Cross-Device Autoplay Engine -->
+    <!-- Styles & Vanilla JS for 3D Headline Flip -->
+    <style>
+        .hero-flip-container {
+            display: inline-block;
+            white-space: nowrap;
+            perspective: 600px;
+            vertical-align: baseline;
+        }
+        .hero-flip-word {
+            display: inline-block;
+            white-space: nowrap;
+            color: #5a9e78;
+            transform-origin: 50% 50%;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            will-change: transform, opacity;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-flip-word {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
     <script>
-        (function () {
-            const video = document.getElementById('heroBgVideo');
-            const heroSection = document.getElementById('heroSection');
-            if (!video) return;
+        (function() {
+            function initHeroFlip() {
+                var headline = document.getElementById('heroHeadline');
+                var flipWord1 = document.getElementById('flipWord1');
+                var flipWord2 = document.getElementById('flipWord2');
 
-            // Strictly enforce muted, inline and infinite loop attributes across iOS/Android/desktop
-            video.muted = true;
-            video.defaultMuted = true;
-            video.playsInline = true;
-            video.loop = true;
-            video.setAttribute('muted', '');
-            video.setAttribute('playsinline', '');
-            video.setAttribute('webkit-playsinline', '');
-            video.setAttribute('x5-playsinline', 'true');
-            video.setAttribute('x5-video-player-type', 'h5-page');
-            video.setAttribute('loop', '');
+                if (!headline || !flipWord1 || !flipWord2) return;
 
-            let isHeroVisible = true;
+                var words1 = [];
+                var words2 = [];
+                try {
+                    words1 = JSON.parse(headline.getAttribute('data-words1') || '[]');
+                    words2 = JSON.parse(headline.getAttribute('data-words2') || '[]');
+                } catch(e) {
+                    return;
+                }
 
-            function startInfinitePlayback() {
-                if (!isHeroVisible) return;
-                video.muted = true;
-                video.loop = true;
-                const playPromise = video.play();
+                if (!words1.length || words1.length !== words2.length) return;
 
-                if (playPromise !== undefined) {
-                    playPromise.catch(function () {
-                        // iOS Low Power Mode or browser policy deferral:
-                        // Trigger immediate play on any micro-gesture anywhere on screen
-                        const unlock = function () {
-                            video.muted = true;
-                            video.play().catch(function () {});
-                        };
-                        ['click', 'touchstart', 'touchend', 'scroll', 'keydown', 'pointerdown'].forEach(function (evt) {
-                            window.addEventListener(evt, unlock, { once: true, passive: true });
-                        });
-                    });
+                var currentIndex = 0;
+                var isAnimating = false;
+                var timer = null;
+
+                var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                function setWordDirect(index) {
+                    currentIndex = index;
+                    flipWord1.textContent = words1[index];
+                    flipWord2.textContent = words2[index];
+                }
+
+                function animateFlip(nextIndex) {
+                    if (isAnimating) return;
+                    if (prefersReducedMotion) {
+                        setWordDirect(nextIndex);
+                        return;
+                    }
+
+                    isAnimating = true;
+
+                    // Phase 1: rotateX 0 to -90deg, fade out, 0.38s
+                    var outTransition = 'transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.38s ease';
+                    flipWord1.style.transition = outTransition;
+                    flipWord2.style.transition = outTransition;
+                    flipWord1.style.transform = 'perspective(600px) rotateX(-90deg)';
+                    flipWord2.style.transform = 'perspective(600px) rotateX(-90deg)';
+                    flipWord1.style.opacity = '0';
+                    flipWord2.style.opacity = '0';
+
+                    setTimeout(function() {
+                        currentIndex = nextIndex;
+                        flipWord1.textContent = words1[nextIndex];
+                        flipWord2.textContent = words2[nextIndex];
+
+                        // Prepare rotate-in from 90deg (instant, no transition)
+                        flipWord1.style.transition = 'none';
+                        flipWord2.style.transition = 'none';
+                        flipWord1.style.transform = 'perspective(600px) rotateX(90deg)';
+                        flipWord2.style.transform = 'perspective(600px) rotateX(90deg)';
+                        flipWord1.style.opacity = '0';
+                        flipWord2.style.opacity = '0';
+
+                        // Force DOM reflow
+                        void flipWord1.offsetWidth;
+
+                        // Phase 2: rotateX 90deg to 0, fade in, 0.38s
+                        var inTransition = 'transform 0.38s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.38s ease-out';
+                        flipWord1.style.transition = inTransition;
+                        flipWord2.style.transition = inTransition;
+                        flipWord1.style.transform = 'perspective(600px) rotateX(0deg)';
+                        flipWord2.style.transform = 'perspective(600px) rotateX(0deg)';
+                        flipWord1.style.opacity = '1';
+                        flipWord2.style.opacity = '1';
+
+                        setTimeout(function() {
+                            isAnimating = false;
+                        }, 380);
+                    }, 380);
+                }
+
+                // Auto-rotation every 2.5 seconds (unless prefers-reduced-motion)
+                if (!prefersReducedMotion) {
+                    timer = setInterval(function() {
+                        var nextIndex = (currentIndex + 1) % words1.length;
+                        animateFlip(nextIndex);
+                    }, 2500);
                 }
             }
-
-            // Continuous playback recovery on mobile & desktop
-            video.addEventListener('pause', function () {
-                if (isHeroVisible) {
-                    setTimeout(function () {
-                        if (video.paused && isHeroVisible) {
-                            video.play().catch(function () {});
-                        }
-                    }, 100);
-                }
-            });
-
-            // Ensure infinite loop without stalling on the last frame
-            video.addEventListener('ended', function () {
-                video.currentTime = 0;
-                startInfinitePlayback();
-            });
-
-            video.addEventListener('loadeddata', startInfinitePlayback);
-            video.addEventListener('canplay', startInfinitePlayback);
-
-            // Visibility change (tab switch, app switch, screen lock/unlock)
-            document.addEventListener('visibilitychange', function () {
-                if (!document.hidden && isHeroVisible && video.paused) {
-                    startInfinitePlayback();
-                }
-            });
-
-            // iOS Safari bfcache (back/forward navigation)
-            window.addEventListener('pageshow', function () {
-                if (isHeroVisible && video.paused) {
-                    startInfinitePlayback();
-                }
-            });
-
-            // Focus and orientation change on mobile phones and tablets
-            window.addEventListener('focus', function () {
-                if (isHeroVisible && video.paused) {
-                    startInfinitePlayback();
-                }
-            });
-            window.addEventListener('orientationchange', function () {
-                setTimeout(startInfinitePlayback, 200);
-            });
-
-            // Battery & Performance Optimization:
-            // When hero section scrolls off-screen on mobile, pause to save battery; resume when visible
-            if ('IntersectionObserver' in window && heroSection) {
-                const observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        isHeroVisible = entry.isIntersecting;
-                        if (isHeroVisible) {
-                            startInfinitePlayback();
-                        } else if (!video.paused) {
-                            video.pause();
-                        }
-                    });
-                }, { threshold: 0.1 });
-                observer.observe(heroSection);
-            }
-
-            // Immediate execution across page load lifecycle
-            startInfinitePlayback();
 
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', startInfinitePlayback);
+                document.addEventListener('DOMContentLoaded', initHeroFlip);
+            } else {
+                initHeroFlip();
             }
-            window.addEventListener('load', startInfinitePlayback);
         })();
     </script>
-
-    <!-- 3 Core Services (Page Background: Warm Off-White #F7F6F2, Surfaces: Pure White #FFFFFF) -->
-    <section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-xs font-bold text-brand-action uppercase tracking-widest flex items-center justify-center gap-1.5">
-                <x-heroicon-o-sparkles class="w-4 h-4 text-brand-action" />
-                <span>{{ __('Vores Bemandingsløsninger') }}</span>
-            </h2>
-            <p class="mt-2 text-3xl sm:text-4xl font-extrabold text-brand-secondary tracking-tight">{{ __('Vikarer til alle behov') }}</p>
-            <p class="mt-4 text-base text-brand-body">{{ __('Hvad enten du mangler en opvasker i aften eller 10 lagermedarbejdere i tre måneder, har vi den rette løsning.') }}</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- 1. Vikardækning -->
-            <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-secondary transition-all group">
-                <div class="w-14 h-14 rounded-xl bg-action-50 text-brand-action flex items-center justify-center font-black text-xl mb-6 group-hover:scale-110 transition-transform">
-                    <x-heroicon-o-clock class="w-7 h-7 text-brand-action" />
-                </div>
-                <h3 class="text-xl font-bold text-brand-secondary mb-3">{{ __('Akut og kortvarig vikardækning') }}</h3>
-                <p class="text-sm text-brand-body leading-relaxed mb-6">
-                    {{ __('Dækning fra dag til dag ved akut sygdom, ferie eller uventet spidsbelastning. Vores vikarer er klar med få timers varsel.') }}
-                </p>
-                <ul class="text-xs text-brand-body space-y-2.5 border-t border-brand-border pt-4">
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Under 2 timer') }} {{ __('responstid') }}</span>
-                    </li>
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Digital time- & QR-registrering') }}</span>
-                    </li>
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Overenskomstmæssige vilkår') }}</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 2. Deltidspersonale -->
-            <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-secondary transition-all group">
-                <div class="w-14 h-14 rounded-xl bg-navy-50 text-brand-secondary flex items-center justify-center font-black text-xl mb-6 group-hover:scale-110 transition-transform">
-                    <x-heroicon-o-calendar-days class="w-7 h-7 text-brand-secondary" />
-                </div>
-                <h3 class="text-xl font-bold text-brand-secondary mb-3">{{ __('Længerevarende vikariater') }}</h3>
-                <p class="text-sm text-brand-body leading-relaxed mb-6">
-                    {{ __('Stabile vikarer til projekter, barselsvikariater eller sæsonarbejde af ugers eller måneders varighed.') }}
-                </p>
-                <ul class="text-xs text-brand-body space-y-2.5 border-t border-brand-border pt-4">
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Gennemtestede vikarer') }}</span>
-                    </li>
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Ensartet høj kvalitet') }}</span>
-                    </li>
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Månedlig samlet fakturering') }}</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 3. Rekruttering / Fastansættelse -->
-            <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-secondary transition-all group">
-                <div class="w-14 h-14 rounded-xl bg-forest-50 text-forest flex items-center justify-center font-black text-xl mb-6 group-hover:scale-110 transition-transform">
-                    <x-heroicon-o-user-group class="w-7 h-7 text-forest" />
-                </div>
-                <h3 class="text-xl font-bold text-brand-secondary mb-3">{{ __('Fast rekruttering & Try & Hire') }}</h3>
-                <p class="text-sm text-brand-body leading-relaxed mb-6">
-                    {{ __('Afprøv en medarbejder i en vikarperiode før fastansættelse. Minimer ansættelsesrisikoen og find det perfekte match.') }}
-                </p>
-                <ul class="text-xs text-brand-body space-y-2.5 border-t border-brand-border pt-4">
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Minimer ansættelsesrisiko') }}</span>
-                    </li>
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Screenede kandidater med referencer') }}</span>
-                    </li>
-                    <li class="flex items-center gap-2 font-medium">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Fuld digital kontraktstyring') }}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
     <!-- Why Choose FreyaService Section (Comprehensive Makeover: Premium, Structured & Trust-Building) -->
     <section id="why-choose" class="py-24 bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg border-y border-brand-border relative overflow-hidden">
@@ -587,10 +474,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-action/10 border border-brand-action/30 text-brand-action text-xs font-bold mb-4 shadow-xs">
-                    <x-heroicon-o-shield-check class="w-4 h-4 text-brand-action" />
-                    <span>{{ __('Vores Værdier & Fordele') }}</span>
-                </div>
+                <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-3">{{ __('Vores Værdier & Fordele') }}</div>
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-secondary tracking-tight">
                     {{ __('Hvorfor vælge FreyaService?') }}
                 </h2>
@@ -604,13 +488,8 @@
                 <!-- 1. Akut Udrykning -->
                 <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-14 h-14 rounded-2xl bg-action-50 text-brand-action flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                <x-heroicon-o-bolt class="w-7 h-7 text-brand-action" />
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-action-50 text-brand-action border border-brand-action/20">
-                                {{ __('Under 2 timer') }}
-                            </span>
+                        <div class="w-14 h-14 rounded-2xl bg-action-50 text-brand-action flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
+                            <x-heroicon-o-bolt class="w-7 h-7 text-brand-action" />
                         </div>
                         <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-action transition-colors">
                             {{ __('Akut vikardækning døgnet rundt') }}
@@ -628,13 +507,8 @@
                 <!-- 2. Gennemtestede vikarer -->
                 <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-secondary/40 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-14 h-14 rounded-2xl bg-navy-50 text-brand-secondary flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                <x-heroicon-o-shield-check class="w-7 h-7 text-brand-secondary" />
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-navy-50 text-brand-secondary border border-brand-secondary/20">
-                                {{ __('100% Screenet') }}
-                            </span>
+                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-brand-secondary flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
+                            <x-heroicon-o-shield-check class="w-7 h-7 text-brand-secondary" />
                         </div>
                         <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-secondary transition-colors">
                             {{ __('Gennemtestede vikarer') }}
@@ -652,13 +526,8 @@
                 <!-- 3. Digital time- & QR-registrering -->
                 <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-forest/40 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-14 h-14 rounded-2xl bg-forest-50 text-forest flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                <x-heroicon-o-qr-code class="w-7 h-7 text-forest" />
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-forest-50 text-forest border border-forest/20">
-                                {{ __('Digital & Præcis') }}
-                            </span>
+                        <div class="w-14 h-14 rounded-2xl bg-forest-50 text-forest flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
+                            <x-heroicon-o-qr-code class="w-7 h-7 text-forest" />
                         </div>
                         <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-forest transition-colors">
                             {{ __('Digital time- & QR-registrering') }}
@@ -676,13 +545,8 @@
                 <!-- 4. Overenskomstmæssige vilkår -->
                 <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-secondary/40 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-14 h-14 rounded-2xl bg-navy-50 text-brand-secondary flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                <x-heroicon-o-document-check class="w-7 h-7 text-brand-secondary" />
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-navy-50 text-brand-secondary border border-brand-secondary/20">
-                                {{ __('Ordnede Forhold') }}
-                            </span>
+                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-brand-secondary flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
+                            <x-heroicon-o-document-check class="w-7 h-7 text-brand-secondary" />
                         </div>
                         <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-secondary transition-colors">
                             {{ __('Overenskomstmæssige vilkår') }}
@@ -700,13 +564,8 @@
                 <!-- 5. Fast kontaktperson & Ingen binding -->
                 <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-14 h-14 rounded-2xl bg-action-50 text-brand-action flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                <x-heroicon-o-user-group class="w-7 h-7 text-brand-action" />
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-action-50 text-brand-action border border-brand-action/20">
-                                {{ __('Personlig Service') }}
-                            </span>
+                        <div class="w-14 h-14 rounded-2xl bg-action-50 text-brand-action flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
+                            <x-heroicon-o-user-group class="w-7 h-7 text-brand-action" />
                         </div>
                         <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-action transition-colors">
                             {{ __('Fast kontaktperson & Ingen binding') }}
@@ -724,13 +583,8 @@
                 <!-- 6. Sikkerhed & Gennemskuelig Fakturering -->
                 <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-forest/40 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-14 h-14 rounded-2xl bg-forest-50 text-forest flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                <x-heroicon-o-lock-closed class="w-7 h-7 text-forest" />
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-forest-50 text-forest border border-forest/20">
-                                {{ __('GDPR & Sikkerhed') }}
-                            </span>
+                        <div class="w-14 h-14 rounded-2xl bg-forest-50 text-forest flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
+                            <x-heroicon-o-lock-closed class="w-7 h-7 text-forest" />
                         </div>
                         <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-forest transition-colors">
                             {{ __('Sikkerhed & Gennemskuelig Fakturering') }}
@@ -864,7 +718,7 @@
                     <x-heroicon-s-phone class="w-4 h-4 text-white" />
                     <span>{{ __('Ring +45 70 20 30 40') }}</span>
                 </a>
-                <a href="{{ route('register') }}" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-secondary text-white font-bold text-sm hover:bg-navy-800 transition">
+                <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-secondary text-white font-bold text-sm hover:bg-navy-800 transition">
                     <x-heroicon-o-building-office class="w-4 h-4" />
                     <span>{{ __('Opret virksomhedskonto') }}</span>
                 </a>
@@ -890,7 +744,7 @@
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Virksomheder') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Bestil Vikar') }}</a></li>
+                    <li><a href="{{ route('register', ['role' => 'client']) }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Bestil Vikar') }}</a></li>
                     <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Timesedler') }}</a></li>
                     <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Fakturaer') }}</a></li>
                 </ul>
@@ -899,7 +753,7 @@
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Vikarer') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('register') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Tilmeld dig som vikar') }}</a></li>
+                    <li><a href="{{ route('register', ['role' => 'worker']) }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Tilmeld dig som vikar') }}</a></li>
                     <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Ledige Vagter') }}</a></li>
                     <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('QR Tjek-ind') }}</a></li>
                 </ul>

@@ -2,10 +2,10 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">{{ __('Bestil Vikar / Personale') }}</h1>
-                <p class="text-xs text-slate-500 mt-0.5">{{ __('Udfyld formularen herunder for at rekvirere personale fra FreyaService.') }}</p>
+                <h1 class="text-xl sm:text-2xl font-black text-brand-secondary tracking-tight">{{ __('Bestil Vikar / Personale') }}</h1>
+                <p class="text-xs text-brand-muted mt-0.5">{{ __('Udfyld formularen herunder for at rekvirere personale fra FreyaService.') }}</p>
             </div>
-            <a href="{{ route('client.dashboard') }}" class="inline-flex items-center text-xs font-bold text-slate-600 hover:text-slate-900 gap-1">
+            <a href="{{ route('client.dashboard') }}" class="inline-flex items-center text-xs font-bold text-brand-muted hover:text-brand-secondary gap-1 transition">
                 <span>&larr; {{ __('Tilbage til dashboard') }}</span>
             </a>
         </div>
@@ -16,52 +16,52 @@
         isUrgent: {{ old('is_urgent') ? 'true' : 'false' }}
     }" class="py-6 sm:py-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <form method="POST" action="{{ route('client.requests.store') }}" class="space-y-6 sm:space-y-8 bg-white p-4 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+        <form method="POST" action="{{ route('client.requests.store') }}" class="space-y-6 sm:space-y-8 bg-brand-surface p-5 sm:p-8 rounded-2xl border border-brand-border shadow-sm">
             @csrf
 
             <!-- 1. Request Type Selector -->
             <div>
-                <label class="block text-sm font-bold text-slate-900 mb-3">{{ __('1. Vælg type af bemanding') }}</label>
+                <label class="block text-sm font-bold text-brand-secondary mb-3">{{ __('1. Vælg type af bemanding') }}</label>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <!-- Temporary -->
                     <label @click="type = 'temporary_cover'"
-                        :class="type === 'temporary_cover' ? 'border-indigo-600 bg-indigo-50/50 ring-2 ring-indigo-600/20' : 'border-slate-200 hover:border-slate-300'"
+                        :class="type === 'temporary_cover' ? 'border-brand-action bg-action-50/60 ring-2 ring-brand-action/20 shadow-xs' : 'border-brand-border bg-brand-surface hover:border-brand-secondary/40'"
                         class="p-4 rounded-xl border cursor-pointer transition flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-2">
-                            <input type="radio" name="request_type" value="temporary_cover" x-model="type" class="text-indigo-600 focus:ring-indigo-500">
+                            <input type="radio" name="request_type" value="temporary_cover" x-model="type" class="text-brand-action focus:ring-brand-action">
                             <span class="text-lg">⏱️</span>
                         </div>
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">{{ __('Akut / Midlertidig Vikar') }}</div>
-                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">{{ __('Tilkaldevikarer til timer, enkelte dage eller uger ved sygdom eller spidsbelastning.') }}</div>
+                            <div class="font-bold text-brand-secondary text-sm">{{ __('Akut / Midlertidig Vikar') }}</div>
+                            <div class="text-[11px] text-brand-muted mt-1 leading-normal">{{ __('Tilkaldevikarer til timer, enkelte dage eller uger ved sygdom eller spidsbelastning.') }}</div>
                         </div>
                     </label>
 
                     <!-- Part-time -->
                     <label @click="type = 'part_time'"
-                        :class="type === 'part_time' ? 'border-indigo-600 bg-indigo-50/50 ring-2 ring-indigo-600/20' : 'border-slate-200 hover:border-slate-300'"
+                        :class="type === 'part_time' ? 'border-brand-action bg-action-50/60 ring-2 ring-brand-action/20 shadow-xs' : 'border-brand-border bg-brand-surface hover:border-brand-secondary/40'"
                         class="p-4 rounded-xl border cursor-pointer transition flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-2">
-                            <input type="radio" name="request_type" value="part_time" x-model="type" class="text-indigo-600 focus:ring-indigo-500">
+                            <input type="radio" name="request_type" value="part_time" x-model="type" class="text-brand-action focus:ring-brand-action">
                             <span class="text-lg">📅</span>
                         </div>
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">{{ __('Fast Deltidspersonale') }}</div>
-                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">{{ __('Faste ugentlige vagter eller weekender på en løbende aftale.') }}</div>
+                            <div class="font-bold text-brand-secondary text-sm">{{ __('Fast Deltidspersonale') }}</div>
+                            <div class="text-[11px] text-brand-muted mt-1 leading-normal">{{ __('Faste ugentlige vagter eller weekender på en løbende aftale.') }}</div>
                         </div>
                     </label>
 
                     <!-- Full-time -->
                     <label @click="type = 'full_time'"
-                        :class="type === 'full_time' ? 'border-indigo-600 bg-indigo-50/50 ring-2 ring-indigo-600/20' : 'border-slate-200 hover:border-slate-300'"
+                        :class="type === 'full_time' ? 'border-brand-action bg-action-50/60 ring-2 ring-brand-action/20 shadow-xs' : 'border-brand-border bg-brand-surface hover:border-brand-secondary/40'"
                         class="p-4 rounded-xl border cursor-pointer transition flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-2">
-                            <input type="radio" name="request_type" value="full_time" x-model="type" class="text-indigo-600 focus:ring-indigo-500">
+                            <input type="radio" name="request_type" value="full_time" x-model="type" class="text-brand-action focus:ring-brand-action">
                             <span class="text-lg">🤝</span>
                         </div>
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">{{ __('Fuldtid / Rekruttering') }}</div>
-                            <div class="text-[11px] text-slate-500 mt-1 leading-normal">{{ __('Langtidsplacering eller Try & Hire med henblik på fastansættelse.') }}</div>
+                            <div class="font-bold text-brand-secondary text-sm">{{ __('Fuldtid / Rekruttering') }}</div>
+                            <div class="text-[11px] text-brand-muted mt-1 leading-normal">{{ __('Langtidsplacering eller Try & Hire med henblik på fastansættelse.') }}</div>
                         </div>
                     </label>
                 </div>
@@ -69,8 +69,8 @@
             </div>
 
             <!-- 2. Role, Workers Needed & Reason -->
-            <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">{{ __('2. Stillingsbetegnelse og antal') }}</label>
+            <div class="pt-6 border-t border-brand-border space-y-4">
+                <label class="block text-sm font-bold text-brand-secondary">{{ __('2. Stillingsbetegnelse og antal') }}</label>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="sm:col-span-2">
@@ -88,7 +88,7 @@
 
                 <div>
                     <x-input-label for="reason" :value="__('Årsag til forespørgsel')" />
-                    <select id="reason" name="reason" class="mt-1 block w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                    <select id="reason" name="reason" class="mt-1 block w-full rounded-xl border-brand-border bg-brand-surface shadow-xs focus:border-brand-secondary focus:ring-brand-secondary text-sm text-brand-body">
                         <option value="absence" {{ old('reason') === 'absence' ? 'selected' : '' }}>{{ __('Sygdom / Ferie blandt egne medarbejdere') }}</option>
                         <option value="peak" {{ old('reason') === 'peak' ? 'selected' : '' }}>{{ __('Spidsbelastning / Sæsonpeak / Stort arrangement') }}</option>
                         <option value="permanent_need" {{ old('reason') === 'permanent_need' ? 'selected' : '' }}>{{ __('Permanent behov / Afprøvning forud for fastansættelse') }}</option>
@@ -98,8 +98,8 @@
             </div>
 
             <!-- 3. Work Location -->
-            <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">{{ __('3. Arbejdslokation') }}</label>
+            <div class="pt-6 border-t border-brand-border space-y-4">
+                <label class="block text-sm font-bold text-brand-secondary">{{ __('3. Arbejdslokation') }}</label>
 
                 <div>
                     <x-input-label for="location" :value="__('Adresse / Afdeling')" />
@@ -122,8 +122,8 @@
             </div>
 
             <!-- 4. Schedule & Dates -->
-            <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">{{ __('4. Tidsplan og arbejdstider') }}</label>
+            <div class="pt-6 border-t border-brand-border space-y-4">
+                <label class="block text-sm font-bold text-brand-secondary">{{ __('4. Tidsplan og arbejdstider') }}</label>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -157,12 +157,12 @@
                     </div>
 
                     <div>
-                        <span class="block text-xs font-semibold text-slate-700 mb-2">{{ __('Faste ugedage') }}</span>
+                        <span class="block text-xs font-semibold text-brand-secondary mb-2 uppercase">{{ __('Faste ugedage') }}</span>
                         <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 text-xs">
                             @foreach([1=>__('Man'), 2=>__('Tir'), 3=>__('Ons'), 4=>__('Tor'), 5=>__('Fre'), 6=>__('Lør'), 0=>__('Søn')] as $dayKey => $dayName)
-                                <label class="p-2.5 rounded-lg border border-slate-200 text-center cursor-pointer hover:bg-slate-50 flex flex-col items-center gap-1">
-                                    <input type="checkbox" name="recurring_days[]" value="{{ $dayKey }}" class="rounded text-indigo-600 focus:ring-indigo-500">
-                                    <span>{{ $dayName }}</span>
+                                <label class="p-2.5 rounded-xl border border-brand-border bg-brand-surface text-center cursor-pointer hover:bg-brand-bg transition flex flex-col items-center gap-1">
+                                    <input type="checkbox" name="recurring_days[]" value="{{ $dayKey }}" class="rounded border-brand-border text-brand-action focus:ring-brand-action">
+                                    <span class="font-medium text-brand-secondary">{{ $dayName }}</span>
                                 </label>
                             @endforeach
                         </div>
@@ -171,8 +171,8 @@
             </div>
 
             <!-- 5. Uniform, Instructions, and Preferred Worker -->
-            <div class="pt-6 border-t border-slate-200 space-y-4">
-                <label class="block text-sm font-bold text-slate-900">{{ __('5. Yderligere detaljer og instruktioner') }}</label>
+            <div class="pt-6 border-t border-brand-border space-y-4">
+                <label class="block text-sm font-bold text-brand-secondary">{{ __('5. Yderligere detaljer og instruktioner') }}</label>
 
                 <div>
                     <x-input-label for="dress_code" :value="__('Dresscode / Arbejdstøj')" />
@@ -181,13 +181,13 @@
 
                 <div>
                     <x-input-label for="instructions" :value="__('Særlige instrukser eller adgangsforhold')" />
-                    <textarea id="instructions" name="instructions" rows="3" class="w-full text-xs rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500" placeholder="{{ __('F.eks. Henvendelse i vareindleveringen bag bygningen, kontakt Thomas ved ankomst...') }}">{{ old('instructions') }}</textarea>
+                    <textarea id="instructions" name="instructions" rows="3" class="w-full text-sm rounded-xl border-brand-border bg-brand-surface text-brand-body focus:border-brand-secondary focus:ring-brand-secondary placeholder:text-brand-muted" placeholder="{{ __('F.eks. Henvendelse i vareindleveringen bag bygningen, kontakt Thomas ved ankomst...') }}">{{ old('instructions') }}</textarea>
                 </div>
 
                 <!-- Favourite Worker Selector -->
                 <div>
                     <x-input-label for="preferred_worker_id" :value="__('Foretrukken vikar (valgfrit)')" />
-                    <select id="preferred_worker_id" name="preferred_worker_id" class="mt-1 block w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                    <select id="preferred_worker_id" name="preferred_worker_id" class="mt-1 block w-full rounded-xl border-brand-border bg-brand-surface shadow-xs focus:border-brand-secondary focus:ring-brand-secondary text-sm text-brand-body">
                         <option value="">{{ __('Ingen specifik vikar (FreyaService finder bedste match)') }}</option>
                         @foreach($favouriteWorkers as $fav)
                             <option value="{{ $fav->id }}" {{ old('preferred_worker_id') == $fav->id ? 'selected' : '' }}>
@@ -199,14 +199,15 @@
             </div>
 
             <!-- 6. Urgent Flag -->
-            <div class="pt-6 border-t border-slate-200">
-                <label class="flex items-start gap-3 p-4 rounded-xl border border-rose-200 bg-rose-50/50 cursor-pointer">
-                    <input type="checkbox" name="is_urgent" value="1" x-model="isUrgent" class="mt-1 rounded text-rose-600 focus:ring-rose-500">
+            <div class="pt-6 border-t border-brand-border">
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-brick-200 bg-brick-50/60 hover:bg-brick-50 transition cursor-pointer">
+                    <input type="checkbox" name="is_urgent" value="1" x-model="isUrgent" class="mt-1 rounded border-brick-300 text-brick-600 focus:ring-brick-500">
                     <div>
-                        <span class="text-sm font-bold text-rose-900 flex items-center gap-1.5">
-                            <span>⚡ {{ __('Akut behov (Udrykning inden for få timer)') }}</span>
+                        <span class="text-sm font-bold text-brand-secondary flex items-center gap-1.5">
+                            <span class="text-brick-600">⚡</span>
+                            <span>{{ __('Akut behov (Udrykning inden for få timer)') }}</span>
                         </span>
-                        <p class="text-xs text-rose-700 mt-0.5">
+                        <p class="text-xs text-brick-700/90 mt-0.5 leading-relaxed">
                             {{ __('Aktiver dette hvis du har brug for øjeblikkelig vikardækning. FreyaServices vagttelefon og vagtkoordinator prioriterer din ordre med højeste hastighed.') }}
                         </p>
                     </div>
@@ -214,11 +215,11 @@
             </div>
 
             <!-- Submit Buttons -->
-            <div class="pt-6 border-t border-slate-200 flex flex-col-reverse sm:flex-row items-center justify-end gap-3">
-                <a href="{{ route('client.dashboard') }}" class="w-full sm:w-auto text-center px-5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition min-h-[44px] flex items-center justify-center">
+            <div class="pt-6 border-t border-brand-border flex flex-col-reverse sm:flex-row items-center justify-end gap-3">
+                <a href="{{ route('client.dashboard') }}" class="w-full sm:w-auto text-center px-5 py-3 rounded-xl text-sm font-semibold text-brand-muted hover:text-brand-secondary hover:bg-brand-bg transition min-h-[44px] flex items-center justify-center">
                     {{ __('Annuller') }}
                 </a>
-                <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition transform hover:-translate-y-0.5 min-h-[44px] flex items-center justify-center">
+                <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white font-extrabold text-sm shadow-lg shadow-brand-action/30 transition transform hover:-translate-y-0.5 min-h-[44px] flex items-center justify-center cursor-pointer">
                     {{ __('Send Forespørgsel') }} &rarr;
                 </button>
             </div>

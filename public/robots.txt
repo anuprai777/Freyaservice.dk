@@ -1,2 +1,35 @@
+# robots.txt for FreyaService (freyaservice.dk)
+# Documentation: https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
-Disallow:
+Allow: /
+Allow: /services
+Allow: /industries
+Allow: /how-it-works
+Allow: /contact
+Allow: /build/
+Allow: /images/
+
+# Disallow private user portals and admin backoffice
+Disallow: /admin
+Disallow: /admin/
+Disallow: /client
+Disallow: /client/
+Disallow: /worker
+Disallow: /worker/
+Disallow: /dashboard
+
+# Disallow authentication, profile and utility routes
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /verify-email
+Disallow: /confirm-password
+Disallow: /profile
+Disallow: /gdpr
+Disallow: /gdpr/
+Disallow: /locale/
+
+# Sitemap location
+Sitemap: https://freyaservice.dk/sitemap.xml
