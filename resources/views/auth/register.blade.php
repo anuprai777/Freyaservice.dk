@@ -48,7 +48,7 @@
                 </div>
                 <div>
                     <x-input-label for="phone" :value="__('Telefonnummer (dansk format)')" />
-                    <x-text-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" placeholder="+45 12 34 56 78" required />
+                    <x-text-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" placeholder="+45 12 34 56 78" required autocomplete="tel" />
                     <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                 </div>
             </div>
@@ -75,18 +75,18 @@
 
                 <div>
                     <x-input-label for="address" :value="__('Adresse')" />
-                    <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" placeholder="Gadenavn og nummer" />
+                    <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" placeholder="Gadenavn og nummer" autocomplete="street-address" />
                     <x-input-error :messages="$errors->get('address')" class="mt-2" />
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="postcode_client" :value="__('Postnummer')" />
-                        <x-text-input id="postcode_client" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 1620" />
+                        <x-text-input id="postcode_client" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 1620" autocomplete="postal-code" />
                     </div>
                     <div>
                         <x-input-label for="city_client" :value="__('By')" />
-                        <x-text-input id="city_client" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København V" />
+                        <x-text-input id="city_client" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København V" autocomplete="address-level2" />
                     </div>
                 </div>
             </div>
@@ -101,11 +101,11 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="postcode_worker" :value="__('Dit Postnummer')" />
-                        <x-text-input id="postcode_worker" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 2100" />
+                        <x-text-input id="postcode_worker" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 2100" autocomplete="postal-code" />
                     </div>
                     <div>
                         <x-input-label for="city_worker" :value="__('Din By')" />
-                        <x-text-input id="city_worker" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København Ø" />
+                        <x-text-input id="city_worker" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København Ø" autocomplete="address-level2" />
                     </div>
                 </div>
 

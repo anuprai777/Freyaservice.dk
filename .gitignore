@@ -26,3 +26,5 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
