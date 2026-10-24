@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                 'name'            => 'Freya Admin',
                 'email'           => $email,
                 'password'        => 'temp',
-                'phone'           => '+45 70 20 30 40',
+                'phone'           => '+45 28 26 09 26',
                 'locale'          => 'da',
                 'gdpr_consent_at' => now(),
                 'is_active'       => true,

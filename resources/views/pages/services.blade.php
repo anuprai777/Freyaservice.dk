@@ -109,7 +109,7 @@
             <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white font-bold text-base shadow-lg shadow-brand-action/30 transition transform hover:-translate-y-0.5">
                 <x-heroicon-o-briefcase class="w-5 h-5" /><span>{{ __('Bestil vikar nu') }}</span><x-heroicon-o-arrow-right class="w-5 h-5" />
             </a>
-            <p class="text-xs text-brand-muted mt-3">{{ __('Ring +45 70 20 30 40') }} — {{ __('Akut vagttelefon') }}</p>
+            <p class="text-xs text-brand-muted mt-3">{{ __('Ring +45 28 26 09 26') }} — {{ __('Akut vagttelefon') }}</p>
         </div>
     </section>
 </x-public-layout>

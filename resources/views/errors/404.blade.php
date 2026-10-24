@@ -50,7 +50,7 @@
                 <span class="hidden md:inline text-navy-700">•</span>
                 <span class="flex items-center gap-1">
                     <x-heroicon-o-phone class="w-3.5 h-3.5 text-brand-action" />
-                    <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4570203040" class="text-white hover:text-brand-action font-semibold">+45 70 20 30 40</a></span>
+                    <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4528260926" class="text-white hover:text-brand-action font-semibold">+45 28 26 09 26</a></span>
                 </span>
             </div>
             <div class="flex items-center gap-1 text-xs font-medium" role="group">
@@ -123,8 +123,8 @@
                         <p class="text-xs text-brand-muted mt-1 leading-relaxed">
                             {{ __('Vores vagttelefon er åben 24/7 med vikarer klar med kort varsel.') }}
                         </p>
-                        <a href="tel:+4570203040" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:underline mt-2">
-                            <span>+45 70 20 30 40</span>
+                        <a href="tel:+4528260926" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:underline mt-2">
+                            <span>+45 28 26 09 26</span>
                             <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
                         </a>
                     </div>

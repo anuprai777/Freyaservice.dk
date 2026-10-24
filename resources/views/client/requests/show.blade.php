@@ -202,8 +202,8 @@
                         {{ __('Har du brug for akutte ændringer eller ekstra mandskab på denne ordre?') }}
                     </p>
                     <div class="pt-2">
-                        <a href="tel:+4570203040" class="inline-block font-bold text-indigo-700 hover:text-indigo-900">
-                            {{ __('Ring direkte:') }} +45 70 20 30 40
+                        <a href="tel:+4528260926" class="inline-block font-bold text-indigo-700 hover:text-indigo-900">
+                            {{ __('Ring direkte:') }} +45 28 26 09 26
                         </a>
                     </div>
                 </div>

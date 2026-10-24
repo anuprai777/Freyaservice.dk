@@ -122,6 +122,8 @@ Route::middleware(['auth', 'role:worker'])->prefix('worker')->name('worker.')->g
     Route::get('/offers', [WorkerOfferController::class, 'index'])->name('offers.index');
     Route::post('/offers/{assignment}/accept', [WorkerOfferController::class, 'accept'])->name('offers.accept');
     Route::post('/offers/{assignment}/decline', [WorkerOfferController::class, 'decline'])->name('offers.decline');
+    Route::post('/offers/requests/{staffRequest}/claim', [WorkerOfferController::class, 'claim'])->name('offers.claim');
+    Route::post('/offers/shifts/{shift}/claim', [WorkerOfferController::class, 'claimShift'])->name('offers.claim-shift');
 
     // QR Clock-In & Out
     Route::get('/shifts/scan', [WorkerClockInOutController::class, 'scan'])->name('shifts.scan');

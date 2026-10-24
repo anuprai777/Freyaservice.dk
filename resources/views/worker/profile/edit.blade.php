@@ -19,6 +19,20 @@
             </div>
         @endif
 
+        <!-- Quick Access to Client Shifts -->
+        <div class="p-4 rounded-2xl bg-brand-surface border border-brand-action/30 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">💼</span>
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900">{{ __('Er du til rådighed for vagter?') }}</h3>
+                    <p class="text-xs text-slate-500">{{ __('Kunder uploader løbende nye bemandingsforespørgsler på platformen.') }}</p>
+                </div>
+            </div>
+            <a href="{{ route('worker.offers.index') }}" class="px-4 py-2 rounded-xl text-xs font-bold bg-brand-action hover:bg-brand-action-hover text-white shadow-xs transition shrink-0">
+                {{ __('Se alle ledige vagter') }} &rarr;
+            </a>
+        </div>
+
         <form method="POST" action="{{ route('worker.profile.update') }}" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
             @csrf
             @method('PUT')

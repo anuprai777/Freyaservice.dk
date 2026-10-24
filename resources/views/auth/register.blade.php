@@ -206,7 +206,7 @@
                     <p><strong>2. {{ __('Sikkerhed') }}:</strong> {{ __('Alle bankoplysninger og personfølsomme data krypteres med AES-256 for optimal datasikkerhed.') }}</p>
                     <p><strong>3. {{ __('Formål') }}:</strong> {{ __('Oplysningerne anvendes udelukkende til administration af vikariater, vagtplanlægning, QR-tidsregistrering og lovpligtig afregning.') }}</p>
                     <p><strong>4. {{ __('Dine rettigheder') }}:</strong> {{ __('Du har til enhver tid ret til indsigt i dine personoplysninger, dataeksport samt sletning ("retten til at blive glemt") jf. gældende EU GDPR-lovgivning.') }}</p>
-                    <p><strong>5. {{ __('Spørgsmål') }}:</strong> {{ __('Kontakt os på') }} <a href="mailto:info@freyaservice.dk" class="text-brand-action underline font-semibold">info@freyaservice.dk</a> {{ __('eller på akuttelefon') }} <a href="tel:+4570203040" class="text-brand-action underline font-semibold">+45 70 20 30 40</a>.</p>
+                    <p><strong>5. {{ __('Spørgsmål') }}:</strong> {{ __('Kontakt os på') }} <a href="mailto:info@freyaservice.dk" class="text-brand-action underline font-semibold">info@freyaservice.dk</a> {{ __('eller på akuttelefon') }} <a href="tel:+4528260926" class="text-brand-action underline font-semibold">+45 28 26 09 26</a>.</p>
                 </div>
                 <div class="mt-6 pt-4 border-t border-brand-border flex items-center justify-end">
                     <button type="button" @click="showGdprModal = false" class="px-5 py-2.5 rounded-xl bg-brand-secondary hover:bg-navy-800 text-white font-bold text-xs transition cursor-pointer">

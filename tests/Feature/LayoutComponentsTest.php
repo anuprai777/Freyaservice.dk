@@ -55,4 +55,35 @@ class LayoutComponentsTest extends TestCase
         $response->assertDontSee('localStorage.getItem(\'theme\')', false);
         $response->assertDontSee('x-theme-toggle');
     }
+
+    public function test_toast_does_not_leak_raw_javascript_when_flashed(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+        ]);
+
+        $response = $this->actingAs($admin)->withSession([
+            'success' => 'Din bemandingsforespørgsel er oprettet! FreyaService er gået i gang med at matche vikarer.',
+        ])->get('/admin/dashboard');
+
+        $response->assertStatus(200);
+        $response->assertDontSee('{ this.startTimer(newToast); });', false);
+        $response->assertDontSee('role="region" aria-label="Notifications" >', false);
+        $response->assertSee('Din bemandingsforespørgsel er oprettet!');
+    }
+
+    public function test_hero_renders_circular_experience_badge(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('16+');
+        $response->assertSee('ÅRS ERFARING');
+
+        $responseEn = $this->get('/locale/en');
+        $responseEn = $this->get('/');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('16+');
+        $responseEn->assertSee('YEARS EXP.');
+    }
 }

@@ -231,7 +231,7 @@
     @endif
 
     <div class="footer">
-        FreyaService ApS &bull; Vesterbrogade 100, 1620 København V &bull; Tlf: +45 70 20 30 40 &bull; E-mail: faktura@freyaservice.dk &bull; CVR: 44556677
+        FreyaService ApS &bull; Vesterbrogade 100, 1620 København V &bull; Tlf: +45 28 26 09 26 &bull; E-mail: faktura@freyaservice.dk &bull; CVR: 44556677
     </div>
 
 </body>

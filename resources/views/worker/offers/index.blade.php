@@ -80,38 +80,93 @@
             </div>
         </div>
 
-        <!-- Open Opportunities in City -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
-            <div class="pb-3 border-b border-slate-100">
-                <h2 class="text-base font-bold text-slate-900">{{ __('Åbne forespørgsler i') }} {{ $worker->city ?: __('dit område') }}</h2>
-                <p class="text-xs text-slate-500 mt-0.5">{{ __('Kunder der søger personale inden for dine fagområder.') }}</p>
+        <!-- Open Client Requests Section -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                <div>
+                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>{{ __('Ledige vagter oprettet af kunder') }} ({{ $openRequests->count() }})</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-0.5">{{ __('Kunder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt for at reservere din plads med det samme.') }}</p>
+                </div>
+                <div class="flex items-center gap-2 text-xs">
+                    <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
+                        {{ __('By') }}: {{ $worker->city ?: __('Hele Danmark') }}
+                    </span>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="space-y-4">
                 @forelse($openRequests as $req)
-                    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col justify-between space-y-3">
-                        <div>
-                            <div class="flex justify-between items-start gap-2">
-                                <h3 class="text-sm font-bold text-slate-900">{{ $req->role }}</h3>
-                                @if($req->is_urgent)
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 uppercase">⚡ {{ __('Akut') }}</span>
+                    @php
+                        $isLocal = !empty($worker->city) && !empty($req->city) && (
+                            str_contains(mb_strtolower($req->city), mb_strtolower($worker->city)) ||
+                            str_contains(mb_strtolower($worker->city), mb_strtolower($req->city))
+                        );
+                        $openSpots = max(1, $req->workers_needed - ($req->accepted_count ?? 0));
+                    @endphp
+                    <div class="p-4 sm:p-5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-slate-50 hover:border-brand-action/40 transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="space-y-2 flex-1">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-base font-bold text-slate-900 capitalize">{{ $req->role }}</h3>
+                                @if($isLocal)
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">📍 {{ __('I dit lokalområde') }}</span>
+                                @else
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-200 text-slate-700">📍 {{ $req->city }}</span>
                                 @endif
+                                @if($req->is_urgent)
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 border border-rose-200 uppercase">⚡ {{ __('Akut') }}</span>
+                                @endif
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                    {{ $openSpots }} {{ __('ledige pladser ud af') }} {{ $req->workers_needed }}
+                                </span>
                             </div>
-                            <div class="text-xs text-slate-600 mt-1">
-                                🏢 {{ $req->client->company_name ?? '' }} • 📍 {{ $req->city }}
+
+                            <div class="text-xs text-slate-600">
+                                🏢 <strong>{{ $req->client->company_name ?? __('Virksomhed') }}</strong> &bull;
+                                📍 {{ $req->location }}, {{ $req->postcode }} {{ $req->city }}
                             </div>
-                            <div class="text-xs text-slate-500 mt-1">
-                                {{ __('Start:') }} {{ $req->start_date->format('d.m.Y') }} • {{ $req->request_type->label() }}
+
+                            <div class="text-xs text-indigo-700 font-semibold flex flex-wrap items-center gap-2">
+                                <span>📅 {{ __('Dato:') }} {{ $req->start_date->format('d. M Y') }}@if($req->end_date && $req->end_date->ne($req->start_date)) - {{ $req->end_date->format('d. M Y') }}@endif</span>
+                                @if($req->start_time)
+                                    <span>&bull; ⏰ {{ substr($req->start_time, 0, 5) }} - {{ substr($req->end_time, 0, 5) }}</span>
+                                @endif
+                                <span>&bull; {{ $req->request_type->label() }}</span>
+                            </div>
+
+                            @if($req->instructions || $req->dress_code)
+                                <div class="text-xs text-slate-500 bg-white p-2.5 rounded-lg border border-slate-200/80 space-y-1">
+                                    @if($req->dress_code)
+                                        <div>👔 <strong>{{ __('Dresscode:') }}</strong> {{ $req->dress_code }}</div>
+                                    @endif
+                                    @if($req->instructions)
+                                        <div>📝 <strong>{{ __('Instruktioner:') }}</strong> {{ $req->instructions }}</div>
+                                    @endif
+                                </div>
+                            @endif
+
+                            <div class="text-xs text-slate-500">
+                                {{ __('Tilbudt timeløn:') }} <strong class="text-emerald-700 font-bold text-sm">{{ number_format($req->hourly_rate_offered ?: 245.00, 2, ',', '.') }} kr/t</strong>
                             </div>
                         </div>
 
-                        <div class="pt-2 border-t border-slate-200 text-right">
-                            <span class="text-xs text-slate-400 italic">{{ __('Administrationen koordinerer tildeling') }}</span>
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto shrink-0">
+                            <form method="POST" action="{{ route('worker.offers.claim', $req) }}" class="w-full sm:w-auto">
+                                @csrf
+                                <button type="submit" class="w-full sm:w-auto text-center px-6 py-3 rounded-xl text-xs font-bold bg-brand-action hover:bg-brand-action-hover text-white shadow-md transition flex items-center justify-center gap-1.5">
+                                    <span>{{ __('Accepter Vagt') }}</span>
+                                    <span>&rarr;</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 @empty
-                    <div class="md:col-span-2 text-center py-6 text-slate-400 text-xs">
-                        {{ __('Ingen andre åbne forespørgsler i området i dag.') }}
+                    <div class="text-center py-8 text-slate-400 text-xs space-y-2">
+                        <span class="text-2xl block">🔍</span>
+                        <div class="font-bold text-slate-600">{{ __('Ingen ledige vagter lige nu.') }}</div>
+                        <div>{{ __('Så snart en virksomhed opretter en ny bemandingsforespørgsel, vil den fremgå her.') }}</div>
                     </div>
                 @endforelse
             </div>

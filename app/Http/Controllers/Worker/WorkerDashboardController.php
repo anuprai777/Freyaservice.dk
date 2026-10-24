@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Worker;
 
+use App\Enums\AssignmentStatus;
+use App\Enums\StaffRequestStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Assignment;
 use App\Models\Shift;
+use App\Models\StaffRequest;
 use App\Models\Timesheet;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -43,6 +46,37 @@ class WorkerDashboardController extends Controller
             ->whereDate('end_at', '>=', now()->toDateString())
             ->get();
 
+        // Open shifts / requests uploaded by clients available for the worker
+        $openRequests = StaffRequest::with(['client', 'shifts'])
+            ->whereIn('status', [StaffRequestStatus::NEW, StaffRequestStatus::IN_PROGRESS])
+            ->where(function ($q) {
+                $q->whereDate('start_date', '>=', now()->toDateString())
+                  ->orWhere(function ($sq) {
+                      $sq->whereNotNull('end_date')
+                         ->whereDate('end_date', '>=', now()->toDateString());
+                  });
+            })
+            ->whereDoesntHave('assignments', function ($q) use ($worker) {
+                $q->where('worker_id', $worker->id)
+                  ->whereIn('status', [AssignmentStatus::ACCEPTED, AssignmentStatus::ACTIVE]);
+            })
+            ->withCount(['assignments as accepted_count' => function ($q) {
+                $q->whereIn('status', [AssignmentStatus::ACCEPTED, AssignmentStatus::ACTIVE]);
+            }])
+            ->get()
+            ->filter(function ($req) {
+                return $req->accepted_count < $req->workers_needed;
+            })
+            ->sortByDesc(function ($req) use ($worker) {
+                $isLocal = false;
+                if (! empty($worker->city) && ! empty($req->city)) {
+                    $isLocal = str_contains(mb_strtolower($req->city), mb_strtolower($worker->city))
+                            || str_contains(mb_strtolower($worker->city), mb_strtolower($req->city));
+                }
+                return $isLocal ? 1000 : 1;
+            })
+            ->values();
+
         // Currently clocked in timesheet (if any)
         $currentTimesheet = Timesheet::with(['shift.staffRequest.client'])
             ->where('worker_id', $worker->id)
@@ -66,6 +100,7 @@ class WorkerDashboardController extends Controller
             'pendingOffers',
             'activeAssignments',
             'todayShifts',
+            'openRequests',
             'currentTimesheet',
             'thisMonthEarnings',
             'totalCompletedHours'

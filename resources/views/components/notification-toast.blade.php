@@ -59,62 +59,84 @@
     }
 @endphp
 
-<div
-    x-data="{
-        toasts: {!! json_encode($initialToasts, JSON_UNESCAPED_UNICODE) !!},
-        addToast(toast) {
-            const id = 't_' + Math.random().toString(36).substring(2, 9);
-            const newToast = {
-                id: id,
-                type: toast.type || 'success',
-                title: toast.title || (toast.type === 'error' ? '{{ __('Fejl') }}' : (toast.type === 'warning' ? '{{ __('Advarsel') }}' : '{{ __('Succes') }}')),
-                message: toast.message || '',
-                duration: toast.duration || 5000,
-                progress: 100,
-                interval: null,
-                isPaused: false
-            };
-            this.toasts.push(newToast);
-            this.$nextTick(() => {
-                this.startTimer(newToast);
-            });
-        },
-        removeToast(id) {
-            const index = this.toasts.findIndex(t => t.id === id);
-            if (index !== -1) {
-                if (this.toasts[index].interval) {
-                    clearInterval(this.toasts[index].interval);
-                }
-                this.toasts.splice(index, 1);
-            }
-        },
-        startTimer(toast) {
-            const step = 50;
-            const decrement = (step / toast.duration) * 100;
-            toast.progress = 100;
-            toast.interval = setInterval(() => {
-                if (!toast.isPaused) {
-                    toast.progress -= decrement;
-                    if (toast.progress <= 0) {
-                        this.removeToast(toast.id);
-                    }
-                }
-            }, step);
-        },
-        init() {
-            this.toasts.forEach(toast => {
-                toast.progress = 100;
-                toast.isPaused = false;
-                this.startTimer(toast);
-            });
+<script id="initial-toasts-data" type="application/json">
+    {!! json_encode($initialToasts, JSON_UNESCAPED_UNICODE) !!}
+</script>
 
-            window.addEventListener('notify', (e) => {
-                if (e.detail) {
-                    this.addToast(e.detail);
+<script>
+    if (typeof window.notificationToast !== 'function') {
+        window.notificationToast = function() {
+            let initialToasts = [];
+            try {
+                const el = document.getElementById('initial-toasts-data');
+                if (el && el.textContent) {
+                    initialToasts = JSON.parse(el.textContent);
                 }
-            });
-        }
-    }"
+            } catch (e) {
+                initialToasts = [];
+            }
+
+            return {
+                toasts: Array.isArray(initialToasts) ? initialToasts : [],
+                addToast(toast) {
+                    const id = 't_' + Math.random().toString(36).substring(2, 9);
+                    const newToast = {
+                        id: id,
+                        type: toast.type || 'success',
+                        title: toast.title || (toast.type === 'error' ? '{{ __('Fejl') }}' : (toast.type === 'warning' ? '{{ __('Advarsel') }}' : '{{ __('Succes') }}')),
+                        message: toast.message || '',
+                        duration: toast.duration || 5000,
+                        progress: 100,
+                        interval: null,
+                        isPaused: false
+                    };
+                    this.toasts.push(newToast);
+                    this.$nextTick(() => {
+                        this.startTimer(newToast);
+                    });
+                },
+                removeToast(id) {
+                    const index = this.toasts.findIndex(t => t.id === id);
+                    if (index !== -1) {
+                        if (this.toasts[index].interval) {
+                            clearInterval(this.toasts[index].interval);
+                        }
+                        this.toasts.splice(index, 1);
+                    }
+                },
+                startTimer(toast) {
+                    const step = 50;
+                    const decrement = (step / toast.duration) * 100;
+                    toast.progress = 100;
+                    toast.interval = setInterval(() => {
+                        if (!toast.isPaused) {
+                            toast.progress -= decrement;
+                            if (toast.progress <= 0) {
+                                this.removeToast(toast.id);
+                            }
+                        }
+                    }, step);
+                },
+                init() {
+                    this.toasts.forEach(toast => {
+                        toast.progress = 100;
+                        toast.isPaused = false;
+                        this.startTimer(toast);
+                    });
+
+                    window.addEventListener('notify', (e) => {
+                        if (e.detail) {
+                            this.addToast(e.detail);
+                        }
+                    });
+                }
+            };
+        };
+    }
+</script>
+
+<div
+    x-data="notificationToast()"
     class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm sm:max-w-md w-full pointer-events-none px-4 sm:px-0"
     role="region"
     aria-label="{{ __('Meddelelser') }}"

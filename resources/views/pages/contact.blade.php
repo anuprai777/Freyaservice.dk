@@ -20,13 +20,13 @@
                     <p class="text-sm text-brand-muted mb-6">Vores vagtcentral er bemandet 24 timer i døgnet, 7 dage om ugen.</p>
                 </div>
 
-                <a href="tel:+4570203040" class="flex items-center gap-5 p-6 bg-brand-action/10 border border-brand-action/30 rounded-2xl hover:bg-brand-action/20 transition group">
+                <a href="tel:+4528260926" class="flex items-center gap-5 p-6 bg-brand-action/10 border border-brand-action/30 rounded-2xl hover:bg-brand-action/20 transition group">
                     <div class="w-14 h-14 rounded-xl bg-brand-action flex items-center justify-center shadow-md shadow-brand-action/30 group-hover:scale-110 transition-transform">
                         <x-heroicon-o-phone class="w-7 h-7 text-white" />
                     </div>
                     <div>
-                        <div class="text-xs font-bold text-brand-action uppercase tracking-wider">{{ __('Ring +45 70 20 30 40') }}</div>
-                        <div class="text-2xl font-black text-brand-secondary">+45 70 20 30 40</div>
+                        <div class="text-xs font-bold text-brand-action uppercase tracking-wider">{{ __('Ring +45 28 26 09 26') }}</div>
+                        <div class="text-2xl font-black text-brand-secondary">+45 28 26 09 26</div>
                         <div class="text-xs text-brand-muted">Åben 24/7 — Akut dækning</div>
                     </div>
                 </a>
@@ -74,7 +74,7 @@
                         <a href="{{ route('register', ['role' => 'client']) }}" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white text-sm font-bold transition">
                             <x-heroicon-o-user-plus class="w-4 h-4" />{{ __('Opret virksomhedskonto') }}
                         </a>
-                        <a href="tel:+4570203040" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-navy-800 hover:bg-navy-700 border border-navy-600 text-white text-sm font-bold transition">
+                        <a href="tel:+4528260926" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-navy-800 hover:bg-navy-700 border border-navy-600 text-white text-sm font-bold transition">
                             <x-heroicon-o-phone class="w-4 h-4" />Ring nu
                         </a>
                     </div>

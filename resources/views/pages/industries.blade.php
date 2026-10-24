@@ -14,8 +14,8 @@
     <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-2 gap-8 mb-16">
             <!-- Hotel & Restaurant -->
-            <div class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
-                <div class="bg-gradient-to-r from-brand-action/10 to-transparent p-8 flex items-start gap-6">
+            <div id="hotel" class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
+                <div id="restaurant" class="bg-gradient-to-r from-brand-action/10 to-transparent p-8 flex items-start gap-6">
                     <div class="w-16 h-16 rounded-2xl bg-action-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         <x-heroicon-o-cake class="w-8 h-8 text-brand-action" />
                     </div>
@@ -35,7 +35,7 @@
             </div>
 
             <!-- Rengøring -->
-            <div class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
+            <div id="cleaning" class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
                 <div class="bg-gradient-to-r from-brand-secondary/10 to-transparent p-8 flex items-start gap-6">
                     <div class="w-16 h-16 rounded-2xl bg-navy-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         <x-heroicon-o-sparkles class="w-8 h-8 text-brand-secondary" />
@@ -56,7 +56,7 @@
             </div>
 
             <!-- Lager & Logistik -->
-            <div class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
+            <div id="warehouse" class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
                 <div class="bg-gradient-to-r from-navy-900/5 to-transparent p-8 flex items-start gap-6">
                     <div class="w-16 h-16 rounded-2xl bg-navy-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         <x-heroicon-o-truck class="w-8 h-8 text-brand-primary" />
@@ -77,7 +77,7 @@
             </div>
 
             <!-- Kontor -->
-            <div class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
+            <div id="office" class="bg-brand-surface rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all overflow-hidden group">
                 <div class="bg-gradient-to-r from-forest/10 to-transparent p-8 flex items-start gap-6">
                     <div class="w-16 h-16 rounded-2xl bg-forest-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         <x-heroicon-o-building-office class="w-8 h-8 text-forest" />

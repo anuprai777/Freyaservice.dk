@@ -99,7 +99,7 @@
 
         <div class="text-center">
             <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white font-bold text-base shadow-lg shadow-brand-action/30 transition transform hover:-translate-y-0.5">
-                <x-heroicon-o-phone class="w-5 h-5" /><span>{{ __('Ring +45 70 20 30 40') }}</span>
+                <x-heroicon-o-phone class="w-5 h-5" /><span>{{ __('Ring +45 28 26 09 26') }}</span>
             </a>
         </div>
     </section>

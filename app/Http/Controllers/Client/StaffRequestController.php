@@ -71,22 +71,36 @@ class StaffRequestController extends Controller
             'hourly_rate_offered' => 245.00,
         ]);
 
-        // Auto-generate initial shift if single/multi-day temporary cover
-        if ($staffRequest->request_type === StaffRequestType::TEMPORARY_COVER && $validated['start_time'] && $validated['end_time']) {
-            $startAt = Carbon::parse($validated['start_date'] . ' ' . $validated['start_time']);
-            $endAt = Carbon::parse(($validated['end_date'] ?? $validated['start_date']) . ' ' . $validated['end_time']);
+        // Auto-generate initial shift for any staff request (temporary cover, part-time, full-time)
+        $startTime = $validated['start_time'] ?? '08:00';
+        $endTime = $validated['end_time'] ?? '16:00';
+        $startAt = Carbon::parse($validated['start_date'] . ' ' . $startTime);
+        $endAt = Carbon::parse(($validated['end_date'] ?? $validated['start_date']) . ' ' . $endTime);
 
-            if ($endAt->lessThan($startAt)) {
-                $endAt->addDay(); // Overnight shift
-            }
+        if ($endAt->lessThan($startAt)) {
+            $endAt->addDay(); // Overnight shift
+        }
 
-            Shift::create([
+        $shift = Shift::create([
+            'staff_request_id' => $staffRequest->id,
+            'title' => $staffRequest->role . ' ' . __('dækning'),
+            'start_at' => $startAt,
+            'end_at' => $endAt,
+            'workers_needed' => $staffRequest->workers_needed,
+            'status' => 'open',
+        ]);
+
+        // If client selected a preferred worker, immediately dispatch an offer to that worker
+        if (! empty($validated['preferred_worker_id'])) {
+            \App\Models\Assignment::create([
                 'staff_request_id' => $staffRequest->id,
-                'title' => $staffRequest->role . ' dækning',
-                'start_at' => $startAt,
-                'end_at' => $endAt,
-                'workers_needed' => $staffRequest->workers_needed,
-                'status' => 'open',
+                'shift_id' => $shift->id,
+                'worker_id' => $validated['preferred_worker_id'],
+                'status' => \App\Enums\AssignmentStatus::OFFERED,
+                'offered_at' => now(),
+                'worker_hourly_rate' => 195.00,
+                'client_hourly_rate' => $staffRequest->hourly_rate_offered ?: 265.00,
+                'notes' => __('Foretrukket vikar valgt af kunde ved oprettelse.'),
             ]);
         }
 
