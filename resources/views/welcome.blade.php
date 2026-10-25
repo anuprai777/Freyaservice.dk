@@ -160,6 +160,230 @@
             background-image: radial-gradient(rgba(247, 246, 242, 0.08) 1.5px, transparent 0);
             background-size: 24px 24px;
         }
+
+        /* ── Spray-Foam-Wipe Hero Animation ── */
+        .spray-anim-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 40;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Cleaner woman in blue uniform (transparent cutout) */
+        .spray-anim-woman {
+            position: absolute;
+            bottom: -25px;
+            right: -35%;
+            width: clamp(260px, 36vw, 460px);
+            height: auto;
+            z-index: 42;
+            opacity: 0;
+            filter: drop-shadow(0 14px 36px rgba(0,0,0,0.45));
+            pointer-events: none;
+            user-select: none;
+        }
+        .spray-anim-woman.anim-enter {
+            animation: womanSlideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .spray-anim-woman.anim-spray {
+            animation: womanSpray 0.45s ease-in-out;
+        }
+        .spray-anim-woman.anim-exit {
+            animation: womanSlideOut 0.65s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+        }
+
+        @keyframes womanSlideIn {
+            from { right: -35%; opacity: 0; transform: translateY(30px); }
+            to   { right: 2%; opacity: 1; transform: translateY(0); }
+        }
+        @keyframes womanSpray {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            35%  { transform: rotate(-5deg) scale(1.05); }
+            70%  { transform: rotate(2deg) scale(1.02); }
+        }
+        @keyframes womanSlideOut {
+            from { right: 2%; opacity: 1; transform: translateY(0); }
+            to   { right: -40%; opacity: 0; transform: translateY(30px); }
+        }
+
+        /* Spray mist cone burst */
+        .spray-mist-cone {
+            position: absolute;
+            top: 42%;
+            right: 18%;
+            width: 0;
+            height: 0;
+            z-index: 42;
+            pointer-events: none;
+            opacity: 0;
+            background: radial-gradient(ellipse at 100% 50%, rgba(255,255,255,0.95) 0%, rgba(220,245,255,0.7) 40%, rgba(200,235,255,0.2) 75%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+        .spray-mist-cone.anim-burst {
+            animation: mistBurst 0.65s ease-out forwards;
+        }
+        @keyframes mistBurst {
+            0%   { width: 0; height: 0; opacity: 0; transform: translate(0, 0) scale(0.4); }
+            30%  { width: clamp(260px, 36vw, 480px); height: clamp(160px, 24vw, 320px); opacity: 0.95; transform: translate(-70px, -40px) scale(1); }
+            100% { width: clamp(420px, 55vw, 700px); height: clamp(280px, 40vw, 500px); opacity: 0; transform: translate(-180px, -70px) scale(1.3); }
+        }
+
+        /* Foam overlay — rich white lather */
+        .spray-foam-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 41;
+            background: 
+                radial-gradient(circle at 72% 50%, rgba(255,255,255,0.99) 0%, rgba(245,250,255,0.97) 35%, rgba(230,242,255,0.94) 70%, rgba(215,235,250,0.92) 100%),
+                radial-gradient(circle at 25% 30%, rgba(255,255,255,0.85) 0%, transparent 45%),
+                radial-gradient(circle at 80% 75%, rgba(255,255,255,0.8) 0%, transparent 50%);
+            opacity: 0;
+            transform: scale(0.25);
+            transform-origin: 72% 48%;
+            border-radius: 50%;
+            box-shadow: inset 0 0 100px rgba(180, 215, 245, 0.45), 0 0 80px rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .spray-foam-layer.anim-expand {
+            animation: foamExpand 1.15s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+        }
+        .spray-foam-layer.anim-hold {
+            opacity: 1;
+            transform: scale(3);
+            border-radius: 0;
+        }
+        @keyframes foamExpand {
+            0%   { opacity: 0; transform: scale(0.25); border-radius: 50%; }
+            25%  { opacity: 0.9; }
+            100% { opacity: 1; transform: scale(3); border-radius: 0; }
+        }
+
+        /* Foam bubble particles */
+        .spray-foam-bubbles {
+            position: absolute;
+            inset: 0;
+            z-index: 41;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .spray-foam-bubbles .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.98), rgba(215,238,255,0.7));
+            box-shadow: inset -2px -3px 8px rgba(160,205,245,0.4), 0 0 10px rgba(255,255,255,0.4);
+            opacity: 0;
+        }
+        .spray-foam-bubbles .bubble.anim-rise {
+            animation: bubbleRise var(--dur, 1.5s) var(--delay, 0s) ease-out forwards;
+        }
+        @keyframes bubbleRise {
+            0%   { opacity: 0; transform: translate(0, 0) scale(0.2); }
+            25%  { opacity: 0.95; }
+            80%  { opacity: 0.7; transform: translate(var(--dx, -80px), var(--dy, -120px)) scale(1); }
+            100% { opacity: 0; transform: translate(var(--dx, -80px), var(--dy, -150px)) scale(1.15); }
+        }
+
+        /* Cloth wipe — sweeps across screen */
+        .spray-wipe-cloth {
+            position: absolute;
+            top: 15%;
+            left: -40%;
+            width: clamp(220px, 32vw, 420px);
+            height: auto;
+            z-index: 43;
+            pointer-events: none;
+            opacity: 0;
+            filter: drop-shadow(-8px 18px 30px rgba(0,0,0,0.4));
+        }
+        .spray-wipe-cloth img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: rotate(-12deg);
+        }
+        .spray-wipe-cloth.anim-wipe {
+            opacity: 1;
+            animation: clothSweep 1.3s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+        }
+        @keyframes clothSweep {
+            0%   { left: -40%; top: 8%; transform: rotate(-8deg); }
+            45%  { top: 22%; transform: rotate(2deg); }
+            100% { left: 110%; top: 6%; transform: rotate(-12deg); }
+        }
+
+        /* Foam dissolve matching cloth sweep */
+        .spray-foam-layer.anim-dissolve {
+            animation: foamDissolve 1.3s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+        }
+        @keyframes foamDissolve {
+            0%   { opacity: 1; clip-path: inset(0 0 0 0); }
+            100% { opacity: 0; clip-path: inset(0 0 0 100%); }
+        }
+
+        /* Wipe sparkle shine trail */
+        .spray-wipe-shine {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -10%;
+            width: 32px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.98) 50%, rgba(180,225,255,0.85) 75%, transparent 100%);
+            box-shadow: 0 0 30px 10px rgba(255,255,255,0.9);
+            opacity: 0;
+            z-index: 44;
+            pointer-events: none;
+        }
+        .spray-wipe-shine.anim-wipe {
+            animation: shineSweep 1.3s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+        }
+        @keyframes shineSweep {
+            0%   { left: -10%; opacity: 0; }
+            5%   { opacity: 1; }
+            95%  { opacity: 1; }
+            100% { left: 112%; opacity: 0; }
+        }
+
+        /* Hero content initially hidden during spray, revealed upon clean wipe */
+        .hero-content-reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .hero-content-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skip button */
+        .spray-skip-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 38, 63, 0.7);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 9999px;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            letter-spacing: 0.03em;
+            pointer-events: auto;
+        }
+        .spray-skip-btn.visible { opacity: 1; }
+        .spray-skip-btn:hover { background: rgba(232, 131, 58, 0.9); border-color: rgba(232, 131, 58, 1); transform: scale(1.05); }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .spray-anim-overlay { display: none !important; }
+            .hero-content-reveal { opacity: 1 !important; transform: none !important; }
+        }
     </style>
 </head>
 <body class="bg-brand-bg text-brand-body antialiased selection:bg-brand-secondary selection:text-white">
@@ -340,17 +564,52 @@
 
     <!-- Hero Section (Centered Design: 3D Flip Headline & Clean Stats) -->
     <section id="heroSection" class="hero-pattern text-white pt-16 pb-20 sm:pt-24 sm:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+
+        <!-- ═══ Spray-Foam-Wipe Animation Overlay ═══ -->
+        <div id="sprayAnimOverlay" class="spray-anim-overlay" aria-hidden="true">
+            <!-- Spray mist burst cone -->
+            <div id="sprayMist" class="spray-mist-cone"></div>
+
+            <!-- Cleaner woman in blue uniform (transparent cutout) -->
+            <img id="sprayWoman"
+                 src="{{ asset('images/cleaner-woman-spray.png') }}"
+                 alt="Freya Service vikar i blå uniform"
+                 class="spray-anim-woman"
+                 loading="eager"
+                 width="480" height="480">
+
+            <!-- White foam layer -->
+            <div id="sprayFoam" class="spray-foam-layer"></div>
+
+            <!-- Foam bubble particles -->
+            <div id="sprayBubbles" class="spray-foam-bubbles"></div>
+
+            <!-- Cloth wipe -->
+            <div id="sprayCloth" class="spray-wipe-cloth">
+                <img src="{{ asset('images/cleaning-cloth-wipe.png') }}"
+                     alt="Mikrofiberklud der tørrer rent"
+                     loading="eager"
+                     width="380" height="380">
+            </div>
+
+            <!-- Wipe sparkle shine streak -->
+            <div id="sprayShine" class="spray-wipe-shine"></div>
+
+            <!-- Skip button -->
+            <button id="spraySkipBtn" class="spray-skip-btn" type="button" aria-label="Spring over intro">{{ __('Spring over') }} →</button>
+        </div>
+
         <div class="max-w-6xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
             
             <!-- 16+ Years Experience Rounded Badge (Matching User Reference Design) -->
-            <div class="mb-6 flex justify-center">
+            <div class="mb-6 flex justify-center hero-content-reveal">
                 <x-experience-badge />
             </div>
 
             <!-- Headline (H1): Exactly one H1 in sentence case with verified claims -->
             <h1 
                 id="heroHeadline" 
-                class="font-black tracking-tight leading-[1.18] text-white max-w-4xl mx-auto"
+                class="font-black tracking-tight leading-[1.18] text-white max-w-4xl mx-auto hero-content-reveal"
                 style="font-size: clamp(2rem, 5.6vw, 4rem);"
                 aria-live="polite"
                 data-words1='@json($words1)'
@@ -364,12 +623,12 @@
             </h1>
 
             <!-- Intro Copy: Plain, specific language with main keyword, vikarbureau, 16+ years exp and core offer -->
-            <p class="mt-6 text-base sm:text-lg lg:text-xl text-sand-100/90 max-w-3xl mx-auto leading-relaxed">
+            <p class="mt-6 text-base sm:text-lg lg:text-xl text-sand-100/90 max-w-3xl mx-auto leading-relaxed hero-content-reveal">
                 {{ __('With 16+ years of experience, Freya Service is a Danish vikarbureau providing nationwide temp staffing for hotels, restaurants, warehouses and offices in under 2 hours, with no lock-in or onboarding fees.') }}
             </p>
 
             <!-- Action Bar (CTA Buttons) -->
-            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
+            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto max-w-md sm:max-w-none hero-content-reveal">
                 <!-- Primary CTA Button: Orange 500 #E8833A, hover Orange 600 #D2702A -->
                 @auth
                     @if(auth()->user()->isClient())
@@ -406,8 +665,179 @@
                     </a>
                 @endauth
             </div>
+
+            <!-- Subtle Replay Button to re-trigger the animation -->
+            <div class="mt-8 flex justify-center hero-content-reveal">
+                <button id="sprayReplayBtn" type="button" class="inline-flex items-center gap-1.5 text-xs text-sand-200/70 hover:text-white bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/25 px-3.5 py-1.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action cursor-pointer">
+                    <x-heroicon-o-sparkles class="w-3.5 h-3.5 text-brand-action" />
+                    <span>{{ __('Gense spray-animation') }}</span>
+                </button>
+            </div>
         </div>
     </section>
+
+    <!-- Spray-Foam-Wipe Animation Controller -->
+    <script>
+    (function() {
+        var woman = document.getElementById('sprayWoman');
+        var foam = document.getElementById('sprayFoam');
+        var bubbles = document.getElementById('sprayBubbles');
+        var cloth = document.getElementById('sprayCloth');
+        var mist = document.getElementById('sprayMist');
+        var shine = document.getElementById('sprayShine');
+        var skipBtn = document.getElementById('spraySkipBtn');
+        var replayBtn = document.getElementById('sprayReplayBtn');
+        var overlay = document.getElementById('sprayAnimOverlay');
+        var reveals = document.querySelectorAll('.hero-content-reveal');
+        var activeTimers = [];
+        var isPlaying = false;
+
+        function clearTimers() {
+            activeTimers.forEach(function(t) { clearTimeout(t); });
+            activeTimers = [];
+        }
+
+        function finishAnim() {
+            clearTimers();
+            isPlaying = false;
+            reveals.forEach(function(el) { el.classList.add('revealed'); });
+            if (overlay) {
+                overlay.style.transition = 'opacity 0.4s ease-out';
+                overlay.style.opacity = '0';
+                setTimeout(function() { overlay.style.display = 'none'; }, 450);
+            }
+        }
+
+        if (skipBtn) {
+            skipBtn.addEventListener('click', function() {
+                finishAnim();
+            });
+        }
+
+        function createBubbles() {
+            if (!bubbles) return;
+            bubbles.innerHTML = '';
+            var count = window.innerWidth < 640 ? 20 : 38;
+            var originX = 72;
+            var originY = 48;
+            for (var i = 0; i < count; i++) {
+                var b = document.createElement('div');
+                b.className = 'bubble';
+                var size = 12 + Math.random() * 56;
+                b.style.width = size + 'px';
+                b.style.height = size + 'px';
+                b.style.left = (originX + (Math.random() - 0.5) * 35) + '%';
+                b.style.top = (originY + (Math.random() - 0.5) * 35) + '%';
+                var dx = (Math.random() - 0.65) * 350;
+                var dy = (Math.random() - 0.4) * -280;
+                b.style.setProperty('--dx', dx + 'px');
+                b.style.setProperty('--dy', dy + 'px');
+                b.style.setProperty('--dur', (0.8 + Math.random() * 1.3) + 's');
+                b.style.setProperty('--delay', (Math.random() * 0.5) + 's');
+                bubbles.appendChild(b);
+            }
+        }
+
+        function resetState() {
+            clearTimers();
+            isPlaying = true;
+            if (overlay) {
+                overlay.style.display = 'block';
+                overlay.style.opacity = '1';
+                overlay.style.transition = '';
+            }
+            if (woman) woman.className = 'spray-anim-woman';
+            if (foam) foam.className = 'spray-foam-layer';
+            if (cloth) cloth.className = 'spray-wipe-cloth';
+            if (mist) mist.className = 'spray-mist-cone';
+            if (shine) shine.className = 'spray-wipe-shine';
+            if (bubbles) bubbles.innerHTML = '';
+            if (skipBtn) skipBtn.classList.remove('visible');
+            reveals.forEach(function(el) { el.classList.remove('revealed'); });
+        }
+
+        function runAnimation() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                reveals.forEach(function(el) { el.classList.add('revealed'); });
+                if (overlay) overlay.style.display = 'none';
+                return;
+            }
+
+            resetState();
+            createBubbles();
+
+            // Show skip button
+            activeTimers.push(setTimeout(function() {
+                if (skipBtn && isPlaying) skipBtn.classList.add('visible');
+            }, 400));
+
+            // Phase 1: Cleaner woman slides in from right (0.1s - 0.9s)
+            activeTimers.push(setTimeout(function() {
+                if (woman && isPlaying) woman.classList.add('anim-enter');
+            }, 100));
+
+            // Phase 2: Woman sprays + mist bursts + foam expands + bubbles rise (0.85s)
+            activeTimers.push(setTimeout(function() {
+                if (!isPlaying) return;
+                if (woman) woman.classList.add('anim-spray');
+                if (mist) mist.classList.add('anim-burst');
+                if (foam) foam.classList.add('anim-expand');
+                var allBubbles = bubbles.querySelectorAll('.bubble');
+                allBubbles.forEach(function(b) { b.classList.add('anim-rise'); });
+            }, 850));
+
+            // Phase 3: Foam holds full coverage, woman exits to the right (2.1s)
+            activeTimers.push(setTimeout(function() {
+                if (!isPlaying) return;
+                if (foam) {
+                    foam.classList.remove('anim-expand');
+                    foam.classList.add('anim-hold');
+                }
+                if (woman) {
+                    woman.classList.remove('anim-enter', 'anim-spray');
+                    woman.classList.add('anim-exit');
+                }
+            }, 2100));
+
+            // Phase 4: Cloth wipes across, foam dissolves, shine trail sweeps (2.9s)
+            activeTimers.push(setTimeout(function() {
+                if (!isPlaying) return;
+                if (cloth) cloth.classList.add('anim-wipe');
+                if (shine) shine.classList.add('anim-wipe');
+                if (foam) {
+                    foam.classList.remove('anim-hold');
+                    foam.classList.add('anim-dissolve');
+                }
+            }, 2900));
+
+            // Phase 5: Reveal clean hero content and fade out overlay (4.2s)
+            activeTimers.push(setTimeout(function() {
+                finishAnim();
+            }, 4200));
+        }
+
+        if (replayBtn) {
+            replayBtn.addEventListener('click', function() {
+                runAnimation();
+            });
+        }
+
+        // Start on load (or fallback after 300ms)
+        var started = false;
+        function startOnce() {
+            if (started) return;
+            started = true;
+            runAnimation();
+        }
+
+        if (document.readyState === 'complete') {
+            setTimeout(startOnce, 250);
+        } else {
+            window.addEventListener('load', function() { setTimeout(startOnce, 250); });
+            setTimeout(startOnce, 1200);
+        }
+    })();
+    </script>
 
     <!-- Styles & Vanilla JS for 3D Headline Flip -->
     <style>
