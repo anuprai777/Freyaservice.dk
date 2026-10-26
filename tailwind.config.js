@@ -3,6 +3,7 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -12,383 +13,249 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Plus Jakarta Sans', 'Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', 'Poppins', 'Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
+            },
+            borderRadius: {
+                btn: '8px',
+                card: '14px',
             },
             colors: {
-                // Official FreyaService Company Brand Palette
-                // 1. Primary Brand: Navy 900 #14263F (Top bar, footers, dark backgrounds, high-contrast text)
-                primary: {
-                    DEFAULT: '#14263F',
-                    950: '#0E1A2B',
-                    900: '#14263F',
-                    800: '#1A304F',
-                    700: '#1F3A5F',
-                    600: '#274B7A',
-                    500: '#335E99',
-                    100: '#E7ECF3',
-                    50: '#F2F5F8',
+                /* ==========================================================
+                   Exact Freeya Service Official Brand Color Palette
+                   ========================================================== */
+                // Primary: Burgundy #7B1E3A (Logo, main buttons, links, key headings)
+                burgundy: {
+                    DEFAULT: '#7B1E3A',
+                    50: '#FDF2F5',
+                    100: '#FCE7EC',
+                    200: '#F7C4D0',
+                    300: '#F196AD',
+                    400: '#E65D82',
+                    500: '#7B1E3A',
+                    600: '#64172E',
+                    700: '#5A1429', // Primary dark
+                    800: '#4D1022',
+                    900: '#3D0B1A',
+                    dark: '#5A1429',
+                    deep: '#5A1429',
                 },
+                // Primary Dark / Dark sections / Footer: Deep burgundy #5A1429
                 navy: {
-                    950: '#0E1A2B',
-                    900: '#14263F', // Primary Brand #14263F
-                    800: '#1A304F',
-                    700: '#1F3A5F', // Secondary Brand #1F3A5F
-                    600: '#274B7A',
-                    500: '#335E99',
-                    100: '#E7ECF3',
-                    50: '#F2F5F8',
+                    DEFAULT: '#5A1429', // Dark sections & footer map to Deep burgundy #5A1429
+                    950: '#3D0B1A',
+                    900: '#4D1022',
+                    800: '#5A1429',
+                    700: '#64172E',
+                    600: '#7B1E3A',
+                    500: '#7B1E3A',
+                    100: '#F3E3E6',
+                    50: '#FAF5F2',
                 },
-                // 2. Secondary Brand: Navy 700 #1F3A5F (Headings, primary links, active borders, text selections)
-                secondary: {
-                    DEFAULT: '#1F3A5F',
-                    900: '#14263F',
-                    800: '#1A304F',
-                    700: '#1F3A5F',
-                    600: '#274B7A',
-                    500: '#335E99',
+                // Accent: Champagne gold #C9A24B (Small highlights, badges, icons, underlines)
+                gold: {
+                    DEFAULT: '#C9A24B',
+                    50: '#FAF6ED',
+                    100: '#F5ECDA',
+                    200: '#EBD8B3',
+                    300: '#DFC28A',
+                    400: '#D5B267',
+                    500: '#C9A24B',
+                    600: '#B08A37',
+                    700: '#8C6C27',
+                    800: '#684F1B',
+                    900: '#4A3711',
                 },
-                // 3 & 4. Action / Accent: Orange 500 #E8833A & Action Hover: Orange 600 #D2702A
-                action: {
-                    DEFAULT: '#E8833A',
-                    50: '#FDF6F0',
-                    100: '#FBECDF',
-                    200: '#F7D6BD',
-                    300: '#F1B892',
-                    400: '#EC9960',
-                    500: '#E8833A', // Primary CTA buttons, highlight badges, accents
-                    600: '#D2702A', // Button hover & active states
-                    hover: '#D2702A',
-                    700: '#AF571F',
-                    800: '#8C4217',
-                    900: '#692F10',
-                },
-                accent: {
-                    DEFAULT: '#E8833A',
-                    hover: '#D2702A',
-                },
-                orange: {
-                    50: '#FDF6F0',
-                    100: '#FBECDF',
-                    200: '#F7D6BD',
-                    300: '#F1B892',
-                    400: '#EC9960',
-                    500: '#E8833A',
-                    600: '#D2702A',
-                    700: '#AF571F',
-                    800: '#8C4217',
-                    900: '#692F10',
-                },
-                // 5. Page Background: Warm Off-White #F7F6F2
-                page: '#F7F6F2',
-                'off-white': '#F7F6F2',
-                // 6. Surface: Pure White #FFFFFF
-                surface: '#FFFFFF',
-                // 7. Border / Divider: Muted Sand #E3E0D8
-                borderMuted: '#E3E0D8',
-                sand: {
-                    DEFAULT: '#E3E0D8',
-                    50: '#FAF9F7',
-                    100: '#F7F6F2', // Warm Off-White
-                    200: '#EFECE6',
-                    300: '#E3E0D8', // Muted Sand
-                    400: '#C7C2B6',
-                    500: '#ABA495',
-                },
-                // 8. Body Text: Slate Charcoal #3B4656
-                bodyText: '#3B4656',
-                charcoal: {
-                    DEFAULT: '#3B4656',
-                    900: '#1D232B',
-                    800: '#2A333E',
-                    700: '#3B4656', // Slate Charcoal
-                    600: '#4D5B6F',
-                    500: '#607188',
-                },
-                // 9. Muted Text: Cool Slate #6B7686
-                mutedText: '#6B7686',
-                coolslate: {
-                    DEFAULT: '#6B7686',
-                    600: '#586270',
-                    500: '#6B7686', // Cool Slate
-                    400: '#8893A2',
-                    300: '#ACB4C0',
-                    200: '#D1D6DD',
-                    100: '#E9ECF0',
-                },
-                // 10. Success / Valid: Forest Green #2F7D5B
-                success: {
-                    DEFAULT: '#2F7D5B',
-                    50: '#F0F7F4',
-                    100: '#DBEDE4',
-                    200: '#B8DCCB',
-                    300: '#84C2A5',
-                    400: '#4DA77E',
-                    500: '#2F7D5B', // Forest Green
-                    600: '#256649',
-                    700: '#1C4E38',
-                },
-                forest: {
-                    DEFAULT: '#2F7D5B',
-                    50: '#F0F7F4',
-                    100: '#DBEDE4',
-                    200: '#B8DCCB',
-                    300: '#84C2A5',
-                    400: '#4DA77E',
-                    500: '#2F7D5B',
-                    600: '#256649',
-                    700: '#1C4E38',
-                },
-                // 11. Danger / Error: Brick Red #B3392F
-                danger: {
-                    DEFAULT: '#B3392F',
-                    50: '#FCF3F2',
-                    100: '#F8E2E0',
-                    200: '#F2C7C3',
-                    300: '#E7A19B',
-                    400: '#D8736B',
-                    500: '#B3392F', // Brick Red
-                    600: '#992E25',
-                    700: '#7F241C',
-                },
-                brick: {
-                    DEFAULT: '#B3392F',
-                    50: '#FCF3F2',
-                    100: '#F8E2E0',
-                    200: '#F2C7C3',
-                    300: '#E7A19B',
-                    400: '#D8736B',
-                    500: '#B3392F',
-                    600: '#992E25',
-                    700: '#7F241C',
-                },
-                // Semantic company brand token map
-                brand: {
-                    primary: '#14263F',        // Navy 900
-                    secondary: '#1F3A5F',      // Navy 700
-                    action: '#E8833A',         // Orange 500
-                    'action-hover': '#D2702A', // Orange 600
-                    bg: '#F7F6F2',             // Warm Off-White
-                    surface: '#FFFFFF',        // Pure White
-                    border: '#E3E0D8',         // Muted Sand
-                    body: '#3B4656',           // Slate Charcoal
-                    muted: '#6B7686',          // Cool Slate
-                    success: '#2F7D5B',        // Forest Green
-                    danger: '#B3392F',         // Brick Red
-                },
-
-                // Aliases to strictly constrain standard Tailwind color names to the company palette
-                amber: {
-                    50: '#FDF6F0',
-                    100: '#FBECDF',
-                    200: '#F7D6BD',
-                    300: '#F1B892',
-                    400: '#EC9960',
-                    500: '#E8833A', // Action Orange
-                    600: '#D2702A',
-                    700: '#AF571F',
-                    800: '#8C4217',
-                    900: '#692F10',
-                },
-                yellow: {
-                    50: '#FDF6F0',
-                    100: '#FBECDF',
-                    200: '#F7D6BD',
-                    300: '#F1B892',
-                    400: '#EC9960',
-                    500: '#E8833A',
-                    600: '#D2702A',
-                    700: '#AF571F',
-                    800: '#8C4217',
-                    900: '#692F10',
-                },
-                blue: {
-                    50: '#F2F5F8',
-                    100: '#E7ECF3',
-                    200: '#C5D3E5',
-                    300: '#96B1D2',
-                    400: '#5F88BC',
-                    500: '#1F3A5F', // Navy 700
-                    600: '#1F3A5F',
-                    700: '#1A304F',
-                    800: '#14263F', // Navy 900
-                    900: '#14263F',
-                    950: '#0E1A2B',
-                },
-                indigo: {
-                    50: '#FDF6F0',
-                    100: '#FBECDF',
-                    200: '#F7D6BD',
-                    300: '#F1B892',
-                    400: '#EC9960',
-                    500: '#1F3A5F', // Navy 700
-                    600: '#E8833A', // Action Orange
-                    700: '#D2702A',
-                    800: '#1F3A5F',
-                    900: '#14263F',
-                    950: '#0E1A2B',
-                },
-                purple: {
-                    50: '#F2F5F8',
-                    100: '#E7ECF3',
-                    200: '#C5D3E5',
-                    300: '#96B1D2',
-                    400: '#5F88BC',
-                    500: '#1F3A5F', // Navy 700
-                    600: '#1F3A5F',
-                    700: '#1A304F',
-                    800: '#14263F', // Navy 900
-                    900: '#14263F',
-                    950: '#0E1A2B',
-                },
-                violet: {
-                    50: '#F2F5F8',
-                    100: '#E7ECF3',
-                    200: '#C5D3E5',
-                    300: '#96B1D2',
-                    400: '#5F88BC',
-                    500: '#1F3A5F',
-                    600: '#1F3A5F',
-                    700: '#1A304F',
-                    800: '#14263F',
-                    900: '#14263F',
-                    950: '#0E1A2B',
+                champagne: {
+                    DEFAULT: '#C9A24B',
+                    500: '#C9A24B',
                 },
                 teal: {
-                    50: '#F0F7F4',
-                    100: '#DBEDE4',
-                    200: '#B8DCCB',
-                    300: '#84C2A5',
-                    400: '#4DA77E',
-                    500: '#2F7D5B', // Forest Green
-                    600: '#256649',
-                    700: '#1C4E38',
-                    800: '#163E2D',
-                    900: '#102E21',
+                    DEFAULT: '#C9A24B', // Mapped to Accent Champagne Gold #C9A24B
+                    light: '#C9A24B',
+                    50: '#FAF6ED',
+                    100: '#F5ECDA',
+                    200: '#EBD8B3',
+                    300: '#DFC28A',
+                    400: '#D5B267',
+                    500: '#C9A24B',
+                    600: '#B08A37',
+                    700: '#8C6C27',
                 },
-                cyan: {
-                    50: '#F0F7F4',
-                    100: '#DBEDE4',
-                    200: '#B8DCCB',
-                    300: '#84C2A5',
-                    400: '#4DA77E',
-                    500: '#2F7D5B',
-                    600: '#256649',
-                    700: '#1C4E38',
-                    800: '#163E2D',
-                    900: '#102E21',
+                // Background: Warm cream #FAF5F2 (Main page background)
+                cream: {
+                    DEFAULT: '#FAF5F2',
+                    50: '#FFFFFF',
+                    100: '#FAF5F2',
+                    200: '#F5ECE7',
+                    300: '#EFE0D9',
                 },
-                emerald: {
-                    50: '#F0F7F4',
-                    100: '#DBEDE4',
-                    200: '#B8DCCB',
-                    300: '#84C2A5',
-                    400: '#4DA77E',
-                    500: '#2F7D5B', // Success: Forest Green #2F7D5B
-                    600: '#256649',
-                    700: '#1C4E38',
-                    800: '#163E2D',
-                    900: '#102E21',
+                sand: {
+                    DEFAULT: '#FAF5F2', // Warm cream #FAF5F2
+                    50: '#FFFFFF',
+                    100: '#FAF5F2',
+                    200: '#F3E3E6',
+                    300: '#E4D6D9',
+                },
+                // Surface: Soft blush #F3E3E6 (Cards, alternating sections, form fields)
+                blush: {
+                    DEFAULT: '#F3E3E6',
+                    50: '#FAF3F5',
+                    100: '#F3E3E6',
+                    200: '#E8CCD2',
+                    300: '#DCB3BD',
+                },
+                // Text: Charcoal wine #1F1519 (Headings and body text)
+                charcoal: {
+                    DEFAULT: '#1F1519',
+                    950: '#120B0E',
+                    900: '#1F1519',
+                    800: '#2E2025',
+                    700: '#423137',
+                },
+                ink: {
+                    DEFAULT: '#1F1519',
+                    950: '#120B0E',
+                    900: '#1F1519',
+                    800: '#2E2025',
+                    700: '#423137',
+                    600: '#57424A',
+                    500: '#6B5E62',
+                    100: '#F3E3E6',
+                    50: '#FAF5F2',
+                },
+                // Muted text: Warm gray #6B5E62 (Subtitles, captions, placeholders)
+                warmgray: {
+                    DEFAULT: '#6B5E62',
+                    500: '#6B5E62',
+                    600: '#574C50',
+                    700: '#433B3E',
+                },
+                // Border: Light rose gray #E4D6D9 (Dividers, input borders)
+                rosegray: {
+                    DEFAULT: '#E4D6D9',
+                    100: '#F2EBED',
+                    200: '#E4D6D9',
+                    300: '#D2BFC3',
+                },
+                mist: {
+                    DEFAULT: '#E4D6D9', // Light rose gray #E4D6D9
+                    50: '#FAF5F2',
+                    100: '#F3E3E6',
+                    200: '#E4D6D9',
+                    300: '#D2BFC3',
+                },
+                // Success: Green #2E7D5B ("Available now" or "Staff ready" status dots)
+                success: {
+                    DEFAULT: '#2E7D5B',
+                    50: '#EDF7F2',
+                    100: '#D6EFE2',
+                    500: '#2E7D5B',
+                    600: '#246549',
+                    700: '#1B4D37',
                 },
                 green: {
-                    50: '#F0F7F4',
-                    100: '#DBEDE4',
-                    200: '#B8DCCB',
-                    300: '#84C2A5',
-                    400: '#4DA77E',
-                    500: '#2F7D5B', // Success: Forest Green #2F7D5B
-                    600: '#256649',
-                    700: '#1C4E38',
-                    800: '#163E2D',
-                    900: '#102E21',
+                    DEFAULT: '#2E7D5B',
+                    50: '#EDF7F2',
+                    100: '#D6EFE2',
+                    500: '#2E7D5B',
+                    600: '#246549',
                 },
-                slate: {
-                    50: '#F7F6F2',  // Warm Off-White
-                    100: '#F0EFEA',
-                    200: '#E3E0D8', // Muted Sand
-                    300: '#D1CDC3',
-                    400: '#8A94A3',
-                    500: '#6B7686', // Cool Slate
-                    600: '#6B7686',
-                    700: '#3B4656', // Slate Charcoal
-                    800: '#1F3A5F', // Navy 700
-                    900: '#14263F', // Navy 900
-                    950: '#0E1A2B',
+                forest: {
+                    DEFAULT: '#2E7D5B',
+                    50: '#EDF7F2',
+                    100: '#D6EFE2',
+                    500: '#2E7D5B',
                 },
-                gray: {
-                    50: '#F7F6F2',
-                    100: '#F0EFEA',
-                    200: '#E3E0D8',
-                    300: '#D1CDC3',
-                    400: '#8A94A3',
-                    500: '#6B7686',
-                    600: '#6B7686',
-                    700: '#3B4656',
-                    800: '#1F3A5F',
-                    900: '#14263F',
-                    950: '#0E1A2B',
+                white: '#FFFFFF',
+
+                /* Dark Mode Palette Tokens */
+                dark: {
+                    bg: '#3D0B1A',
+                    card: '#5A1429',
+                    text: '#FAF5F2',
+                    muted: '#E4D6D9',
+                    border: '#64172E',
+                    link: '#C9A24B',
                 },
-                zinc: {
-                    50: '#F7F6F2',
-                    100: '#F0EFEA',
-                    200: '#E3E0D8',
-                    300: '#D1CDC3',
-                    400: '#8A94A3',
-                    500: '#6B7686',
-                    600: '#6B7686',
-                    700: '#3B4656',
-                    800: '#1F3A5F',
-                    900: '#14263F',
-                    950: '#0E1A2B',
+
+                /* Semantic Brand Tokens */
+                brand: {
+                    primary: '#7B1E3A',        // Burgundy #7B1E3A
+                    'primary-dark': '#5A1429', // Deep burgundy #5A1429
+                    secondary: '#7B1E3A',      // Burgundy #7B1E3A
+                    action: '#7B1E3A',         // Burgundy #7B1E3A
+                    'action-hover': '#5A1429', // Deep burgundy #5A1429
+                    accent: '#C9A24B',         // Champagne gold #C9A24B
+                    gold: '#C9A24B',           // Champagne gold #C9A24B
+                    teal: '#C9A24B',           // Champagne gold #C9A24B
+                    'teal-light': '#C9A24B',   // Champagne gold #C9A24B
+                    bg: '#FAF5F2',             // Warm cream #FAF5F2
+                    surface: '#F3E3E6',        // Soft blush #F3E3E6
+                    card: '#F3E3E6',           // Soft blush #F3E3E6
+                    border: '#E4D6D9',         // Light rose gray #E4D6D9
+                    body: '#1F1519',           // Charcoal wine #1F1519
+                    text: '#1F1519',           // Charcoal wine #1F1519
+                    muted: '#6B5E62',          // Warm gray #6B5E62
+                    success: '#2E7D5B',        // Green #2E7D5B
+                    danger: '#5A1429',         // Deep burgundy #5A1429
                 },
-                neutral: {
-                    50: '#F7F6F2',
-                    100: '#F0EFEA',
-                    200: '#E3E0D8',
-                    300: '#D1CDC3',
-                    400: '#8A94A3',
-                    500: '#6B7686',
-                    600: '#6B7686',
-                    700: '#3B4656',
-                    800: '#1F3A5F',
-                    900: '#14263F',
-                    950: '#0E1A2B',
+
+                /* Aliases to map legacy template utilities into the new brand palette */
+                primary: {
+                    DEFAULT: '#7B1E3A',
+                    dark: '#5A1429',
+                    50: '#FDF2F5',
+                    500: '#7B1E3A',
+                    700: '#5A1429',
+                    800: '#4D1022',
+                    900: '#3D0B1A',
                 },
-                stone: {
-                    50: '#F7F6F2',
-                    100: '#F0EFEA',
-                    200: '#E3E0D8',
-                    300: '#D1CDC3',
-                    400: '#8A94A3',
-                    500: '#6B7686',
-                    600: '#6B7686',
-                    700: '#3B4656',
-                    800: '#1F3A5F',
-                    900: '#14263F',
-                    950: '#0E1A2B',
+                secondary: {
+                    DEFAULT: '#1F1519',
+                    700: '#1F1519',
+                    800: '#1F1519',
+                    900: '#1F1519',
                 },
-                rose: {
-                    50: '#FCF3F2',
-                    100: '#F8E2E0',
-                    200: '#F2C7C3',
-                    300: '#E7A19B',
-                    400: '#D8736B',
-                    500: '#B3392F', // Danger: Brick Red #B3392F
-                    600: '#992E25',
-                    700: '#7F241C',
-                    800: '#651C15',
-                    900: '#4B140F',
+                action: {
+                    DEFAULT: '#7B1E3A',
+                    hover: '#5A1429',
+                    50: '#FDF2F5',
+                    100: '#FCE7EC',
+                    500: '#7B1E3A',
+                    600: '#5A1429',
+                },
+                orange: {
+                    DEFAULT: '#7B1E3A',
+                    500: '#7B1E3A',
+                    600: '#5A1429',
+                },
+                amber: {
+                    DEFAULT: '#C9A24B',
+                    500: '#C9A24B',
+                    600: '#B08A37',
+                },
+                yellow: {
+                    DEFAULT: '#C9A24B',
+                    500: '#C9A24B',
+                    600: '#B08A37',
+                },
+                brick: {
+                    DEFAULT: '#5A1429',
+                    500: '#5A1429',
+                },
+                danger: {
+                    DEFAULT: '#5A1429',
+                    500: '#5A1429',
                 },
                 red: {
-                    50: '#FCF3F2',
-                    100: '#F8E2E0',
-                    200: '#F2C7C3',
-                    300: '#E7A19B',
-                    400: '#D8736B',
-                    500: '#B3392F', // Danger: Brick Red #B3392F
-                    600: '#992E25',
-                    700: '#7F241C',
-                    800: '#651C15',
-                    900: '#4B140F',
+                    DEFAULT: '#7B1E3A',
+                    500: '#7B1E3A',
+                    600: '#5A1429',
+                },
+                rose: {
+                    DEFAULT: '#7B1E3A',
+                    500: '#7B1E3A',
+                    600: '#5A1429',
                 },
             },
         },

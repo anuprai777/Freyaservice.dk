@@ -3,112 +3,373 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   Company Brand Theme Custom Variables & Foundation
+   Freeya Service — Official Company Color Palette
+   1. Primary: Burgundy #7B1E3A (Logo, main buttons, links, key headings)
+   2. Primary dark: Deep burgundy #5A1429 (Button hover, footer, dark sections)
+   3. Accent: Champagne gold #C9A24B (Small highlights, badges, icons, underlines)
+   4. Background: Warm cream #FAF5F2 (Main page background)
+   5. Surface: Soft blush #F3E3E6 (Cards, alternating sections, form fields)
+   6. Text: Charcoal wine #1F1519 (Headings and body text)
+   7. Muted text: Warm gray #6B5E62 (Subtitles, captions, placeholders)
+   8. Border: Light rose gray #E4D6D9 (Dividers, input borders)
+   9. Success: Green #2E7D5B (“Available now” or “Staff ready” status dots)
    ========================================================================== */
 :root {
-    /* Primary Brand: Navy 900 (Top bar, footers, dark backgrounds, high-contrast text) */
-    --brand-primary: #14263F;
-    --brand-primary-rgb: 20, 38, 63;
+    /* Exact 9-Color Palette Tokens */
+    --primary: #7B1E3A;             /* Burgundy */
+    --primary-rgb: 123, 30, 58;
+    --primary-dark: #5A1429;        /* Deep burgundy */
+    --primary-dark-rgb: 90, 20, 41;
+    --accent: #C9A24B;              /* Champagne gold */
+    --accent-rgb: 201, 162, 75;
+    --gold: #C9A24B;
+    --gold-rgb: 201, 162, 75;
+    --bg: #FAF5F2;                  /* Warm cream */
+    --bg-rgb: 250, 245, 242;
+    --surface: #F3E3E6;             /* Soft blush */
+    --surface-rgb: 243, 227, 230;
+    --text: #1F1519;                /* Charcoal wine */
+    --text-rgb: 31, 21, 25;
+    --muted: #6B5E62;               /* Warm gray */
+    --muted-rgb: 107, 94, 98;
+    --border: #E4D6D9;              /* Light rose gray */
+    --border-rgb: 228, 214, 217;
+    --success: #2E7D5B;             /* Green */
+    --success-rgb: 46, 125, 91;
+    --white: #FFFFFF;
+    --white-rgb: 255, 255, 255;
 
-    /* Secondary Brand: Navy 700 (Headings, primary links, active borders, text selections) */
-    --brand-secondary: #1F3A5F;
-    --brand-secondary-rgb: 31, 58, 95;
+    /* Semantic Theme Tokens */
+    --page-bg: var(--bg);
+    --card-bg: var(--surface);
+    --surface-bg: var(--surface);
+    --heading-color: var(--text);
+    --body-color: var(--text);
+    --muted-color: var(--muted);
+    --border-color: var(--border);
+    --link-color: var(--primary);
+    --link-hover-color: var(--primary-dark);
+    --focus-ring-color: var(--primary);
+    --input-bg: #FFFFFF;
+    --input-border: var(--border);
 
-    /* Action / Accent: Orange 500 (Primary CTA buttons, highlight badges, accents) */
-    --brand-action: #E8833A;
-    --brand-action-rgb: 232, 131, 58;
+    /* Legacy Aliases smoothly mapped to exact palette */
+    --burgundy: var(--primary);
+    --burgundy-rgb: 123, 30, 58;
+    --burgundy-dark: var(--primary-dark);
+    --burgundy-dark-rgb: 90, 20, 41;
+    --navy: var(--primary-dark);
+    --navy-rgb: 90, 20, 41;
+    --ink: var(--text);
+    --ink-rgb: 31, 21, 25;
+    --teal: var(--accent);
+    --teal-rgb: 201, 162, 75;
+    --teal-light: var(--accent);
+    --teal-light-rgb: 201, 162, 75;
+    --sand: var(--surface);
+    --sand-rgb: 243, 227, 230;
+    --mist: var(--border);
+    --mist-rgb: 228, 214, 217;
 
-    /* Action Hover: Orange 600 (Button hover & active states) */
-    --brand-action-hover: #D2702A;
-    --brand-action-hover-rgb: 210, 112, 42;
-
-    /* Page Background: Warm Off-White (Main website background, light sections) */
-    --brand-page-bg: #F7F6F2;
-    --brand-page-bg-rgb: 247, 246, 242;
-
-    /* Surface: Pure White (Card backgrounds, inputs, modals) */
-    --brand-surface: #FFFFFF;
-    --brand-surface-rgb: 255, 255, 255;
-
-    /* Border / Divider: Muted Sand (Card borders, table dividers, form input borders) */
-    --brand-border: #E3E0D8;
-    --brand-border-rgb: 227, 224, 216;
-
-    /* Body Text: Slate Charcoal (Standard body paragraph text) */
-    --brand-body-text: #3B4656;
-    --brand-body-text-rgb: 59, 70, 86;
-
-    /* Muted Text: Cool Slate (Subtitles, meta info, placeholders, labels) */
-    --brand-muted-text: #6B7686;
-    --brand-muted-text-rgb: 107, 118, 134;
-
-    /* Success / Valid: Forest Green (Success badges, checkmarks, confirmation notices) */
-    --brand-success: #2F7D5B;
-    --brand-success-rgb: 47, 125, 91;
-
-    /* Danger / Error: Brick Red (Error messages, form validation errors) */
-    --brand-danger: #B3392F;
-    --brand-danger-rgb: 179, 57, 47;
+    /* Backward-compatible brand-* variables mapped directly to new palette */
+    --brand-primary: var(--primary-dark);
+    --brand-primary-rgb: 90, 20, 41;
+    --brand-secondary: var(--text);
+    --brand-secondary-rgb: 31, 21, 25;
+    --brand-action: var(--primary);
+    --brand-action-rgb: 123, 30, 58;
+    --brand-action-hover: var(--primary-dark);
+    --brand-action-hover-rgb: 90, 20, 41;
+    --brand-page-bg: var(--bg);
+    --brand-page-bg-rgb: 250, 245, 242;
+    --brand-surface: var(--surface);
+    --brand-surface-rgb: 243, 227, 230;
+    --brand-border: var(--border);
+    --brand-border-rgb: 228, 214, 217;
+    --brand-body-text: var(--text);
+    --brand-body-text-rgb: 31, 21, 25;
+    --brand-muted-text: var(--muted);
+    --brand-success: var(--success);
+    --brand-success-rgb: 46, 125, 91;
+    --brand-danger: var(--primary-dark);
+    --brand-danger-rgb: 90, 20, 41;
 }
 
-/* Secondary Brand: Text selections */
-::selection {
-    background-color: var(--brand-secondary);
-    color: #FFFFFF;
+/* ==========================================================================
+   Dark Mode Palette
+   ========================================================================== */
+.dark, [data-theme="dark"] {
+    --page-bg: #1F1519;
+    --card-bg: #2B1D22;
+    --surface-bg: #2B1D22;
+    --heading-color: #FAF5F2;
+    --body-color: #FAF5F2;
+    --muted-color: #CBB9BD;
+    --border-color: #4D353C;
+    --link-color: #E65D82;
+    --link-hover-color: #F7C4D0;
+    --input-bg: #2B1D22;
+    --input-border: #4D353C;
+
+    --sand: #2B1D22;
+    --mist: #4D353C;
+    --ink: #FAF5F2;
+    --white: #1F1519;
+
+    --brand-page-bg: #1F1519;
+    --brand-surface: #2B1D22;
+    --brand-border: #4D353C;
+    --brand-body-text: #FAF5F2;
+    --brand-muted-text: #CBB9BD;
 }
 
-::-moz-selection {
-    background-color: var(--brand-secondary);
-    color: #FFFFFF;
+/* ==========================================================================
+   Base Typography & Global Layout
+   ========================================================================== */
+html {
+    color-scheme: light;
 }
 
 body {
-    background-color: var(--brand-page-bg);
-    color: var(--brand-body-text);
+    background-color: var(--page-bg);
+    color: var(--body-color);
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 100%;
+    overflow-x: clip;
 }
 
-/* Heading color default: Secondary Brand Navy 700 / Primary Navy 900 */
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--brand-secondary);
+    color: var(--heading-color);
+    font-weight: 700;
 }
 
-/* Primary link styling */
-a.brand-link {
-    color: var(--brand-secondary);
-    transition: color 0.15s ease-in-out;
+/* Text selections */
+::selection {
+    background-color: var(--primary);
+    color: #FFFFFF;
 }
-a.brand-link:hover {
-    color: var(--brand-action);
+::-moz-selection {
+    background-color: var(--primary);
+    color: #FFFFFF;
 }
 
-/* Custom scrollbar for modern browsers */
+/* ==========================================================================
+   Links
+   ========================================================================== */
+a.brand-link, .prose a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, text-decoration 0.15s ease-in-out;
+}
+a.brand-link:hover, .prose a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Component Styles
+   ========================================================================== */
+
+/* 1. Primary Button: Burgundy #7B1E3A, hover Deep burgundy #5A1429 */
+.btn-primary, button.btn-primary, a.btn-primary {
+    background-color: var(--primary) !important;
+    color: #FFFFFF !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    padding: 0.625rem 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.15s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    border: none;
+}
+.btn-primary:hover, button.btn-primary:hover, a.btn-primary:hover {
+    background-color: var(--primary-dark) !important;
+}
+/* When primary button is on dark background */
+.bg-navy .btn-primary,
+.bg-navy-900 .btn-primary,
+.bg-brand-primary .btn-primary,
+.hero-pattern .btn-primary,
+header.bg-navy .btn-primary,
+footer.bg-navy .btn-primary,
+.on-navy .btn-primary {
+    border: 2px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+/* 2. Secondary Button: Champagne gold #C9A24B border & highlights */
+.btn-secondary, button.btn-secondary, a.btn-secondary {
+    background-color: transparent !important;
+    border: 2px solid var(--accent) !important;
+    color: var(--primary) !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    padding: 0.5rem 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+.btn-secondary:hover, button.btn-secondary:hover, a.btn-secondary:hover {
+    background-color: rgba(201, 162, 75, 0.12) !important;
+}
+/* When secondary button is on dark background: white text */
+.bg-navy .btn-secondary,
+.bg-navy-900 .btn-secondary,
+.bg-brand-primary .btn-secondary,
+.hero-pattern .btn-secondary,
+header.bg-navy .btn-secondary,
+footer.bg-navy .btn-secondary,
+.on-navy .btn-secondary {
+    color: #FFFFFF !important;
+}
+.bg-navy .btn-secondary:hover,
+.bg-navy-900 .btn-secondary:hover,
+.hero-pattern .btn-secondary:hover {
+    background-color: rgba(201, 162, 75, 0.22) !important;
+}
+
+/* 3. Service Cards: Soft blush #F3E3E6 background */
+.service-card {
+    background-color: var(--surface);
+    border-radius: 14px;
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-top-color: var(--primary-dark);
+    transition: all 0.2s ease-in-out;
+}
+.service-card-temp {
+    border-top-color: var(--primary) !important;
+}
+.service-card-perm {
+    border-top-color: var(--primary-dark) !important;
+}
+.service-card-part {
+    border-top-color: var(--accent) !important;
+}
+
+/* 4. Sector Tags */
+.sector-tag {
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: transform 0.15s ease;
+}
+.sector-tag:nth-child(3n) {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    border-color: var(--primary);
+}
+
+/* 5. Forms: Soft blush / white inputs with Light rose gray #E4D6D9 border */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+select,
+textarea {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--body-color);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--primary) !important;
+}
+
+/* Error and Success input states */
+.input-error, input.is-invalid {
+    border-color: var(--primary-dark) !important;
+    box-shadow: 0 0 0 1px var(--primary-dark) !important;
+}
+.input-success, input.is-valid {
+    border-color: var(--success) !important;
+    box-shadow: 0 0 0 1px var(--success) !important;
+}
+
+/* 6. Section Divider: Burgundy, Champagne gold and Deep burgundy */
+.brand-divider {
+    height: 4px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+.brand-divider > :nth-child(1), .brand-divider-burgundy {
+    background-color: var(--primary);
+    flex: 1;
+    height: 100%;
+}
+.brand-divider > :nth-child(2), .brand-divider-teal {
+    background-color: var(--accent);
+    flex: 1;
+    height: 100%;
+}
+.brand-divider > :nth-child(3), .brand-divider-mist {
+    background-color: var(--secondary);
+    flex: 1;
+    height: 100%;
+}
+
+/* 7. Focus State Accessibility:
+   Visible focus state on all interactive elements */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 2px;
+}
+
+/* Custom scrollbars */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--brand-page-bg);
+    background: var(--page-bg);
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--brand-border);
+    background: var(--mist);
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--brand-muted-text);
+    background: var(--muted-color);
 }
 
-/* Alpine.js cloak: Prevents layout shift and unstyled flash on mobile / desktop */
+/* Alpine.js cloak */
 [x-cloak] {
     display: none !important;
 }
 
-/* Prevent horizontal page overflow on small mobile screens without breaking sticky headers */
-html, body {
-    max-width: 100%;
-    overflow-x: clip;
-}
-
-/* Hide scrollbar utility for clean mobile horizontal scroll lists */
+/* Utilities */
 .scrollbar-none::-webkit-scrollbar {
     display: none;
 }
@@ -117,15 +378,263 @@ html, body {
     scrollbar-width: none;
 }
 
-/* Mobile tap target improvement */
 @media (max-width: 640px) {
     button, a, input, select, textarea {
         touch-action: manipulation;
     }
 }
 
-html {
-    color-scheme: light;
+/* ==========================================================================
+   U-Style Feature Cards (.u-card)
+   ========================================================================== */
+.u-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 4rem;
+}
+@media (min-width: 768px) {
+    .u-cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1100px) {
+    .u-cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
+.u-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-shadow: 0 6px 18px rgba(86, 24, 44, 0.06);
+    border: 1px solid var(--u-card-border, #EBD9DC);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 0;
+    position: relative;
+    box-sizing: border-box;
+}
 
+.u-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px var(--u-card-hover-shadow, rgba(86, 24, 44, 0.12));
+}
+
+.u-card:focus-visible,
+.u-card a:focus-visible {
+    outline: 2px solid var(--u-card-accent);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .u-card,
+    .u-card:hover {
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Maroon Variant (Default) */
+.u-card--maroon {
+    --u-card-border: #EBD9DC;
+    --u-card-accent: #6B1E36;
+    --u-card-accent-dark: #4B1428;
+    --u-card-bg-gradient: linear-gradient(170deg, #7A2641, #4B1428);
+    --u-card-icon-tint: #F4D9DF;
+    --u-card-hover-shadow: rgba(86, 24, 44, 0.14);
+}
+
+/* Green Variant */
+.u-card--green {
+    --u-card-border: #D5E6DC;
+    --u-card-accent: #2F6B4F;
+    --u-card-accent-dark: #1E4A35;
+    --u-card-bg-gradient: linear-gradient(170deg, #3C7F5E, #1E4A35);
+    --u-card-icon-tint: #DDF0E5;
+    --u-card-hover-shadow: rgba(30, 74, 53, 0.14);
+}
+
+/* Top: text and U-media */
+.u-card__top {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: stretch;
+}
+
+/* Text Column */
+.u-card__text {
+    flex: 1 1 0%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Eyebrow with 16px x 2px line */
+.u-card__eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--u-card-accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+}
+.u-card__eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background-color: var(--u-card-accent);
+    border-radius: 1px;
+    flex-shrink: 0;
+}
+
+/* Title */
+.u-card__title {
+    font-size: 25px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--u-card-accent);
+    margin: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Body */
+.u-card__body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4A363B;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* The U shaped panel */
+.u-card__media {
+    flex: 0 0 140px;
+    width: 140px;
+    height: 268px;
+    border-radius: 22px 22px 70px 70px;
+    overflow: hidden;
+    position: relative;
+    background: var(--u-card-bg-gradient);
+}
+
+/* Dot pattern overlay */
+.u-card__media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.2px, transparent 1.2px);
+    background-size: 14px 14px;
+    z-index: 1;
+}
+
+/* Media photo if available */
+.u-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px 22px 70px 70px;
+    z-index: 1;
+}
+
+.u-card__media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.45) 100%);
+    border-radius: 22px 22px 70px 70px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Icon (stroke-only, 1.4 stroke-width, centered and shifted ~30px above middle) */
+.u-card__icon {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: calc(50% - 30px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--u-card-icon-tint);
+    stroke-width: 1.4;
+    fill: none;
+    stroke: currentColor;
+    z-index: 2;
+}
+
+/* Badge (white pill at bottom of media) */
+.u-card__badge {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border-radius: 9999px;
+    padding: 6px 10px;
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--u-card-accent-dark);
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    z-index: 3;
+}
+
+/* Footer Tag */
+.u-card__tag {
+    border-left: 3px solid var(--u-card-accent);
+    padding-left: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.u-card__tag strong {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--u-card-accent-dark);
+}
+.u-card__tag small {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted, #6B5E62);
+    line-height: 1.3;
+}
+
+/* Mobile responsive under 420px */
+@media (max-width: 420px) {
+    .u-card {
+        padding: 22px;
+    }
+    .u-card__top {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .u-card__media {
+        flex: none;
+        width: 100%;
+        height: 200px;
+        border-radius: 22px 22px 70px 70px;
+    }
+    .u-card__icon {
+        top: calc(50% - 20px);
+    }
+    .u-card__title {
+        font-size: 22px;
+    }
+}

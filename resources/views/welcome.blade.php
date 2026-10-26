@@ -156,233 +156,9 @@
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
         .hero-pattern {
-            background-color: #14263F;
-            background-image: radial-gradient(rgba(247, 246, 242, 0.08) 1.5px, transparent 0);
+            background-color: #5A1429;
+            background-image: radial-gradient(rgba(243, 227, 230, 0.08) 1.5px, transparent 0);
             background-size: 24px 24px;
-        }
-
-        /* ── Spray-Foam-Wipe Hero Animation ── */
-        .spray-anim-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 40;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        /* Cleaner woman in blue uniform (transparent cutout) */
-        .spray-anim-woman {
-            position: absolute;
-            bottom: -25px;
-            right: -35%;
-            width: clamp(260px, 36vw, 460px);
-            height: auto;
-            z-index: 42;
-            opacity: 0;
-            filter: drop-shadow(0 14px 36px rgba(0,0,0,0.45));
-            pointer-events: none;
-            user-select: none;
-        }
-        .spray-anim-woman.anim-enter {
-            animation: womanSlideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        .spray-anim-woman.anim-spray {
-            animation: womanSpray 0.45s ease-in-out;
-        }
-        .spray-anim-woman.anim-exit {
-            animation: womanSlideOut 0.65s cubic-bezier(0.55, 0, 1, 0.45) forwards;
-        }
-
-        @keyframes womanSlideIn {
-            from { right: -35%; opacity: 0; transform: translateY(30px); }
-            to   { right: 2%; opacity: 1; transform: translateY(0); }
-        }
-        @keyframes womanSpray {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            35%  { transform: rotate(-5deg) scale(1.05); }
-            70%  { transform: rotate(2deg) scale(1.02); }
-        }
-        @keyframes womanSlideOut {
-            from { right: 2%; opacity: 1; transform: translateY(0); }
-            to   { right: -40%; opacity: 0; transform: translateY(30px); }
-        }
-
-        /* Spray mist cone burst */
-        .spray-mist-cone {
-            position: absolute;
-            top: 42%;
-            right: 18%;
-            width: 0;
-            height: 0;
-            z-index: 42;
-            pointer-events: none;
-            opacity: 0;
-            background: radial-gradient(ellipse at 100% 50%, rgba(255,255,255,0.95) 0%, rgba(220,245,255,0.7) 40%, rgba(200,235,255,0.2) 75%, transparent 100%);
-            border-radius: 50%;
-            filter: blur(5px);
-        }
-        .spray-mist-cone.anim-burst {
-            animation: mistBurst 0.65s ease-out forwards;
-        }
-        @keyframes mistBurst {
-            0%   { width: 0; height: 0; opacity: 0; transform: translate(0, 0) scale(0.4); }
-            30%  { width: clamp(260px, 36vw, 480px); height: clamp(160px, 24vw, 320px); opacity: 0.95; transform: translate(-70px, -40px) scale(1); }
-            100% { width: clamp(420px, 55vw, 700px); height: clamp(280px, 40vw, 500px); opacity: 0; transform: translate(-180px, -70px) scale(1.3); }
-        }
-
-        /* Foam overlay — rich white lather */
-        .spray-foam-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 41;
-            background: 
-                radial-gradient(circle at 72% 50%, rgba(255,255,255,0.99) 0%, rgba(245,250,255,0.97) 35%, rgba(230,242,255,0.94) 70%, rgba(215,235,250,0.92) 100%),
-                radial-gradient(circle at 25% 30%, rgba(255,255,255,0.85) 0%, transparent 45%),
-                radial-gradient(circle at 80% 75%, rgba(255,255,255,0.8) 0%, transparent 50%);
-            opacity: 0;
-            transform: scale(0.25);
-            transform-origin: 72% 48%;
-            border-radius: 50%;
-            box-shadow: inset 0 0 100px rgba(180, 215, 245, 0.45), 0 0 80px rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-        }
-        .spray-foam-layer.anim-expand {
-            animation: foamExpand 1.15s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
-        }
-        .spray-foam-layer.anim-hold {
-            opacity: 1;
-            transform: scale(3);
-            border-radius: 0;
-        }
-        @keyframes foamExpand {
-            0%   { opacity: 0; transform: scale(0.25); border-radius: 50%; }
-            25%  { opacity: 0.9; }
-            100% { opacity: 1; transform: scale(3); border-radius: 0; }
-        }
-
-        /* Foam bubble particles */
-        .spray-foam-bubbles {
-            position: absolute;
-            inset: 0;
-            z-index: 41;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .spray-foam-bubbles .bubble {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.98), rgba(215,238,255,0.7));
-            box-shadow: inset -2px -3px 8px rgba(160,205,245,0.4), 0 0 10px rgba(255,255,255,0.4);
-            opacity: 0;
-        }
-        .spray-foam-bubbles .bubble.anim-rise {
-            animation: bubbleRise var(--dur, 1.5s) var(--delay, 0s) ease-out forwards;
-        }
-        @keyframes bubbleRise {
-            0%   { opacity: 0; transform: translate(0, 0) scale(0.2); }
-            25%  { opacity: 0.95; }
-            80%  { opacity: 0.7; transform: translate(var(--dx, -80px), var(--dy, -120px)) scale(1); }
-            100% { opacity: 0; transform: translate(var(--dx, -80px), var(--dy, -150px)) scale(1.15); }
-        }
-
-        /* Cloth wipe — sweeps across screen */
-        .spray-wipe-cloth {
-            position: absolute;
-            top: 15%;
-            left: -40%;
-            width: clamp(220px, 32vw, 420px);
-            height: auto;
-            z-index: 43;
-            pointer-events: none;
-            opacity: 0;
-            filter: drop-shadow(-8px 18px 30px rgba(0,0,0,0.4));
-        }
-        .spray-wipe-cloth img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transform: rotate(-12deg);
-        }
-        .spray-wipe-cloth.anim-wipe {
-            opacity: 1;
-            animation: clothSweep 1.3s cubic-bezier(0.35, 0, 0.25, 1) forwards;
-        }
-        @keyframes clothSweep {
-            0%   { left: -40%; top: 8%; transform: rotate(-8deg); }
-            45%  { top: 22%; transform: rotate(2deg); }
-            100% { left: 110%; top: 6%; transform: rotate(-12deg); }
-        }
-
-        /* Foam dissolve matching cloth sweep */
-        .spray-foam-layer.anim-dissolve {
-            animation: foamDissolve 1.3s cubic-bezier(0.35, 0, 0.25, 1) forwards;
-        }
-        @keyframes foamDissolve {
-            0%   { opacity: 1; clip-path: inset(0 0 0 0); }
-            100% { opacity: 0; clip-path: inset(0 0 0 100%); }
-        }
-
-        /* Wipe sparkle shine trail */
-        .spray-wipe-shine {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: -10%;
-            width: 32px;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.98) 50%, rgba(180,225,255,0.85) 75%, transparent 100%);
-            box-shadow: 0 0 30px 10px rgba(255,255,255,0.9);
-            opacity: 0;
-            z-index: 44;
-            pointer-events: none;
-        }
-        .spray-wipe-shine.anim-wipe {
-            animation: shineSweep 1.3s cubic-bezier(0.35, 0, 0.25, 1) forwards;
-        }
-        @keyframes shineSweep {
-            0%   { left: -10%; opacity: 0; }
-            5%   { opacity: 1; }
-            95%  { opacity: 1; }
-            100% { left: 112%; opacity: 0; }
-        }
-
-        /* Hero content initially hidden during spray, revealed upon clean wipe */
-        .hero-content-reveal {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .hero-content-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Skip button */
-        .spray-skip-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 50;
-            background: rgba(20, 38, 63, 0.7);
-            backdrop-filter: blur(10px);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 9999px;
-            padding: 8px 20px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-            letter-spacing: 0.03em;
-            pointer-events: auto;
-        }
-        .spray-skip-btn.visible { opacity: 1; }
-        .spray-skip-btn:hover { background: rgba(232, 131, 58, 0.9); border-color: rgba(232, 131, 58, 1); transform: scale(1.05); }
-
-        /* Respect reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            .spray-anim-overlay { display: none !important; }
-            .hero-content-reveal { opacity: 1 !important; transform: none !important; }
         }
     </style>
 </head>
@@ -390,7 +166,7 @@
     <!-- Floating Toast Notifications for Form Success & Alerts -->
     <x-notification-toast />
 
-    <!-- Top Danish / English Info Bar (Primary Brand: Navy 900 #14263F, Warm Off-White #F7F6F2 text) -->
+    <!-- Top Danish / English Info Bar (Primary Dark: Deep burgundy #5A1429) -->
     <div class="bg-brand-primary text-sand-100 text-xs py-2 px-4 border-b border-navy-800">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-4 text-center sm:text-left">
@@ -429,29 +205,33 @@
         </div>
     </div>
 
-    <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-brand-surface border-b border-brand-border shadow-xs">
+    <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-navy text-white border-b border-navy-800 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center group shrink-0 focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg focus:outline-none" aria-label="Freya Service Forside">
-                <img src="{{ asset('images/logo.png') }}" alt="Freya Service vikarbureau logo" class="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform" width="180" height="48">
+            <a href="/" class="flex items-center group shrink-0 focus-visible:ring-2 focus-visible:ring-burgundy rounded-lg focus:outline-none" aria-label="Freya Service Forside">
+                <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service vikarbureau logo" class="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform" width="180" height="48">
             </a>
 
-            <!-- Nav Links (Matching layout style: Services, Industries, How It Works, Contact) -->
+            <!-- Nav Links (Matching layout style: Services, Industries, About, How It Works, Contact) -->
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold" aria-label="Hovednavigation">
-                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary hover:border-brand-action border-transparent' }} focus-visible:ring-2 focus-visible:ring-brand-action rounded-sm focus:outline-none">
-                    <x-heroicon-o-briefcase class="w-4 h-4" />
+                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
+                    <x-heroicon-o-briefcase class="w-4 h-4 text-teal" />
                     <span>{{ __('Ydelser') }}</span>
                 </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('industries') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary hover:border-brand-action border-transparent' }} focus-visible:ring-2 focus-visible:ring-brand-action rounded-sm focus:outline-none">
-                    <x-heroicon-o-building-office-2 class="w-4 h-4" />
+                <a href="{{ route('industries') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('industries') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
+                    <x-heroicon-o-building-office-2 class="w-4 h-4 text-teal" />
                     <span>{{ __('Brancher') }}</span>
                 </a>
-                <a href="{{ route('how-it-works') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('how-it-works') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary hover:border-brand-action border-transparent' }} focus-visible:ring-2 focus-visible:ring-brand-action rounded-sm focus:outline-none">
-                    <x-heroicon-o-arrows-pointing-in class="w-4 h-4" />
+                <a href="{{ route('about') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('about') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
+                    <x-heroicon-o-user-group class="w-4 h-4 text-teal" />
+                    <span>{{ __('Om os') }}</span>
+                </a>
+                <a href="{{ route('how-it-works') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('how-it-works') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
+                    <x-heroicon-o-arrows-pointing-in class="w-4 h-4 text-teal" />
                     <span>{{ __('Sådan virker det') }}</span>
                 </a>
-                <a href="{{ route('contact') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('contact') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary hover:border-brand-action border-transparent' }} focus-visible:ring-2 focus-visible:ring-brand-action rounded-sm focus:outline-none">
-                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-4 h-4" />
+                <a href="{{ route('contact') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('contact') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
+                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-4 h-4 text-teal" />
                     <span>{{ __('Kontakt') }}</span>
                 </a>
             </nav>
@@ -460,21 +240,21 @@
             <div class="flex items-center gap-2 sm:gap-3">
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
+                        <a href="{{ url('/dashboard') }}" class="btn-primary border-2 border-white/35 inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-bold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
                             <x-heroicon-o-squares-2x2 class="w-4 h-4 shrink-0" />
                             <span class="hidden sm:inline">{{ __('Min Profil / Dashboard') }}</span>
                             <span class="sm:hidden">{{ __('Dashboard') }}</span>
                             <x-heroicon-o-arrow-right class="w-3.5 h-3.5 hidden sm:inline shrink-0" />
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="hidden lg:flex text-sm font-bold text-brand-secondary hover:text-brand-action px-3 py-2 rounded-lg transition items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
-                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" />
+                        <a href="{{ route('login') }}" class="hidden lg:flex text-sm font-bold text-sand-200 hover:text-white px-3 py-2 rounded-lg transition items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-teal" />
                             <span>{{ __('Log ind') }}</span>
                         </a>
 
                         @if (Route::has('register'))
-                            <!-- Primary CTA Button: Action / Accent Orange 500 #E8833A, hover Orange 600 #D2702A -->
-                            <a href="{{ route('register') }}" class="hidden lg:inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
+                            <!-- Primary CTA Button on Navy (burgundy bg with 2px rgba(255,255,255,0.35) border) -->
+                            <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 hidden lg:inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-bold text-white shadow-md transition focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
                                 <x-heroicon-o-user-plus class="w-4 h-4" />
                                 <span>{{ __('Opret konto') }}</span>
                             </a>
@@ -483,7 +263,7 @@
                 @endif
 
                 <!-- Mobile Hamburger Toggle Button -->
-                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden inline-flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-xl text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none transition" aria-label="Menu" :aria-expanded="mobileOpen.toString()">
+                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden inline-flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-lg text-sand-200 hover:text-white hover:bg-navy-800 focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none transition" aria-label="Menu" :aria-expanded="mobileOpen.toString()">
                     <x-heroicon-o-bars-3 class="h-6 w-6" x-show="!mobileOpen" />
                     <x-heroicon-o-x-mark class="h-6 w-6" x-show="mobileOpen" x-cloak />
                 </button>
@@ -498,15 +278,15 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
-             class="lg:hidden border-t border-brand-border bg-brand-surface shadow-xl">
+             class="lg:hidden border-t border-navy-800 bg-navy text-white shadow-xl">
             <!-- Mobile Language Selector -->
-            <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-bg/60">
-                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
-                <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1.5 min-h-[36px] rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+            <div class="px-4 py-3 flex items-center justify-between border-b border-navy-800 bg-navy-900/60">
+                <span class="text-xs font-bold text-sand-300 uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
+                <div class="flex items-center gap-1 bg-navy-950 p-1 rounded-lg border border-navy-800 text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-burgundy text-white font-bold' : 'text-sand-300 hover:text-white' }}">
                         <span>🇩🇰</span><span>Dansk</span>
                     </a>
-                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1.5 min-h-[36px] rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-burgundy text-white font-bold' : 'text-sand-300 hover:text-white' }}">
                         <span>🇬🇧</span><span>English</span>
                     </a>
                 </div>
@@ -514,39 +294,43 @@
 
             <!-- Mobile Navigation Links -->
             <div class="px-4 py-3 space-y-1">
-                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-50 text-brand-secondary font-bold' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }} focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
-                    <x-heroicon-o-briefcase class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                    <x-heroicon-o-briefcase class="w-5 h-5 text-teal" />
                     <span>{{ __('Ydelser') }}</span>
                 </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-50 text-brand-secondary font-bold' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }} focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
-                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-teal" />
                     <span>{{ __('Brancher') }}</span>
                 </a>
-                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('how-it-works') ? 'bg-navy-50 text-brand-secondary font-bold' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }} focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
-                    <x-heroicon-o-arrows-pointing-in class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('about') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('about') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                    <x-heroicon-o-user-group class="w-5 h-5 text-teal" />
+                    <span>{{ __('Om os') }}</span>
+                </a>
+                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('how-it-works') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                    <x-heroicon-o-arrows-pointing-in class="w-5 h-5 text-teal" />
                     <span>{{ __('Sådan virker det') }}</span>
                 </a>
-                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('contact') ? 'bg-navy-50 text-brand-secondary font-bold' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }} focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
-                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('contact') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5 text-teal" />
                     <span>{{ __('Kontakt') }}</span>
                 </a>
             </div>
 
             <!-- Mobile Auth / CTA -->
-            <div class="p-4 border-t border-brand-border">
+            <div class="p-4 border-t border-navy-800">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
+                    <a href="{{ url('/dashboard') }}" class="w-full btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-lg text-sm font-bold text-white shadow-md transition">
                         <x-heroicon-o-squares-2x2 class="w-5 h-5" />
                         <span>{{ __('Gå til Dashboard') }}</span>
                         <x-heroicon-o-arrow-right class="w-4 h-4" />
                     </a>
                 @else
                     <div class="grid grid-cols-2 gap-3">
-                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-xl text-sm font-bold text-brand-secondary bg-brand-bg hover:bg-slate-100 border border-brand-border transition">
-                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" />
+                        <a href="{{ route('login') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-bold transition">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-teal" />
                             <span>{{ __('Log ind') }}</span>
                         </a>
-                        <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                        <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-bold text-white shadow-sm transition">
                             <x-heroicon-o-user-plus class="w-4 h-4" />
                             <span>{{ __('Opret konto') }}</span>
                         </a>
@@ -562,282 +346,101 @@
         $words2 = $isEn ? ['temps', 'staff', 'workers'] : ['vikarer', 'medarbejdere', 'personale'];
     @endphp
 
-    <!-- Hero Section (Centered Design: 3D Flip Headline & Clean Stats) -->
-    <section id="heroSection" class="hero-pattern text-white pt-16 pb-20 sm:pt-24 sm:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Hero Section with Authentic Colleagues in Background & 3D Flip Headline -->
+    <section id="heroSection" class="relative text-white min-h-[calc(100vh-100px)] sm:min-h-[calc(100vh-116px)] min-h-[calc(100dvh-100px)] sm:min-h-[calc(100dvh-116px)] flex flex-col justify-center py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#5A1429]">
 
-        <!-- ═══ Spray-Foam-Wipe Animation Overlay ═══ -->
-        <div id="sprayAnimOverlay" class="spray-anim-overlay" aria-hidden="true">
-            <!-- Spray mist burst cone -->
-            <div id="sprayMist" class="spray-mist-cone"></div>
-
-            <!-- Cleaner woman in blue uniform (transparent cutout) -->
-            <img id="sprayWoman"
-                 src="{{ asset('images/cleaner-woman-spray.png') }}"
-                 alt="Freya Service vikar i blå uniform"
-                 class="spray-anim-woman"
-                 loading="eager"
-                 width="480" height="480">
-
-            <!-- White foam layer -->
-            <div id="sprayFoam" class="spray-foam-layer"></div>
-
-            <!-- Foam bubble particles -->
-            <div id="sprayBubbles" class="spray-foam-bubbles"></div>
-
-            <!-- Cloth wipe -->
-            <div id="sprayCloth" class="spray-wipe-cloth">
-                <img src="{{ asset('images/cleaning-cloth-wipe.png') }}"
-                     alt="Mikrofiberklud der tørrer rent"
-                     loading="eager"
-                     width="380" height="380">
-            </div>
-
-            <!-- Wipe sparkle shine streak -->
-            <div id="sprayShine" class="spray-wipe-shine"></div>
-
-            <!-- Skip button -->
-            <button id="spraySkipBtn" class="spray-skip-btn" type="button" aria-label="Spring over intro">{{ __('Spring over') }} →</button>
+        <!-- Background Image Layer: Authentic Freya Service Colleagues in Action -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
+            <img 
+                id="heroBg1" 
+                src="{{ asset('images/banquet-plating-rack.jpg') }}" 
+                alt="Freya Service kolleger på arbejde" 
+                class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.05] saturate-[1.05] transition-opacity duration-1000 ease-in-out opacity-100 scale-100"
+                loading="eager"
+                fetchpriority="high"
+            >
+            <img 
+                id="heroBg2" 
+                src="{{ asset('images/chef-grill-steaks.jpg') }}" 
+                alt="Freya Service kolleger på arbejde" 
+                class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.05] saturate-[1.05] transition-opacity duration-1000 ease-in-out opacity-0 scale-100"
+                loading="lazy"
+            >
+            <!-- Balanced Burgundy Brand Wash: Keeps image clearly visible while preserving high text contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#5A1429]/65 via-[#5A1429]/40 to-[#5A1429]/75"></div>
+            <div class="absolute inset-0 bg-black/20"></div>
         </div>
 
-        <div class="max-w-6xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
+        <div class="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
             
-            <!-- 16+ Years Experience Rounded Badge (Matching User Reference Design) -->
-            <div class="mb-6 flex justify-center hero-content-reveal">
+            <!-- Sleek 16+ Years Experience Badge (No Rounded Circle) -->
+            <div class="mb-6 flex justify-center">
                 <x-experience-badge />
             </div>
 
             <!-- Headline (H1): Exactly one H1 in sentence case with verified claims -->
             <h1 
                 id="heroHeadline" 
-                class="font-black tracking-tight leading-[1.18] text-white max-w-4xl mx-auto hero-content-reveal"
+                class="font-black tracking-tight leading-[1.18] text-white max-w-4xl mx-auto text-center drop-shadow-md"
                 style="font-size: clamp(2rem, 5.6vw, 4rem);"
                 aria-live="polite"
                 data-words1='@json($words1)'
                 data-words2='@json($words2)'
             >
                 @if($isEn)
-                    <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord1" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Temp</span></span> staffing in Denmark: vetted <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord2" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temps</span></span> ready in under 2 hours
+                    <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord1" class="hero-flip-word" style="color:#C9A24B; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Temp</span></span> staffing in Denmark: vetted <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord2" class="hero-flip-word" style="color:#C9A24B; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temps</span></span> ready in under 2 hours
                 @else
-                    <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord1" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Vikar</span></span>bureau i Danmark: godkendte <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord2" class="hero-flip-word" style="color:#5a9e78; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikarer</span></span> klar på under 2 timer
+                    <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord1" class="hero-flip-word" style="color:#C9A24B; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Vikar</span></span>bureau i Danmark: godkendte <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord2" class="hero-flip-word" style="color:#C9A24B; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikarer</span></span> klar på under 2 timer
                 @endif
             </h1>
 
             <!-- Intro Copy: Plain, specific language with main keyword, vikarbureau, 16+ years exp and core offer -->
-            <p class="mt-6 text-base sm:text-lg lg:text-xl text-sand-100/90 max-w-3xl mx-auto leading-relaxed hero-content-reveal">
+            <p class="mt-6 text-base sm:text-lg lg:text-xl text-sand-100 max-w-3xl mx-auto text-center leading-relaxed drop-shadow-md">
                 {{ __('With 16+ years of experience, Freya Service is a Danish vikarbureau providing nationwide temp staffing for hotels, restaurants, warehouses and offices in under 2 hours, with no lock-in or onboarding fees.') }}
             </p>
 
             <!-- Action Bar (CTA Buttons) -->
-            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto max-w-md sm:max-w-none hero-content-reveal">
-                <!-- Primary CTA Button: Orange 500 #E8833A, hover Orange 600 #D2702A -->
+            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
+                <!-- Primary CTA Button (Burgundy #7B1E3A, white text, 8px radius, bold; 2px border rgba(255,255,255,0.35) on navy) -->
                 @auth
                     @if(auth()->user()->isClient())
-                        <a href="{{ route('client.requests.create') }}" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                        <a href="{{ route('client.requests.create') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px]">
                             <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
                             <span>{{ __('Bestil vikar nu') }}</span>
                             <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                         </a>
                     @else
-                        <a href="{{ route('dashboard') }}" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                        <a href="{{ route('dashboard') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px]">
                             <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
                             <span>{{ __('Bestil vikar nu') }}</span>
                             <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                         </a>
                     @endif
                 @else
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-extrabold text-white bg-brand-action hover:bg-brand-action-hover shadow-lg shadow-brand-action/30 transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px]">
                         <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
                         <span>{{ __('Bestil vikar nu') }}</span>
                         <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                     </a>
                 @endauth
 
-                <!-- Secondary CTA Button: Navy 800 -->
+                <!-- Secondary CTA Button (Transparent with 2px teal border, white text on navy) -->
                 @auth
-                    <a href="{{ auth()->user()->isWorker() ? route('worker.dashboard') : route('dashboard') }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-navy-800 hover:bg-navy-700 border border-navy-600 shadow-sm transition min-h-[48px]">
-                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0" />
+                    <a href="{{ auth()->user()->isWorker() ? route('worker.dashboard') : route('dashboard') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-base font-bold transition min-h-[48px]">
+                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-teal" />
                         <span>{{ __('Tilmeld dig som vikar') }}</span>
                     </a>
                 @else
-                    <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-navy-800 hover:bg-navy-700 border border-navy-600 shadow-sm transition min-h-[48px]">
-                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0" />
+                    <a href="{{ route('register', ['role' => 'worker']) }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-base font-bold transition min-h-[48px]">
+                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-teal" />
                         <span>{{ __('Tilmeld dig som vikar') }}</span>
                     </a>
                 @endauth
             </div>
-
-            <!-- Subtle Replay Button to re-trigger the animation -->
-            <div class="mt-8 flex justify-center hero-content-reveal">
-                <button id="sprayReplayBtn" type="button" class="inline-flex items-center gap-1.5 text-xs text-sand-200/70 hover:text-white bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/25 px-3.5 py-1.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action cursor-pointer">
-                    <x-heroicon-o-sparkles class="w-3.5 h-3.5 text-brand-action" />
-                    <span>{{ __('Gense spray-animation') }}</span>
-                </button>
-            </div>
         </div>
     </section>
 
-    <!-- Spray-Foam-Wipe Animation Controller -->
-    <script>
-    (function() {
-        var woman = document.getElementById('sprayWoman');
-        var foam = document.getElementById('sprayFoam');
-        var bubbles = document.getElementById('sprayBubbles');
-        var cloth = document.getElementById('sprayCloth');
-        var mist = document.getElementById('sprayMist');
-        var shine = document.getElementById('sprayShine');
-        var skipBtn = document.getElementById('spraySkipBtn');
-        var replayBtn = document.getElementById('sprayReplayBtn');
-        var overlay = document.getElementById('sprayAnimOverlay');
-        var reveals = document.querySelectorAll('.hero-content-reveal');
-        var activeTimers = [];
-        var isPlaying = false;
 
-        function clearTimers() {
-            activeTimers.forEach(function(t) { clearTimeout(t); });
-            activeTimers = [];
-        }
-
-        function finishAnim() {
-            clearTimers();
-            isPlaying = false;
-            reveals.forEach(function(el) { el.classList.add('revealed'); });
-            if (overlay) {
-                overlay.style.transition = 'opacity 0.4s ease-out';
-                overlay.style.opacity = '0';
-                setTimeout(function() { overlay.style.display = 'none'; }, 450);
-            }
-        }
-
-        if (skipBtn) {
-            skipBtn.addEventListener('click', function() {
-                finishAnim();
-            });
-        }
-
-        function createBubbles() {
-            if (!bubbles) return;
-            bubbles.innerHTML = '';
-            var count = window.innerWidth < 640 ? 20 : 38;
-            var originX = 72;
-            var originY = 48;
-            for (var i = 0; i < count; i++) {
-                var b = document.createElement('div');
-                b.className = 'bubble';
-                var size = 12 + Math.random() * 56;
-                b.style.width = size + 'px';
-                b.style.height = size + 'px';
-                b.style.left = (originX + (Math.random() - 0.5) * 35) + '%';
-                b.style.top = (originY + (Math.random() - 0.5) * 35) + '%';
-                var dx = (Math.random() - 0.65) * 350;
-                var dy = (Math.random() - 0.4) * -280;
-                b.style.setProperty('--dx', dx + 'px');
-                b.style.setProperty('--dy', dy + 'px');
-                b.style.setProperty('--dur', (0.8 + Math.random() * 1.3) + 's');
-                b.style.setProperty('--delay', (Math.random() * 0.5) + 's');
-                bubbles.appendChild(b);
-            }
-        }
-
-        function resetState() {
-            clearTimers();
-            isPlaying = true;
-            if (overlay) {
-                overlay.style.display = 'block';
-                overlay.style.opacity = '1';
-                overlay.style.transition = '';
-            }
-            if (woman) woman.className = 'spray-anim-woman';
-            if (foam) foam.className = 'spray-foam-layer';
-            if (cloth) cloth.className = 'spray-wipe-cloth';
-            if (mist) mist.className = 'spray-mist-cone';
-            if (shine) shine.className = 'spray-wipe-shine';
-            if (bubbles) bubbles.innerHTML = '';
-            if (skipBtn) skipBtn.classList.remove('visible');
-            reveals.forEach(function(el) { el.classList.remove('revealed'); });
-        }
-
-        function runAnimation() {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                reveals.forEach(function(el) { el.classList.add('revealed'); });
-                if (overlay) overlay.style.display = 'none';
-                return;
-            }
-
-            resetState();
-            createBubbles();
-
-            // Show skip button
-            activeTimers.push(setTimeout(function() {
-                if (skipBtn && isPlaying) skipBtn.classList.add('visible');
-            }, 400));
-
-            // Phase 1: Cleaner woman slides in from right (0.1s - 0.9s)
-            activeTimers.push(setTimeout(function() {
-                if (woman && isPlaying) woman.classList.add('anim-enter');
-            }, 100));
-
-            // Phase 2: Woman sprays + mist bursts + foam expands + bubbles rise (0.85s)
-            activeTimers.push(setTimeout(function() {
-                if (!isPlaying) return;
-                if (woman) woman.classList.add('anim-spray');
-                if (mist) mist.classList.add('anim-burst');
-                if (foam) foam.classList.add('anim-expand');
-                var allBubbles = bubbles.querySelectorAll('.bubble');
-                allBubbles.forEach(function(b) { b.classList.add('anim-rise'); });
-            }, 850));
-
-            // Phase 3: Foam holds full coverage, woman exits to the right (2.1s)
-            activeTimers.push(setTimeout(function() {
-                if (!isPlaying) return;
-                if (foam) {
-                    foam.classList.remove('anim-expand');
-                    foam.classList.add('anim-hold');
-                }
-                if (woman) {
-                    woman.classList.remove('anim-enter', 'anim-spray');
-                    woman.classList.add('anim-exit');
-                }
-            }, 2100));
-
-            // Phase 4: Cloth wipes across, foam dissolves, shine trail sweeps (2.9s)
-            activeTimers.push(setTimeout(function() {
-                if (!isPlaying) return;
-                if (cloth) cloth.classList.add('anim-wipe');
-                if (shine) shine.classList.add('anim-wipe');
-                if (foam) {
-                    foam.classList.remove('anim-hold');
-                    foam.classList.add('anim-dissolve');
-                }
-            }, 2900));
-
-            // Phase 5: Reveal clean hero content and fade out overlay (4.2s)
-            activeTimers.push(setTimeout(function() {
-                finishAnim();
-            }, 4200));
-        }
-
-        if (replayBtn) {
-            replayBtn.addEventListener('click', function() {
-                runAnimation();
-            });
-        }
-
-        // Start on load (or fallback after 300ms)
-        var started = false;
-        function startOnce() {
-            if (started) return;
-            started = true;
-            runAnimation();
-        }
-
-        if (document.readyState === 'complete') {
-            setTimeout(startOnce, 250);
-        } else {
-            window.addEventListener('load', function() { setTimeout(startOnce, 250); });
-            setTimeout(startOnce, 1200);
-        }
-    })();
-    </script>
 
     <!-- Styles & Vanilla JS for 3D Headline Flip -->
     <style>
@@ -850,7 +453,7 @@
         .hero-flip-word {
             display: inline-block;
             white-space: nowrap;
-            color: #5a9e78;
+            color: #C9A24B;
             transform-origin: 50% 50%;
             transform-style: preserve-3d;
             backface-visibility: hidden;
@@ -960,146 +563,176 @@
                 initHeroFlip();
             }
         })();
+
+        // Gentle crossfade between authentic colleague background photos
+        (function() {
+            var bgImages = [
+                "{{ asset('images/banquet-plating-rack.jpg') }}",
+                "{{ asset('images/chef-grill-steaks.jpg') }}",
+                "{{ asset('images/chef-pastry-piping.jpg') }}",
+                "{{ asset('images/dishwasher-pre-rinse.jpg') }}"
+            ];
+            var bgIndex = 0;
+            var bg1 = document.getElementById('heroBg1');
+            var bg2 = document.getElementById('heroBg2');
+            var activeBg = 1;
+            var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (!prefersReducedMotion && bg1 && bg2 && bgImages.length > 1) {
+                setInterval(function() {
+                    bgIndex = (bgIndex + 1) % bgImages.length;
+                    var nextSrc = bgImages[bgIndex];
+                    if (activeBg === 1) {
+                        bg2.src = nextSrc;
+                        bg2.style.opacity = '1';
+                        bg1.style.opacity = '0';
+                        activeBg = 2;
+                    } else {
+                        bg1.src = nextSrc;
+                        bg1.style.opacity = '1';
+                        bg2.style.opacity = '0';
+                        activeBg = 1;
+                    }
+                }, 7500);
+            }
+        })();
     </script>
 
     <!-- Why Choose Freya Service Section (Comprehensive Makeover: Premium, Structured & Trust-Building) -->
     <section id="why-choose" class="py-24 bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg border-y border-brand-border relative overflow-hidden">
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#14263F 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#5A1429 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-3">{{ __('Core values & guarantees') }}</div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-secondary tracking-tight">
-                    {{ __('Why choose Freya Service') }}
-                </h2>
-                <p class="mt-4 text-base sm:text-lg text-brand-muted leading-relaxed">
-                    {{ __('A modern Danish vikarbureau built on transparent pricing and vetted quality') }}
-                </p>
-            </div>
-
-            <!-- 6 Structured Value Cards -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- 1. Akut Udrykning -->
-                <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-action-50 text-brand-action flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
-                            <x-heroicon-o-bolt class="w-7 h-7 text-brand-action" />
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-action transition-colors">
-                            {{ __('Urgent 24/7 temp dispatch') }}
-                        </h3>
-                        <p class="text-sm text-brand-body leading-relaxed">
-                            {{ __('When sudden illness or peak workloads hit, we dispatch experienced workers within under 2 hours across Denmark.') }}
+            <!-- Bento Grid (Structured Table Layout Matching Reference Image) -->
+            <div class="bg-white border border-neutral-300 rounded-2xl lg:rounded-3xl shadow-sm relative overflow-hidden mb-12">
+                <!-- Top Row (3 Columns on Desktop) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3">
+                    <!-- Top Col 1: Why Choose Header & Relatable Narrative -->
+                    <div class="p-8 sm:p-10 flex flex-col justify-center bg-sand/20">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-4">
+                            {{ $isEn ? 'Why Choose' : 'Hvorfor vælge' }}<br>
+                            <span class="text-burgundy">Freya Service</span> ?
+                        </h2>
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
+                            {{ $isEn
+                                ? 'At Freya Service, we offer more than just temp staffing. Founded on 16 years of hands-on chef and hospitality experience, we provide vetted, reliable professionals who truly understand the pressure, standards, and pace of your workplace.'
+                                : 'Hos Freya Service tilbyder vi mere end blot vikardækning. Grundlagt på 16 års praktisk kokerfaring fra restaurationsbranchen leverer vi godkendte, motiverede vikarer, der forstår presset, tempoet og standarderne på din arbejdsplads.' }}
                         </p>
                     </div>
-                    <div class="pt-6 mt-6 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-secondary">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('24/7 Akut vagtcentral') }}</span>
+
+                    <!-- Top Col 2: Urgent Dispatch -->
+                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t lg:border-t-0 lg:border-l border-neutral-300">
+                        <div class="w-12 h-12 rounded-xl bg-burgundy/10 flex items-center justify-center mb-6">
+                            <x-heroicon-o-bolt class="w-7 h-7 text-burgundy" />
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-navy mb-2.5 leading-snug">
+                            {{ $isEn ? 'Urgent dispatch in' : 'Akut udrykning på' }}
+                            <span class="font-extrabold text-burgundy">{{ $isEn ? 'under 2 hours' : 'under 2 timer' }}</span>
+                            {{ $isEn ? 'nationwide' : 'i hele Danmark' }}
+                        </h3>
+                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
+                            {{ $isEn
+                                ? 'When sudden illness or peak workloads hit, we dispatch experienced workers within under 2 hours across Denmark 24/7.'
+                                : 'Når akut sygdom rammer eller travlheden spidser til, stiller vores erfarne vikarer med få timers varsel i hele landet døgnet rundt.' }}
+                        </p>
+                    </div>
+
+                    <!-- Top Col 3: Thoroughly Vetted -->
+                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t lg:border-t-0 lg:border-l border-neutral-300">
+                        <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
+                            <x-heroicon-o-shield-check class="w-7 h-7 text-teal" />
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-navy mb-2.5 leading-snug">
+                            <span class="font-extrabold text-teal">{{ $isEn ? '100% vetted' : '100% godkendte' }}</span>
+                            {{ $isEn ? '& personally interviewed staff' : '& personligt screenede vikarer' }}
+                        </h3>
+                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
+                            {{ $isEn
+                                ? 'Every temp is interviewed personally, with verified criminal records, work permits and validated references before deployment.'
+                                : 'Alle vikarer gennemgår personlig samtale, referencetjek, ren straffeattest og validerede arbejdstilladelser før udsendelse.' }}
+                        </p>
                     </div>
                 </div>
 
-                <!-- 2. Gennemtestede vikarer -->
-                <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-secondary/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-brand-secondary flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
-                            <x-heroicon-o-shield-check class="w-7 h-7 text-brand-secondary" />
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-secondary transition-colors">
-                            {{ __('Thoroughly vetted temps') }}
-                        </h3>
-                        <p class="text-sm text-brand-body leading-relaxed">
-                            {{ __('Every temp is interviewed personally, with verified criminal records, work permits and validated references before deployment.') }}
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-secondary">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Kvalitetsgaranti på hver opgave') }}</span>
-                    </div>
+                <!-- Golden 4-Point Sparkle Star at Grid Intersection (Matching Reference Image) -->
+                <div class="hidden lg:flex absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center pointer-events-none" aria-hidden="true">
+                    <svg class="w-8 h-8 text-[#C9A24B] drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                    </svg>
                 </div>
 
-                <!-- 3. Digital time- & QR-registrering -->
-                <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-forest/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-forest-50 text-forest flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
-                            <x-heroicon-o-qr-code class="w-7 h-7 text-forest" />
+                <!-- Bottom Row (4 Columns on Desktop) -->
+                <div class="border-t border-neutral-300 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Bottom Col 1: Right Person Match -->
+                    <div class="p-8 sm:p-10 flex flex-col justify-start">
+                        <div class="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center mb-6">
+                            <x-heroicon-o-user-group class="w-7 h-7 text-navy" />
                         </div>
-                        <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-forest transition-colors">
-                            {{ __('Digital time & QR logging') }}
+                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
+                            <span class="font-extrabold text-navy">{{ $isEn ? 'The right person' : 'Det rette menneske' }}</span>
+                            {{ $isEn ? 'in the right place, at the right time' : 'på det rette sted, til rette tid' }}
                         </h3>
-                        <p class="text-sm text-brand-body leading-relaxed">
-                            {{ __('Accurate check-in and check-out via on-site QR code. No manual paper timesheets – only verified and approved hours.') }}
+                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
+                            {{ $isEn
+                                ? 'Matched based on operational culinary insight, workplace expectations, and individual strengths.'
+                                : 'Matcher baseret på reel køkkenforståelse og arbejdsstil, så vikaren passer direkte ind i dit faste team.' }}
                         </p>
                     </div>
-                    <div class="pt-6 mt-6 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-secondary">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Fuld gennemsigtighed på mobilen') }}</span>
-                    </div>
-                </div>
 
-                <!-- 4. Overenskomstmæssige vilkår -->
-                <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-secondary/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-brand-secondary flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
-                            <x-heroicon-o-document-check class="w-7 h-7 text-brand-secondary" />
+                    <!-- Bottom Col 2: Collective Agreement Compliance -->
+                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t sm:border-t-0 sm:border-l border-neutral-300">
+                        <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
+                            <x-heroicon-o-scale class="w-7 h-7 text-teal" />
                         </div>
-                        <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-secondary transition-colors">
-                            {{ __('100% collective agreement compliance') }}
+                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
+                            <span class="font-extrabold text-teal">{{ $isEn ? '100% collective agreement' : '100% overenskomstdækket' }}</span>
+                            {{ $isEn ? 'terms & legal safety' : 'og juridisk tryghed' }}
                         </h3>
-                        <p class="text-sm text-brand-body leading-relaxed">
-                            {{ __('We strictly follow Danish collective agreements, guaranteeing proper wages, pension, holiday pay and mandatory accident insurance.') }}
+                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
+                            {{ $isEn
+                                ? 'Strict compliance with Danish collective agreements, statutory pension, holiday pay, and mandatory accident insurance.'
+                                : 'Garant for overenskomstmæssig løn, feriepenge, pension og lovpligtig arbejdsskadeforsikring på alle vagter.' }}
                         </p>
                     </div>
-                    <div class="pt-6 mt-6 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-secondary">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Lovpligtig arbejdsskadeforsikring') }}</span>
-                    </div>
-                </div>
 
-                <!-- 5. Fast kontaktperson & Ingen binding -->
-                <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-brand-action/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-action-50 text-brand-action flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
-                            <x-heroicon-o-user-group class="w-7 h-7 text-brand-action" />
+                    <!-- Bottom Col 3: Digital QR Timesheets -->
+                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t lg:border-t-0 sm:border-t lg:border-l sm:border-l-0 lg:border-l-neutral-300 border-neutral-300">
+                        <div class="w-12 h-12 rounded-xl bg-burgundy/10 flex items-center justify-center mb-6">
+                            <x-heroicon-o-qr-code class="w-7 h-7 text-burgundy" />
                         </div>
-                        <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-action transition-colors">
-                            {{ __('Dedicated contact & no lock-in') }}
+                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
+                            <span class="font-extrabold text-burgundy">{{ $isEn ? 'Digital QR check-in' : 'Digital QR-tjek ind' }}</span>
+                            {{ $isEn ? '& automated timesheets' : '& automatiske timesedler' }}
                         </h3>
-                        <p class="text-sm text-brand-body leading-relaxed">
-                            {{ __('Get a direct staffing consultant who understands your requirements, with full flexibility and zero hidden cancellation fees.') }}
+                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
+                            {{ $isEn
+                                ? 'Accurate check-in and check-out via on-site QR code. Zero manual paper timesheets – verified hours approved online.'
+                                : 'Ingen manuelle papirsedler. Præcis stempling on-site via QR-kode og digital godkendelse direkte i din portal.' }}
                         </p>
                     </div>
-                    <div class="pt-6 mt-6 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-secondary">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Direkte kontakt til din rådgiver') }}</span>
-                    </div>
-                </div>
 
-                <!-- 6. Sikkerhed & Gennemskuelig Fakturering -->
-                <div class="bg-brand-surface rounded-2xl p-8 border border-brand-border shadow-sm hover:shadow-xl hover:border-forest/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-forest-50 text-forest flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform mb-6">
-                            <x-heroicon-o-lock-closed class="w-7 h-7 text-forest" />
+                    <!-- Bottom Col 4: Zero Lock-in & Direct Support -->
+                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t sm:border-t lg:border-t-0 sm:border-l border-neutral-300">
+                        <div class="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center mb-6">
+                            <x-heroicon-o-hand-raised class="w-7 h-7 text-navy" />
                         </div>
-                        <h3 class="text-xl font-bold text-brand-secondary mb-3 group-hover:text-forest transition-colors">
-                            {{ __('Transparent invoicing & data security') }}
+                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
+                            <span class="font-extrabold text-navy">{{ $isEn ? 'Zero lock-in' : 'Ingen binding' }}</span>{{ $isEn ? ', clear pricing & 24/7 hotline' : ', faste priser og 24/7 vagttelefon' }}
                         </h3>
-                        <p class="text-sm text-brand-body leading-relaxed">
-                            {{ __('Clear invoicing with 25% Danish VAT, encrypted data, GDPR compliance and zero surprise surcharges.') }}
+                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
+                            {{ $isEn
+                                ? 'Zero onboarding fees or surprise charges. You only pay for approved hours worked with direct advisor support.'
+                                : 'Ingen oprettelsesgebyrer eller uigennemskuelige tillæg. Du betaler udelukkende for faktiske godkendte timer.' }}
                         </p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-secondary">
-                        <x-heroicon-s-check-circle class="w-4 h-4 text-forest shrink-0" />
-                        <span>{{ __('Kryptering & Ingen skjulte gebyrer') }}</span>
                     </div>
                 </div>
             </div>
 
             <!-- Trust Bar / Key Metrics Strip (Retaining All Verified Claims) -->
-            <div class="bg-brand-primary text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-navy-800">
+            <div class="bg-navy text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-navy-800">
                 <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 text-center relative z-10">
                     <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0">
-                        <div class="text-2xl sm:text-4xl font-black text-brand-action tracking-tight">&lt; 2t</div>
+                        <div class="text-2xl sm:text-4xl font-black text-[#C9A24B] tracking-tight">&lt; 2t</div>
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Average response time') }}</div>
                     </div>
                     <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0 lg:border-l lg:border-navy-700 lg:pl-6">
@@ -1111,13 +744,13 @@
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Vetted active temps') }}</div>
                     </div>
                     <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0 lg:border-l lg:border-navy-700 lg:pl-6">
-                        <div class="text-2xl sm:text-4xl font-black text-forest-300 tracking-tight">98%</div>
+                        <div class="text-2xl sm:text-4xl font-black text-[#C9A24B] tracking-tight">98%</div>
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Client satisfaction') }}</div>
                     </div>
                     <div class="col-span-2 lg:col-span-1 p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0 lg:border-l lg:border-navy-700 lg:pl-6">
-                        <div class="text-2xl sm:text-4xl font-black text-forest-300 tracking-tight">24/7</div>
+                        <div class="text-2xl sm:text-4xl font-black text-[#C9A24B] tracking-tight">24/7</div>
                         <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">
-                            <a href="tel:+4528260926" class="hover:text-brand-action transition-colors focus-visible:ring-2 focus-visible:ring-brand-action rounded">{{ __('Emergency dispatch') }}: +45 28 26 09 26</a>
+                            <a href="tel:+4528260926" class="hover:text-[#C9A24B] transition-colors focus-visible:ring-2 focus-visible:ring-teal rounded">{{ __('Emergency dispatch') }}: +45 28 26 09 26</a>
                         </div>
                     </div>
                 </div>
@@ -1128,14 +761,27 @@
     <!-- Industries Section (Hotel, Restaurant, Warehouse, Office with Links and One-line Descriptions) -->
     <section id="industries" class="py-20 bg-sand-200/50 border-y border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-3">{{ __('Specialized sectors') }}</div>
-                <h2 class="text-3xl sm:text-4xl font-black text-brand-secondary tracking-tight">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <div class="text-xs font-bold text-burgundy uppercase tracking-widest mb-3">{{ __('Specialized sectors') }}</div>
+                <h2 class="text-3xl sm:text-4xl font-black text-navy tracking-tight">
                     {{ __('Industries we staff with qualified temps') }}
                 </h2>
-                <p class="mt-3 text-sm text-brand-body leading-relaxed">
+                <p class="mt-3 text-sm text-ink/80 leading-relaxed">
                     {{ __('Freya Service provides pre-screened temporary workers across four core sectors in Denmark, matching required certifications, experience and language skills to every shift.') }}
                 </p>
+            </div>
+
+            <!-- Sector Tags Chip Group (mist background with ink text, teal bg with white text on every 3rd tag) -->
+            <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto mb-12 sector-tags">
+                <span class="sector-tag">{{ __('Healthcare') }}</span>
+                <span class="sector-tag">{{ __('Hospitality') }}</span>
+                <span class="sector-tag">{{ __('Logistics') }}</span>
+                <span class="sector-tag">{{ __('Construction') }}</span>
+                <span class="sector-tag">{{ __('Retail') }}</span>
+                <span class="sector-tag">{{ __('Office & Admin') }}</span>
+                <span class="sector-tag">{{ __('IT') }}</span>
+                <span class="sector-tag">{{ __('Industry') }}</span>
+                <span class="sector-tag">{{ __('Cleaning') }}</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1229,7 +875,6 @@
                             <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
                         </a>
                     </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1305,102 +950,240 @@
     </section>
 
     <!-- Frequently Asked Questions Section (AI-Search Ready & JSON-LD Mirrored) -->
-    <section id="faq" class="py-24 bg-sand-200/40 border-t border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" class="py-24 bg-sand-200/40 border-t border-brand-border relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-3">{{ __('Frequently asked questions') }}</div>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-secondary tracking-tight">
-                    {{ __('Frequently asked questions about temp staffing in Denmark') }}
+                    FAQ
                 </h2>
-                <p class="mt-3 text-sm text-brand-body leading-relaxed max-w-2xl mx-auto">
-                    {{ __('Factual, straightforward answers about response times, pricing, collective agreements, vetting and booking terms.') }}
-                </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                <!-- Q1 -->
-                <div class="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xs hover:border-brand-action/30 transition flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-brand-secondary flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                            <span>{{ __('How fast can I get a temp in Denmark?') }}</span>
-                        </h3>
-                        <p class="mt-3 text-sm text-brand-body leading-relaxed pl-9">
-                            {{ __('Freya Service dispatches qualified temps in under 2 hours for urgent staffing requests nationwide. Planned shifts can also be scheduled days or weeks ahead via our 24/7 emergency dispatch line (+45 28 26 09 26) or online client portal.') }}
-                        </p>
-                    </div>
-                </div>
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Curved SVG Path behind the cards -->
+                <svg class="absolute -top-12 -bottom-12 -left-8 -right-8 w-[calc(100%+4rem)] h-[calc(100%+6rem)] pointer-events-none select-none z-0" viewBox="0 0 1000 850" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="faq-curve-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#C9A24B" stop-opacity="0.45" />
+                            <stop offset="35%" stop-color="#7B1E3A" stop-opacity="0.4" />
+                            <stop offset="70%" stop-color="#C9A24B" stop-opacity="0.35" />
+                            <stop offset="100%" stop-color="#5A1429" stop-opacity="0.3" />
+                        </linearGradient>
+                        <linearGradient id="faq-curve-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#7B1E3A" stop-opacity="0.4" />
+                            <stop offset="50%" stop-color="#C9A24B" stop-opacity="0.3" />
+                            <stop offset="100%" stop-color="#E4D6D9" stop-opacity="0.25" />
+                        </linearGradient>
+                        <filter id="faq-blur" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="12" />
+                        </filter>
+                    </defs>
 
-                <!-- Q2 -->
-                <div class="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xs hover:border-brand-action/30 transition flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-brand-secondary flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                            <span>{{ __('Are there any lock-in periods or onboarding fees?') }}</span>
-                        </h3>
-                        <p class="mt-3 text-sm text-brand-body leading-relaxed pl-9">
-                            {{ __('No. Freya Service operates with zero lock-in contracts, zero subscription fees, and zero onboarding fees. You only pay for the approved hours worked by the dispatched temp.') }}
-                        </p>
-                    </div>
-                </div>
+                    <!-- Soft ambient glow path -->
+                    <path d="M -20,90 C 150,20 320,30 460,110 C 510,140 520,200 620,130 C 740,50 880,60 980,150 C 1040,200 1020,290 890,280 C 750,270 630,285 500,280 C 360,275 220,265 100,320 C 0,360 -20,450 60,510 C 140,570 320,540 480,545 C 640,550 820,520 930,590 C 1030,650 1020,750 890,810 C 750,870 550,830 380,820 C 220,810 80,850 -20,810"
+                          stroke="url(#faq-curve-grad-1)"
+                          stroke-width="16"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="none"
+                          filter="url(#faq-blur)"
+                          opacity="0.3"
+                          vector-effect="non-scaling-stroke" />
 
-                <!-- Q3 -->
-                <div class="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xs hover:border-brand-action/30 transition flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-brand-secondary flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                            <span>{{ __('Do Freya Service temps follow Danish collective agreements?') }}</span>
-                        </h3>
-                        <p class="mt-3 text-sm text-brand-body leading-relaxed pl-9">
-                            {{ __('Yes. 100% of temporary workers dispatched by Freya Service are employed under Danish collective agreement terms (overenskomst), including statutory pension, holiday pay (feriepenge), sick pay, and mandatory workplace injury insurance.') }}
-                        </p>
-                    </div>
-                </div>
+                    <!-- Primary curved path -->
+                    <path d="M -20,90 C 150,20 320,30 460,110 C 510,140 520,200 620,130 C 740,50 880,60 980,150 C 1040,200 1020,290 890,280 C 750,270 630,285 500,280 C 360,275 220,265 100,320 C 0,360 -20,450 60,510 C 140,570 320,540 480,545 C 640,550 820,520 930,590 C 1030,650 1020,750 890,810 C 750,870 550,830 380,820 C 220,810 80,850 -20,810"
+                          stroke="url(#faq-curve-grad-1)"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="none"
+                          vector-effect="non-scaling-stroke" />
 
-                <!-- Q4 -->
-                <div class="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xs hover:border-brand-action/30 transition flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-brand-secondary flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                            <span>{{ __('What does temp staffing cost with Freya Service?') }}</span>
-                        </h3>
-                        <p class="mt-3 text-sm text-brand-body leading-relaxed pl-9">
-                            {{ __('Temp staffing costs depend on the industry, job role, and shift type (day, evening, night, or weekend) in compliance with collective agreement tariffs. Base rates start from [PLACEHOLDER: DKK XXX per hour ex. VAT]. Invoicing is transparent with 25% Danish VAT and no hidden surcharges.') }}
-                        </p>
-                    </div>
-                </div>
+                    <!-- Secondary dashed harmonic curved path -->
+                    <path d="M 40,40 C 200,-10 380,60 520,70 C 680,80 840,-10 960,80 C 1040,140 990,340 850,340 C 690,340 590,350 440,360 C 290,370 120,390 40,470 C -30,540 30,660 170,680 C 340,710 650,650 830,710 C 940,750 990,830 920,850"
+                          stroke="url(#faq-curve-grad-2)"
+                          stroke-width="1.5"
+                          stroke-dasharray="6 8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="none"
+                          vector-effect="non-scaling-stroke" />
+                </svg>
 
-                <!-- Q5 -->
-                <div class="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xs hover:border-brand-action/30 transition flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-brand-secondary flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                            <span>{{ __('Which industries does Freya Service provide staff for?') }}</span>
-                        </h3>
-                        <p class="mt-3 text-sm text-brand-body leading-relaxed pl-9">
-                            {{ __('Freya Service supplies vetted temp staff across four core industries in Denmark: hotels (reception, housekeeping), restaurants and catering (chefs, waiters, kitchen assistants), warehouses and logistics (forklift drivers, pick-and-pack), and offices (administrative, customer service).') }}
-                        </p>
+                <div class="relative z-10 grid md:grid-cols-2 gap-6 items-start">
+                    <!-- Q1 -->
+                    <div x-data="{ open: false }"
+                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
+                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
+                        <button @click="open = !open"
+                                type="button"
+                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
+                                :aria-expanded="open.toString()">
+                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
+                                <span>{{ __('How fast can I get a temp in Denmark?') }}</span>
+                            </h3>
+                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
+                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div x-show="open" x-collapse.duration.300ms x-cloak>
+                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
+                                <p>
+                                    {{ __('Freya Service dispatches qualified temps in under 2 hours for urgent staffing requests nationwide. Planned shifts can also be scheduled days or weeks ahead via our 24/7 emergency dispatch line (+45 28 26 09 26) or online client portal.') }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Q6 -->
-                <div class="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-border shadow-xs hover:border-brand-action/30 transition flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-brand-secondary flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                            <span>{{ __('How does Freya Service vet and verify temp workers?') }}</span>
-                        </h3>
-                        <p class="mt-3 text-sm text-brand-body leading-relaxed pl-9">
-                            {{ __('Every candidate undergoes personal interviews, reference validation, verification of valid Danish work permits, and criminal background checks prior to dispatch. On-site attendance and worked hours are verified digitally via QR-code time tracking.') }}
-                        </p>
+                    <!-- Q2 -->
+                    <div x-data="{ open: false }"
+                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
+                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
+                        <button @click="open = !open"
+                                type="button"
+                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
+                                :aria-expanded="open.toString()">
+                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
+                                <span>{{ __('Are there any lock-in periods or onboarding fees?') }}</span>
+                            </h3>
+                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
+                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div x-show="open" x-collapse.duration.300ms x-cloak>
+                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
+                                <p>
+                                    {{ __('No. Freya Service operates with zero lock-in contracts, zero subscription fees, and zero onboarding fees. You only pay for the approved hours worked by the dispatched temp.') }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Q3 -->
+                    <div x-data="{ open: false }"
+                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
+                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
+                        <button @click="open = !open"
+                                type="button"
+                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
+                                :aria-expanded="open.toString()">
+                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
+                                <span>{{ __('Do Freya Service temps follow Danish collective agreements?') }}</span>
+                            </h3>
+                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
+                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div x-show="open" x-collapse.duration.300ms x-cloak>
+                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
+                                <p>
+                                    {{ __('Yes. 100% of temporary workers dispatched by Freya Service are employed under Danish collective agreement terms (overenskomst), including statutory pension, holiday pay (feriepenge), sick pay, and mandatory workplace injury insurance.') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div x-data="{ open: false }"
+                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
+                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
+                        <button @click="open = !open"
+                                type="button"
+                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
+                                :aria-expanded="open.toString()">
+                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
+                                <span>{{ __('What does temp staffing cost with Freya Service?') }}</span>
+                            </h3>
+                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
+                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div x-show="open" x-collapse.duration.300ms x-cloak>
+                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
+                                <p>
+                                    {{ __('Temp staffing costs depend on the industry, job role, and shift type (day, evening, night, or weekend) in compliance with collective agreement tariffs. Base rates start from [PLACEHOLDER: DKK XXX per hour ex. VAT]. Invoicing is transparent with 25% Danish VAT and no hidden surcharges.') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div x-data="{ open: false }"
+                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
+                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
+                        <button @click="open = !open"
+                                type="button"
+                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
+                                :aria-expanded="open.toString()">
+                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
+                                <span>{{ __('Which industries does Freya Service provide staff for?') }}</span>
+                            </h3>
+                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
+                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div x-show="open" x-collapse.duration.300ms x-cloak>
+                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
+                                <p>
+                                    {{ __('Freya Service supplies vetted temp staff across four core industries in Denmark: hotels (reception, housekeeping), restaurants and catering (chefs, waiters, kitchen assistants), warehouses and logistics (forklift drivers, pick-and-pack), and offices (administrative, customer service).') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div x-data="{ open: false }"
+                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
+                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
+                        <button @click="open = !open"
+                                type="button"
+                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
+                                :aria-expanded="open.toString()">
+                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
+                                <span>{{ __('How does Freya Service vet and verify temp workers?') }}</span>
+                            </h3>
+                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
+                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div x-show="open" x-collapse.duration.300ms x-cloak>
+                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
+                                <p>
+                                    {{ __('Every candidate undergoes personal interviews, reference validation, verification of valid Danish work permits, and criminal background checks prior to dispatch. On-site attendance and worked hours are verified digitally via QR-code time tracking.') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Call to action / Contact (Primary Brand: Navy 900 #14263F) -->
-    <section id="contact" class="py-16 bg-brand-primary text-white">
+    <!-- Call to action / Contact (Primary Dark: Deep burgundy #5A1429) -->
+    <section id="contact" class="py-16 bg-navy text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
             <h2 class="text-3xl font-extrabold text-white">
                 {{ __('Ready to order temps or need immediate staffing?') }}
@@ -1409,24 +1192,25 @@
                 {{ __('Call our 24/7 emergency dispatch line directly or create your client account online in two minutes.') }}
             </p>
             <div class="flex flex-wrap justify-center gap-4 pt-4">
-                <!-- Action Button: Orange 500 #E8833A, hover Orange 600 #D2702A -->
-                <a href="tel:+4528260926" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-action text-white font-bold text-sm hover:bg-brand-action-hover shadow-md transition focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
+                <!-- Primary Action Button: Burgundy #7B1E3A with 2px white/35 border -->
+                <a href="tel:+4528260926" class="btn-primary border-2 border-white/35 inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white font-bold text-sm shadow-md transition focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
                     <x-heroicon-s-phone class="w-4 h-4 text-white" />
                     <span>{{ __('Ring +45 28 26 09 26') }}</span>
                 </a>
-                <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-secondary text-white font-bold text-sm hover:bg-navy-800 transition focus-visible:ring-2 focus-visible:ring-brand-action focus:outline-none">
-                    <x-heroicon-o-building-office class="w-4 h-4" />
+                <!-- Secondary Action Button: Transparent with 2px teal border, white text on navy -->
+                <a href="{{ route('register', ['role' => 'client']) }}" class="btn-secondary border-2 border-teal bg-transparent hover:bg-teal/10 inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-white font-bold text-sm transition focus-visible:ring-2 focus-visible:ring-teal focus:outline-none">
+                    <x-heroicon-o-building-office class="w-4 h-4 text-teal" />
                     <span>{{ __('Opret virksomhedskonto') }}</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Primary Brand: Navy 900 #14263F, Border: Navy 800) -->
-    <footer class="bg-brand-primary text-sand-300 py-12 border-t border-navy-800">
+    <!-- Footer (Primary Dark: Deep burgundy #5A1429, Border: Deep burgundy 800) -->
+    <footer class="bg-navy text-sand-300 py-12 border-t border-navy-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="space-y-4">
-                <a href="/" class="inline-block group focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none" aria-label="Freya Service">
+                <a href="/" class="inline-block group focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none" aria-label="Freya Service">
                     <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service vikarbureau logo hvid" class="h-10 w-auto object-contain group-hover:opacity-90 transition" width="160" height="40" loading="lazy" decoding="async">
                 </a>
                 <p class="text-xs leading-relaxed text-sand-200">
@@ -1440,18 +1224,18 @@
             <div>
                 <p class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Virksomheder') }}</p>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('register', ['role' => 'client']) }}" class="hover:text-brand-action flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Bestil Vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Timesedler') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Fakturaer') }}</a></li>
+                    <li><a href="{{ route('register', ['role' => 'client']) }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Bestil Vikar') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Timesedler') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Fakturaer') }}</a></li>
                 </ul>
             </div>
 
             <div>
                 <p class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Vikarer') }}</p>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('register', ['role' => 'worker']) }}" class="hover:text-brand-action flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Tilmeld dig som vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Ledige Vagter') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('QR Tjek-ind') }}</a></li>
+                    <li><a href="{{ route('register', ['role' => 'worker']) }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Tilmeld dig som vikar') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Ledige Vagter') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('QR Tjek-ind') }}</a></li>
                 </ul>
             </div>
 
@@ -1459,11 +1243,11 @@
                 <p class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('GDPR & Sikkerhed') }}</p>
                 <ul class="text-xs space-y-2">
                     <li class="flex items-start gap-1.5">
-                        <x-heroicon-s-shield-check class="w-4 h-4 text-forest shrink-0 mt-0.5" />
+                        <x-heroicon-s-shield-check class="w-4 h-4 text-teal shrink-0 mt-0.5" />
                         <span class="text-sand-200">{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }}</span>
                     </li>
                     <li class="flex items-start gap-1.5">
-                        <x-heroicon-s-check class="w-4 h-4 text-brand-action shrink-0 mt-0.5" />
+                        <x-heroicon-s-check class="w-4 h-4 text-teal shrink-0 mt-0.5" />
                         <span class="text-sand-200">{{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</span>
                     </li>
                 </ul>

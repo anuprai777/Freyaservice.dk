@@ -42,6 +42,7 @@ Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('local
 // Public standalone pages (navbar links)
 Route::get('/services', fn () => view('pages.services'))->name('services');
 Route::get('/industries', fn () => view('pages.industries'))->name('industries');
+Route::get('/about', fn () => view('pages.about'))->name('about');
 Route::get('/how-it-works', fn () => view('pages.how-it-works'))->name('how-it-works');
 Route::get('/contact', fn () => view('pages.contact'))->name('contact');
 

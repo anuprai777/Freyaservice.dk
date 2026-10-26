@@ -28,7 +28,7 @@
         x-transition:leave-end="opacity-0 translate-y-6 scale-75"
         aria-label="{{ __('Tilbage til toppen') }}"
         title="{{ __('Tilbage til toppen') }}"
-        class="pointer-events-auto flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-brand-primary text-white shadow-xl hover:bg-brand-action hover:shadow-brand-action/30 border border-navy-700 transition-all duration-300 hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-action focus:ring-offset-2 group"
+        class="pointer-events-auto flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-navy text-white shadow-xl hover:bg-burgundy hover:shadow-burgundy/30 border border-navy-800 transition-all duration-300 hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-burgundy focus:ring-offset-2 group"
     >
         <svg
             class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5"

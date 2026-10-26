@@ -5,17 +5,18 @@
     <title>Faktura {{ $invoice->invoice_number }} - FreyaService</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: #1e293b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1F1519;
             font-size: 13px;
             line-height: 1.5;
             margin: 0;
             padding: 30px;
+            background-color: #FFFFFF;
         }
         .header {
             width: 100%;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 35px;
+            border-bottom: 2px solid #E4D6D9;
             padding-bottom: 20px;
         }
         .header table {
@@ -23,30 +24,33 @@
         }
         .brand-title {
             font-size: 26px;
-            font-weight: bold;
-            color: #0f172a;
+            font-weight: 800;
+            color: #1F1519;
+            letter-spacing: -0.5px;
         }
         .brand-title span {
-            color: #4f46e5;
+            color: #C9A24B;
         }
         .brand-sub {
             font-size: 11px;
-            color: #64748b;
+            color: #6B5E62;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 2px;
         }
         .invoice-title {
             text-align: right;
             font-size: 28px;
-            font-weight: 800;
-            color: #0f172a;
+            font-weight: 900;
+            color: #1F1519;
             margin: 0;
+            letter-spacing: -0.5px;
         }
         .invoice-number {
             text-align: right;
-            font-size: 13px;
-            color: #4f46e5;
-            font-weight: 600;
+            font-size: 14px;
+            color: #7B1E3A;
+            font-weight: 700;
         }
         .info-section {
             width: 100%;
@@ -62,15 +66,15 @@
         .info-heading {
             font-size: 10px;
             text-transform: uppercase;
-            font-weight: bold;
-            color: #64748b;
+            font-weight: 700;
+            color: #6B5E62;
             margin-bottom: 6px;
             letter-spacing: 0.5px;
         }
         .company-name {
             font-size: 15px;
-            font-weight: bold;
-            color: #0f172a;
+            font-weight: 700;
+            color: #1F1519;
         }
         .items-table {
             width: 100%;
@@ -78,18 +82,19 @@
             margin-bottom: 30px;
         }
         .items-table th {
-            background-color: #f8fafc;
-            color: #475569;
+            background-color: #F3E3E6;
+            color: #1F1519;
             font-size: 11px;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             padding: 10px 12px;
-            border-bottom: 1px solid #cbd5e1;
+            border-bottom: 2px solid #E4D6D9;
             text-align: left;
         }
         .items-table td {
             padding: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #E4D6D9;
+            color: #1F1519;
         }
         .items-table td.text-right, .items-table th.text-right {
             text-align: right;
@@ -101,33 +106,36 @@
         }
         .totals-table td {
             padding: 7px 12px;
+            color: #1F1519;
         }
         .totals-table tr.total-row td {
-            border-top: 2px solid #0f172a;
+            border-top: 2px solid #7B1E3A;
             font-size: 15px;
-            font-weight: bold;
-            color: #0f172a;
+            font-weight: 800;
+            color: #7B1E3A;
             padding-top: 10px;
         }
         .payment-box {
             margin-top: 40px;
             padding: 16px;
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background-color: #FAF5F2;
+            border: 1px solid #E4D6D9;
+            border-left: 4px solid #C9A24B;
             border-radius: 6px;
         }
         .payment-box h4 {
             margin: 0 0 8px 0;
-            color: #0f172a;
+            color: #1F1519;
             font-size: 12px;
             text-transform: uppercase;
+            font-weight: 700;
         }
         .footer {
             margin-top: 50px;
             text-align: center;
             font-size: 11px;
-            color: #94a3b8;
-            border-top: 1px solid #e2e8f0;
+            color: #6B5E62;
+            border-top: 1px solid #E4D6D9;
             padding-top: 15px;
         }
     </style>

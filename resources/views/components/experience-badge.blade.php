@@ -8,20 +8,14 @@
     $displayLabel = $label ?? __('YEARS EXP.');
 @endphp
 
-<!-- Circular Experience Seal Badge (Matching Reference Design) -->
-<div {{ $attributes->merge(['class' => 'inline-flex items-center justify-center select-none group']) }}>
-    <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#182E4B] border-4 sm:border-[5px] border-white shadow-2xl flex flex-col items-center justify-center p-2 transition-transform duration-300 group-hover:scale-105">
-        <!-- Inner dashed orange circular ring -->
-        <div class="absolute inset-1.5 sm:inset-2 rounded-full border-2 border-dashed border-brand-action pointer-events-none"></div>
-
-        <!-- Center Content -->
-        <div class="relative z-10 text-center flex flex-col items-center justify-center px-1">
-            <span class="text-2xl sm:text-3xl font-black text-brand-action leading-none tracking-tight">
-                {{ $years }}
-            </span>
-            <span class="mt-1 text-[9px] sm:text-[10px] font-black text-white tracking-widest uppercase leading-tight text-center">
-                {{ $displayLabel }}
-            </span>
-        </div>
-    </div>
+<!-- Sleek Experience Trust Badge (No Rounded Circle) -->
+<div {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-navy-950/80 border border-[#C9A24B]/40 shadow-sm text-white select-none transition-all duration-200 hover:border-[#C9A24B] group']) }}>
+    <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-md font-black text-xs text-[#C9A24B] bg-[#C9A24B]/15 border border-[#C9A24B]/30 tracking-tight">
+        {{ $years }}
+    </span>
+    <span class="w-1 h-1 rounded-full bg-[#C9A24B] opacity-60"></span>
+    <span class="text-xs font-bold uppercase tracking-wider text-sand-100">
+        {{ $displayLabel }}
+    </span>
+    <x-heroicon-s-shield-check class="w-4 h-4 text-[#C9A24B] shrink-0" />
 </div>

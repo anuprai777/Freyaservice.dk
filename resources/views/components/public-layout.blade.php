@@ -71,46 +71,49 @@
     </div>
 
     <!-- Main Navbar -->
-    <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-brand-surface border-b border-brand-border shadow-xs">
+    <header x-data="{ mobileOpen: false }" class="sticky top-0 z-50 bg-navy text-white border-b border-navy-800 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="/" class="flex items-center group">
-                <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+            <a href="/" class="flex items-center group shrink-0 focus-visible:ring-2 focus-visible:ring-burgundy rounded-lg focus:outline-none" aria-label="Freya Service">
+                <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service" class="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
-                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary border-transparent' }}">
-                    <x-heroicon-o-briefcase class="w-4 h-4" /><span>{{ __('Ydelser') }}</span>
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold" aria-label="Hovednavigation">
+                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
+                    <x-heroicon-o-briefcase class="w-4 h-4 text-teal" /><span>{{ __('Ydelser') }}</span>
                 </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('industries') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary border-transparent' }}">
-                    <x-heroicon-o-building-office-2 class="w-4 h-4" /><span>{{ __('Brancher') }}</span>
+                <a href="{{ route('industries') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('industries') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
+                    <x-heroicon-o-building-office-2 class="w-4 h-4 text-teal" /><span>{{ __('Brancher') }}</span>
                 </a>
-                <a href="{{ route('how-it-works') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('how-it-works') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary border-transparent' }}">
-                    <x-heroicon-o-arrows-pointing-in class="w-4 h-4" /><span>{{ __('Sådan virker det') }}</span>
+                <a href="{{ route('about') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('about') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
+                    <x-heroicon-o-user-group class="w-4 h-4 text-teal" /><span>{{ __('Om os') }}</span>
                 </a>
-                <a href="{{ route('contact') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('contact') ? 'text-brand-secondary border-brand-action' : 'text-brand-muted hover:text-brand-secondary border-transparent' }}">
-                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-4 h-4" /><span>{{ __('Kontakt') }}</span>
+                <a href="{{ route('how-it-works') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('how-it-works') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
+                    <x-heroicon-o-arrows-pointing-in class="w-4 h-4 text-teal" /><span>{{ __('Sådan virker det') }}</span>
+                </a>
+                <a href="{{ route('contact') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('contact') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
+                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-4 h-4 text-teal" /><span>{{ __('Kontakt') }}</span>
                 </a>
             </nav>
 
             <div class="flex items-center gap-3">
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                        <a href="{{ url('/dashboard') }}" class="btn-primary border-2 border-white/35 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white shadow-sm transition">
                             <x-heroicon-o-squares-2x2 class="w-4 h-4" /><span>{{ __('Min Profil / Dashboard') }}</span>
                         </a>
                     @else
-                        <a href="{{ route('login') }}" class="hidden lg:flex text-sm font-bold text-brand-secondary hover:text-brand-action px-3 py-2 rounded-lg transition items-center gap-1.5">
-                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" /><span>{{ __('Log ind') }}</span>
+                        <a href="{{ route('login') }}" class="hidden lg:flex text-sm font-bold text-sand-200 hover:text-white px-3 py-2 rounded-lg transition items-center gap-1.5">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-teal" /><span>{{ __('Log ind') }}</span>
                         </a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="hidden lg:inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
+                            <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 hidden lg:inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-bold text-white shadow-md transition">
                                 <x-heroicon-o-user-plus class="w-4 h-4" /><span>{{ __('Opret konto') }}</span>
                             </a>
                         @endif
                     @endauth
                 @endif
                 <!-- Mobile toggle -->
-                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden inline-flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-xl text-brand-muted hover:text-brand-secondary hover:bg-brand-bg focus:outline-none transition" aria-label="Menu">
+                <button @click="mobileOpen = !mobileOpen" type="button" class="lg:hidden inline-flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-lg text-sand-200 hover:text-white hover:bg-navy-800 focus:outline-none transition" aria-label="Menu">
                     <x-heroicon-o-bars-3 class="h-6 w-6" x-show="!mobileOpen" />
                     <x-heroicon-o-x-mark class="h-6 w-6" x-show="mobileOpen" x-cloak />
                 </button>
@@ -125,15 +128,15 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
-             class="lg:hidden border-t border-brand-border bg-brand-surface shadow-xl">
+             class="lg:hidden border-t border-navy-800 bg-navy text-white shadow-xl">
             <!-- Mobile Language Selector -->
-            <div class="px-4 py-3 flex items-center justify-between border-b border-brand-border bg-brand-bg/60">
-                <span class="text-xs font-bold text-brand-muted uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
-                <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl border border-brand-border text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1.5 min-h-[36px] rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+            <div class="px-4 py-3 flex items-center justify-between border-b border-navy-800 bg-navy-900/60">
+                <span class="text-xs font-bold text-sand-300 uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
+                <div class="flex items-center gap-1 bg-navy-950 p-1 rounded-lg border border-navy-800 text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-burgundy text-white font-bold' : 'text-sand-300 hover:text-white' }}">
                         <span>🇩🇰</span><span>Dansk</span>
                     </a>
-                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1.5 min-h-[36px] rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-bg text-brand-secondary font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-sm' : 'text-brand-muted font-medium' }}">
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-burgundy text-white font-bold' : 'text-sand-300 hover:text-white' }}">
                         <span>🇬🇧</span><span>English</span>
                     </a>
                 </div>
@@ -141,37 +144,41 @@
 
             <!-- Mobile Navigation Links -->
             <div class="px-4 py-3 space-y-1">
-                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-briefcase class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
+                    <x-heroicon-o-briefcase class="w-5 h-5 text-teal" />
                     <span>{{ __('Ydelser') }}</span>
                 </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
+                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-teal" />
                     <span>{{ __('Brancher') }}</span>
                 </a>
-                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('how-it-works') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-arrows-pointing-in class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('about') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('about') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
+                    <x-heroicon-o-user-group class="w-5 h-5 text-teal" />
+                    <span>{{ __('Om os') }}</span>
+                </a>
+                <a href="{{ route('how-it-works') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('how-it-works') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
+                    <x-heroicon-o-arrows-pointing-in class="w-5 h-5 text-teal" />
                     <span>{{ __('Sådan virker det') }}</span>
                 </a>
-                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition {{ request()->routeIs('contact') ? 'bg-navy-50 text-brand-secondary' : 'text-brand-body hover:bg-brand-bg hover:text-brand-secondary' }}">
-                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5 text-brand-action" />
+                <a href="{{ route('contact') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('contact') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
+                    <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5 text-teal" />
                     <span>{{ __('Kontakt') }}</span>
                 </a>
             </div>
-            <div class="p-4 border-t border-brand-border">
+            <div class="p-4 border-t border-navy-800">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-md transition">
+                    <a href="{{ url('/dashboard') }}" class="w-full btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-lg text-sm font-bold text-white shadow-md transition">
                         <x-heroicon-o-squares-2x2 class="w-5 h-5" />
                         <span>{{ __('Gå til Dashboard') }}</span>
                         <x-heroicon-o-arrow-right class="w-4 h-4" />
                     </a>
                 @else
                     <div class="grid grid-cols-2 gap-3">
-                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-xl text-sm font-bold text-brand-secondary bg-brand-bg hover:bg-slate-100 border border-brand-border transition">
-                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-brand-muted" />
+                        <a href="{{ route('login') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-bold transition">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-teal" />
                             <span>{{ __('Log ind') }}</span>
                         </a>
-                        <a href="{{ route('register') }}" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-xl text-sm font-bold text-white bg-brand-action hover:bg-brand-action-hover shadow-sm transition">
+                        <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-bold text-white shadow-sm transition">
                             <x-heroicon-o-user-plus class="w-4 h-4" />
                             <span>{{ __('Opret konto') }}</span>
                         </a>
@@ -184,10 +191,10 @@
     {{ $slot }}
 
     <!-- Footer -->
-    <footer class="bg-brand-primary text-sand-300 py-12 border-t border-navy-800">
+    <footer class="bg-navy text-sand-300 py-12 border-t border-navy-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="space-y-4">
-                <a href="/" class="inline-block group">
+                <a href="/" class="inline-block group focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none" aria-label="Freya Service">
                     <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service" class="h-10 w-auto object-contain group-hover:opacity-90 transition">
                 </a>
                 <p class="text-xs leading-relaxed text-sand-200">{{ __('Dansk vikarbureau med fokus på fleksibilitet, pålidelighed og digital gennemsigtighed.') }}</p>
@@ -196,24 +203,24 @@
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Virksomheder') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Bestil Vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Timesedler') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Fakturaer') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Bestil Vikar') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Timesedler') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Fakturaer') }}</a></li>
                 </ul>
             </div>
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Vikarer') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('register') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Tilmeld dig som vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('Ledige Vagter') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-brand-action flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-sand-400" />{{ __('QR Tjek-ind') }}</a></li>
+                    <li><a href="{{ route('register') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Tilmeld dig som vikar') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Ledige Vagter') }}</a></li>
+                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('QR Tjek-ind') }}</a></li>
                 </ul>
             </div>
             <div>
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('GDPR & Sikkerhed') }}</h5>
                 <ul class="text-xs space-y-2">
-                    <li class="flex items-start gap-1.5"><x-heroicon-s-shield-check class="w-4 h-4 text-forest shrink-0 mt-0.5" /><span class="text-sand-200">{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }}</span></li>
-                    <li class="flex items-start gap-1.5"><x-heroicon-s-check class="w-4 h-4 text-brand-action shrink-0 mt-0.5" /><span class="text-sand-200">{{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</span></li>
+                    <li class="flex items-start gap-1.5"><x-heroicon-s-shield-check class="w-4 h-4 text-teal shrink-0 mt-0.5" /><span class="text-sand-200">{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }}</span></li>
+                    <li class="flex items-start gap-1.5"><x-heroicon-s-check class="w-4 h-4 text-teal shrink-0 mt-0.5" /><span class="text-sand-200">{{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</span></li>
                 </ul>
             </div>
         </div>

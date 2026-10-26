@@ -3,12 +3,12 @@
 
     <!-- Header -->
     <div class="mb-5 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-bg border border-brand-border text-xs font-semibold text-brand-secondary mb-3">
-            <span class="w-2 h-2 rounded-full bg-brand-action"></span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand border border-mist text-xs font-semibold text-navy mb-3">
+            <span class="w-2 h-2 rounded-full bg-burgundy"></span>
             <span>{{ __('FreyaService Portal') }}</span>
         </div>
-        <h2 class="text-2xl font-black text-brand-primary tracking-tight">{{ __('Glemt din adgangskode?') }}</h2>
-        <p class="text-xs text-brand-muted mt-1 leading-relaxed">
+        <h2 class="text-2xl font-black text-navy tracking-tight">{{ __('Glemt din adgangskode?') }}</h2>
+        <p class="text-xs text-ink/70 mt-1 leading-relaxed">
             {{ __('Indtast din registrerede e-mailadresse, så sender vi dig et link til at nulstille din adgangskode.') }}
         </p>
     </div>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-            <a href="{{ route('login') }}" class="text-xs text-brand-muted hover:text-brand-secondary underline transition">
+            <a href="{{ route('login') }}" class="text-xs text-ink/70 hover:text-burgundy underline transition">
                 &larr; {{ __('Tilbage til login') }}
             </a>
 

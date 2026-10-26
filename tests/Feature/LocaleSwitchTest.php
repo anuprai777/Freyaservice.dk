@@ -112,4 +112,29 @@ class LocaleSwitchTest extends TestCase
         $responseDa->assertSee('Ledige Vagter');
         $responseDa->assertSee('Indtjening');
     }
+
+    public function test_how_it_works_page_renders_in_english_and_danish(): void
+    {
+        $responseEn = $this->withSession(['locale' => 'en'])->get('/how-it-works');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('Company (Client)');
+        $responseEn->assertSee('Create a request via the portal in under 2 min');
+        $responseEn->assertSee("Receive confirmation with the temp worker&#039;s name and profile", false);
+        $responseEn->assertSee('Generate company QR code once');
+        $responseEn->assertSee('Approve hours with one click — zero paperwork');
+        $responseEn->assertSee('Receive invoice automatically with detailed specification');
+        $responseEn->assertSee('Worker (Employee)');
+        $responseEn->assertSee('Create your profile and choose qualifications');
+
+        $responseDa = $this->withSession(['locale' => 'da'])->get('/how-it-works');
+        $responseDa->assertStatus(200);
+        $responseDa->assertSee('Virksomhed (Kunde)');
+        $responseDa->assertSee('Opret en forespørgsel via portalen på under 2 min');
+        $responseDa->assertSee('Modtag bekræftelse med vikarens navn og profil');
+        $responseDa->assertSee('Generer QR-kode til virksomheden én gang');
+        $responseDa->assertSee('Godkend timer med ét klik — ingen papirarbejde');
+        $responseDa->assertSee('Modtag faktura automatisk med specifikation');
+        $responseDa->assertSee('Vikar (Arbejdstager)');
+        $responseDa->assertSee('Opret din profil og vælg kompetencer');
+    }
 }

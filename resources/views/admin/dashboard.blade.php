@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('Administration & Vagtstyring') }}</h1>
-                <p class="text-xs text-slate-500 mt-0.5">{{ __('FreyaService Backoffice • Live overvågning af kunder, vikarer og bemanding.') }}</p>
+                <h1 class="text-2xl font-black text-navy tracking-tight">{{ __('Administration & Vagtstyring') }}</h1>
+                <p class="text-xs text-ink/70 mt-0.5">{{ __('FreyaService Backoffice • Live overvågning af kunder, vikarer og bemanding.') }}</p>
             </div>
             <div class="flex items-center gap-3">
-                <a href="{{ route('admin.requests.index') }}" class="px-4 py-2 rounded-xl bg-brand-action hover:bg-brand-action-hover text-white font-bold text-xs shadow-sm transition">
+                <a href="{{ route('admin.requests.index') }}" class="btn-primary px-4 py-2 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white font-bold text-xs shadow-xs transition">
                     {{ __('Gennemgå forespørgsler') }} &rarr;
                 </a>
             </div>
@@ -17,40 +17,40 @@
 
         <!-- KPI Metrics Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="bg-white p-5 rounded-2xl border border-sand-300 shadow-sm">
-                <span class="text-[11px] font-bold text-coolslate-500 uppercase tracking-wider block">{{ __('Nye ordrer') }}</span>
-                <span class="text-2xl font-black text-brand-action mt-1 block">{{ $newRequestsCount }}</span>
-                <span class="text-[10px] text-coolslate-500 block">{{ __('Afventer match') }}</span>
+            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
+                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Nye ordrer') }}</span>
+                <span class="text-2xl font-black text-burgundy mt-1 block">{{ $newRequestsCount }}</span>
+                <span class="text-[10px] text-ink/60 block">{{ __('Afventer match') }}</span>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-sand-300 shadow-sm">
-                <span class="text-[11px] font-bold text-coolslate-500 uppercase tracking-wider block">{{ __('Under behandling') }}</span>
-                <span class="text-2xl font-black text-brand-secondary mt-1 block">{{ $inProgressRequestsCount }}</span>
-                <span class="text-[10px] text-coolslate-500 block">{{ __('Tilbud sendt') }}</span>
+            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
+                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Under behandling') }}</span>
+                <span class="text-2xl font-black text-navy mt-1 block">{{ $inProgressRequestsCount }}</span>
+                <span class="text-[10px] text-ink/60 block">{{ __('Tilbud sendt') }}</span>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-sand-300 shadow-sm">
-                <span class="text-[11px] font-bold text-coolslate-500 uppercase tracking-wider block">{{ __('Aktive vagter') }}</span>
-                <span class="text-2xl font-black text-brand-success mt-1 block">{{ $activeShiftsCount }}</span>
-                <span class="text-[10px] text-coolslate-500 block">{{ __('Besat / I gang') }}</span>
+            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
+                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Aktive vagter') }}</span>
+                <span class="text-2xl font-black text-teal mt-1 block">{{ $activeShiftsCount }}</span>
+                <span class="text-[10px] text-ink/60 block">{{ __('Besat / I gang') }}</span>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-sand-300 shadow-sm">
-                <span class="text-[11px] font-bold text-coolslate-500 uppercase tracking-wider block">{{ __('Nye vikarer') }}</span>
-                <span class="text-2xl font-black text-charcoal-900 mt-1 block">{{ $pendingWorkersCount }}</span>
-                <span class="text-[10px] text-coolslate-500 block">{{ __('Afventer godkendelse') }}</span>
+            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
+                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Nye vikarer') }}</span>
+                <span class="text-2xl font-black text-navy mt-1 block">{{ $pendingWorkersCount }}</span>
+                <span class="text-[10px] text-ink/60 block">{{ __('Afventer godkendelse') }}</span>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-sand-300 shadow-sm">
-                <span class="text-[11px] font-bold text-coolslate-500 uppercase tracking-wider block">{{ __('Dokumenter') }}</span>
-                <span class="text-2xl font-black text-brand-secondary mt-1 block">{{ $pendingDocumentsCount }}</span>
-                <span class="text-[10px] text-coolslate-500 block">{{ __('Klar til verifikation') }}</span>
+            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
+                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Dokumenter') }}</span>
+                <span class="text-2xl font-black text-navy mt-1 block">{{ $pendingDocumentsCount }}</span>
+                <span class="text-[10px] text-ink/60 block">{{ __('Klar til verifikation') }}</span>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-sand-300 shadow-sm">
-                <span class="text-[11px] font-bold text-coolslate-500 uppercase tracking-wider block">{{ __('Timesedler') }}</span>
-                <span class="text-2xl font-black text-brand-action mt-1 block">{{ $unapprovedTimesheetsCount }}</span>
-                <span class="text-[10px] text-coolslate-500 block">{{ __('Afventer kundegodkendelse') }}</span>
+            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
+                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Timesedler') }}</span>
+                <span class="text-2xl font-black text-burgundy mt-1 block">{{ $unapprovedTimesheetsCount }}</span>
+                <span class="text-[10px] text-ink/60 block">{{ __('Afventer kundegodkendelse') }}</span>
             </div>
         </div>
 

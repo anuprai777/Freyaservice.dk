@@ -15,16 +15,16 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased bg-brand-bg text-brand-body selection:bg-brand-secondary selection:text-white">
+    <body class="font-sans antialiased bg-[#FAF5F2] text-ink selection:bg-navy selection:text-white">
         <!-- Floating Toast Notifications for Form Success & Alerts -->
         <x-notification-toast />
 
-        <div class="min-h-screen bg-brand-bg">
+        <div class="min-h-screen bg-[#FAF5F2]">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-brand-surface border-b border-brand-border shadow-sm">
+                <header class="bg-white border-b border-mist shadow-xs">
                     <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

@@ -93,14 +93,39 @@ class HomepageSeoTest extends TestCase
         $responseDa = $this->withSession(['locale' => 'da'])->get('/');
         $responseDa->assertSee('Ydelser');
         $responseDa->assertSee('Brancher');
+        $responseDa->assertSee('Om os');
         $responseDa->assertSee('Sådan virker det');
         $responseDa->assertSee('Kontakt');
 
         $responseEn = $this->withSession(['locale' => 'en'])->get('/');
         $responseEn->assertSee('Services');
         $responseEn->assertSee('Industries');
+        $responseEn->assertSee('About Us');
         $responseEn->assertSee('How It Works');
         $responseEn->assertSee('Contact');
+    }
+
+    public function test_about_page_renders_in_english_and_danish(): void
+    {
+        // Danish view
+        $responseDa = $this->withSession(['locale' => 'da'])->get('/about');
+        $responseDa->assertStatus(200);
+        $responseDa->assertSee('Om os - Historien bag Freya Service ApS');
+        $responseDa->assertSee('Bygget på erfaring, drevet af forståelse og inspireret af mennesker');
+        $responseDa->assertSee('founder-portrait.jpg');
+        $responseDa->assertSee('founder-meeting.jpg');
+        $responseDa->assertSee('16+ års kokerfaring');
+        $responseDa->assertSee('Stifter, Freya Service ApS');
+
+        // English view
+        $responseEn = $this->withSession(['locale' => 'en'])->get('/about');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('About Us - The Story Behind Freya Service ApS');
+        $responseEn->assertSee('Built on Experience, Driven by Understanding, and Inspired by People');
+        $responseEn->assertSee('founder-portrait.jpg');
+        $responseEn->assertSee('founder-meeting.jpg');
+        $responseEn->assertSee('16+ Years Chef Experience');
+        $responseEn->assertSee('Founder, Freya Service ApS');
     }
 
     public function test_industries_ordered_list_and_faq_sections_exist(): void

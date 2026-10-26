@@ -3,12 +3,12 @@
 
     <!-- Header -->
     <div class="mb-5 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-bg border border-brand-border text-xs font-semibold text-brand-secondary mb-3">
-            <span class="w-2 h-2 rounded-full bg-brand-action"></span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand border border-mist text-xs font-semibold text-navy mb-3">
+            <span class="w-2 h-2 rounded-full bg-burgundy"></span>
             <span>{{ __('FreyaService Portal') }}</span>
         </div>
-        <h2 class="text-2xl font-black text-brand-primary tracking-tight">{{ __('Opret ny adgangskode') }}</h2>
-        <p class="text-xs text-brand-muted mt-1">{{ __('Indtast din e-mail og din nye ønskede adgangskode herunder') }}</p>
+        <h2 class="text-2xl font-black text-navy tracking-tight">{{ __('Opret ny adgangskode') }}</h2>
+        <p class="text-xs text-ink/70 mt-1">{{ __('Indtast din e-mail og din nye ønskede adgangskode herunder') }}</p>
     </div>
 
     <form method="POST" action="{{ route('password.store') }}" class="space-y-4">
@@ -41,7 +41,7 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end pt-4 border-t border-brand-border">
+        <div class="flex items-center justify-end pt-4 border-t border-mist">
             <x-primary-button class="w-full sm:w-auto py-2.5 px-6 text-xs">
                 {{ __('Nulstil adgangskode') }} &rarr;
             </x-primary-button>

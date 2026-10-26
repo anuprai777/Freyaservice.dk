@@ -42,23 +42,23 @@
             }
         </style>
     </head>
-    <body class="font-sans text-brand-body antialiased bg-brand-bg selection:bg-brand-secondary selection:text-white relative" style="background-image: radial-gradient(rgba(20, 38, 63, 0.04) 1.5px, transparent 0); background-size: 24px 24px;">
+    <body class="font-sans text-ink antialiased bg-white selection:bg-navy selection:text-white relative" style="background-image: radial-gradient(rgba(18, 40, 76, 0.04) 1.5px, transparent 0); background-size: 24px 24px;">
         <!-- Floating Toast Notifications for Form Success & Alerts -->
         <x-notification-toast />
 
         <!-- Controls in top right corner -->
         <div class="w-full max-w-5xl mx-auto flex justify-between items-center px-4 pt-6">
-            <a href="/" class="flex items-center group">
+            <a href="/" class="flex items-center gap-2 group">
                 <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <!-- Language Switcher -->
-            <div class="flex items-center gap-1 bg-brand-surface p-1 rounded-xl shadow-xs border border-brand-border text-xs">
-                <a href="{{ route('locale.switch', 'da') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-brand-secondary text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-xs' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
+            <div class="flex items-center gap-1 bg-sand p-1 rounded-xl shadow-xs border border-mist text-xs">
+                <a href="{{ route('locale.switch', 'da') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-burgundy shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
                     <span>🇩🇰</span>
                     <span>Dansk</span>
                 </a>
-                <a href="{{ route('locale.switch', 'en') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-brand-secondary text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action shadow-xs' : 'text-brand-muted hover:text-brand-secondary font-medium' }}">
+                <a href="{{ route('locale.switch', 'en') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-burgundy shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
                     <span>🇬🇧</span>
                     <span>English</span>
                 </a>
@@ -66,7 +66,7 @@
         </div>
 
         <div class="min-h-[calc(100vh-80px)] flex flex-col justify-center items-center py-8 px-4 sm:px-6">
-            <div class="w-full {{ $maxWidth }} bg-brand-surface shadow-xl shadow-brand-primary/5 overflow-hidden rounded-2xl border border-brand-border p-6 sm:p-8">
+            <div class="w-full {{ $maxWidth }} bg-white shadow-xl shadow-navy/5 overflow-hidden rounded-2xl border border-mist p-6 sm:p-8">
                 {{ $slot }}
             </div>
         </div>

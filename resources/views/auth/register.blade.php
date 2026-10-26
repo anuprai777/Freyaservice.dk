@@ -4,25 +4,25 @@
     <div x-data="{ role: '{{ old('role', request('role', 'client')) }}', showGdprModal: false }" class="w-full">
         <!-- Header -->
         <div class="mb-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-bg border border-brand-border text-xs font-semibold text-brand-secondary mb-3">
-                <span class="w-2 h-2 rounded-full bg-brand-action"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand border border-mist text-xs font-semibold text-navy mb-3">
+                <span class="w-2 h-2 rounded-full bg-burgundy"></span>
                 <span>{{ __('FreyaService Portal') }}</span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black text-brand-primary tracking-tight">{{ __('Opret profil hos FreyaService') }}</h2>
-            <p class="text-xs sm:text-sm text-brand-muted mt-1.5">{{ __('Vælg venligst din profiltype herunder for at komme i gang') }}</p>
+            <h2 class="text-2xl sm:text-3xl font-black text-navy tracking-tight">{{ __('Opret profil hos FreyaService') }}</h2>
+            <p class="text-xs sm:text-sm text-ink/70 mt-1.5">{{ __('Vælg venligst din profiltype herunder for at komme i gang') }}</p>
 
             <!-- Role Selector Toggle -->
-            <div class="grid grid-cols-2 gap-2 p-1.5 mt-5 bg-brand-bg rounded-2xl max-w-md mx-auto border border-brand-border shadow-xs">
+            <div class="grid grid-cols-2 gap-2 p-1.5 mt-5 bg-sand rounded-2xl max-w-md mx-auto border border-mist shadow-xs">
                 <button type="button" @click="role = 'client'"
-                    :class="role === 'client' ? 'bg-brand-primary text-white shadow-md font-bold' : 'text-brand-muted hover:text-brand-secondary font-semibold hover:bg-brand-surface/60'"
+                    :class="role === 'client' ? 'bg-navy text-white shadow-md font-bold' : 'text-ink/60 hover:text-navy font-semibold hover:bg-white/60'"
                     class="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 cursor-pointer">
-                    <x-heroicon-o-building-office-2 class="w-4 h-4 text-brand-action" />
+                    <x-heroicon-o-building-office-2 class="w-4 h-4 text-teal" />
                     <span>{{ __('Virksomhed (Kunde)') }}</span>
                 </button>
                 <button type="button" @click="role = 'worker'"
-                    :class="role === 'worker' ? 'bg-brand-primary text-white shadow-md font-bold' : 'text-brand-muted hover:text-brand-secondary font-semibold hover:bg-brand-surface/60'"
+                    :class="role === 'worker' ? 'bg-navy text-white shadow-md font-bold' : 'text-ink/60 hover:text-navy font-semibold hover:bg-white/60'"
                     class="py-2.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 cursor-pointer">
-                    <x-heroicon-o-user class="w-4 h-4 text-brand-action" />
+                    <x-heroicon-o-user class="w-4 h-4 text-teal" />
                     <span>{{ __('Vikar (Arbejdstager)') }}</span>
                 </button>
             </div>
@@ -54,9 +54,9 @@
             </div>
 
             <!-- Client-only Fields (Virksomhed) -->
-            <div x-show="role === 'client'" x-cloak class="space-y-4 pt-3 border-t border-brand-border">
-                <div class="flex items-center gap-2 text-xs font-bold text-brand-action uppercase tracking-wider">
-                    <x-heroicon-o-building-office class="w-4 h-4 text-brand-action shrink-0" />
+            <div x-show="role === 'client'" x-cloak class="space-y-4 pt-3 border-t border-mist">
+                <div class="flex items-center gap-2 text-xs font-bold text-navy uppercase tracking-wider">
+                    <x-heroicon-o-building-office class="w-4 h-4 text-teal shrink-0" />
                     <span>{{ __('Virksomhedsoplysninger') }}</span>
                 </div>
 
@@ -92,9 +92,9 @@
             </div>
 
             <!-- Worker-only Fields (Vikar) -->
-            <div x-show="role === 'worker'" x-cloak class="space-y-4 pt-3 border-t border-brand-border">
-                <div class="flex items-center gap-2 text-xs font-bold text-brand-action uppercase tracking-wider">
-                    <x-heroicon-o-identification class="w-4 h-4 text-brand-action shrink-0" />
+            <div x-show="role === 'worker'" x-cloak class="space-y-4 pt-3 border-t border-mist">
+                <div class="flex items-center gap-2 text-xs font-bold text-navy uppercase tracking-wider">
+                    <x-heroicon-o-identification class="w-4 h-4 text-teal shrink-0" />
                     <span>{{ __('Vikarprofil & Kompetencer') }}</span>
                 </div>
 
@@ -111,7 +111,7 @@
 
                 <div>
                     <x-input-label for="availability_type" :value="__('Ønsket ansættelsesform')" />
-                    <select id="availability_type" name="availability_type" class="mt-1 block w-full rounded-xl border-brand-border bg-brand-surface shadow-xs focus:border-brand-secondary focus:ring-brand-secondary text-sm text-brand-body">
+                    <select id="availability_type" name="availability_type" class="mt-1 block w-full rounded-lg border-mist bg-white shadow-xs focus:border-burgundy focus:ring-2 focus:ring-burgundy text-sm text-ink">
                         <option value="any">{{ __('Alle vagttyper (fleksibel)') }}</option>
                         <option value="temporary">{{ __('Tilkaldevikar (akut dækning / timer)') }}</option>
                         <option value="part_time">{{ __('Deltid (faste dage / weekender)') }}</option>
@@ -120,8 +120,8 @@
                 </div>
 
                 <div>
-                    <span class="block font-semibold text-xs text-brand-secondary uppercase mb-2">{{ __('Vælg dine kompetencer') }}</span>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-brand-body bg-brand-bg p-3.5 rounded-xl border border-brand-border">
+                    <span class="block font-bold text-xs text-navy uppercase mb-2">{{ __('Vælg dine kompetencer') }}</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-ink bg-sand p-3.5 rounded-xl border border-mist">
                         @foreach([
                             'Tjener' => __('Tjener / Bartender'),
                             'Opvasker' => __('Opvasker / Køkkenhjælp'),
@@ -130,9 +130,9 @@
                             'Kontor' => __('Kontor / Reception'),
                             'Chauffør' => __('Bud / Chauffør (B-kørekort)')
                         ] as $skillKey => $skillLabel)
-                            <label class="flex items-center gap-2.5 p-2 rounded-lg bg-brand-surface border border-brand-border hover:border-brand-secondary/40 transition cursor-pointer">
-                                <input type="checkbox" name="skills[]" value="{{ $skillKey }}" class="rounded border-brand-border text-brand-action shadow-xs focus:ring-brand-action">
-                                <span class="font-medium text-brand-secondary">{{ $skillLabel }}</span>
+                            <label class="flex items-center gap-2.5 p-2 rounded-lg bg-white border border-mist hover:border-teal/40 transition cursor-pointer">
+                                <input type="checkbox" name="skills[]" value="{{ $skillKey }}" class="rounded border-mist text-teal shadow-xs focus:ring-teal">
+                                <span class="font-medium text-navy">{{ $skillLabel }}</span>
                             </label>
                         @endforeach
                     </div>
@@ -140,7 +140,7 @@
             </div>
 
             <!-- Password -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-brand-border">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-mist">
                 <div>
                     <x-input-label for="password" :value="__('Adgangskode')" />
                     <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" placeholder="••••••••" />
@@ -154,21 +154,21 @@
             </div>
 
             <!-- GDPR Consent -->
-            <div class="pt-3 border-t border-brand-border">
+            <div class="pt-3 border-t border-mist">
                 <label class="inline-flex items-start gap-2.5 cursor-pointer">
-                    <input type="checkbox" name="gdpr_consent" value="1" required class="mt-1 rounded border-brand-border text-brand-action shadow-xs focus:ring-brand-action">
-                    <span class="text-xs text-brand-muted leading-relaxed">
+                    <input type="checkbox" name="gdpr_consent" value="1" required class="mt-1 rounded border-mist text-burgundy shadow-xs focus:ring-burgundy">
+                    <span class="text-xs text-ink/70 leading-relaxed">
                         {{ __('Jeg giver samtykke til, at FreyaService behandler mine oplysninger i henhold til') }} 
-                        <button type="button" @click.prevent="showGdprModal = true" class="underline text-brand-action hover:text-brand-action-hover font-bold cursor-pointer">{{ __('persondatapolitikken (GDPR)') }}</button>. 
-                        {{ __('FreyaService indsamler') }} <strong class="text-brand-secondary">{{ __('ikke') }}</strong> {{ __('CPR-numre, og bankoplysninger opbevares altid krypteret.') }}
+                        <button type="button" @click.prevent="showGdprModal = true" class="underline text-burgundy hover:text-burgundy-dark font-bold cursor-pointer">{{ __('persondatapolitikken (GDPR)') }}</button>. 
+                        {{ __('FreyaService indsamler') }} <strong class="text-navy">{{ __('ikke') }}</strong> {{ __('CPR-numre, og bankoplysninger opbevares altid krypteret.') }}
                     </span>
                 </label>
                 <x-input-error :messages="$errors->get('gdpr_consent')" class="mt-1" />
             </div>
 
             <!-- Form Actions -->
-            <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-brand-border">
-                <a class="text-xs text-brand-muted hover:text-brand-secondary transition underline text-center sm:text-left" href="{{ route('login') }}">
+            <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-mist">
+                <a class="text-xs text-ink/70 hover:text-burgundy transition underline text-center sm:text-left" href="{{ route('login') }}">
                     {{ __('Har du allerede en konto? Log ind') }}
                 </a>
 
@@ -186,30 +186,30 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100"
              x-transition:leave-end="opacity-0"
-             class="fixed inset-0 z-50 overflow-y-auto bg-navy-950/70 backdrop-blur-xs flex items-center justify-center p-4">
+             class="fixed inset-0 z-50 overflow-y-auto bg-navy/80 backdrop-blur-xs flex items-center justify-center p-4">
             <div @click.away="showGdprModal = false"
-                 class="bg-brand-surface rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-brand-border shadow-2xl relative text-left">
-                <button type="button" @click="showGdprModal = false" class="absolute top-4 right-4 text-brand-muted hover:text-brand-secondary p-1 rounded-lg hover:bg-brand-bg transition" aria-label="Luk">
+                 class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-mist shadow-2xl relative text-left">
+                <button type="button" @click="showGdprModal = false" class="absolute top-4 right-4 text-ink/50 hover:text-navy p-1 rounded-lg hover:bg-sand transition" aria-label="Luk">
                     <x-heroicon-o-x-mark class="w-5 h-5" />
                 </button>
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-xl bg-forest-50 text-forest flex items-center justify-center shrink-0">
+                    <div class="w-10 h-10 rounded-xl bg-teal/15 text-teal flex items-center justify-center shrink-0">
                         <x-heroicon-s-shield-check class="w-6 h-6" />
                     </div>
                     <div>
-                        <h3 class="text-base sm:text-lg font-bold text-brand-secondary">{{ __('Persondatapolitik & GDPR') }}</h3>
-                        <p class="text-xs text-brand-muted">FreyaService • CVR 44556677</p>
+                        <h3 class="text-base sm:text-lg font-bold text-navy">{{ __('Persondatapolitik & GDPR') }}</h3>
+                        <p class="text-xs text-ink/60">FreyaService • CVR 44556677</p>
                     </div>
                 </div>
-                <div class="space-y-3 text-xs text-brand-body leading-relaxed max-h-72 overflow-y-auto pr-1">
+                <div class="space-y-3 text-xs text-ink/80 leading-relaxed max-h-72 overflow-y-auto pr-1">
                     <p><strong>1. {{ __('Dataminimering') }}:</strong> {{ __('FreyaService indsamler og opbevarer aldrig CPR-numre i sit digitale system.') }}</p>
                     <p><strong>2. {{ __('Sikkerhed') }}:</strong> {{ __('Alle bankoplysninger og personfølsomme data krypteres med AES-256 for optimal datasikkerhed.') }}</p>
                     <p><strong>3. {{ __('Formål') }}:</strong> {{ __('Oplysningerne anvendes udelukkende til administration af vikariater, vagtplanlægning, QR-tidsregistrering og lovpligtig afregning.') }}</p>
                     <p><strong>4. {{ __('Dine rettigheder') }}:</strong> {{ __('Du har til enhver tid ret til indsigt i dine personoplysninger, dataeksport samt sletning ("retten til at blive glemt") jf. gældende EU GDPR-lovgivning.') }}</p>
-                    <p><strong>5. {{ __('Spørgsmål') }}:</strong> {{ __('Kontakt os på') }} <a href="mailto:info@freyaservice.dk" class="text-brand-action underline font-semibold">info@freyaservice.dk</a> {{ __('eller på akuttelefon') }} <a href="tel:+4528260926" class="text-brand-action underline font-semibold">+45 28 26 09 26</a>.</p>
+                    <p><strong>5. {{ __('Spørgsmål') }}:</strong> {{ __('Kontakt os på') }} <a href="mailto:info@freyaservice.dk" class="text-burgundy underline font-semibold">info@freyaservice.dk</a> {{ __('eller på akuttelefon') }} <a href="tel:+4528260926" class="text-burgundy underline font-semibold">+45 28 26 09 26</a>.</p>
                 </div>
-                <div class="mt-6 pt-4 border-t border-brand-border flex items-center justify-end">
-                    <button type="button" @click="showGdprModal = false" class="px-5 py-2.5 rounded-xl bg-brand-secondary hover:bg-navy-800 text-white font-bold text-xs transition cursor-pointer">
+                <div class="mt-6 pt-4 border-t border-mist flex items-center justify-end">
+                    <button type="button" @click="showGdprModal = false" class="px-5 py-2.5 rounded-lg bg-navy hover:bg-navy-800 text-white font-bold text-xs transition cursor-pointer">
                         {{ __('Forstået og luk') }}
                     </button>
                 </div>
