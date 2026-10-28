@@ -24,8 +24,10 @@
 
             <!-- Upload New Document Form -->
             <div class="md:col-span-1">
-                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Upload nyt dokument') }}</h2>
+                <x-card class="space-y-4">
+                    <x-slot:header>
+                        <h2 class="text-base font-bold text-slate-900">{{ __('Upload nyt dokument') }}</h2>
+                    </x-slot:header>
 
                     <form method="POST" action="{{ route('worker.documents.store') }}" enctype="multipart/form-data" class="space-y-4">
                         @csrf
@@ -58,16 +60,18 @@
                             </button>
                         </div>
                     </form>
-                </div>
+                </x-card>
             </div>
 
             <!-- Documents Container -->
             <div class="md:col-span-2">
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                    <div class="p-4 sm:p-6 border-b border-slate-100 flex justify-between items-center">
-                        <h2 class="text-sm sm:text-base font-bold text-slate-900">{{ __('Dine uploadede dokumenter') }}</h2>
-                        <span class="text-xs text-slate-500">{{ $documents->count() }} {{ __('filer') }}</span>
-                    </div>
+                <x-card padding="none">
+                    <x-slot:header>
+                        <div class="flex justify-between items-center w-full">
+                            <h2 class="text-sm sm:text-base font-bold text-slate-900">{{ __('Dine uploadede dokumenter') }}</h2>
+                            <span class="text-xs text-slate-500">{{ $documents->count() }} {{ __('filer') }}</span>
+                        </div>
+                    </x-slot:header>
 
                     <!-- Mobile Stacked Card List (screens < md) -->
                     <div class="md:hidden divide-y divide-slate-100">
@@ -174,7 +178,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </x-card>
             </div>
 
         </div>

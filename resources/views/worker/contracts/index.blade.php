@@ -12,10 +12,10 @@
     </x-slot>
 
     <div class="py-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="p-6 border-b border-slate-100">
+        <x-card padding="none">
+            <x-slot:header>
                 <h2 class="text-base font-bold text-slate-900">{{ __('Aktive og tidligere kontrakter') }}</h2>
-            </div>
+            </x-slot:header>
 
             <div class="divide-y divide-slate-100">
                 @forelse($contracts as $c)
@@ -43,6 +43,6 @@
                     </div>
                 @endforelse
             </div>
-        </div>
+        </x-card>
     </div>
 </x-app-layout>

@@ -44,11 +44,6 @@
     <div class="bg-brand-primary text-sand-100 text-xs py-2 px-4 border-b border-navy-800">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-4 text-center sm:text-left">
-                <span class="flex items-center gap-1.5">
-                    <x-heroicon-o-globe-europe-africa class="w-3.5 h-3.5 text-sand-300" />
-                    <span>{{ __('Landsdækkende vikarservice') }}</span>
-                </span>
-                <span class="hidden sm:inline text-navy-700">•</span>
                 <span class="flex items-center gap-1">
                     <x-heroicon-o-phone class="w-3.5 h-3.5 text-brand-action" />
                     <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4528260926" class="text-white hover:text-brand-action font-semibold">+45 28 26 09 26</a></span>
@@ -57,10 +52,6 @@
                 <span class="hidden sm:inline text-sand-300">CVR: 44556677</span>
             </div>
             <div class="flex items-center gap-3 sm:gap-4">
-                <span class="text-forest-100 font-medium flex items-center gap-1.5 text-[11px] sm:text-xs">
-                    <span class="w-2 h-2 rounded-full bg-forest animate-pulse shrink-0"></span>
-                    <span>{{ __('Vikarer klar til udrykning 24/7') }}</span>
-                </span>
                 <div class="flex items-center gap-1 text-xs font-medium" role="group">
                     <a href="{{ route('locale.switch', 'da') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-sand-300 hover:text-white' }}">
                         <span>🇩🇰</span><span>DA</span>
@@ -112,8 +103,8 @@
                             <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-teal" /><span>{{ __('Log ind') }}</span>
                         </a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 hidden lg:inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-bold text-white shadow-md transition">
-                                <x-heroicon-o-user-plus class="w-4 h-4" /><span>{{ __('Opret konto') }}</span>
+                            <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 lg:px-5 py-1.5 sm:py-2 lg:py-2.5 rounded-lg text-xs sm:text-sm font-bold text-white shadow-md transition">
+                                <x-heroicon-o-user-plus class="w-3.5 h-3.5 sm:w-4 sm:h-4" /><span>{{ __('Opret konto') }}</span>
                             </a>
                         @endif
                     @endauth
@@ -168,13 +159,13 @@
                         <x-heroicon-o-arrow-right class="w-4 h-4" />
                     </a>
                 @else
-                    <div class="grid grid-cols-2 gap-3">
-                        <a href="{{ route('login') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-bold transition">
-                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-teal" />
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <a href="{{ route('login') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-1.5 px-3 py-2 min-h-[38px] rounded-lg text-xs font-bold transition">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-3.5 h-3.5 text-teal" />
                             <span>{{ __('Log ind') }}</span>
                         </a>
-                        <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-bold text-white shadow-sm transition">
-                            <x-heroicon-o-user-plus class="w-4 h-4" />
+                        <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1.5 px-3 py-2 min-h-[38px] rounded-lg text-xs font-bold text-white shadow-sm transition">
+                            <x-heroicon-o-user-plus class="w-3.5 h-3.5" />
                             <span>{{ __('Opret konto') }}</span>
                         </a>
                     </div>

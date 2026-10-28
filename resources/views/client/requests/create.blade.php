@@ -16,8 +16,9 @@
         isUrgent: {{ old('is_urgent') ? 'true' : 'false' }}
     }" class="py-6 sm:py-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <form method="POST" action="{{ route('client.requests.store') }}" class="space-y-6 sm:space-y-8 bg-brand-surface p-5 sm:p-8 rounded-2xl border border-brand-border shadow-sm">
-            @csrf
+        <x-card padding="lg">
+            <form method="POST" action="{{ route('client.requests.store') }}" class="space-y-6 sm:space-y-8">
+                @csrf
 
             <!-- 1. Request Type Selector -->
             <div>
@@ -224,6 +225,7 @@
                 </button>
             </div>
         </form>
+    </x-card>
 
-    </div>
+</div>
 </x-app-layout>

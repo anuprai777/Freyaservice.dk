@@ -43,11 +43,6 @@
     <div class="bg-navy text-sand-100 text-xs py-2 px-4 border-b border-navy-800">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-4">
-                <span class="flex items-center gap-1.5">
-                    <x-heroicon-o-globe-europe-africa class="w-3.5 h-3.5 text-sand-300" />
-                    <span>{{ __('Landsdækkende vikarservice') }}</span>
-                </span>
-                <span class="hidden md:inline text-navy-700">•</span>
                 <span class="flex items-center gap-1">
                     <x-heroicon-o-phone class="w-3.5 h-3.5 text-[#C9A24B]" />
                     <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4528260926" class="text-white hover:text-[#C9A24B] font-semibold">+45 28 26 09 26</a></span>

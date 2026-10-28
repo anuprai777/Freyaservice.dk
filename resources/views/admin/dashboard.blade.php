@@ -17,55 +17,69 @@
 
         <!-- KPI Metrics Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
-                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Nye ordrer') }}</span>
-                <span class="text-2xl font-black text-burgundy mt-1 block">{{ $newRequestsCount }}</span>
-                <span class="text-[10px] text-ink/60 block">{{ __('Afventer match') }}</span>
-            </div>
+            <x-stat-card
+                label="{{ __('Nye ordrer') }}"
+                value="{{ $newRequestsCount }}"
+                sublabel="{{ __('Afventer match') }}"
+                accent="burgundy"
+                icon="sparkles"
+                href="{{ route('admin.requests.index', ['status' => 'new']) }}"
+            />
 
-            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
-                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Under behandling') }}</span>
-                <span class="text-2xl font-black text-navy mt-1 block">{{ $inProgressRequestsCount }}</span>
-                <span class="text-[10px] text-ink/60 block">{{ __('Tilbud sendt') }}</span>
-            </div>
+            <x-stat-card
+                label="{{ __('Under behandling') }}"
+                value="{{ $inProgressRequestsCount }}"
+                sublabel="{{ __('Tilbud sendt') }}"
+                accent="navy"
+                icon="arrow-path"
+                href="{{ route('admin.requests.index', ['status' => 'in_progress']) }}"
+            />
 
-            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
-                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Aktive vagter') }}</span>
-                <span class="text-2xl font-black text-teal mt-1 block">{{ $activeShiftsCount }}</span>
-                <span class="text-[10px] text-ink/60 block">{{ __('Besat / I gang') }}</span>
-            </div>
+            <x-stat-card
+                label="{{ __('Aktive vagter') }}"
+                value="{{ $activeShiftsCount }}"
+                sublabel="{{ __('Besat / I gang') }}"
+                accent="teal"
+                icon="briefcase"
+                href="{{ route('admin.requests.index', ['status' => 'active']) }}"
+            />
 
-            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
-                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Nye vikarer') }}</span>
-                <span class="text-2xl font-black text-navy mt-1 block">{{ $pendingWorkersCount }}</span>
-                <span class="text-[10px] text-ink/60 block">{{ __('Afventer godkendelse') }}</span>
-            </div>
+            <x-stat-card
+                label="{{ __('Nye vikarer') }}"
+                value="{{ $pendingWorkersCount }}"
+                sublabel="{{ __('Afventer godkendelse') }}"
+                accent="navy"
+                icon="user-group"
+                href="{{ route('admin.workers.index', ['status' => 'pending']) }}"
+            />
 
-            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
-                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Dokumenter') }}</span>
-                <span class="text-2xl font-black text-navy mt-1 block">{{ $pendingDocumentsCount }}</span>
-                <span class="text-[10px] text-ink/60 block">{{ __('Klar til verifikation') }}</span>
-            </div>
+            <x-stat-card
+                label="{{ __('Dokumenter') }}"
+                value="{{ $pendingDocumentsCount }}"
+                sublabel="{{ __('Klar til verifikation') }}"
+                accent="navy"
+                icon="document-check"
+                href="{{ route('admin.workers.index') }}"
+            />
 
-            <div class="bg-sand p-5 rounded-2xl border border-mist shadow-xs">
-                <span class="text-[11px] font-bold text-ink/60 uppercase tracking-wider block">{{ __('Timesedler') }}</span>
-                <span class="text-2xl font-black text-burgundy mt-1 block">{{ $unapprovedTimesheetsCount }}</span>
-                <span class="text-[10px] text-ink/60 block">{{ __('Afventer kundegodkendelse') }}</span>
-            </div>
+            <x-stat-card
+                label="{{ __('Timesedler') }}"
+                value="{{ $unapprovedTimesheetsCount }}"
+                sublabel="{{ __('Afventer kundegodkendelse') }}"
+                accent="burgundy"
+                icon="clock"
+                href="{{ route('admin.timesheets.index', ['status' => 'submitted']) }}"
+            />
         </div>
 
         <div class="grid lg:grid-cols-12 gap-8">
 
             <!-- Recent Staff Requests requiring matching -->
             <div class="lg:col-span-8 space-y-6">
-                <div class="bg-white rounded-2xl border border-sand-300 shadow-sm p-6 space-y-4">
-                    <div class="flex justify-between items-center pb-3 border-b border-sand-200">
-                        <div>
-                            <h2 class="text-base font-bold text-charcoal-900">{{ __('Seneste bemandingsforespørgsler') }}</h2>
-                            <p class="text-xs text-coolslate-500 mt-0.5">{{ __('Prioriterede opgaver fra virksomheder.') }}</p>
-                        </div>
+                <x-card title="{{ __('Seneste bemandingsforespørgsler') }}" description="{{ __('Prioriterede opgaver fra virksomheder.') }}">
+                    <x-slot:action>
                         <a href="{{ route('admin.requests.index') }}" class="text-xs font-bold text-brand-secondary hover:text-brand-action transition">{{ __('Se alle') }} &rarr;</a>
-                    </div>
+                    </x-slot:action>
 
                     <div class="space-y-3">
                         @forelse($recentRequests as $req)
@@ -101,12 +115,12 @@
                             <div class="text-center py-6 text-xs text-coolslate-500">{{ __('Ingen aktive forespørgsler.') }}</div>
                         @endforelse
                     </div>
-                </div>
+                </x-card>
 
                 <!-- Expiring Documents Alert Box -->
                 @if($expiringDocuments->isNotEmpty())
-                    <div class="bg-action-50/60 rounded-2xl border border-action-200 p-6 space-y-4">
-                        <div class="flex items-center gap-2">
+                    <x-card variant="sand" class="border-action-300">
+                        <div class="flex items-center gap-2 mb-4">
                             <span class="text-lg">⚠️</span>
                             <div>
                                 <h3 class="text-sm font-bold text-action-900">{{ __('Udløbende dokumenter og arbejdstilladelser') }}</h3>
@@ -127,17 +141,16 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
+                    </x-card>
                 @endif
             </div>
 
             <!-- Right: Activity & Audit Trail -->
             <div class="lg:col-span-4 space-y-6">
-                <div class="bg-white rounded-2xl border border-sand-300 shadow-sm p-6 space-y-4">
-                    <div class="flex justify-between items-center pb-3 border-b border-sand-200">
-                        <h2 class="text-base font-bold text-charcoal-900">{{ __('Audit Log & Hændelser') }}</h2>
+                <x-card title="{{ __('Audit Log & Hændelser') }}">
+                    <x-slot:action>
                         <a href="{{ route('admin.audit.index') }}" class="text-xs text-brand-secondary font-bold hover:text-brand-action transition">{{ __('Se alle') }}</a>
-                    </div>
+                    </x-slot:action>
 
                     <div class="space-y-3">
                         @forelse($recentAuditLogs as $log)
@@ -154,11 +167,11 @@
                             <div class="text-center py-6 text-xs text-coolslate-500">{{ __('Ingen nylige hændelser logget.') }}</div>
                         @endforelse
                     </div>
-                </div>
+                </x-card>
 
                 <!-- Quick Links -->
-                <div class="bg-brand-primary text-white rounded-2xl p-6 space-y-4 shadow-md">
-                    <h3 class="text-sm font-bold">{{ __('Hurtige handlinger') }}</h3>
+                <x-card variant="navy">
+                    <h3 class="text-sm font-bold text-white mb-3">{{ __('Hurtige handlinger') }}</h3>
                     <div class="space-y-2 text-xs">
                         <a href="{{ route('admin.workers.index', ['status' => 'pending']) }}" class="block p-2.5 rounded-lg bg-navy-800 hover:bg-navy-700 border border-navy-700 transition">
                             👤 {{ __('Godkend nye vikarregistreringer') }} &rarr;
@@ -170,7 +183,7 @@
                             📊 {{ __('Eksporter timesedler til CSV / Løn') }} &rarr;
                         </a>
                     </div>
-                </div>
+                </x-card>
             </div>
 
         </div>

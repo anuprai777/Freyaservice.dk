@@ -43,8 +43,10 @@
             <!-- Left: Request Details -->
             <div class="md:col-span-2 space-y-6">
                 <!-- Location & Schedule Details -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Opgavedetaljer') }}</h2>
+                <x-card class="space-y-4">
+                    <x-slot:header>
+                        <h2 class="text-base font-bold text-slate-900">{{ __('Opgavedetaljer') }}</h2>
+                    </x-slot:header>
 
                     <div class="grid grid-cols-2 gap-4 text-xs">
                         <div>
@@ -76,11 +78,13 @@
                             </div>
                         @endif
                     </div>
-                </div>
+                </x-card>
 
                 <!-- Assigned Workers & Shifts -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Tildelte Vikarer & Vagter') }}</h2>
+                <x-card class="space-y-4">
+                    <x-slot:header>
+                        <h2 class="text-base font-bold text-slate-900">{{ __('Tildelte Vikarer & Vagter') }}</h2>
+                    </x-slot:header>
 
                     @forelse($staffRequest->shifts as $shift)
                         <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
@@ -171,14 +175,14 @@
                             {{ __('Ingen specifikke vagter oprettet endnu.') }}
                         </div>
                     @endforelse
-                </div>
+                </x-card>
             </div>
 
             <!-- Right: Shift Check-in QR Code Card -->
             <div class="space-y-6">
                 @if($staffRequest->shifts->isNotEmpty())
                     @php $firstShift = $staffRequest->shifts->first(); @endphp
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center">
+                    <x-card class="text-center">
                         <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{{ __('Tjek-ind QR-kode') }}</div>
                         <h3 class="text-sm font-bold text-slate-900 mb-3">{{ $firstShift->title }}</h3>
 
@@ -189,11 +193,11 @@
                         <p class="text-xs text-slate-500 leading-relaxed">
                             {{ __('Placér denne kode ved jeres indgang. Tildelte vikarer scanner koden med mobilkameraet for at registrere fremmøde.') }}
                         </p>
-                    </div>
+                    </x-card>
                 @endif
 
                 <!-- Support Box -->
-                <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5 text-indigo-950 text-xs space-y-2">
+                <x-card variant="highlight" class="space-y-2 text-xs">
                     <div class="font-bold text-indigo-900 flex items-center gap-1.5">
                         <span>📞</span>
                         <span>{{ __('FreyaService Døgnvagt') }}</span>
@@ -206,7 +210,7 @@
                             {{ __('Ring direkte:') }} +45 28 26 09 26
                         </a>
                     </div>
-                </div>
+                </x-card>
             </div>
 
         </div>

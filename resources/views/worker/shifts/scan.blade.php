@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center space-y-6">
+        <x-card class="text-center space-y-6">
             <div class="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto text-2xl shadow-inner">
                 📷
             </div>
@@ -49,7 +49,7 @@
                     </button>
                 </form>
             </div>
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

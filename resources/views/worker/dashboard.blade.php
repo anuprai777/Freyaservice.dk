@@ -50,88 +50,107 @@
 
         <!-- Active Clock-In Live Banner (if worker is currently clocked in) -->
         @if($currentTimesheet)
-            <div class="bg-forest-600 text-white rounded-2xl p-6 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-forest-800 border border-forest-500 text-white text-xs font-bold mb-2 shadow-xs">
-                        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                        {{ __('Aktiv vagt i gang') }}
-                    </span>
-                    <h2 class="text-xl font-bold">{{ $currentTimesheet->shift->title ?? __('Vikarvagt') }}</h2>
-                    <p class="text-xs text-forest-100 mt-1">
-                        {{ __('Kunde') }}: {{ $currentTimesheet->shift->staffRequest->client->company_name ?? '' }} • {{ __('Stemplet ind kl.') }} {{ $currentTimesheet->clock_in->format('H:i') }} ({{ __('Dato') }}: {{ $currentTimesheet->clock_in->format('d.m.Y') }})
-                    </p>
-                </div>
+            <x-card class="bg-forest-600 border-forest-500 text-white shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-forest-800 border border-forest-500 text-white text-xs font-bold mb-2 shadow-xs">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                            {{ __('Aktiv vagt i gang') }}
+                        </span>
+                        <h2 class="text-xl font-bold">{{ $currentTimesheet->shift->title ?? __('Vikarvagt') }}</h2>
+                        <p class="text-xs text-forest-100 mt-1">
+                            {{ __('Kunde') }}: {{ $currentTimesheet->shift->staffRequest->client->company_name ?? '' }} • {{ __('Stemplet ind kl.') }} {{ $currentTimesheet->clock_in->format('H:i') }} ({{ __('Dato') }}: {{ $currentTimesheet->clock_in->format('d.m.Y') }})
+                        </p>
+                    </div>
 
-                <!-- Clock out button & modal -->
-                <div x-data="{ openClockOut: false }">
-                    <button type="button" @click="openClockOut = true" class="px-5 py-2.5 rounded-xl bg-white text-forest-800 hover:bg-forest-50 font-bold text-sm shadow transition">
-                        {{ __('Stempel ud nu') }} &rarr;
-                    </button>
+                    <!-- Clock out button & modal -->
+                    <div x-data="{ openClockOut: false }">
+                        <button type="button" @click="openClockOut = true" class="px-5 py-2.5 rounded-xl bg-white text-forest-800 hover:bg-forest-50 font-bold text-sm shadow transition">
+                            {{ __('Stempel ud nu') }} &rarr;
+                        </button>
 
-                    <!-- Clock out modal -->
-                    <div x-show="openClockOut" x-cloak class="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">
-                        <div @click.away="openClockOut = false" class="bg-white rounded-2xl max-w-sm w-full p-6 text-left text-slate-800 shadow-2xl">
-                            <h3 class="text-base font-bold text-slate-900">{{ __('Afslut vagt & Stempel ud') }}</h3>
-                            <p class="text-xs text-slate-500 mt-1">{{ __('Angiv eventuel pausetid, før timesedlen sendes til kundens godkendelse.') }}</p>
+                        <!-- Clock out modal -->
+                        <div x-show="openClockOut" x-cloak class="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">
+                            <div @click.away="openClockOut = false" class="bg-white rounded-2xl max-w-sm w-full p-6 text-left text-slate-800 shadow-2xl">
+                                <h3 class="text-base font-bold text-slate-900">{{ __('Afslut vagt & Stempel ud') }}</h3>
+                                <p class="text-xs text-slate-500 mt-1">{{ __('Angiv eventuel pausetid, før timesedlen sendes til kundens godkendelse.') }}</p>
 
-                            <form method="POST" action="{{ route('worker.shifts.clock-out', $currentTimesheet) }}" class="mt-4 space-y-4">
-                                @csrf
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('Afholdt pause (i minutter)') }}</label>
-                                    <input type="number" name="break_minutes" min="0" max="240" value="30" required class="w-full text-xs rounded-xl border-slate-300">
-                                </div>
+                                <form method="POST" action="{{ route('worker.shifts.clock-out', $currentTimesheet) }}" class="mt-4 space-y-4">
+                                    @csrf
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('Afholdt pause (i minutter)') }}</label>
+                                        <input type="number" name="break_minutes" min="0" max="240" value="30" required class="w-full text-xs rounded-xl border-slate-300">
+                                    </div>
 
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('Evt. bemærkninger til kunden') }}</label>
-                                    <textarea name="notes" rows="2" class="w-full text-xs rounded-xl border-slate-300" placeholder="{{ __('F.eks. Arbejdede 30 min ekstra efter aftale med receptionen...') }}"></textarea>
-                                </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('Evt. bemærkninger til kunden') }}</label>
+                                        <textarea name="notes" rows="2" class="w-full text-xs rounded-xl border-slate-300" placeholder="{{ __('F.eks. Arbejdede 30 min ekstra efter aftale med receptionen...') }}"></textarea>
+                                    </div>
 
-                                <div class="flex justify-end gap-2 pt-2">
-                                    <button type="button" @click="openClockOut = false" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100">{{ __('Annuller') }}</button>
-                                    <button type="submit" class="px-4 py-2 rounded-lg text-xs font-bold bg-forest-600 text-white hover:bg-forest-700">{{ __('Bekræft & Stempel ud') }}</button>
-                                </div>
-                            </form>
+                                    <div class="flex justify-end gap-2 pt-2">
+                                        <button type="button" @click="openClockOut = false" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100">{{ __('Annuller') }}</button>
+                                        <button type="submit" class="px-4 py-2 rounded-lg text-xs font-bold bg-forest-600 text-white hover:bg-forest-700">{{ __('Bekræft & Stempel ud') }}</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </x-card>
         @endif
 
         <!-- Earnings & Quick Metrics -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Optjent denne måned') }}</span>
-                <span class="text-2xl font-black text-slate-900 mt-1 block">{{ number_format($thisMonthEarnings, 2, ',', '.') }} kr.</span>
-                <span class="text-[11px] text-slate-500 mt-1 block">{{ __('Udbetales til din bankkonto') }}</span>
-            </div>
+            <x-stat-card
+                :label="__('Optjent denne måned')"
+                :value="number_format($thisMonthEarnings, 2, ',', '.') . ' kr.'"
+                :sublabel="__('Udbetales til din bankkonto')"
+            >
+                <x-slot:icon>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </x-slot:icon>
+            </x-stat-card>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Udførte timer') }}</span>
-                <span class="text-2xl font-black text-brand-secondary mt-1 block">{{ number_format($totalCompletedHours, 1, ',', '.') }} {{ __('timer') }}</span>
-                <span class="text-[11px] text-slate-500 mt-1 block">{{ __('Godkendt af kunder') }}</span>
-            </div>
+            <x-stat-card
+                :label="__('Udførte timer')"
+                :value="number_format($totalCompletedHours, 1, ',', '.') . ' ' . __('timer')"
+                :sublabel="__('Godkendt af kunder')"
+                accent="primary"
+            >
+                <x-slot:icon>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </x-slot:icon>
+            </x-stat-card>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Nye vagttilbud & ledige vagter') }}</span>
-                <span class="text-2xl font-black text-brand-action mt-1 block">{{ $pendingOffers->count() + $openRequests->count() }} {{ __('vagter') }}</span>
-                <span class="text-[11px] text-slate-500 mt-1 block"><a href="{{ route('worker.offers.index') }}" class="text-brand-action font-bold hover:underline">{{ __('Se og accepter vagter') }} &rarr;</a></span>
-            </div>
+            <x-stat-card
+                :label="__('Nye vagttilbud & ledige vagter')"
+                :value="($pendingOffers->count() + $openRequests->count()) . ' ' . __('vagter')"
+                :sublabel="__('Se og accepter vagter')"
+                :href="route('worker.offers.index')"
+                accent="action"
+            >
+                <x-slot:icon>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                </x-slot:icon>
+            </x-stat-card>
         </div>
 
         <!-- Pending Offers Queue (Direct matches) -->
         @if($pendingOffers->isNotEmpty())
-            <div class="bg-white rounded-2xl p-6 border border-action-200 shadow-sm space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-brand-action animate-ping"></span>
-                        <span>{{ __('Direkte vagttilbud til dig') }} ({{ $pendingOffers->count() }})</span>
-                    </h2>
-                    <a href="{{ route('worker.offers.index') }}" class="text-xs font-bold text-brand-secondary hover:text-brand-action transition">{{ __('Se alle') }}</a>
-                </div>
+            <x-card class="border-action-200/80 space-y-4">
+                <x-slot:header>
+                    <div class="flex items-center justify-between w-full">
+                        <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-action animate-ping"></span>
+                            <span>{{ __('Direkte vagttilbud til dig') }} ({{ $pendingOffers->count() }})</span>
+                        </h2>
+                        <a href="{{ route('worker.offers.index') }}" class="text-xs font-bold text-brand-secondary hover:text-brand-action transition">{{ __('Se alle') }}</a>
+                    </div>
+                </x-slot:header>
 
                 <div class="grid md:grid-cols-2 gap-4">
                     @foreach($pendingOffers as $offer)
-                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between space-y-3">
+                        <x-card variant="sand" hover="true" class="flex flex-col justify-between space-y-3">
                             <div>
                                 <div class="flex justify-between items-start gap-2">
                                     <h3 class="text-sm font-bold text-slate-900 capitalize">{{ $offer->staffRequest->role }}</h3>
@@ -164,25 +183,27 @@
                                     </button>
                                 </form>
                             </div>
-                        </div>
+                        </x-card>
                     @endforeach
                 </div>
-            </div>
+            </x-card>
         @endif
 
         <!-- Open Client Staff Requests Queue -->
         @if($openRequests->isNotEmpty())
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-3 border-b border-slate-100 gap-2">
-                    <div>
-                        <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span>{{ __('Åbne vagter oprettet af kunder') }} ({{ $openRequests->count() }})</span>
-                        </h2>
-                        <p class="text-xs text-slate-500 mt-0.5">{{ __('Kunder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt med ét klik.') }}</p>
+            <x-card class="space-y-4">
+                <x-slot:header>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 w-full">
+                        <div>
+                            <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>{{ __('Åbne vagter oprettet af kunder') }} ({{ $openRequests->count() }})</span>
+                            </h2>
+                            <p class="text-xs text-slate-500 mt-0.5">{{ __('Kunder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt med ét klik.') }}</p>
+                        </div>
+                        <a href="{{ route('worker.offers.index') }}" class="text-xs font-bold text-brand-secondary hover:text-brand-action transition">{{ __('Se alle ledige vagter') }} &rarr;</a>
                     </div>
-                    <a href="{{ route('worker.offers.index') }}" class="text-xs font-bold text-brand-secondary hover:text-brand-action transition">{{ __('Se alle ledige vagter') }} &rarr;</a>
-                </div>
+                </x-slot:header>
 
                 <div class="grid md:grid-cols-2 gap-4">
                     @foreach($openRequests as $req)
@@ -193,7 +214,7 @@
                             );
                             $openSpots = max(1, $req->workers_needed - ($req->accepted_count ?? 0));
                         @endphp
-                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-slate-50 hover:border-brand-action/40 transition flex flex-col justify-between space-y-3">
+                        <x-card variant="sand" hover="true" class="flex flex-col justify-between space-y-3">
                             <div>
                                 <div class="flex justify-between items-start gap-2">
                                     <div>
@@ -241,12 +262,12 @@
                                     </button>
                                 </form>
                             </div>
-                        </div>
+                        </x-card>
                     @endforeach
                 </div>
-            </div>
+            </x-card>
         @elseif($pendingOffers->isEmpty())
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center py-8 space-y-2">
+            <x-card class="text-center py-8 space-y-2">
                 <span class="text-2xl block">🎉</span>
                 <h3 class="text-sm font-bold text-slate-800">{{ __('Ingen ubesatte vagter lige nu') }}</h3>
                 <p class="text-xs text-slate-500 max-w-md mx-auto">{{ __('Du har svaret på alle nuværende vagttilbud. Så snart en kunde opretter en ny bemandingsforespørgsel, dukker den op her!') }}</p>
@@ -256,12 +277,14 @@
                         <span>&rarr;</span>
                     </a>
                 </div>
-            </div>
+            </x-card>
         @endif
 
         <!-- Active Assignments & Today's Schedule -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Dine accepterede opgaver og vagter') }}</h2>
+        <x-card class="space-y-4">
+            <x-slot:header>
+                <h2 class="text-base font-bold text-slate-900">{{ __('Dine accepterede opgaver og vagter') }}</h2>
+            </x-slot:header>
 
             @forelse($activeAssignments as $asgn)
                 <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -291,7 +314,7 @@
                     {{ __('Du har ingen aktive opgaver i øjeblikket. Tjek') }} <a href="{{ route('worker.offers.index') }}" class="text-brand-action font-bold hover:underline">{{ __('Ledige Vagter') }}</a> {{ __('for at finde nye opgaver.') }}
                 </div>
             @endforelse
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

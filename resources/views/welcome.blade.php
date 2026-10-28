@@ -170,11 +170,6 @@
     <div class="bg-brand-primary text-sand-100 text-xs py-2 px-4 border-b border-navy-800">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-4 text-center sm:text-left">
-                <span class="flex items-center gap-1.5">
-                    <x-heroicon-o-globe-europe-africa class="w-3.5 h-3.5 text-sand-300" />
-                    <span>{{ __('Landsdækkende vikarservice') }}</span>
-                </span>
-                <span class="hidden sm:inline text-navy-700">•</span>
                 <span class="flex items-center gap-1">
                     <x-heroicon-o-phone class="w-3.5 h-3.5 text-brand-action" />
                     <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4528260926" class="text-white hover:text-brand-action font-semibold">+45 28 26 09 26</a></span>
@@ -183,12 +178,6 @@
                 <span class="hidden sm:inline text-sand-300">CVR: 44556677</span>
             </div>
             <div class="flex items-center gap-3 sm:gap-4">
-                <!-- Success indicator: Forest Green #2F7D5B -->
-                <span class="text-forest-100 font-medium flex items-center gap-1.5 text-[11px] sm:text-xs">
-                    <span class="w-2 h-2 rounded-full bg-forest animate-pulse shrink-0"></span>
-                    <span>{{ __('Vikarer klar til udrykning 24/7') }}</span>
-                </span>
-
                 <!-- Top bar language switch -->
                 <div class="flex items-center gap-1 text-xs font-medium" role="group" aria-label="Sprogvælger">
                     <a href="{{ route('locale.switch', 'da') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-sand-300 hover:text-white' }}" aria-label="Skift til dansk">
@@ -254,8 +243,8 @@
 
                         @if (Route::has('register'))
                             <!-- Primary CTA Button on Navy (burgundy bg with 2px rgba(255,255,255,0.35) border) -->
-                            <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 hidden lg:inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-bold text-white shadow-md transition focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
-                                <x-heroicon-o-user-plus class="w-4 h-4" />
+                            <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 lg:px-5 py-1.5 sm:py-2 lg:py-2.5 rounded-lg text-xs sm:text-sm font-bold text-white shadow-md transition focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                                <x-heroicon-o-user-plus class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                                 <span>{{ __('Opret konto') }}</span>
                             </a>
                         @endif
@@ -325,13 +314,13 @@
                         <x-heroicon-o-arrow-right class="w-4 h-4" />
                     </a>
                 @else
-                    <div class="grid grid-cols-2 gap-3">
-                        <a href="{{ route('login') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-bold transition">
-                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4 text-teal" />
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <a href="{{ route('login') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-1.5 px-3 py-2 min-h-[38px] rounded-lg text-xs font-bold transition">
+                            <x-heroicon-o-arrow-right-end-on-rectangle class="w-3.5 h-3.5 text-teal" />
                             <span>{{ __('Log ind') }}</span>
                         </a>
-                        <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-lg text-sm font-bold text-white shadow-sm transition">
-                            <x-heroicon-o-user-plus class="w-4 h-4" />
+                        <a href="{{ route('register') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-1.5 px-3 py-2 min-h-[38px] rounded-lg text-xs font-bold text-white shadow-sm transition">
+                            <x-heroicon-o-user-plus class="w-3.5 h-3.5" />
                             <span>{{ __('Opret konto') }}</span>
                         </a>
                     </div>
@@ -344,10 +333,11 @@
         $isEn = app()->getLocale() === 'en';
         $words1 = $isEn ? ['Temp', 'Full-time', 'Part-time'] : ['Vikar', 'Fast', 'Fleksibel'];
         $words2 = $isEn ? ['temps', 'staff', 'workers'] : ['vikarer', 'medarbejdere', 'personale'];
+        $btnWords = $isEn ? ['temp', 'full-time', 'part-time'] : ['vikar', 'fuldtid', 'deltid'];
     @endphp
 
     <!-- Hero Section with Authentic Colleagues in Background & 3D Flip Headline -->
-    <section id="heroSection" class="relative text-white min-h-[calc(100vh-100px)] sm:min-h-[calc(100vh-116px)] min-h-[calc(100dvh-100px)] sm:min-h-[calc(100dvh-116px)] flex flex-col justify-center py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#5A1429]">
+    <section id="heroSection" class="relative text-white min-h-[calc(100vh-100px)] sm:min-h-[calc(100vh-116px)] min-h-[calc(100dvh-100px)] sm:min-h-[calc(100dvh-116px)] flex flex-col justify-center py-8 sm:py-12 md:py-14 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#5A1429]">
 
         <!-- Background Image Layer: Authentic Freya Service Colleagues in Action -->
         <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
@@ -373,8 +363,8 @@
 
         <div class="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
             
-            <!-- Sleek 16+ Years Experience Badge (No Rounded Circle) -->
-            <div class="mb-6 flex justify-center">
+            <!-- Giant Outline 16+ Years Experience Element (Right-Aligned, Responsive Fit) -->
+            <div class="w-full flex justify-end pr-2 sm:pr-4 md:pr-6 mb-2 sm:mb-3">
                 <x-experience-badge />
             </div>
 
@@ -386,6 +376,7 @@
                 aria-live="polite"
                 data-words1='@json($words1)'
                 data-words2='@json($words2)'
+                data-words-btn='@json($btnWords)'
             >
                 @if($isEn)
                     <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord1" class="hero-flip-word" style="color:#C9A24B; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">Temp</span></span> staffing in Denmark: vetted <span class="hero-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span id="flipWord2" class="hero-flip-word" style="color:#C9A24B; display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temps</span></span> ready in under 2 hours
@@ -404,22 +395,34 @@
                 <!-- Primary CTA Button (Burgundy #7B1E3A, white text, 8px radius, bold; 2px border rgba(255,255,255,0.35) on navy) -->
                 @auth
                     @if(auth()->user()->isClient())
-                        <a href="{{ route('client.requests.create') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                        <a href="{{ route('client.requests.create') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
                             <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
-                            <span>{{ __('Bestil vikar nu') }}</span>
+                            @if($isEn)
+                                <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
+                            @else
+                                <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
+                            @endif
                             <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                         </a>
                     @else
-                        <a href="{{ route('dashboard') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                        <a href="{{ route('dashboard') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
                             <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
-                            <span>{{ __('Bestil vikar nu') }}</span>
+                            @if($isEn)
+                                <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
+                            @else
+                                <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
+                            @endif
                             <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                         </a>
                     @endif
                 @else
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px]">
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
                         <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
-                        <span>{{ __('Bestil vikar nu') }}</span>
+                        @if($isEn)
+                            <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
+                        @else
+                            <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
+                        @endif
                         <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
                     </a>
                 @endauth
@@ -442,9 +445,9 @@
 
 
 
-    <!-- Styles & Vanilla JS for 3D Headline Flip -->
+    <!-- Styles & Vanilla JS for 3D Headline & Button Flip -->
     <style>
-        .hero-flip-container {
+        .hero-flip-container, .hero-btn-flip-container {
             display: inline-block;
             white-space: nowrap;
             perspective: 600px;
@@ -459,8 +462,17 @@
             backface-visibility: hidden;
             will-change: transform, opacity;
         }
+        .hero-btn-flip-word {
+            display: inline-block;
+            white-space: nowrap;
+            color: #ffffff;
+            transform-origin: 50% 50%;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            will-change: transform, opacity;
+        }
         @media (prefers-reduced-motion: reduce) {
-            .hero-flip-word {
+            .hero-flip-word, .hero-btn-flip-word {
                 transition: none !important;
                 transform: none !important;
                 opacity: 1 !important;
@@ -473,14 +485,17 @@
                 var headline = document.getElementById('heroHeadline');
                 var flipWord1 = document.getElementById('flipWord1');
                 var flipWord2 = document.getElementById('flipWord2');
+                var btnFlipWords = document.querySelectorAll('.hero-btn-flip-word');
 
                 if (!headline || !flipWord1 || !flipWord2) return;
 
                 var words1 = [];
                 var words2 = [];
+                var wordsBtn = [];
                 try {
                     words1 = JSON.parse(headline.getAttribute('data-words1') || '[]');
                     words2 = JSON.parse(headline.getAttribute('data-words2') || '[]');
+                    wordsBtn = JSON.parse(headline.getAttribute('data-words-btn') || '[]');
                 } catch(e) {
                     return;
                 }
@@ -497,6 +512,11 @@
                     currentIndex = index;
                     flipWord1.textContent = words1[index];
                     flipWord2.textContent = words2[index];
+                    if (wordsBtn[index]) {
+                        btnFlipWords.forEach(function(el) {
+                            el.textContent = wordsBtn[index];
+                        });
+                    }
                 }
 
                 function animateFlip(nextIndex) {
@@ -517,10 +537,21 @@
                     flipWord1.style.opacity = '0';
                     flipWord2.style.opacity = '0';
 
+                    btnFlipWords.forEach(function(el) {
+                        el.style.transition = outTransition;
+                        el.style.transform = 'perspective(600px) rotateX(-90deg)';
+                        el.style.opacity = '0';
+                    });
+
                     setTimeout(function() {
                         currentIndex = nextIndex;
                         flipWord1.textContent = words1[nextIndex];
                         flipWord2.textContent = words2[nextIndex];
+                        if (wordsBtn[nextIndex]) {
+                            btnFlipWords.forEach(function(el) {
+                                el.textContent = wordsBtn[nextIndex];
+                            });
+                        }
 
                         // Prepare rotate-in from 90deg (instant, no transition)
                         flipWord1.style.transition = 'none';
@@ -530,8 +561,17 @@
                         flipWord1.style.opacity = '0';
                         flipWord2.style.opacity = '0';
 
+                        btnFlipWords.forEach(function(el) {
+                            el.style.transition = 'none';
+                            el.style.transform = 'perspective(600px) rotateX(90deg)';
+                            el.style.opacity = '0';
+                        });
+
                         // Force DOM reflow
                         void flipWord1.offsetWidth;
+                        btnFlipWords.forEach(function(el) {
+                            void el.offsetWidth;
+                        });
 
                         // Phase 2: rotateX 90deg to 0, fade in, 0.38s
                         var inTransition = 'transform 0.38s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.38s ease-out';
@@ -541,6 +581,12 @@
                         flipWord2.style.transform = 'perspective(600px) rotateX(0deg)';
                         flipWord1.style.opacity = '1';
                         flipWord2.style.opacity = '1';
+
+                        btnFlipWords.forEach(function(el) {
+                            el.style.transition = inTransition;
+                            el.style.transform = 'perspective(600px) rotateX(0deg)';
+                            el.style.opacity = '1';
+                        });
 
                         setTimeout(function() {
                             isAnimating = false;
@@ -599,180 +645,220 @@
     </script>
 
     <!-- Why Choose Freya Service Section (Comprehensive Makeover: Premium, Structured & Trust-Building) -->
-    <section id="why-choose" class="py-24 bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg border-y border-brand-border relative overflow-hidden">
+    <section id="why-choose" class="py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg border-y border-brand-border relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#5A1429 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Bento Grid (Structured Table Layout Matching Reference Image) -->
-            <div class="bg-white border border-neutral-300 rounded-2xl lg:rounded-3xl shadow-sm relative overflow-hidden mb-12">
-                <!-- Top Row (3 Columns on Desktop) -->
-                <div class="grid grid-cols-1 lg:grid-cols-3">
-                    <!-- Top Col 1: Why Choose Header & Relatable Narrative -->
-                    <div class="p-8 sm:p-10 flex flex-col justify-center bg-sand/20">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight leading-tight mb-4">
-                            {{ $isEn ? 'Why Choose' : 'Hvorfor vælge' }}<br>
-                            <span class="text-burgundy">Freya Service</span> ?
-                        </h2>
-                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
-                            {{ $isEn
-                                ? 'At Freya Service, we offer more than just temp staffing. Founded on 16 years of hands-on chef and hospitality experience, we provide vetted, reliable professionals who truly understand the pressure, standards, and pace of your workplace.'
-                                : 'Hos Freya Service tilbyder vi mere end blot vikardækning. Grundlagt på 16 års praktisk kokerfaring fra restaurationsbranchen leverer vi godkendte, motiverede vikarer, der forstår presset, tempoet og standarderne på din arbejdsplads.' }}
-                        </p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <!-- Section Header: Why Choose Freya Service -->
+            <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-action-50 text-brand-action mb-1.5 tracking-wide uppercase">
+                    {{ $isEn ? 'Why Choose Us' : 'Hvorfor vælge os' }}
+                </span>
+                <h2 class="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
+                    {{ $isEn ? 'Why Choose Freya Service?' : 'Hvorfor vælge Freya Service?' }}
+                </h2>
+                <p class="mt-2 text-brand-muted text-xs sm:text-sm lg:text-sm max-w-2xl mx-auto leading-relaxed">
+                    {{ $isEn
+                        ? 'Built on 16 years of hands-on experience, we provide dependable, vetted staff across Denmark with rapid dispatch and transparent terms.'
+                        : 'Bygget på 16 års praktisk erfaring leverer vi pålidelige, screenede vikarer i hele Danmark med hurtig udrykning og klare vilkår.' }}
+                </p>
+            </div>
+
+            <!-- Why Choose Bento Table: Single Unified Container with Seamless Dividers & Quality Keystone -->
+            <x-card padding="none" class="relative overflow-hidden">
+                <!-- Top Row (3 Primary Pillars on Desktop) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200/90">
+                    <!-- Top Col 1: 16+ Years Hands-on Experience -->
+                    <div class="p-5 sm:p-6 lg:p-5 xl:p-6 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-burgundy/10 text-burgundy flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <x-heroicon-o-sparkles class="w-5 h-5 text-burgundy" />
+                                </div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-burgundy bg-burgundy/5 px-2.5 py-0.5 rounded-full border border-burgundy/15">
+                                    {{ $isEn ? 'Experience' : 'Brancheerfaring' }}
+                                </span>
+                            </div>
+                            <h3 class="text-sm sm:text-base lg:text-base font-bold text-navy mb-1.5 group-hover:text-burgundy transition-colors leading-snug">
+                                <span class="text-burgundy font-extrabold">{{ $isEn ? '16+ years of' : '16+ års praktisk' }}</span>
+                                {{ $isEn ? 'hands-on experience' : 'brancheerfaring' }}
+                            </h3>
+                            <p class="text-xs sm:text-xs xl:text-sm text-ink/70 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Founded on hands-on chef and hospitality roots. We understand the pressure, hygiene standards, and fast pace on your floor and in your kitchen.'
+                                    : 'Grundlagt på praktisk kokerfaring fra branchen. Vi forstår presset, hygiejnekravene og det høje tempo på gulvet og i køkkenet.' }}
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Top Col 2: Urgent Dispatch -->
-                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t lg:border-t-0 lg:border-l border-neutral-300">
-                        <div class="w-12 h-12 rounded-xl bg-burgundy/10 flex items-center justify-center mb-6">
-                            <x-heroicon-o-bolt class="w-7 h-7 text-burgundy" />
+                    <!-- Top Col 2: Urgent Dispatch under 2 Hours -->
+                    <div class="p-5 sm:p-6 lg:p-5 xl:p-6 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-action-50 text-brand-action flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <x-heroicon-o-bolt class="w-5 h-5 text-brand-action" />
+                                </div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-action bg-action-50 px-2.5 py-0.5 rounded-full border border-brand-action/20">
+                                    {{ $isEn ? 'Response' : 'Responstid' }}
+                                </span>
+                            </div>
+                            <h3 class="text-sm sm:text-base lg:text-base font-bold text-navy mb-1.5 group-hover:text-brand-action transition-colors leading-snug">
+                                {{ $isEn ? 'Urgent dispatch in' : 'Akut udrykning på' }}
+                                <span class="text-brand-action font-extrabold">{{ $isEn ? 'under 2 hours' : 'under 2 timer' }}</span>
+                            </h3>
+                            <p class="text-xs sm:text-xs xl:text-sm text-ink/70 leading-relaxed">
+                                {{ $isEn
+                                    ? 'When sudden illness or peak workloads hit, we dispatch experienced workers within under 2 hours across Denmark 24/7.'
+                                    : 'Når akut sygdom rammer eller travlheden spidser til, stiller vores erfarne vikarer med få timers varsel i hele landet døgnet rundt.' }}
+                            </p>
                         </div>
-                        <h3 class="text-base sm:text-lg font-bold text-navy mb-2.5 leading-snug">
-                            {{ $isEn ? 'Urgent dispatch in' : 'Akut udrykning på' }}
-                            <span class="font-extrabold text-burgundy">{{ $isEn ? 'under 2 hours' : 'under 2 timer' }}</span>
-                            {{ $isEn ? 'nationwide' : 'i hele Danmark' }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
-                            {{ $isEn
-                                ? 'When sudden illness or peak workloads hit, we dispatch experienced workers within under 2 hours across Denmark 24/7.'
-                                : 'Når akut sygdom rammer eller travlheden spidser til, stiller vores erfarne vikarer med få timers varsel i hele landet døgnet rundt.' }}
-                        </p>
                     </div>
 
                     <!-- Top Col 3: Thoroughly Vetted -->
-                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t lg:border-t-0 lg:border-l border-neutral-300">
-                        <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
-                            <x-heroicon-o-shield-check class="w-7 h-7 text-teal" />
+                    <div class="p-5 sm:p-6 lg:p-5 xl:p-6 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <x-heroicon-o-shield-check class="w-5 h-5 text-teal" />
+                                </div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-teal bg-teal/5 px-2.5 py-0.5 rounded-full border border-teal/20">
+                                    {{ $isEn ? 'Vetting' : 'Kvalitet' }}
+                                </span>
+                            </div>
+                            <h3 class="text-sm sm:text-base lg:text-base font-bold text-navy mb-1.5 group-hover:text-teal transition-colors leading-snug">
+                                <span class="text-teal font-extrabold">{{ $isEn ? '100% vetted' : '100% godkendte' }}</span>
+                                {{ $isEn ? '& personally screened staff' : '& screenede vikarer' }}
+                            </h3>
+                            <p class="text-xs sm:text-xs xl:text-sm text-ink/70 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Every temp undergoes personal interviews, reference validation, criminal record checks, and verified work permits before deployment.'
+                                    : 'Alle vikarer gennemgår personlig samtale, referencetjek, ren straffeattest og validerede arbejdstilladelser før udsendelse.' }}
+                            </p>
                         </div>
-                        <h3 class="text-base sm:text-lg font-bold text-navy mb-2.5 leading-snug">
-                            <span class="font-extrabold text-teal">{{ $isEn ? '100% vetted' : '100% godkendte' }}</span>
-                            {{ $isEn ? '& personally interviewed staff' : '& personligt screenede vikarer' }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
-                            {{ $isEn
-                                ? 'Every temp is interviewed personally, with verified criminal records, work permits and validated references before deployment.'
-                                : 'Alle vikarer gennemgår personlig samtale, referencetjek, ren straffeattest og validerede arbejdstilladelser før udsendelse.' }}
-                        </p>
                     </div>
                 </div>
 
-                <!-- Golden 4-Point Sparkle Star at Grid Intersection (Matching Reference Image) -->
-                <div class="hidden lg:flex absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center pointer-events-none" aria-hidden="true">
-                    <svg class="w-8 h-8 text-[#C9A24B] drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-                    </svg>
+                <!-- Golden 4-Point Sparkle Seal at Exact Grid Intersection -->
+                <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center pointer-events-none" aria-hidden="true">
+                    <div class="w-8 h-8 rounded-full bg-white border border-neutral-200/90 shadow-xs flex items-center justify-center">
+                        <svg class="w-4 h-4 text-[#C9A24B] drop-shadow-xs" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                        </svg>
+                    </div>
                 </div>
 
-                <!-- Bottom Row (4 Columns on Desktop) -->
-                <div class="border-t border-neutral-300 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Bottom Row (4 Operational Standards on Desktop, 2x2 on Tablet, Stacked on Mobile) -->
+                <div class="border-t border-neutral-200/90 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-neutral-200/90">
                     <!-- Bottom Col 1: Right Person Match -->
-                    <div class="p-8 sm:p-10 flex flex-col justify-start">
-                        <div class="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center mb-6">
-                            <x-heroicon-o-user-group class="w-7 h-7 text-navy" />
+                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 sm:border-r sm:border-b lg:border-b-0 border-neutral-200/90 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
+                        <div>
+                            <div class="flex items-center justify-between mb-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-navy/10 text-navy flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <x-heroicon-o-user-group class="w-4.5 h-4.5 text-navy" />
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-navy bg-navy/5 px-2 py-0.5 rounded-full border border-navy/15">
+                                    {{ $isEn ? 'Matching' : 'Præcision' }}
+                                </span>
+                            </div>
+                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-navy transition-colors leading-snug">
+                                <span class="text-navy font-extrabold">{{ $isEn ? 'The right person' : 'Det rette menneske' }}</span>
+                                {{ $isEn ? 'for the task' : 'til rette opgave' }}
+                            </h3>
+                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Matched based on operational insight and work culture, ensuring seamless integration into your team.'
+                                    : 'Matcher baseret på reel brancheforståelse og arbejdsstil, så vikaren passer direkte ind i dit faste team.' }}
+                            </p>
                         </div>
-                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
-                            <span class="font-extrabold text-navy">{{ $isEn ? 'The right person' : 'Det rette menneske' }}</span>
-                            {{ $isEn ? 'in the right place, at the right time' : 'på det rette sted, til rette tid' }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
-                            {{ $isEn
-                                ? 'Matched based on operational culinary insight, workplace expectations, and individual strengths.'
-                                : 'Matcher baseret på reel køkkenforståelse og arbejdsstil, så vikaren passer direkte ind i dit faste team.' }}
-                        </p>
                     </div>
 
                     <!-- Bottom Col 2: Collective Agreement Compliance -->
-                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t sm:border-t-0 sm:border-l border-neutral-300">
-                        <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
-                            <x-heroicon-o-scale class="w-7 h-7 text-teal" />
+                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 sm:border-b lg:border-b-0 lg:border-r border-neutral-200/90 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
+                        <div>
+                            <div class="flex items-center justify-between mb-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <x-heroicon-o-scale class="w-4.5 h-4.5 text-teal" />
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-teal bg-teal/5 px-2 py-0.5 rounded-full border border-teal/20">
+                                    {{ $isEn ? 'Compliance' : 'Tryghed' }}
+                                </span>
+                            </div>
+                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-teal transition-colors leading-snug">
+                                <span class="text-teal font-extrabold">{{ $isEn ? '100% collective' : '100% overenskomst' }}</span>
+                                {{ $isEn ? 'agreement terms' : 'og juridisk tryghed' }}
+                            </h3>
+                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Strict compliance with Danish collective agreements, statutory pension, holiday pay, and mandatory accident insurance.'
+                                    : 'Garant for overenskomstmæssig løn, feriepenge, pension og lovpligtig arbejdsskadeforsikring på alle vagter.' }}
+                            </p>
                         </div>
-                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
-                            <span class="font-extrabold text-teal">{{ $isEn ? '100% collective agreement' : '100% overenskomstdækket' }}</span>
-                            {{ $isEn ? 'terms & legal safety' : 'og juridisk tryghed' }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
-                            {{ $isEn
-                                ? 'Strict compliance with Danish collective agreements, statutory pension, holiday pay, and mandatory accident insurance.'
-                                : 'Garant for overenskomstmæssig løn, feriepenge, pension og lovpligtig arbejdsskadeforsikring på alle vagter.' }}
-                        </p>
                     </div>
 
-                    <!-- Bottom Col 3: Digital QR Timesheets -->
-                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t lg:border-t-0 sm:border-t lg:border-l sm:border-l-0 lg:border-l-neutral-300 border-neutral-300">
-                        <div class="w-12 h-12 rounded-xl bg-burgundy/10 flex items-center justify-center mb-6">
-                            <x-heroicon-o-qr-code class="w-7 h-7 text-burgundy" />
+                    <!-- Bottom Col 3: Digital QR Check-in -->
+                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 sm:border-r lg:border-r border-neutral-200/90 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
+                        <div>
+                            <div class="flex items-center justify-between mb-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-burgundy/10 text-burgundy flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <x-heroicon-o-qr-code class="w-4.5 h-4.5 text-burgundy" />
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-burgundy bg-burgundy/5 px-2 py-0.5 rounded-full border border-burgundy/15">
+                                    {{ $isEn ? 'Digital' : 'Digitalt' }}
+                                </span>
+                            </div>
+                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-burgundy transition-colors leading-snug">
+                                <span class="text-burgundy font-extrabold">{{ $isEn ? 'Digital QR check-in' : 'Digital QR-tjek ind' }}</span>
+                                {{ $isEn ? '& timesheets' : '& timesedler' }}
+                            </h3>
+                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Accurate check-in and check-out via on-site QR code. Zero manual paper timesheets – verified hours approved online.'
+                                    : 'Ingen manuelle papirsedler. Præcis stempling on-site via QR-kode og digital godkendelse direkte i din portal.' }}
+                            </p>
                         </div>
-                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
-                            <span class="font-extrabold text-burgundy">{{ $isEn ? 'Digital QR check-in' : 'Digital QR-tjek ind' }}</span>
-                            {{ $isEn ? '& automated timesheets' : '& automatiske timesedler' }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
-                            {{ $isEn
-                                ? 'Accurate check-in and check-out via on-site QR code. Zero manual paper timesheets – verified hours approved online.'
-                                : 'Ingen manuelle papirsedler. Præcis stempling on-site via QR-kode og digital godkendelse direkte i din portal.' }}
-                        </p>
                     </div>
 
                     <!-- Bottom Col 4: Zero Lock-in & Direct Support -->
-                    <div class="p-8 sm:p-10 flex flex-col justify-start border-t sm:border-t lg:border-t-0 sm:border-l border-neutral-300">
-                        <div class="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center mb-6">
-                            <x-heroicon-o-hand-raised class="w-7 h-7 text-navy" />
-                        </div>
-                        <h3 class="text-base font-bold text-navy mb-2.5 leading-snug">
-                            <span class="font-extrabold text-navy">{{ $isEn ? 'Zero lock-in' : 'Ingen binding' }}</span>{{ $isEn ? ', clear pricing & 24/7 hotline' : ', faste priser og 24/7 vagttelefon' }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-ink/70 leading-relaxed">
-                            {{ $isEn
-                                ? 'Zero onboarding fees or surprise charges. You only pay for approved hours worked with direct advisor support.'
-                                : 'Ingen oprettelsesgebyrer eller uigennemskuelige tillæg. Du betaler udelukkende for faktiske godkendte timer.' }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trust Bar / Key Metrics Strip (Retaining All Verified Claims) -->
-            <div class="bg-navy text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-navy-800">
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 text-center relative z-10">
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0">
-                        <div class="text-2xl sm:text-4xl font-black text-[#C9A24B] tracking-tight">&lt; 2t</div>
-                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Average response time') }}</div>
-                    </div>
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0 lg:border-l lg:border-navy-700 lg:pl-6">
-                        <div class="text-2xl sm:text-4xl font-black text-white tracking-tight">100%</div>
-                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Collective agreement compliance') }}</div>
-                    </div>
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0 lg:border-l lg:border-navy-700 lg:pl-6">
-                        <div class="text-2xl sm:text-4xl font-black text-white tracking-tight">2.500+</div>
-                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Vetted active temps') }}</div>
-                    </div>
-                    <div class="p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0 lg:border-l lg:border-navy-700 lg:pl-6">
-                        <div class="text-2xl sm:text-4xl font-black text-[#C9A24B] tracking-tight">98%</div>
-                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">{{ __('Client satisfaction') }}</div>
-                    </div>
-                    <div class="col-span-2 lg:col-span-1 p-3.5 sm:p-4 rounded-2xl bg-navy-950 border border-navy-800 lg:border-0 lg:bg-transparent lg:p-0 lg:border-l lg:border-navy-700 lg:pl-6">
-                        <div class="text-2xl sm:text-4xl font-black text-[#C9A24B] tracking-tight">24/7</div>
-                        <div class="text-[11px] sm:text-xs text-sand-200 font-medium mt-1">
-                            <a href="tel:+4528260926" class="hover:text-[#C9A24B] transition-colors focus-visible:ring-2 focus-visible:ring-teal rounded">{{ __('Emergency dispatch') }}: +45 28 26 09 26</a>
+                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
+                        <div>
+                            <div class="flex items-center justify-between mb-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-navy/10 text-navy flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <x-heroicon-o-hand-raised class="w-4.5 h-4.5 text-navy" />
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-navy bg-navy/5 px-2 py-0.5 rounded-full border border-navy/15">
+                                    {{ $isEn ? 'Terms' : 'Vilkår' }}
+                                </span>
+                            </div>
+                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-navy transition-colors leading-snug">
+                                <span class="text-navy font-extrabold">{{ $isEn ? 'Zero lock-in' : 'Ingen binding' }}</span>{{ $isEn ? ' & clear pricing' : ' & faste priser' }}
+                            </h3>
+                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Zero onboarding fees or surprise charges. You only pay for approved hours worked with direct advisor support.'
+                                    : 'Ingen oprettelsesgebyrer eller uigennemskuelige tillæg. Du betaler udelukkende for faktiske godkendte timer.' }}
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </x-card>
         </div>
     </section>
 
     <!-- Industries Section (Hotel, Restaurant, Warehouse, Office with Links and One-line Descriptions) -->
-    <section id="industries" class="py-20 bg-sand-200/50 border-y border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <div class="text-xs font-bold text-burgundy uppercase tracking-widest mb-3">{{ __('Specialized sectors') }}</div>
-                <h2 class="text-3xl sm:text-4xl font-black text-navy tracking-tight">
+    <section id="industries" class="py-10 sm:py-14 lg:py-16 bg-sand-200/50 border-y border-brand-border relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
+                <div class="text-xs font-bold text-burgundy uppercase tracking-widest mb-1.5">{{ __('Specialized sectors') }}</div>
+                <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-navy tracking-tight">
                     {{ __('Industries we staff with qualified temps') }}
                 </h2>
-                <p class="mt-3 text-sm text-ink/80 leading-relaxed">
+                <p class="mt-2 text-xs sm:text-sm text-ink/80 leading-relaxed max-w-2xl mx-auto">
                     {{ __('Freya Service provides pre-screened temporary workers across four core sectors in Denmark, matching required certifications, experience and language skills to every shift.') }}
                 </p>
             </div>
 
             <!-- Sector Tags Chip Group (mist background with ink text, teal bg with white text on every 3rd tag) -->
-            <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto mb-12 sector-tags">
+            <div class="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto mb-6 lg:mb-7 sector-tags">
                 <span class="sector-tag">{{ __('Healthcare') }}</span>
                 <span class="sector-tag">{{ __('Hospitality') }}</span>
                 <span class="sector-tag">{{ __('Logistics') }}</span>
@@ -784,14 +870,14 @@
                 <span class="sector-tag">{{ __('Cleaning') }}</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-4 xl:gap-6">
                 <!-- 1. Hotel Temps -->
-                <div class="bg-brand-surface p-6 rounded-2xl border border-brand-border text-center hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 mx-auto rounded-2xl bg-action-50 text-brand-action flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-building-office class="w-8 h-8 text-brand-action" />
+                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-action-50 text-brand-action flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <x-heroicon-o-building-office class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-brand-action" />
                         </div>
-                        <h3 class="font-bold text-lg text-brand-secondary mb-2 group-hover:text-brand-action transition-colors">
+                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
                             <a href="{{ route('industries') }}#hotel" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
                                 {{ __('Hotel temps') }}
                             </a>
@@ -800,21 +886,21 @@
                             {{ __('Experienced receptionists, night auditors and housekeeping staff for hotels across Denmark.') }}
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 border-t border-brand-border/60">
+                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
                         <a href="{{ route('industries') }}#hotel" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
                             <span>{{ __('Read about hotel staffing') }}</span>
                             <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
                         </a>
                     </div>
-                </div>
+                </x-card>
 
                 <!-- 2. Restaurant & Catering Temps -->
-                <div class="bg-brand-surface p-6 rounded-2xl border border-brand-border text-center hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 mx-auto rounded-2xl bg-action-50 text-brand-action flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-cake class="w-8 h-8 text-brand-action" />
+                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-action-50 text-brand-action flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <x-heroicon-o-cake class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-brand-action" />
                         </div>
-                        <h3 class="font-bold text-lg text-brand-secondary mb-2 group-hover:text-brand-action transition-colors">
+                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
                             <a href="{{ route('industries') }}#restaurant" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
                                 {{ __('Restaurant and catering temps') }}
                             </a>
@@ -823,21 +909,21 @@
                             {{ __('Qualified chefs, waiters, kitchen assistants and dishwashers for busy dining venues.') }}
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 border-t border-brand-border/60">
+                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
                         <a href="{{ route('industries') }}#restaurant" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
                             <span>{{ __('Read about restaurant staffing') }}</span>
                             <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
                         </a>
                     </div>
-                </div>
+                </x-card>
 
                 <!-- 3. Warehouse & Logistics Temps -->
-                <div class="bg-brand-surface p-6 rounded-2xl border border-brand-border text-center hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 mx-auto rounded-2xl bg-navy-100 text-brand-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-truck class="w-8 h-8 text-brand-primary" />
+                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-navy-100 text-brand-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <x-heroicon-o-truck class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-brand-primary" />
                         </div>
-                        <h3 class="font-bold text-lg text-brand-secondary mb-2 group-hover:text-brand-action transition-colors">
+                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
                             <a href="{{ route('industries') }}#warehouse" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
                                 {{ __('Warehouse and logistics temps') }}
                             </a>
@@ -846,21 +932,21 @@
                             {{ __('Certified forklift drivers, pick-and-pack operators and inventory staff for distribution hubs.') }}
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 border-t border-brand-border/60">
+                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
                         <a href="{{ route('industries') }}#warehouse" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
                             <span>{{ __('Read about warehouse staffing') }}</span>
                             <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
                         </a>
                     </div>
-                </div>
+                </x-card>
 
                 <!-- 4. Office Temps -->
-                <div class="bg-brand-surface p-6 rounded-2xl border border-brand-border text-center hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
                     <div>
-                        <div class="w-14 h-14 mx-auto rounded-2xl bg-forest-50 text-forest flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-building-office-2 class="w-8 h-8 text-forest" />
+                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-forest-50 text-forest flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <x-heroicon-o-building-office-2 class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-forest" />
                         </div>
-                        <h3 class="font-bold text-lg text-brand-secondary mb-2 group-hover:text-brand-action transition-colors">
+                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
                             <a href="{{ route('industries') }}#office" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
                                 {{ __('Office temps') }}
                             </a>
@@ -869,98 +955,109 @@
                             {{ __('Vetted administrative assistants, receptionists, data entry clerks and customer support staff.') }}
                         </p>
                     </div>
-                    <div class="pt-4 mt-4 border-t border-brand-border/60">
+                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
                         <a href="{{ route('industries') }}#office" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
                             <span>{{ __('Read about office staffing') }}</span>
                             <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
                         </a>
                     </div>
+                </x-card>
             </div>
         </div>
     </section>
 
     <!-- How to Order Temps in 3 Steps Section (Ordered List) -->
-    <section id="how-it-works" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-3">{{ __('Quick ordering process') }}</div>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-secondary tracking-tight">
-                {{ __('How to order temps in 3 steps') }}
-            </h2>
-            <p class="mt-3 text-sm text-brand-body leading-relaxed max-w-2xl mx-auto">
-                {{ __('Ordering qualified temporary workers is straightforward and takes less than two minutes from your computer or phone.') }}
-            </p>
+    <section id="how-it-works" class="py-10 sm:py-14 lg:py-16 w-full relative overflow-hidden bg-sand-50/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+                <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-1.5">{{ __('Quick ordering process') }}</div>
+                <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
+                    {{ __('How to order temps in 3 steps') }}
+                </h2>
+                <p class="mt-2 text-xs sm:text-sm text-brand-body leading-relaxed max-w-2xl mx-auto">
+                    {{ __('Ordering qualified temporary workers is straightforward and takes less than two minutes from your computer or phone.') }}
+                </p>
+            </div>
+
+            <!-- Semantic Ordered List -->
+            <ol class="grid md:grid-cols-3 gap-8 list-none">
+                <!-- Step 1 -->
+                <li class="bg-brand-surface p-6 sm:p-7 lg:p-6 xl:p-8 rounded-2xl border border-brand-border shadow-xs relative flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="w-11 h-11 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-xl bg-action-50 text-brand-action font-black text-base lg:text-base xl:text-lg flex items-center justify-center mb-4 lg:mb-4 xl:mb-5 shadow-xs" aria-hidden="true">
+                            1
+                        </div>
+                        <h3 class="text-lg lg:text-lg xl:text-xl font-bold text-brand-secondary mb-2 lg:mb-2 xl:mb-3">
+                            {{ __('1. Request your staffing requirements') }}
+                        </h3>
+                        <p class="text-xs sm:text-sm text-brand-body leading-relaxed">
+                            {{ __('Specify your industry, number of temps, location and shift times via our online portal or 24/7 emergency line (+45 28 26 09 26).') }}
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 lg:pt-4 lg:mt-4 xl:pt-6 xl:mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
+                        <span>{{ __('Estimeret tid: 2 minutter') }}</span>
+                    </div>
+                </li>
+
+                <!-- Step 2 -->
+                <li class="bg-brand-surface p-6 sm:p-7 lg:p-6 xl:p-8 rounded-2xl border border-brand-border shadow-xs relative flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="w-11 h-11 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-xl bg-navy-50 text-brand-secondary font-black text-base lg:text-base xl:text-lg flex items-center justify-center mb-4 lg:mb-4 xl:mb-5 shadow-xs" aria-hidden="true">
+                            2
+                        </div>
+                        <h3 class="text-lg lg:text-lg xl:text-xl font-bold text-brand-secondary mb-2 lg:mb-2 xl:mb-3">
+                            {{ __('2. Vetted temps dispatched in under 2 hours') }}
+                        </h3>
+                        <p class="text-xs sm:text-sm text-brand-body leading-relaxed">
+                            {{ __('We match and dispatch pre-screened, collective agreement compliant workers to your workplace in under 2 hours.') }}
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 lg:pt-4 lg:mt-4 xl:pt-6 xl:mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
+                        <span>{{ __('Udrykningstid: Under 2 timer') }}</span>
+                    </div>
+                </li>
+
+                <!-- Step 3 -->
+                <li class="bg-brand-surface p-6 sm:p-7 lg:p-6 xl:p-8 rounded-2xl border border-brand-border shadow-xs relative flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="w-11 h-11 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-xl bg-forest-50 text-forest font-black text-base lg:text-base xl:text-lg flex items-center justify-center mb-4 lg:mb-4 xl:mb-5 shadow-xs" aria-hidden="true">
+                            3
+                        </div>
+                        <h3 class="text-lg lg:text-lg xl:text-xl font-bold text-brand-secondary mb-2 lg:mb-2 xl:mb-3">
+                            {{ __('3. Digital QR check-in and transparent invoicing') }}
+                        </h3>
+                        <p class="text-xs sm:text-sm text-brand-body leading-relaxed">
+                            {{ __('Workers check in on-site with a QR scan. You approve verified hours digitally with zero onboarding or lock-in fees.') }}
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 lg:pt-4 lg:mt-4 xl:pt-6 xl:mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
+                        <span>{{ __('Ingen binding • 100% digitalt') }}</span>
+                    </div>
+                </li>
+            </ol>
         </div>
-
-        <!-- Semantic Ordered List -->
-        <ol class="grid md:grid-cols-3 gap-8 list-none">
-            <!-- Step 1 -->
-            <li class="bg-brand-surface p-8 rounded-2xl border border-brand-border shadow-sm relative flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-action-50 text-brand-action font-black text-lg flex items-center justify-center mb-6 shadow-xs" aria-hidden="true">
-                        1
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-secondary mb-3">
-                        {{ __('1. Request your staffing requirements') }}
-                    </h3>
-                    <p class="text-sm text-brand-body leading-relaxed">
-                        {{ __('Specify your industry, number of temps, location and shift times via our online portal or 24/7 emergency line (+45 28 26 09 26).') }}
-                    </p>
-                </div>
-                <div class="pt-6 mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
-                    <span>{{ __('Estimeret tid: 2 minutter') }}</span>
-                </div>
-            </li>
-
-            <!-- Step 2 -->
-            <li class="bg-brand-surface p-8 rounded-2xl border border-brand-border shadow-sm relative flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-navy-50 text-brand-secondary font-black text-lg flex items-center justify-center mb-6 shadow-xs" aria-hidden="true">
-                        2
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-secondary mb-3">
-                        {{ __('2. Vetted temps dispatched in under 2 hours') }}
-                    </h3>
-                    <p class="text-sm text-brand-body leading-relaxed">
-                        {{ __('We match and dispatch pre-screened, collective agreement compliant workers to your workplace in under 2 hours.') }}
-                    </p>
-                </div>
-                <div class="pt-6 mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
-                    <span>{{ __('Udrykningstid: Under 2 timer') }}</span>
-                </div>
-            </li>
-
-            <!-- Step 3 -->
-            <li class="bg-brand-surface p-8 rounded-2xl border border-brand-border shadow-sm relative flex flex-col justify-between hover:shadow-md transition">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-forest-50 text-forest font-black text-lg flex items-center justify-center mb-6 shadow-xs" aria-hidden="true">
-                        3
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-secondary mb-3">
-                        {{ __('3. Digital QR check-in and transparent invoicing') }}
-                    </h3>
-                    <p class="text-sm text-brand-body leading-relaxed">
-                        {{ __('Workers check in on-site with a QR scan. You approve verified hours digitally with zero onboarding or lock-in fees.') }}
-                    </p>
-                </div>
-                <div class="pt-6 mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
-                    <span>{{ __('Ingen binding • 100% digitalt') }}</span>
-                </div>
-            </li>
-        </ol>
     </section>
 
     <!-- Frequently Asked Questions Section (AI-Search Ready & JSON-LD Mirrored) -->
-    <section id="faq" class="py-24 bg-sand-200/40 border-t border-brand-border relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-secondary tracking-tight">
+    <section id="faq" class="py-10 sm:py-14 lg:py-16 bg-sand-200/40 border-t border-brand-border relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-action-50 text-brand-action mb-1.5 tracking-wide uppercase">
+                    {{ __('Frequently asked questions') }}
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
                     FAQ
                 </h2>
+                <p class="mt-2 text-brand-muted text-xs sm:text-sm max-w-2xl mx-auto">
+                    {{ __('Factual, straightforward answers about response times, pricing, collective agreements, vetting and booking terms.') }}
+                </p>
             </div>
 
-            <div class="relative max-w-5xl mx-auto">
-                <!-- Curved SVG Path behind the cards -->
-                <svg class="absolute -top-12 -bottom-12 -left-8 -right-8 w-[calc(100%+4rem)] h-[calc(100%+6rem)] pointer-events-none select-none z-0" viewBox="0 0 1000 850" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <div class="relative max-w-5xl mx-auto w-full">
+                <!-- Curved SVG Path behind the cards (hardware-accelerated compositing) -->
+                <svg class="absolute -top-12 -bottom-12 -left-8 -right-8 w-[calc(100%+4rem)] h-[calc(100%+6rem)] pointer-events-none select-none z-0"
+                     style="transform: translateZ(0); will-change: auto;"
+                     viewBox="0 0 1000 850" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <defs>
                         <linearGradient id="faq-curve-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stop-color="#C9A24B" stop-opacity="0.45" />
@@ -973,20 +1070,16 @@
                             <stop offset="50%" stop-color="#C9A24B" stop-opacity="0.3" />
                             <stop offset="100%" stop-color="#E4D6D9" stop-opacity="0.25" />
                         </linearGradient>
-                        <filter id="faq-blur" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="12" />
-                        </filter>
                     </defs>
 
                     <!-- Soft ambient glow path -->
                     <path d="M -20,90 C 150,20 320,30 460,110 C 510,140 520,200 620,130 C 740,50 880,60 980,150 C 1040,200 1020,290 890,280 C 750,270 630,285 500,280 C 360,275 220,265 100,320 C 0,360 -20,450 60,510 C 140,570 320,540 480,545 C 640,550 820,520 930,590 C 1030,650 1020,750 890,810 C 750,870 550,830 380,820 C 220,810 80,850 -20,810"
                           stroke="url(#faq-curve-grad-1)"
-                          stroke-width="16"
+                          stroke-width="12"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           fill="none"
-                          filter="url(#faq-blur)"
-                          opacity="0.3"
+                          opacity="0.18"
                           vector-effect="non-scaling-stroke" />
 
                     <!-- Primary curved path -->
@@ -1009,196 +1102,226 @@
                           vector-effect="non-scaling-stroke" />
                 </svg>
 
-                <div class="relative z-10 grid md:grid-cols-2 gap-6 items-start">
-                    <!-- Q1 -->
-                    <div x-data="{ open: false }"
-                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
-                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
-                        <button @click="open = !open"
-                                type="button"
-                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
-                                :aria-expanded="open.toString()">
-                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                                <span>{{ __('How fast can I get a temp in Denmark?') }}</span>
-                            </h3>
-                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
-                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div x-show="open" x-collapse.duration.300ms x-cloak>
-                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
-                                <p>
-                                    {{ __('Freya Service dispatches qualified temps in under 2 hours for urgent staffing requests nationwide. Planned shifts can also be scheduled days or weeks ahead via our 24/7 emergency dispatch line (+45 28 26 09 26) or online client portal.') }}
-                                </p>
+                <!-- Independent 2-Column Grid (Prevents cross-column row height jumping) -->
+                <div class="relative z-10 grid md:grid-cols-2 gap-3.5 sm:gap-4 lg:gap-3.5 xl:gap-4 items-start">
+                    <!-- Left Column: Booking, Response Time & Agreements -->
+                    <div class="flex flex-col gap-3 sm:gap-3.5 lg:gap-3 xl:gap-3.5">
+                        <!-- Q1 -->
+                        <div x-data="{ open: false }"
+                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
+                            <button @click="open = !open"
+                                    type="button"
+                                    class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
+                                    :aria-expanded="open.toString()">
+                                <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
+                                    <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
+                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                    <span>{{ __('How fast can I get a temp in Denmark?') }}</span>
+                                </h3>
+                                <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                                <div class="faq-grid-inner">
+                                    <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
+                                        <p class="m-0">
+                                             {{ __('Freya Service dispatches qualified temps in under 2 hours for urgent staffing requests nationwide. Planned shifts can also be scheduled days or weeks ahead via our 24/7 emergency dispatch line (+45 28 26 09 26) or online client portal.') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div x-data="{ open: false }"
+                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
+                            <button @click="open = !open"
+                                    type="button"
+                                    class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
+                                    :aria-expanded="open.toString()">
+                                <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
+                                    <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
+                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                    <span>{{ __('Are there any lock-in periods or onboarding fees?') }}</span>
+                                </h3>
+                                <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                                <div class="faq-grid-inner">
+                                    <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
+                                        <p class="m-0">
+                                            {{ __('No. Freya Service operates with zero lock-in contracts, zero subscription fees, and zero onboarding fees. You only pay for the approved hours worked by the dispatched temp.') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div x-data="{ open: false }"
+                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
+                            <button @click="open = !open"
+                                    type="button"
+                                    class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
+                                    :aria-expanded="open.toString()">
+                                <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
+                                    <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
+                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                    <span>{{ __('Do Freya Service temps follow Danish collective agreements?') }}</span>
+                                </h3>
+                                <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                                <div class="faq-grid-inner">
+                                    <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
+                                        <p class="m-0">
+                                            {{ __('Yes. 100% of temporary workers dispatched by Freya Service are employed under Danish collective agreement terms (overenskomst), including statutory pension, holiday pay (feriepenge), sick pay, and mandatory workplace injury insurance.') }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Q2 -->
-                    <div x-data="{ open: false }"
-                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
-                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
-                        <button @click="open = !open"
-                                type="button"
-                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
-                                :aria-expanded="open.toString()">
-                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                                <span>{{ __('Are there any lock-in periods or onboarding fees?') }}</span>
-                            </h3>
-                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
-                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div x-show="open" x-collapse.duration.300ms x-cloak>
-                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
-                                <p>
-                                    {{ __('No. Freya Service operates with zero lock-in contracts, zero subscription fees, and zero onboarding fees. You only pay for the approved hours worked by the dispatched temp.') }}
-                                </p>
+                    <!-- Right Column: Costs, Industries & Candidate Vetting -->
+                    <div class="flex flex-col gap-3 sm:gap-3.5 lg:gap-3 xl:gap-3.5">
+                        <!-- Q4 -->
+                        <div x-data="{ open: false }"
+                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
+                            <button @click="open = !open"
+                                    type="button"
+                                    class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
+                                    :aria-expanded="open.toString()">
+                                <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
+                                    <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
+                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                    <span>{{ __('What does temp staffing cost with Freya Service?') }}</span>
+                                </h3>
+                                <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                                <div class="faq-grid-inner">
+                                    <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
+                                        <p class="m-0">
+                                            {{ __('Temp staffing costs depend on the industry, job role, and shift type (day, evening, night, or weekend) in compliance with collective agreement tariffs. Base rates start from [PLACEHOLDER: DKK XXX per hour ex. VAT]. Invoicing is transparent with 25% Danish VAT and no hidden surcharges.') }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Q3 -->
-                    <div x-data="{ open: false }"
-                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
-                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
-                        <button @click="open = !open"
-                                type="button"
-                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
-                                :aria-expanded="open.toString()">
-                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                                <span>{{ __('Do Freya Service temps follow Danish collective agreements?') }}</span>
-                            </h3>
-                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
-                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div x-show="open" x-collapse.duration.300ms x-cloak>
-                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
-                                <p>
-                                    {{ __('Yes. 100% of temporary workers dispatched by Freya Service are employed under Danish collective agreement terms (overenskomst), including statutory pension, holiday pay (feriepenge), sick pay, and mandatory workplace injury insurance.') }}
-                                </p>
+                        <!-- Q5 -->
+                        <div x-data="{ open: false }"
+                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
+                            <button @click="open = !open"
+                                    type="button"
+                                    class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
+                                    :aria-expanded="open.toString()">
+                                <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
+                                    <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
+                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                    <span>{{ __('Which industries does Freya Service provide staff for?') }}</span>
+                                </h3>
+                                <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                                <div class="faq-grid-inner">
+                                    <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
+                                        <p class="m-0">
+                                            {{ __('Freya Service supplies vetted temp staff across four core industries in Denmark: hotels (reception, housekeeping), restaurants and catering (chefs, waiters, kitchen assistants), warehouses and logistics (forklift drivers, pick-and-pack), and offices (administrative, customer service).') }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Q4 -->
-                    <div x-data="{ open: false }"
-                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
-                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
-                        <button @click="open = !open"
-                                type="button"
-                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
-                                :aria-expanded="open.toString()">
-                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                                <span>{{ __('What does temp staffing cost with Freya Service?') }}</span>
-                            </h3>
-                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
-                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div x-show="open" x-collapse.duration.300ms x-cloak>
-                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
-                                <p>
-                                    {{ __('Temp staffing costs depend on the industry, job role, and shift type (day, evening, night, or weekend) in compliance with collective agreement tariffs. Base rates start from [PLACEHOLDER: DKK XXX per hour ex. VAT]. Invoicing is transparent with 25% Danish VAT and no hidden surcharges.') }}
-                                </p>
+                        <!-- Q6 -->
+                        <div x-data="{ open: false }"
+                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
+                            <button @click="open = !open"
+                                    type="button"
+                                    class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
+                                    :aria-expanded="open.toString()">
+                                <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
+                                    <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
+                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                    <span>{{ __('How does Freya Service vet and verify temp workers?') }}</span>
+                                </h3>
+                                <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                                <div class="faq-grid-inner">
+                                    <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
+                                        <p class="m-0">
+                                            {{ __('Every candidate undergoes personal interviews, reference validation, verification of valid Danish work permits, and criminal background checks prior to dispatch. On-site attendance and worked hours are verified digitally via QR-code time tracking.') }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Q5 -->
-                    <div x-data="{ open: false }"
-                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
-                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
-                        <button @click="open = !open"
-                                type="button"
-                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
-                                :aria-expanded="open.toString()">
-                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                                <span>{{ __('Which industries does Freya Service provide staff for?') }}</span>
-                            </h3>
-                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
-                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div x-show="open" x-collapse.duration.300ms x-cloak>
-                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
-                                <p>
-                                    {{ __('Freya Service supplies vetted temp staff across four core industries in Denmark: hotels (reception, housekeeping), restaurants and catering (chefs, waiters, kitchen assistants), warehouses and logistics (forklift drivers, pick-and-pack), and offices (administrative, customer service).') }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Q6 -->
-                    <div x-data="{ open: false }"
-                         class="bg-brand-surface rounded-2xl p-6 sm:p-7 border transition-all duration-300"
-                         :class="open ? 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20' : 'border-brand-border shadow-xs hover:border-brand-action/40'">
-                        <button @click="open = !open"
-                                type="button"
-                                class="w-full text-left flex items-start justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer"
-                                :aria-expanded="open.toString()">
-                            <h3 class="text-base sm:text-lg font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-3">
-                                <span class="w-6 h-6 rounded-lg bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">Q</span>
-                                <span>{{ __('How does Freya Service vet and verify temp workers?') }}</span>
-                            </h3>
-                            <span class="w-7 h-7 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-all duration-300 ease-out"
-                                  :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div x-show="open" x-collapse.duration.300ms x-cloak>
-                            <div class="pt-3.5 text-sm text-brand-body leading-relaxed pl-9">
-                                <p>
-                                    {{ __('Every candidate undergoes personal interviews, reference validation, verification of valid Danish work permits, and criminal background checks prior to dispatch. On-site attendance and worked hours are verified digitally via QR-code time tracking.') }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Call to action / Contact (Primary Dark: Deep burgundy #5A1429) -->
-    <section id="contact" class="py-16 bg-navy text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 class="text-3xl font-extrabold text-white">
+    <section id="contact" class="py-10 sm:py-12 bg-navy text-white relative overflow-hidden border-t border-navy-800">
+        <!-- Subtle atmospheric ambient background glows -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+            <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-burgundy/20 blur-2xl"></div>
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-gold/10 blur-2xl"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 {{ __('Ready to order temps or need immediate staffing?') }}
             </h2>
-            <p class="text-sand-200 max-w-xl mx-auto text-sm leading-relaxed">
+            <p class="text-sand-200 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
                 {{ __('Call our 24/7 emergency dispatch line directly or create your client account online in two minutes.') }}
             </p>
-            <div class="flex flex-wrap justify-center gap-4 pt-4">
+            <div class="flex flex-wrap justify-center gap-3.5 pt-2">
                 <!-- Primary Action Button: Burgundy #7B1E3A with 2px white/35 border -->
-                <a href="tel:+4528260926" class="btn-primary border-2 border-white/35 inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white font-bold text-sm shadow-md transition focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                <a href="tel:+4528260926" class="btn-primary border-2 border-white/35 inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
                     <x-heroicon-s-phone class="w-4 h-4 text-white" />
                     <span>{{ __('Ring +45 28 26 09 26') }}</span>
                 </a>
                 <!-- Secondary Action Button: Transparent with 2px teal border, white text on navy -->
-                <a href="{{ route('register', ['role' => 'client']) }}" class="btn-secondary border-2 border-teal bg-transparent hover:bg-teal/10 inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-white font-bold text-sm transition focus-visible:ring-2 focus-visible:ring-teal focus:outline-none">
+                <a href="{{ route('register', ['role' => 'client']) }}" class="btn-secondary border-2 border-teal bg-transparent hover:bg-teal/15 inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-white font-bold text-xs sm:text-sm shadow-xs hover:shadow-sm transition-all duration-200 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-teal focus:outline-none">
                     <x-heroicon-o-building-office class="w-4 h-4 text-teal" />
                     <span>{{ __('Opret virksomhedskonto') }}</span>
                 </a>

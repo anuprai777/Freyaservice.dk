@@ -14,15 +14,15 @@
     <div class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
         <!-- Search Bar -->
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row gap-4 justify-between items-stretch sm:items-center">
+        <x-card padding="sm">
             <form method="GET" action="{{ route('admin.clients.index') }}" class="flex gap-2 items-center flex-1">
                 <input type="text" name="search" value="{{ $search }}" placeholder="{{ __('Søg firmanavn, CVR, by eller kontaktperson...') }}" class="text-xs rounded-xl border-slate-300 w-full sm:w-80">
                 <button type="submit" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs">{{ __('Søg') }}</button>
             </form>
-        </div>
+        </x-card>
 
         <!-- Clients Table -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <x-card padding="none">
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[11px]">
@@ -75,7 +75,7 @@
             <div class="p-4 border-t border-slate-100">
                 {{ $clients->links() }}
             </div>
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

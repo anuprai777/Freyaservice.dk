@@ -20,7 +20,7 @@
         <!-- 3 Specific Service Cards: Sand bg, 14px radius, 5px coloured top border -->
         <div class="grid md:grid-cols-3 gap-8 mb-16">
             <!-- 1. Temporary Staff: Burgundy 5px top border -->
-            <div class="service-card service-card-temp bg-sand rounded-[14px] p-8 border-t-[5px] border-burgundy shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <x-card variant="sand" hover="true" accent="burgundy" class="service-card service-card-temp flex flex-col justify-between p-8">
                 <div>
                     <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-clock class="w-6 h-6 text-burgundy" />
@@ -34,10 +34,10 @@
                     <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Digital time- & QR-registrering') }}</span></li>
                     <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Overenskomstmæssige vilkår') }}</span></li>
                 </ul>
-            </div>
+            </x-card>
 
             <!-- 2. Permanent Hiring: Navy 5px top border -->
-            <div class="service-card service-card-perm bg-sand rounded-[14px] p-8 border-t-[5px] border-navy shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <x-card variant="sand" hover="true" accent="navy" class="service-card service-card-perm flex flex-col justify-between p-8">
                 <div>
                     <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-calendar-days class="w-6 h-6 text-navy" />
@@ -51,10 +51,10 @@
                     <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Ensartet høj faglig kvalitet') }}</span></li>
                     <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Fuld digital kontraktstyring') }}</span></li>
                 </ul>
-            </div>
+            </x-card>
 
             <!-- 3. Part-Time Staff: Teal 5px top border -->
-            <div class="service-card service-card-part bg-sand rounded-[14px] p-8 border-t-[5px] border-teal shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <x-card variant="sand" hover="true" accent="teal" class="service-card service-card-part flex flex-col justify-between p-8">
                 <div>
                     <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-user-group class="w-6 h-6 text-teal" />
@@ -68,7 +68,7 @@
                     <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Ingen binding eller oprettelsesgebyr') }}</span></li>
                     <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Månedlig samlet fakturering') }}</span></li>
                 </ul>
-            </div>
+            </x-card>
         </div>
 
         <!-- Sector Tags Chip Group -->
@@ -98,32 +98,32 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 mb-10">
-                <div class="bg-white rounded-2xl p-6 border border-mist shadow-xs hover:shadow-md transition">
+                <x-card variant="white" hover="true" class="p-6">
                     <div class="w-12 h-12 rounded-xl bg-mist flex items-center justify-center mb-4">
                         <x-heroicon-o-bolt class="w-6 h-6 text-burgundy" />
                     </div>
                     <h3 class="font-bold text-navy mb-2">{{ __('Akut vikardækning døgnet rundt') }}</h3>
                     <p class="text-xs text-ink/80 leading-relaxed">{{ __('Når sygdom eller uventet travlhed rammer, stiller vi med erfarne vikarer med få timers varsel i hele landet.') }}</p>
-                </div>
+                </x-card>
 
-                <div class="bg-white rounded-2xl p-6 border border-mist shadow-xs hover:shadow-md transition">
+                <x-card variant="white" hover="true" class="p-6">
                     <div class="w-12 h-12 rounded-xl bg-mist flex items-center justify-center mb-4">
                         <x-heroicon-o-shield-check class="w-6 h-6 text-navy" />
                     </div>
                     <h3 class="font-bold text-navy mb-2">{{ __('Gennemtestede vikarer') }}</h3>
                     <p class="text-xs text-ink/80 leading-relaxed">{{ __('Alle vikarer screenes personligt, straffeattest og arbejdstilladelser tjekkes, og referencer indhentes før udsendelse.') }}</p>
-                </div>
+                </x-card>
 
-                <div class="bg-white rounded-2xl p-6 border border-mist shadow-xs hover:shadow-md transition">
+                <x-card variant="white" hover="true" class="p-6">
                     <div class="w-12 h-12 rounded-xl bg-mist flex items-center justify-center mb-4">
                         <x-heroicon-o-qr-code class="w-6 h-6 text-teal" />
                     </div>
                     <h3 class="font-bold text-navy mb-2">{{ __('Digital time- & QR-registrering') }}</h3>
                     <p class="text-xs text-ink/80 leading-relaxed">{{ __('Præcis tjek-ind og tjek-ud via QR-kode på arbejdspladsen. Ingen manuelle papirsedler – kun godkendte timer.') }}</p>
-                </div>
+                </x-card>
             </div>
 
-            <div class="bg-navy text-white rounded-2xl p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border border-navy-800">
+            <x-card variant="navy" class="p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                 <div>
                     <div class="text-2xl font-black text-[#C9A24B]">&lt; 2t</div>
                     <div class="text-[11px] text-sand-200 mt-0.5">{{ __('Gennemsnitlig responstid') }}</div>
@@ -140,7 +140,7 @@
                     <div class="text-2xl font-black text-[#C9A24B]">24/7</div>
                     <div class="text-[11px] text-sand-200 mt-0.5">{{ __('Bemandet vagtcentral') }}</div>
                 </div>
-            </div>
+            </x-card>
         </div>
 
         <div class="text-center">

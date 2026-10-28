@@ -14,7 +14,7 @@
     <div class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
         <!-- Search Bar -->
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
+        <x-card padding="sm" class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
             <form method="GET" action="{{ route('admin.audit.index') }}" class="flex flex-wrap gap-2 items-center flex-1">
                 <input type="text" name="search" value="{{ $search }}" placeholder="{{ __('Søg handling, bruger, IP-adresse...') }}" class="text-xs rounded-xl border-slate-300 w-full sm:w-80">
                 <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition">
@@ -29,10 +29,10 @@
             <div class="text-xs text-slate-500 font-medium">
                 {{ __('Viser') }} {{ $auditLogs->total() }} {{ __('hændelser i loggen') }}
             </div>
-        </div>
+        </x-card>
 
         <!-- Logs Table -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <x-card padding="none">
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 text-slate-500 font-bold uppercase border-b border-slate-200">
@@ -110,7 +110,7 @@
                     {{ $auditLogs->links() }}
                 </div>
             @endif
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

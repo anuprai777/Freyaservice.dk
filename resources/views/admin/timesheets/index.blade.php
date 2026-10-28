@@ -23,7 +23,7 @@
         @endif
 
         <!-- Filter Bar (horizontally scrollable on mobile) -->
-        <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto scrollbar-none">
+        <x-card padding="sm" class="overflow-x-auto scrollbar-none">
             <div class="flex items-center gap-2 min-w-max">
                 <a href="{{ route('admin.timesheets.index', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg text-xs font-semibold {{ !$status || $status === 'all' ? 'bg-slate-900 text-white font-bold' : 'text-slate-600 hover:bg-slate-100' }}">
                     {{ __('Alle timesedler') }}
@@ -38,10 +38,10 @@
                     {{ __('Afviste') }}
                 </a>
             </div>
-        </div>
+        </x-card>
 
         <!-- Timesheets List -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <x-card padding="none">
             <!-- Mobile Card View (md:hidden) -->
             <div class="md:hidden divide-y divide-slate-100">
                 @forelse($timesheets as $ts)
@@ -161,7 +161,7 @@
             <div class="p-4 border-t border-slate-100">
                 {{ $timesheets->links() }}
             </div>
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

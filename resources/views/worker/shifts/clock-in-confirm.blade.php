@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="py-12 max-w-md mx-auto px-4 sm:px-6">
-        <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-xl text-center space-y-6">
+        <x-card padding="lg" class="text-center space-y-6 shadow-xl">
             <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto text-3xl">
                 ✓
             </div>
@@ -41,6 +41,6 @@
             <a href="{{ route('worker.dashboard') }}" class="block text-xs text-slate-400 hover:text-slate-600">
                 {{ __('Annuller og vend tilbage') }}
             </a>
-        </div>
+        </x-card>
     </div>
 </x-app-layout>

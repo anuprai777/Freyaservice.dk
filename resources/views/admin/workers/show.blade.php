@@ -34,9 +34,7 @@
             <div class="lg:col-span-2 space-y-6">
 
                 <!-- Documents Verification Section -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Uploadede Dokumenter & Verifikation') }}</h2>
-
+                <x-card title="{{ __('Uploadede Dokumenter & Verifikation') }}">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
                             <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[11px]">
@@ -114,12 +112,10 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </x-card>
 
                 <!-- Client Ratings & Reviews -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Kundebedømmelser & Feedback') }}</h2>
-
+                <x-card title="{{ __('Kundebedømmelser & Feedback') }}">
                     <div class="space-y-3">
                         @forelse($worker->ratings as $rating)
                             <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs space-y-1">
@@ -136,15 +132,14 @@
                             <div class="text-center py-6 text-slate-400 text-xs">{{ __('Ingen anmeldelser modtaget endnu.') }}</div>
                         @endforelse
                     </div>
-                </div>
+                    </div>
+                </x-card>
             </div>
 
             <!-- Right: Status & Notes -->
             <div class="space-y-6">
                 <!-- Status Changer -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Vikarstatus & CRM Noter') }}</h2>
-
+                <x-card title="{{ __('Vikarstatus & CRM Noter') }}">
                     <form method="POST" action="{{ route('admin.workers.update-status', $worker) }}" class="space-y-4">
                         @csrf
                         @method('PUT')
@@ -168,24 +163,25 @@
                             {{ __('Gem vikarstatus & noter') }}
                         </button>
                     </form>
-                </div>
+                </x-card>
 
                 <!-- Profile Overview Box -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-3 text-xs">
-                    <h3 class="font-bold text-slate-900 border-b border-slate-100 pb-2">{{ __('Kompetencer & Data') }}</h3>
-                    <div><strong>{{ __('By:') }}</strong> {{ $worker->city }} ({{ $worker->postcode }})</div>
-                    <div><strong>{{ __('Løn:') }}</strong> {{ number_format($worker->hourly_rate, 2, ',', '.') }} DKK/time</div>
-                    <div><strong>{{ __('Rådighedstype:') }}</strong> {{ $worker->availability_type }}</div>
-                    <div><strong>{{ __('Bank:') }}</strong> {{ $worker->bank_reg_number ? __('✓ Registreret (krypteret)') : __('Ej angivet') }}</div>
-                    <div class="pt-2">
-                        <span class="block font-semibold text-slate-700 mb-1">{{ __('Færdigheder:') }}</span>
-                        <div class="flex flex-wrap gap-1">
-                            @foreach((array)$worker->skills as $sk)
-                                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px]">{{ $sk }}</span>
-                            @endforeach
+                <x-card title="{{ __('Kompetencer & Data') }}">
+                    <div class="space-y-3 text-xs">
+                        <div><strong>{{ __('By:') }}</strong> {{ $worker->city }} ({{ $worker->postcode }})</div>
+                        <div><strong>{{ __('Løn:') }}</strong> {{ number_format($worker->hourly_rate, 2, ',', '.') }} DKK/time</div>
+                        <div><strong>{{ __('Rådighedstype:') }}</strong> {{ $worker->availability_type }}</div>
+                        <div><strong>{{ __('Bank:') }}</strong> {{ $worker->bank_reg_number ? __('✓ Registreret (krypteret)') : __('Ej angivet') }}</div>
+                        <div class="pt-2">
+                            <span class="block font-semibold text-slate-700 mb-1">{{ __('Færdigheder:') }}</span>
+                            <div class="flex flex-wrap gap-1">
+                                @foreach((array)$worker->skills as $sk)
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px]">{{ $sk }}</span>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
+                </x-card>
             </div>
 
         </div>

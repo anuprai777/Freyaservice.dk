@@ -33,7 +33,7 @@
         @endif
 
         <!-- Scoring Criteria Legend -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <x-card>
             <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">{{ __('FreyaService Scoringsmodel (Maks 100 point)') }}</h2>
             <div class="grid grid-cols-2 md:grid-cols-6 gap-3 text-xs">
                 <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -61,7 +61,7 @@
                     <span class="text-amber-700 font-bold">{{ __('+10 bonuspoint') }}</span>
                 </div>
             </div>
-        </div>
+        </x-card>
 
         <!-- Scored Candidates List -->
         <div class="space-y-4">
@@ -75,7 +75,7 @@
                     $isAlreadyOffered = in_array($worker->id, $assignedWorkerIds, true);
                 @endphp
 
-                <div class="bg-white rounded-2xl border {{ $score >= 70 ? 'border-indigo-200 ring-1 ring-indigo-100' : 'border-slate-200' }} shadow-sm p-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+                <x-card hover="true" class="{{ $score >= 70 ? 'ring-1 ring-burgundy/20 border-burgundy/30' : '' }} flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                     <div class="space-y-3 flex-1">
                         <div class="flex flex-wrap items-center gap-2">
                             <!-- Overall Score Badge -->
@@ -140,11 +140,11 @@
                             </form>
                         @endif
                     </div>
-                </div>
+                </x-card>
             @empty
-                <div class="text-center py-12 bg-white rounded-2xl border border-slate-200 text-slate-400 text-sm">
+                <x-card class="text-center py-12 text-slate-400 text-sm">
                     {{ __('Ingen godkendte vikarer fundet i systemet. Opret eller godkend vikarer under Vikarer CRM.') }}
-                </div>
+                </x-card>
             @endforelse
         </div>
 

@@ -21,8 +21,8 @@
                     <p class="text-sm text-ink/70 mb-6">Vores vagtcentral er bemandet 24 timer i døgnet, 7 dage om ugen.</p>
                 </div>
 
-                <a href="tel:+4528260926" class="flex items-center gap-5 p-6 bg-sand border border-mist rounded-2xl hover:border-burgundy/40 hover:shadow-md transition group">
-                    <div class="w-14 h-14 rounded-xl bg-burgundy flex items-center justify-center shadow-md shadow-burgundy/30 group-hover:scale-110 transition-transform">
+                <x-card as="a" href="tel:+4528260926" variant="sand" hover="true" padding="none" class="flex items-center gap-5 p-6 hover:border-burgundy/40 group">
+                    <div class="w-14 h-14 rounded-xl bg-burgundy flex items-center justify-center shadow-md shadow-burgundy/30 group-hover:scale-110 transition-transform shrink-0">
                         <x-heroicon-o-phone class="w-7 h-7 text-white" />
                     </div>
                     <div>
@@ -30,10 +30,10 @@
                         <div class="text-2xl font-black text-navy">+45 28 26 09 26</div>
                         <div class="text-xs text-ink/60">Åben 24/7 — Akut dækning</div>
                     </div>
-                </a>
+                </x-card>
 
-                <a href="mailto:info@freyaservice.dk" class="flex items-center gap-5 p-6 bg-sand border border-mist rounded-2xl hover:border-navy/40 hover:shadow-md transition group">
-                    <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center group-hover:scale-110 transition-transform text-white">
+                <x-card as="a" href="mailto:info@freyaservice.dk" variant="sand" hover="true" padding="none" class="flex items-center gap-5 p-6 hover:border-navy/40 group">
+                    <div class="w-14 h-14 rounded-xl bg-navy flex items-center justify-center group-hover:scale-110 transition-transform text-white shrink-0">
                         <x-heroicon-o-envelope class="w-7 h-7" />
                     </div>
                     <div>
@@ -41,10 +41,10 @@
                         <div class="text-lg font-bold text-navy">info@freyaservice.dk</div>
                         <div class="text-xs text-ink/60">Svar inden for 2 timer</div>
                     </div>
-                </a>
+                </x-card>
 
-                <div class="flex items-center gap-5 p-6 bg-sand border border-mist rounded-2xl">
-                    <div class="w-14 h-14 rounded-xl bg-teal/15 flex items-center justify-center">
+                <x-card variant="sand" padding="none" class="flex items-center gap-5 p-6">
+                    <div class="w-14 h-14 rounded-xl bg-teal/15 flex items-center justify-center shrink-0">
                         <x-heroicon-o-map-pin class="w-7 h-7 text-teal" />
                     </div>
                     <div>
@@ -52,18 +52,18 @@
                         <div class="text-lg font-bold text-navy">Vestergade 12</div>
                         <div class="text-xs text-ink/60">1456 København K • CVR: 44556677</div>
                     </div>
-                </div>
+                </x-card>
 
-                <div class="p-5 bg-teal/5 border border-teal/20 rounded-xl flex items-start gap-3">
+                <x-card padding="none" class="p-5 bg-teal/5 border border-teal/20 rounded-xl flex items-start gap-3">
                     <x-heroicon-s-shield-check class="w-5 h-5 text-teal shrink-0 mt-0.5" />
                     <p class="text-xs text-ink/80 leading-relaxed">{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }} {{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</p>
-                </div>
+                </x-card>
             </div>
 
             <!-- CTA Cards -->
             <div class="space-y-6">
                 <h2 class="text-2xl font-extrabold text-navy">Kom i gang</h2>
-                <div class="bg-navy text-white rounded-2xl p-8 hover:shadow-xl transition border border-navy-800">
+                <x-card variant="navy" hover="true" padding="lg">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-xl bg-navy-800 border border-navy-700 flex items-center justify-center">
                             <x-heroicon-o-building-office class="w-5 h-5 text-[#C9A24B]" />
@@ -79,9 +79,9 @@
                             <x-heroicon-o-phone class="w-4 h-4" />Ring nu
                         </a>
                     </div>
-                </div>
+                </x-card>
 
-                <div class="bg-sand border border-mist rounded-2xl p-8 hover:shadow-xl transition">
+                <x-card variant="sand" hover="true" padding="lg">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-xl bg-teal/15 flex items-center justify-center">
                             <x-heroicon-o-user class="w-5 h-5 text-teal" />
@@ -97,7 +97,7 @@
                             <x-heroicon-o-arrow-right-end-on-rectangle class="w-4 h-4" />{{ __('Log ind') }}
                         </a>
                     </div>
-                </div>
+                </x-card>
 
                 <!-- Hours badge -->
                 <div class="flex items-center gap-3 p-4 bg-sand border border-mist rounded-xl">

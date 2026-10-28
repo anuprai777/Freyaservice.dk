@@ -37,8 +37,7 @@
             <!-- Left: Request & Client Details -->
             <div class="lg:col-span-2 space-y-6">
                 <!-- Info Card -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Ordredetaljer') }}</h2>
+                <x-card title="{{ __('Ordredetaljer') }}">
 
                     <div class="grid grid-cols-2 gap-4 text-xs">
                         <div>
@@ -78,10 +77,10 @@
                             </div>
                         @endif
                     </div>
-                </div>
+                </x-card>
 
                 <!-- Shifts & Assigned Workers -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <x-card>
                     <div class="flex justify-between items-center border-b border-slate-100 pb-3">
                         <h2 class="text-base font-bold text-slate-900">{{ __('Vagter og tildelinger') }}</h2>
 
@@ -154,14 +153,12 @@
                             <div class="text-center py-6 text-slate-400 text-xs">{{ __('Ingen vagter oprettet endnu.') }}</div>
                         @endforelse
                     </div>
-                </div>
+                </x-card>
             </div>
 
             <!-- Right: Admin Status Management -->
             <div class="space-y-6">
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Opdater ordrestatus') }}</h2>
-
+                <x-card title="{{ __('Opdater ordrestatus') }}">
                     <form method="POST" action="{{ route('admin.requests.update-status', $staffRequest) }}" class="space-y-3">
                         @csrf
                         @method('PUT')
@@ -181,7 +178,7 @@
                             {{ __('Gem statusændring') }}
                         </button>
                     </form>
-                </div>
+                </x-card>
             </div>
 
         </div>

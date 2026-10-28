@@ -63,7 +63,7 @@
         @endif
 
         <!-- Filter bar -->
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap gap-2 items-center">
+        <x-card padding="sm" class="flex flex-wrap gap-2 items-center">
             <a href="{{ route('admin.invoices.index', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg text-xs font-semibold {{ !$status || $status === 'all' ? 'bg-slate-900 text-white font-bold' : 'text-slate-600 hover:bg-slate-100' }}">
                 {{ __('Alle fakturaer') }}
             </a>
@@ -76,10 +76,10 @@
             <a href="{{ route('admin.invoices.index', ['status' => 'overdue']) }}" class="px-3 py-1.5 rounded-lg text-xs font-semibold {{ $status === 'overdue' ? 'bg-slate-900 text-white font-bold' : 'text-slate-600 hover:bg-slate-100' }}">
                 {{ __('Forfaldne') }}
             </a>
-        </div>
+        </x-card>
 
         <!-- Invoices Table -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <x-card padding="none">
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-50 text-slate-600 uppercase font-bold text-[11px]">
@@ -138,7 +138,7 @@
             <div class="p-4 border-t border-slate-100">
                 {{ $invoices->links() }}
             </div>
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

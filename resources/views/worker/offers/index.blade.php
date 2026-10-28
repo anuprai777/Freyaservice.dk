@@ -26,18 +26,20 @@
         @endif
 
         <!-- Direct Offers Section -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-100">
-                <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                    <span>{{ __('Direkte tildelte vagttilbud') }} ({{ $directOffers->count() }})</span>
-                </h2>
-                <span class="text-xs text-slate-500">{{ __('Ventende på din accept') }}</span>
-            </div>
+        <x-card class="space-y-4">
+            <x-slot:header>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 w-full">
+                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                        <span>{{ __('Direkte tildelte vagttilbud') }} ({{ $directOffers->count() }})</span>
+                    </h2>
+                    <span class="text-xs text-slate-500">{{ __('Ventende på din accept') }}</span>
+                </div>
+            </x-slot:header>
 
             <div class="space-y-4">
                 @forelse($directOffers as $offer)
-                    <div class="p-4 sm:p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <x-card variant="sand" hover="true" class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div class="space-y-1">
                             <div class="flex items-center gap-2">
                                 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-800">{{ __('Direkte tilbud') }}</span>
@@ -71,31 +73,33 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </x-card>
                 @empty
                     <div class="text-center py-6 text-slate-400 text-xs">
                         {{ __('Du har ingen afventende direkte tilbud lige nu.') }}
                     </div>
                 @endforelse
             </div>
-        </div>
+        </x-card>
 
         <!-- Open Client Requests Section -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
-                <div>
-                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>{{ __('Ledige vagter oprettet af kunder') }} ({{ $openRequests->count() }})</span>
-                    </h2>
-                    <p class="text-xs text-slate-500 mt-0.5">{{ __('Kunder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt for at reservere din plads med det samme.') }}</p>
+        <x-card class="space-y-4">
+            <x-slot:header>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 w-full">
+                    <div>
+                        <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>{{ __('Ledige vagter oprettet af kunder') }} ({{ $openRequests->count() }})</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-0.5">{{ __('Kunder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt for at reservere din plads med det samme.') }}</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
+                            {{ __('By') }}: {{ $worker->city ?: __('Hele Danmark') }}
+                        </span>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2 text-xs">
-                    <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
-                        {{ __('By') }}: {{ $worker->city ?: __('Hele Danmark') }}
-                    </span>
-                </div>
-            </div>
+            </x-slot:header>
 
             <div class="space-y-4">
                 @forelse($openRequests as $req)
@@ -106,7 +110,7 @@
                         );
                         $openSpots = max(1, $req->workers_needed - ($req->accepted_count ?? 0));
                     @endphp
-                    <div class="p-4 sm:p-5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-slate-50 hover:border-brand-action/40 transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <x-card variant="sand" hover="true" class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div class="space-y-2 flex-1">
                             <div class="flex items-center gap-2 flex-wrap">
                                 <h3 class="text-base font-bold text-slate-900 capitalize">{{ $req->role }}</h3>
@@ -161,7 +165,7 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </x-card>
                 @empty
                     <div class="text-center py-8 text-slate-400 text-xs space-y-2">
                         <span class="text-2xl block">🔍</span>
@@ -170,7 +174,7 @@
                     </div>
                 @endforelse
             </div>
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

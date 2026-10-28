@@ -16,45 +16,58 @@
 
         <!-- Metrics Cards: 2x2 grid on mobile for instant thumb readability, 4 cols on desktop -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Denne uge') }}</span>
-                    <span class="text-lg sm:text-2xl font-black text-slate-900 mt-1 block">{{ number_format($thisWeekEarnings, 2, ',', '.') }} kr.</span>
-                </div>
-                <span class="text-[10px] sm:text-[11px] text-slate-500 mt-2 block">{{ __('Mandag til søndag') }}</span>
-            </div>
+            <x-stat-card
+                :label="__('Denne uge')"
+                :value="number_format($thisWeekEarnings, 2, ',', '.') . ' kr.'"
+                :sublabel="__('Mandag til søndag')"
+            >
+                <x-slot:icon>
+                    <x-heroicon-o-calendar class="w-5 h-5" />
+                </x-slot:icon>
+            </x-stat-card>
 
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Denne måned') }}</span>
-                    <span class="text-lg sm:text-2xl font-black text-indigo-600 mt-1 block">{{ number_format($thisMonthEarnings, 2, ',', '.') }} kr.</span>
-                </div>
-                <span class="text-[10px] sm:text-[11px] text-slate-500 mt-2 block">{{ __('Indeværende lønperiode') }}</span>
-            </div>
+            <x-stat-card
+                :label="__('Denne måned')"
+                :value="number_format($thisMonthEarnings, 2, ',', '.') . ' kr.'"
+                :sublabel="__('Indeværende lønperiode')"
+                accent="primary"
+            >
+                <x-slot:icon>
+                    <x-heroicon-o-banknotes class="w-5 h-5" />
+                </x-slot:icon>
+            </x-stat-card>
 
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Samlet udbetalt') }}</span>
-                    <span class="text-lg sm:text-2xl font-black text-emerald-600 mt-1 block">{{ number_format($totalEarningsAllTime, 2, ',', '.') }} kr.</span>
-                </div>
-                <span class="text-[10px] sm:text-[11px] text-slate-500 mt-2 block">{{ __('Godkendte vagter i alt') }}</span>
-            </div>
+            <x-stat-card
+                :label="__('Samlet udbetalt')"
+                :value="number_format($totalEarningsAllTime, 2, ',', '.') . ' kr.'"
+                :sublabel="__('Godkendte vagter i alt')"
+                accent="teal"
+            >
+                <x-slot:icon>
+                    <x-heroicon-o-check-circle class="w-5 h-5" />
+                </x-slot:icon>
+            </x-stat-card>
 
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider block">{{ __('Afventer godkendelse') }}</span>
-                    <span class="text-lg sm:text-2xl font-black text-amber-500 mt-1 block">{{ number_format($pendingApprovalAmount, 2, ',', '.') }} kr.</span>
-                </div>
-                <span class="text-[10px] sm:text-[11px] text-slate-500 mt-2 block">{{ __('Indsendte timesedler') }}</span>
-            </div>
+            <x-stat-card
+                :label="__('Afventer godkendelse')"
+                :value="number_format($pendingApprovalAmount, 2, ',', '.') . ' kr.'"
+                :sublabel="__('Indsendte timesedler')"
+                accent="amber"
+            >
+                <x-slot:icon>
+                    <x-heroicon-o-clock class="w-5 h-5" />
+                </x-slot:icon>
+            </x-stat-card>
         </div>
 
         <!-- Timesheets Container -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="p-4 sm:p-6 border-b border-slate-100 flex justify-between items-center">
-                <h2 class="text-sm sm:text-base font-bold text-slate-900">{{ __('Udførte vagter & timesedler') }}</h2>
-                <span class="text-xs text-slate-500">{{ __('Valuta: DKK') }}</span>
-            </div>
+        <x-card padding="none">
+            <x-slot:header>
+                <div class="flex justify-between items-center w-full">
+                    <h2 class="text-sm sm:text-base font-bold text-slate-900">{{ __('Udførte vagter & timesedler') }}</h2>
+                    <span class="text-xs text-slate-500">{{ __('Valuta: DKK') }}</span>
+                </div>
+            </x-slot:header>
 
             <!-- Mobile Stacked Cards (Visible on screens < md) -->
             <div class="md:hidden divide-y divide-slate-100">
@@ -160,7 +173,7 @@
             <div class="p-4 border-t border-slate-100">
                 {{ $timesheets->links() }}
             </div>
-        </div>
+        </x-card>
 
     </div>
 </x-app-layout>

@@ -37,7 +37,7 @@
 
         <div class="grid md:grid-cols-2 gap-8 mb-16">
             <!-- Hotel & Restaurant -->
-            <div id="hotel" class="bg-white rounded-2xl border border-mist shadow-sm hover:shadow-xl hover:border-burgundy/40 transition-all overflow-hidden group">
+            <x-card padding="none" hover="true" id="hotel" class="overflow-hidden group hover:border-burgundy/40">
                 <div id="restaurant" class="bg-sand p-8 flex items-start gap-6 border-b border-mist">
                     <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-cake class="w-8 h-8 text-burgundy" />
@@ -55,10 +55,10 @@
                         <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Event & Catering personale</li>
                     </ul>
                 </div>
-            </div>
+            </x-card>
 
             <!-- Rengøring -->
-            <div id="cleaning" class="bg-white rounded-2xl border border-mist shadow-sm hover:shadow-xl hover:border-teal/40 transition-all overflow-hidden group">
+            <x-card padding="none" hover="true" id="cleaning" class="overflow-hidden group hover:border-teal/40">
                 <div class="bg-sand p-8 flex items-start gap-6 border-b border-mist">
                     <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-sparkles class="w-8 h-8 text-teal" />
@@ -76,10 +76,10 @@
                         <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Facility Management</li>
                     </ul>
                 </div>
-            </div>
+            </x-card>
 
             <!-- Lager & Logistik -->
-            <div id="warehouse" class="bg-white rounded-2xl border border-mist shadow-sm hover:shadow-xl hover:border-navy/40 transition-all overflow-hidden group">
+            <x-card padding="none" hover="true" id="warehouse" class="overflow-hidden group hover:border-navy/40">
                 <div class="bg-sand p-8 flex items-start gap-6 border-b border-mist">
                     <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-truck class="w-8 h-8 text-navy" />
@@ -97,10 +97,10 @@
                         <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Lagermedarbejdere</li>
                     </ul>
                 </div>
-            </div>
+            </x-card>
 
             <!-- Kontor -->
-            <div id="office" class="bg-white rounded-2xl border border-mist shadow-sm hover:shadow-xl hover:border-teal/40 transition-all overflow-hidden group">
+            <x-card padding="none" hover="true" id="office" class="overflow-hidden group hover:border-teal/40">
                 <div class="bg-sand p-8 flex items-start gap-6 border-b border-mist">
                     <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-building-office class="w-8 h-8 text-teal" />
@@ -118,7 +118,7 @@
                         <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Data Entry & Administration</li>
                     </ul>
                 </div>
-            </div>
+            </x-card>
         </div>
 
         <div class="text-center">

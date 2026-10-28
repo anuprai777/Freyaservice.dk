@@ -1,5 +1,4 @@
 @props([
-    'size' => 'default',
     'years' => '16+',
     'label' => null,
 ])
@@ -8,14 +7,13 @@
     $displayLabel = $label ?? __('YEARS EXP.');
 @endphp
 
-<!-- Sleek Experience Trust Badge (No Rounded Circle) -->
-<div {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-navy-950/80 border border-[#C9A24B]/40 shadow-sm text-white select-none transition-all duration-200 hover:border-[#C9A24B] group']) }}>
-    <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-md font-black text-xs text-[#C9A24B] bg-[#C9A24B]/15 border border-[#C9A24B]/30 tracking-tight">
+<!-- Giant Outline 16+ Experience Element -->
+<div {{ $attributes->merge(['class' => 'flex flex-col items-center justify-center text-center select-none']) }}>
+    <span class="hero-outline-number text-[50px] sm:text-[64px] lg:text-[80px]"
+          style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; font-weight: 800; color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 2px #c9a45c; text-stroke: 2px #c9a45c; line-height: 0.9;">
         {{ $years }}
     </span>
-    <span class="w-1 h-1 rounded-full bg-[#C9A24B] opacity-60"></span>
-    <span class="text-xs font-bold uppercase tracking-wider text-sand-100">
+    <span class="text-[11px] sm:text-[12px] md:text-[13px] font-bold text-white uppercase tracking-[0.18em] sm:tracking-[0.2em] mt-1 sm:mt-1.5 leading-none">
         {{ $displayLabel }}
     </span>
-    <x-heroicon-s-shield-check class="w-4 h-4 text-[#C9A24B] shrink-0" />
 </div>

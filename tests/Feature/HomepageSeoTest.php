@@ -172,15 +172,6 @@ class HomepageSeoTest extends TestCase
         $response->assertSee('16+');
         $response->assertSee('ÅRS ERFARING');
 
-        // 98% satisfaction
-        $response->assertSee('98%');
-
-        // 2,500+ temps
-        $response->assertSee('2.500+');
-
-        // Under 2 hours response
-        $response->assertSee('&lt; 2t', false);
-
         // Compliance & fees
         $response->assertSee('100%');
         $response->assertSee('Ingen binding');

@@ -47,14 +47,14 @@
 
         <!-- Action Banner: Active Shifts QR Code Generation for Clock-in -->
         @if($activeShifts->isNotEmpty())
-            <div class="bg-brand-primary rounded-2xl p-5 sm:p-6 text-white shadow-lg border border-navy-800">
+            <x-card variant="navy" class="shadow-lg">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
                         <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-forest-500/20 text-forest-100 text-xs font-bold mb-2">
                             <span class="w-2 h-2 rounded-full bg-forest-400 animate-ping"></span>
                             {{ __('Aktive vagter i dag') }}
                         </div>
-                        <h2 class="text-lg sm:text-xl font-bold">{{ __('QR-koder til medarbejder tjek-ind') }}</h2>
+                        <h2 class="text-lg sm:text-xl font-bold text-white">{{ __('QR-koder til medarbejder tjek-ind') }}</h2>
                         <p class="text-xs text-sand-200 mt-1 max-w-xl">
                             {{ __('Vis QR-koden på skærmen ved receptionen eller indgangen, så tilknyttede vikarer kan scanne og stemple ind med det samme.') }}
                         </p>
@@ -70,13 +70,13 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </x-card>
         @endif
 
         <!-- Timesheet Approval Queue -->
         @if($pendingTimesheets->isNotEmpty())
-            <div class="bg-white rounded-2xl p-4 sm:p-6 border border-amber-200/80 shadow-sm">
-                <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <x-card class="border-amber-200/80">
+                <x-slot:header>
                     <div>
                         <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
                             <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
@@ -84,7 +84,7 @@
                         </h2>
                         <p class="text-xs text-slate-500 mt-0.5">{{ __('Godkend eller afvis udførte timer for dine vikarer.') }}</p>
                     </div>
-                </div>
+                </x-slot:header>
 
                 <!-- Mobile Card View for Timesheets (md:hidden) -->
                 <div class="md:hidden divide-y divide-slate-100 mt-2">
@@ -218,43 +218,45 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </x-card>
         @endif
 
         <!-- Staff Requests Status Tabs & List -->
-        <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-sm space-y-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-slate-200">
-                <div>
-                    <h2 class="text-base sm:text-lg font-bold text-slate-900">{{ __('Dine bemandingsforespørgsler') }}</h2>
-                    <p class="text-xs text-slate-500 mt-0.5">{{ __('Overvåg status for aktuelle og afsluttede bestillinger.') }}</p>
-                </div>
+        <x-card class="space-y-6">
+            <x-slot:header>
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full">
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900">{{ __('Dine bemandingsforespørgsler') }}</h2>
+                        <p class="text-xs text-slate-500 mt-0.5">{{ __('Overvåg status for aktuelle og afsluttede bestillinger.') }}</p>
+                    </div>
 
-                <!-- Status Filter Tabs (horizontally scrollable on mobile) -->
-                <div class="w-full sm:w-auto overflow-x-auto scrollbar-none pb-1 sm:pb-0">
-                    <div class="flex items-center gap-1.5 p-1 bg-sand-100 rounded-xl text-xs font-semibold text-charcoal-700 min-w-max">
-                        <a href="{{ route('client.dashboard', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'all' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
-                            {{ __('Alle') }} ({{ $counts['all'] }})
-                        </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'new']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'new' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
-                            {{ __('Nye') }} ({{ $counts['new'] }})
-                        </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'in_progress']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'in_progress' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
-                            {{ __('Under match') }} ({{ $counts['in_progress'] }})
-                        </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'matched']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'matched' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
-                            {{ __('Matchet') }} ({{ $counts['matched'] }})
-                        </a>
-                        <a href="{{ route('client.dashboard', ['status' => 'active']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'active' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
-                            {{ __('Aktive') }} ({{ $counts['active'] }})
-                        </a>
+                    <!-- Status Filter Tabs (horizontally scrollable on mobile) -->
+                    <div class="w-full sm:w-auto overflow-x-auto scrollbar-none pb-1 sm:pb-0">
+                        <div class="flex items-center gap-1.5 p-1 bg-sand-100 rounded-xl text-xs font-semibold text-charcoal-700 min-w-max">
+                            <a href="{{ route('client.dashboard', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'all' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
+                                {{ __('Alle') }} ({{ $counts['all'] }})
+                            </a>
+                            <a href="{{ route('client.dashboard', ['status' => 'new']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'new' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
+                                {{ __('Nye') }} ({{ $counts['new'] }})
+                            </a>
+                            <a href="{{ route('client.dashboard', ['status' => 'in_progress']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'in_progress' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
+                                {{ __('Under match') }} ({{ $counts['in_progress'] }})
+                            </a>
+                            <a href="{{ route('client.dashboard', ['status' => 'matched']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'matched' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
+                                {{ __('Matchet') }} ({{ $counts['matched'] }})
+                            </a>
+                            <a href="{{ route('client.dashboard', ['status' => 'active']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'active' ? 'bg-white text-brand-secondary shadow-sm font-bold' : 'hover:text-charcoal-900' }}">
+                                {{ __('Aktive') }} ({{ $counts['active'] }})
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </x-slot:header>
 
             <!-- Requests Grid -->
             <div class="grid md:grid-cols-2 gap-4">
                 @forelse($requests as $req)
-                    <div class="p-5 rounded-xl border border-sand-300 hover:border-sand-400 transition-all bg-sand-50/50 hover:bg-white flex flex-col justify-between space-y-4">
+                    <x-card variant="sand" hover="true" class="flex flex-col justify-between space-y-4">
                         <div>
                             <div class="flex justify-between items-start gap-2 mb-2">
                                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold border {{ $req->status->badgeClasses() }}">
@@ -308,7 +310,7 @@
                                 <span>&rarr;</span>
                             </a>
                         </div>
-                    </div>
+                    </x-card>
                 @empty
                     <div class="md:col-span-2 text-center py-12 text-slate-400 text-sm">
                         {{ __('Ingen forespørgsler fundet med denne status.') }}
@@ -322,7 +324,7 @@
             <div class="pt-4">
                 {{ $requests->links() }}
             </div>
-        </div>
+        </x-card>
 
         <!-- QR Code Modal (Live shift scanning) -->
         <div x-show="activeQrShift !== null" x-cloak class="fixed inset-0 z-50 bg-slate-950/80 flex items-center justify-center p-4">

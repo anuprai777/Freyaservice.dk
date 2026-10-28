@@ -24,9 +24,8 @@
             <!-- Left: Info & Staff Requests History -->
             <div class="lg:col-span-2 space-y-6">
                 <!-- Company info card -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-3 text-xs">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Virksomhedsoplysninger') }}</h2>
-                    <div class="grid grid-cols-2 gap-4">
+                <x-card title="{{ __('Virksomhedsoplysninger') }}">
+                    <div class="grid grid-cols-2 gap-4 text-xs">
                         <div><strong>{{ __('Kontaktperson:') }}</strong> {{ $client->contact_person }}</div>
                         <div><strong>{{ __('Telefon:') }}</strong> {{ $client->phone }}</div>
                         <div><strong>{{ __('E-mail:') }}</strong> {{ $client->user->email ?? 'N/A' }}</div>
@@ -36,12 +35,10 @@
                             <div><strong>{{ __('Branche:') }}</strong> {{ $client->industry }}</div>
                         @endif
                     </div>
-                </div>
+                </x-card>
 
                 <!-- Staff Requests History -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Historiske bemandingsforespørgsler') }}</h2>
-
+                <x-card title="{{ __('Historiske bemandingsforespørgsler') }}">
                     <div class="space-y-3">
                         @forelse($client->staffRequests as $req)
                             <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center text-xs">
@@ -58,14 +55,12 @@
                             <div class="text-center py-6 text-slate-400 text-xs">{{ __('Ingen ordrer oprettet af denne virksomhed endnu.') }}</div>
                         @endforelse
                     </div>
-                </div>
+                </x-card>
             </div>
 
             <!-- Right: Status Changer -->
             <div class="space-y-6">
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
-                    <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">{{ __('Administrer status') }}</h2>
-
+                <x-card title="{{ __('Administrer status') }}">
                     <form method="POST" action="{{ route('admin.clients.update-status', $client) }}" class="space-y-4">
                         @csrf
                         @method('PUT')
@@ -88,7 +83,7 @@
                             {{ __('Gem virksomhedsstatus') }}
                         </button>
                     </form>
-                </div>
+                </x-card>
             </div>
 
         </div>
