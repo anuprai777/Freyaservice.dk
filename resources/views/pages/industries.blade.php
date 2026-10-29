@@ -23,15 +23,15 @@
                 <span class="text-xs font-bold text-navy uppercase tracking-widest">{{ __('Alle Brancher & Sektorer') }}</span>
             </div>
             <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto sector-tags">
-                <span class="sector-tag">{{ __('Healthcare') }}</span>
-                <span class="sector-tag">{{ __('Hospitality') }}</span>
-                <span class="sector-tag">{{ __('Logistics') }}</span>
-                <span class="sector-tag">{{ __('Construction') }}</span>
-                <span class="sector-tag">{{ __('Retail') }}</span>
-                <span class="sector-tag">{{ __('Office & Admin') }}</span>
-                <span class="sector-tag">{{ __('IT') }}</span>
-                <span class="sector-tag">{{ __('Industry') }}</span>
-                <span class="sector-tag">{{ __('Cleaning') }}</span>
+                <span class="sector-tag">{{ __('Sundhed & Pleje') }}</span>
+                <span class="sector-tag">{{ __('Hotel & Restauration') }}</span>
+                <span class="sector-tag">{{ __('Lager & Logistik') }}</span>
+                <span class="sector-tag">{{ __('Byggeri & Håndværk') }}</span>
+                <span class="sector-tag">{{ __('Detailhandel') }}</span>
+                <span class="sector-tag">{{ __('Kontor & Administration') }}</span>
+                <span class="sector-tag">{{ __('IT & Teknologi') }}</span>
+                <span class="sector-tag">{{ __('Industri & Produktion') }}</span>
+                <span class="sector-tag">{{ __('Rengøring & Facility') }}</span>
             </div>
         </div>
 
@@ -49,10 +49,10 @@
                 </div>
                 <div class="p-8">
                     <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Tjenere & Bartendere</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Kokke & Køkkenhjælp</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Housekeeping & Roomservice</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Event & Catering personale</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Tjenere & Bartendere') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Kokke & Køkkenhjælp') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Housekeeping & Roomservice') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Event & Catering personale') }}</li>
                     </ul>
                 </div>
             </x-card>
@@ -70,10 +70,10 @@
                 </div>
                 <div class="p-8">
                     <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Erhvervsrengøring</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Hospitalsrengøring</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Vinduespudsning</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Facility Management</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Erhvervsrengøring') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Hospitalsrengøring') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Vinduespudsning') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Facility Management') }}</li>
                     </ul>
                 </div>
             </x-card>
@@ -91,10 +91,10 @@
                 </div>
                 <div class="p-8">
                     <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Truck- & Gaffeltruckførere</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Pluk & Pak</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Chauffører (B & C kørekort)</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Lagermedarbejdere</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Truck- & Gaffeltruckførere') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Pluk & Pak') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Chauffører (B & C kørekort)') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Lagermedarbejdere') }}</li>
                     </ul>
                 </div>
             </x-card>
@@ -112,10 +112,10 @@
                 </div>
                 <div class="p-8">
                     <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Receptionister</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Kundeservice & Support</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Bogholding & Økonomi</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> Data Entry & Administration</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Receptionister') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Kundeservice & Support') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Bogholding & Økonomi') }}</li>
+                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Data Entry & Administration') }}</li>
                     </ul>
                 </div>
             </x-card>

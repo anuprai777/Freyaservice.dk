@@ -138,6 +138,33 @@ class LocaleSwitchTest extends TestCase
         $responseDa->assertSee('Opret din profil og vælg kompetencer');
     }
 
+    public function test_services_page_renders_in_english_and_danish(): void
+    {
+        $responseEn = $this->withSession(['locale' => 'en'])->get('/services');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('Temporary Staff');
+        $responseEn->assertSee('Urgent &amp; short-term coverage', false);
+        $responseEn->assertSee('Permanent Hiring');
+        $responseEn->assertSee('Part-Time Staff');
+        $responseEn->assertSee('Flexible Part-Time Staffing');
+        $responseEn->assertSee('Industries We Cover');
+        $responseEn->assertSee('Healthcare');
+        $responseEn->assertSee('Hospitality');
+        $responseEn->assertSee('Vetted temp workers with verified references');
+
+        $responseDa = $this->withSession(['locale' => 'da'])->get('/services');
+        $responseDa->assertStatus(200);
+        $responseDa->assertSee('Vikarbemanding');
+        $responseDa->assertSee('Akut og kortvarig vikardækning');
+        $responseDa->assertSee('Fast Rekruttering');
+        $responseDa->assertSee('Deltidsbemanding');
+        $responseDa->assertSee('Fleksibel deltidsbemanding');
+        $responseDa->assertSee('Brancher vi dækker');
+        $responseDa->assertSee('Sundhed &amp; Pleje', false);
+        $responseDa->assertSee('Hotel &amp; Restauration', false);
+        $responseDa->assertSee('Gennemtestede vikarer med referencer');
+    }
+
     public function test_top_bar_language_switch_shows_low_underline_for_active_locale(): void
     {
         // Default / Danish

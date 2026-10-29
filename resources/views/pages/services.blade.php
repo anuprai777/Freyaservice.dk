@@ -25,7 +25,7 @@
                     <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-clock class="w-6 h-6 text-burgundy" />
                     </div>
-                    <div class="text-xs font-bold text-burgundy uppercase tracking-wider mb-1">{{ __('Temporary Staff') }}</div>
+                    <div class="text-xs font-bold text-burgundy uppercase tracking-wider mb-1">{{ __('Vikarbemanding') }}</div>
                     <h2 class="text-xl font-bold text-navy mb-3">{{ __('Akut og kortvarig vikardækning') }}</h2>
                     <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Dækning fra dag til dag ved akut sygdom, ferie eller uventet spidsbelastning. Vores vikarer er klar med få timers varsel.') }}</p>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-calendar-days class="w-6 h-6 text-navy" />
                     </div>
-                    <div class="text-xs font-bold text-navy uppercase tracking-wider mb-1">{{ __('Permanent Hiring') }}</div>
+                    <div class="text-xs font-bold text-navy uppercase tracking-wider mb-1">{{ __('Fast Rekruttering') }}</div>
                     <h2 class="text-xl font-bold text-navy mb-3">{{ __('Fast rekruttering & Try & Hire') }}</h2>
                     <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Afprøv en medarbejder i en vikarperiode før fastansættelse. Minimer ansættelsesrisikoen og find det perfekte match til din virksomhed.') }}</p>
                 </div>
@@ -59,7 +59,7 @@
                     <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
                         <x-heroicon-o-user-group class="w-6 h-6 text-teal" />
                     </div>
-                    <div class="text-xs font-bold text-teal uppercase tracking-wider mb-1">{{ __('Part-Time Staff') }}</div>
+                    <div class="text-xs font-bold text-teal uppercase tracking-wider mb-1">{{ __('Deltidsbemanding') }}</div>
                     <h2 class="text-xl font-bold text-navy mb-3">{{ __('Fleksibel deltidsbemanding') }}</h2>
                     <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Stabile deltidsmedarbejdere til aften-, weekend- eller faste ugentlige vagter. Ideelt til spidsbelastninger uden faste omkostninger.') }}</p>
                 </div>
@@ -77,15 +77,15 @@
                 <span class="text-xs font-bold text-navy uppercase tracking-widest">{{ __('Brancher vi dækker') }}</span>
             </div>
             <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto sector-tags">
-                <span class="sector-tag">{{ __('Healthcare') }}</span>
-                <span class="sector-tag">{{ __('Hospitality') }}</span>
-                <span class="sector-tag">{{ __('Logistics') }}</span>
-                <span class="sector-tag">{{ __('Construction') }}</span>
-                <span class="sector-tag">{{ __('Retail') }}</span>
-                <span class="sector-tag">{{ __('Office & Admin') }}</span>
-                <span class="sector-tag">{{ __('IT') }}</span>
-                <span class="sector-tag">{{ __('Industry') }}</span>
-                <span class="sector-tag">{{ __('Cleaning') }}</span>
+                <span class="sector-tag">{{ __('Sundhed & Pleje') }}</span>
+                <span class="sector-tag">{{ __('Hotel & Restauration') }}</span>
+                <span class="sector-tag">{{ __('Lager & Logistik') }}</span>
+                <span class="sector-tag">{{ __('Byggeri & Håndværk') }}</span>
+                <span class="sector-tag">{{ __('Detailhandel') }}</span>
+                <span class="sector-tag">{{ __('Kontor & Administration') }}</span>
+                <span class="sector-tag">{{ __('IT & Teknologi') }}</span>
+                <span class="sector-tag">{{ __('Industri & Produktion') }}</span>
+                <span class="sector-tag">{{ __('Rengøring & Facility') }}</span>
             </div>
         </div>
 
@@ -125,7 +125,7 @@
 
             <x-card variant="navy" class="p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                 <div>
-                    <div class="text-2xl font-black text-[#C9A24B]">&lt; 2t</div>
+                    <div class="text-2xl font-black text-[#C9A24B]">{{ app()->getLocale() === 'en' ? '< 2h' : '< 2t' }}</div>
                     <div class="text-[11px] text-sand-200 mt-0.5">{{ __('Gennemsnitlig responstid') }}</div>
                 </div>
                 <div>
