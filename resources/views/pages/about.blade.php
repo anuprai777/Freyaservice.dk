@@ -38,18 +38,18 @@
         }
     </style>
 
-    <!-- Hero Header -->
-    <section class="bg-navy text-white py-14 sm:py-18 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style="background-image:radial-gradient(rgba(246,241,233,0.07) 1.5px,transparent 0);background-size:24px 24px;">
+    <!-- Hero Header (Cream Background #FAF5F2) -->
+    <section class="bg-[#FAF5F2] text-ink py-14 sm:py-18 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-[#EADBCC]" style="background-image:radial-gradient(rgba(90,20,41,0.035) 1.5px,transparent 0);background-size:24px 24px;">
         <!-- Ambient decorative blurs -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-burgundy/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-teal/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-burgundy/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-[#C9A24B]/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto relative z-10 text-center">
             <div class="max-w-4xl mx-auto">
-                <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4 leading-tight">
+                <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-[#5A1429] mb-4 leading-tight">
                     {{ $isEn ? 'Built on Experience, Driven by Understanding, and Inspired by People' : 'Bygget på erfaring, drevet af forståelse og inspireret af mennesker' }}
                 </h1>
-                <p class="text-base sm:text-lg text-sand-200 leading-relaxed max-w-3xl mx-auto">
+                <p class="text-base sm:text-lg text-ink/80 leading-relaxed max-w-3xl mx-auto">
                     {{ $isEn
                         ? 'After 16 years of working as a chef in the hospitality industry, I realized something important: successful service is not just about having enough people. It is about having the right people in the right place.'
                         : 'Efter 16 år som kok i restaurationsbranchen indså jeg noget afgørende: succesfuld service handler ikke kun om at have folk nok. Det handler om at have de rette mennesker på det rette sted.' }}

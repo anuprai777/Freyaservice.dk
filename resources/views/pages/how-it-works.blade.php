@@ -1,11 +1,11 @@
 <x-public-layout>
     <x-slot name="title">{{ __('Sådan virker det') }}</x-slot>
 
-    <!-- Hero -->
-    <section class="bg-navy text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style="background-image:radial-gradient(rgba(246,241,233,0.07) 1.5px,transparent 0);background-size:24px 24px;">
+    <!-- Hero Header (Cream Background #FAF5F2) -->
+    <section class="bg-[#FAF5F2] text-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-[#EADBCC]" style="background-image:radial-gradient(rgba(90,20,41,0.035) 1.5px,transparent 0);background-size:24px 24px;">
         <div class="max-w-7xl mx-auto text-center relative z-10">
-            <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-white">{{ __('Fra behov til bemanding på 4 enkle trin') }}</h1>
-            <p class="text-lg text-sand-200 max-w-2xl mx-auto">{{ __('Simpel, digital og gennemsigtig proces — fra du opretter en forespørgsel til vikaren møder op.') }}</p>
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[#5A1429]">{{ __('Fra behov til bemanding på 4 enkle trin') }}</h1>
+            <p class="text-base sm:text-lg text-ink/80 max-w-2xl mx-auto leading-relaxed">{{ __('Simpel, digital og gennemsigtig proces — fra du opretter en forespørgsel til vikaren møder op.') }}</p>
         </div>
     </section>
 

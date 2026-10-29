@@ -57,16 +57,16 @@
     <x-slot name="title">{{ __('Kontakt') }}</x-slot>
     <x-slot name="metaDescription">{{ $isEn ? 'Contact Freya Service ApS - emergency desk, workers & HR, sales and finance. One company, four clear ways to reach us.' : 'Kontakt Freya Service ApS - vagtcentral, vikar & HR, salg og økonomi. Én virksomhed med fire klare kontaktveje.' }}</x-slot>
 
-    <!-- Hero -->
-    <section class="bg-navy text-white relative overflow-hidden" style="background-image:radial-gradient(rgba(247,246,242,0.07) 1.5px,transparent 0);background-size:24px 24px;">
-        <div class="absolute -top-24 -right-24 w-80 h-80 bg-burgundy/25 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-teal/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Hero Header (Cream Background #FAF5F2) -->
+    <section class="bg-[#FAF5F2] text-ink relative overflow-hidden border-b border-[#EADBCC]" style="background-image:radial-gradient(rgba(90,20,41,0.035) 1.5px,transparent 0);background-size:24px 24px;">
+        <div class="absolute -top-24 -right-24 w-80 h-80 bg-burgundy/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-[#C9A24B]/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 relative z-10">
             <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                 <div class="lg:col-span-7">
                     <h1 class="sr-only">{{ $isEn ? 'Contact' : 'Kontakt' }}</h1>
-                    <p class="text-lg sm:text-xl text-sand-200 leading-relaxed max-w-xl">
+                    <p class="text-lg sm:text-xl text-ink/80 leading-relaxed max-w-xl font-medium">
                         {{ $isEn
                             ? 'Call our 24/7 emergency desk or write directly to the department that can help you.'
                             : 'Ring til vores døgnbemandede vagtcentral eller skriv direkte til den afdeling, der kan hjælpe dig.' }}
@@ -75,27 +75,27 @@
 
                 <!-- Emergency desk panel -->
                 <div class="lg:col-span-5">
-                    <div class="rounded-2xl border border-white/15 bg-white/5 p-6 sm:p-7 backdrop-blur-sm">
-                        <div class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-teal">
+                    <div class="rounded-2xl border border-[#EADBCC] bg-white p-6 sm:p-7 shadow-sm">
+                        <div class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#5A1429]">
                             <span class="relative flex w-2.5 h-2.5">
-                                <span class="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping"></span>
-                                <span class="relative inline-flex w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                <span class="absolute inline-flex w-full h-full rounded-full bg-emerald-500 opacity-60 animate-ping"></span>
+                                <span class="relative inline-flex w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
                             </span>
                             {{ $isEn ? 'Emergency desk open now' : 'Vagtcentral åben nu' }}
                         </div>
-                        <a href="tel:{{ $phone }}" class="mt-3 block text-2xl sm:text-3xl font-black tracking-tight text-white hover:text-teal transition-colors">
+                        <a href="tel:{{ $phone }}" class="mt-3 block text-2xl sm:text-3xl font-black tracking-tight text-[#5A1429] hover:text-[#7B1E3A] transition-colors">
                             {{ $phoneLabel }}
                         </a>
-                        <p class="mt-2 text-sm text-sand-300 leading-relaxed">
+                        <p class="mt-2 text-sm text-ink/75 leading-relaxed">
                             {{ $isEn ? 'Emergency staffing 24 hours a day, 7 days a week — all year round.' : 'Akut bemanding 24 timer i døgnet, 7 dage om ugen — hele året.' }}
                         </p>
                         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <a href="tel:{{ $phone }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white text-sm font-bold transition border border-white/25">
+                            <a href="tel:{{ $phone }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white text-sm font-bold transition shadow-xs">
                                 <x-heroicon-o-phone class="w-4 h-4" />
                                 {{ $isEn ? 'Call now' : 'Ring nu' }}
                             </a>
-                            <a href="mailto:{{ $email }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-teal/60 text-white hover:bg-teal/10 text-sm font-bold transition">
-                                <x-heroicon-o-envelope class="w-4 h-4 text-teal" />
+                            <a href="mailto:{{ $email }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-sm font-semibold transition">
+                                <x-heroicon-o-envelope class="w-4 h-4 text-[#5A1429]" />
                                 {{ $isEn ? 'Write to us' : 'Skriv til os' }}
                             </a>
                         </div>
