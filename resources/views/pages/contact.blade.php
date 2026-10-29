@@ -65,11 +65,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 relative z-10">
             <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                 <div class="lg:col-span-7">
-                    <h1 class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-teal">
-                        <span class="w-6 h-px bg-teal"></span>
-                        {{ $isEn ? 'Contact' : 'Kontakt' }}
-                    </h1>
-                    <p class="mt-5 text-lg sm:text-xl text-sand-200 leading-relaxed max-w-xl">
+                    <h1 class="sr-only">{{ $isEn ? 'Contact' : 'Kontakt' }}</h1>
+                    <p class="text-lg sm:text-xl text-sand-200 leading-relaxed max-w-xl">
                         {{ $isEn
                             ? 'Call our 24/7 emergency desk or write directly to the department that can help you.'
                             : 'Ring til vores døgnbemandede vagtcentral eller skriv direkte til den afdeling, der kan hjælpe dig.' }}
