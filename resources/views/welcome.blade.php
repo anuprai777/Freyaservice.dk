@@ -671,9 +671,8 @@
                 <div class="relative flex flex-col">
                     <div class="relative bg-white rounded-2xl border-2 border-burgundy/30 hover:border-burgundy shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-10 pb-5 flex flex-col justify-between min-h-[310px] group">
                         <!-- Top Step Badge -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-burgundy transition-colors z-10">
-                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
-                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">01</span>
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex items-center justify-center group-hover:bg-burgundy transition-colors z-10">
+                            <span class="text-base sm:text-lg font-black text-white leading-none">01</span>
                         </div>
 
                         <!-- Card Body -->
@@ -734,9 +733,8 @@
                         </div>
 
                         <!-- Bottom Step Badge -->
-                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-teal group-hover:text-navy transition-colors z-10">
-                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
-                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">02</span>
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex items-center justify-center group-hover:bg-teal group-hover:text-navy transition-colors z-10">
+                            <span class="text-base sm:text-lg font-black text-white leading-none">02</span>
                         </div>
 
                         <!-- Desktop Arrow Connector to Step 03 -->
@@ -759,9 +757,8 @@
                 <div class="relative flex flex-col">
                     <div class="relative bg-white rounded-2xl border-2 border-burgundy/30 hover:border-burgundy shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-10 pb-5 flex flex-col justify-between min-h-[310px] group">
                         <!-- Top Step Badge -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-burgundy transition-colors z-10">
-                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
-                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">03</span>
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex items-center justify-center group-hover:bg-burgundy transition-colors z-10">
+                            <span class="text-base sm:text-lg font-black text-white leading-none">03</span>
                         </div>
 
                         <!-- Card Body -->
@@ -822,9 +819,8 @@
                         </div>
 
                         <!-- Bottom Step Badge -->
-                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-teal group-hover:text-navy transition-colors z-10">
-                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
-                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">04</span>
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex items-center justify-center group-hover:bg-teal group-hover:text-navy transition-colors z-10">
+                            <span class="text-base sm:text-lg font-black text-white leading-none">04</span>
                         </div>
 
                         <!-- Desktop Arrow Connector to Step 05 -->
@@ -847,9 +843,8 @@
                 <div class="relative flex flex-col">
                     <div class="relative bg-white rounded-2xl border-2 border-burgundy/30 hover:border-burgundy shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-10 pb-5 flex flex-col justify-between min-h-[310px] group">
                         <!-- Top Step Badge -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-burgundy transition-colors z-10">
-                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
-                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">05</span>
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex items-center justify-center group-hover:bg-burgundy transition-colors z-10">
+                            <span class="text-base sm:text-lg font-black text-white leading-none">05</span>
                         </div>
 
                         <!-- Card Body -->
