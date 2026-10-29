@@ -201,15 +201,11 @@
                 <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service vikarbureau logo" class="h-9 sm:h-11 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform" width="180" height="48">
             </a>
 
-            <!-- Nav Links (Matching layout style: Services, Industries, About, How It Works, Contact) -->
+            <!-- Nav Links (Services & Sectors, About, How It Works, Contact) -->
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold" aria-label="Hovednavigation">
-                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
+                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') || request()->routeIs('industries') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
                     <x-heroicon-o-briefcase class="w-4 h-4 text-teal" />
-                    <span>{{ __('Ydelser') }}</span>
-                </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('industries') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
-                    <x-heroicon-o-building-office-2 class="w-4 h-4 text-teal" />
-                    <span>{{ __('Brancher') }}</span>
+                    <span>{{ __('Services & Sectors') }}</span>
                 </a>
                 <a href="{{ route('about') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('about') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
                     <x-heroicon-o-user-group class="w-4 h-4 text-teal" />
@@ -283,13 +279,9 @@
 
             <!-- Mobile Navigation Links -->
             <div class="px-4 py-3 space-y-1">
-                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
+                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('services') || request()->routeIs('industries') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
                     <x-heroicon-o-briefcase class="w-5 h-5 text-teal" />
-                    <span>{{ __('Ydelser') }}</span>
-                </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
-                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-teal" />
-                    <span>{{ __('Brancher') }}</span>
+                    <span>{{ __('Services & Sectors') }}</span>
                 </a>
                 <a href="{{ route('about') }}" class="flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition {{ request()->routeIs('about') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }} focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
                     <x-heroicon-o-user-group class="w-5 h-5 text-teal" />
@@ -427,16 +419,16 @@
                     </a>
                 @endauth
 
-                <!-- Secondary CTA Button (Transparent with 2px teal border, white text on navy) -->
+                <!-- Secondary CTA Button: White Text "Apply as worker" with Frosted Glass Surface -->
                 @auth
-                    <a href="{{ auth()->user()->isWorker() ? route('worker.dashboard') : route('dashboard') }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-base font-bold transition min-h-[48px]">
-                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-teal" />
-                        <span>{{ __('Tilmeld dig som vikar') }}</span>
+                    <a href="{{ auth()->user()->isWorker() ? route('worker.dashboard') : route('dashboard') }}" class="btn-secondary border-2 border-white bg-white/15 hover:bg-white/25 backdrop-blur-md text-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold min-h-[48px]">
+                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-white" />
+                        <span class="text-white">{{ $isEn ? 'Apply as worker' : 'Ansøg som vikar' }}</span>
                     </a>
                 @else
-                    <a href="{{ route('register', ['role' => 'worker']) }}" class="btn-secondary border-2 border-teal bg-transparent text-white hover:bg-teal/10 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-base font-bold transition min-h-[48px]">
-                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-teal" />
-                        <span>{{ __('Tilmeld dig som vikar') }}</span>
+                    <a href="{{ route('register', ['role' => 'worker']) }}" class="btn-secondary border-2 border-white bg-white/15 hover:bg-white/25 backdrop-blur-md text-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold min-h-[48px]">
+                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-white" />
+                        <span class="text-white">{{ $isEn ? 'Apply as worker' : 'Ansøg som vikar' }}</span>
                     </a>
                 @endauth
             </div>
@@ -643,6 +635,581 @@
             }
         })();
     </script>
+
+    <!-- Industries Section (Hotel, Restaurant, Warehouse, Office with Links and One-line Descriptions) -->
+    <section id="industries" class="py-10 sm:py-14 lg:py-16 bg-[#FAF5F2] border-y border-brand-border relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10" x-data="{ activeSector: 'all' }">
+            <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
+                <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-navy tracking-tight">
+                    {{ __('Sectors we staff with qualified temps') }}
+                </h2>
+                <p class="mt-2 text-xs sm:text-sm text-ink/80 leading-relaxed max-w-2xl mx-auto">
+                    {{ __('Freya Service provides pre-screened temporary workers across all core sectors in Denmark, matching required certifications, experience and language skills to every shift.') }}
+                </p>
+            </div>
+
+            <!-- Sector Tab Bar (Themed with Official Freya Service Brand Palette: Deep Burgundy #5A1429, Champagne Gold #C9A24B, Warm Cream #FAF5F2) -->
+            <div class="w-full max-w-7xl mx-auto mb-8 sm:mb-10 px-2 sm:px-4">
+                <div class="overflow-x-auto overflow-y-hidden no-scrollbar pb-1">
+                    <div class="relative border-b-2 border-[#5A1429] min-w-full w-max flex items-end justify-start xl:justify-center gap-1 sm:gap-1.5 md:gap-2">
+                        @php
+                            $sectors = [
+                                'all' => __('All'),
+                                'dishwasher' => __('Dishwasher'),
+                                'cleaning' => __('Cleaning Assistant'),
+                                'kitchen' => __('Kitchen Assistant'),
+                                'chef' => __('Chefs'),
+                                'steward' => __('Hostess / Stewards'),
+                                'waiter' => __('Serving Staff'),
+                                'catering' => __('Catering'),
+                                'canteen' => __('Canteen'),
+                                'events' => __('Events & Banquets'),
+                            ];
+                        @endphp
+
+                        @foreach($sectors as $key => $label)
+                            <button
+                                type="button"
+                                @click="activeSector = '{{ $key }}'"
+                                :class="activeSector === '{{ $key }}' 
+                                    ? 'border-t-2 border-l-2 border-r-2 border-b-0 border-[#5A1429] rounded-t-lg text-[#5A1429] bg-[#FAF5F2] font-bold px-3.5 sm:px-4 lg:px-4.5 py-2 sm:py-2.5 -mb-[2px] z-10' 
+                                    : 'border border-transparent hover:border-[#5A1429]/40 hover:bg-[#5A1429]/5 hover:rounded-lg text-[#6B5E62] hover:text-[#5A1429] font-medium px-3.5 sm:px-4 lg:px-4.5 py-2 sm:py-2.5 transition-all duration-150'"
+                                class="text-xs sm:text-xs lg:text-sm whitespace-nowrap focus:outline-none shrink-0 cursor-pointer"
+                            >
+                                {{ $label }}
+                            </button>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300">
+                <!-- 1. Dishwasher -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'dishwasher'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'dishwasher' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/dishwasher-pre-rinse.jpg') }}"
+                            alt="{{ __('Dishwasher') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#dishwasher" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Dishwasher' : 'Opvasker' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Professional dishwashers and stewarding staff trained in industrial dishwashing machines, HACCP hygiene regulations, and fast-paced kitchen operations.' 
+                                    : 'Professionelle opvaskere og stewarding-personale med erfaring i industrielle opvaskemaskiner, HACCP-hygiejnekrav og højt arbejdstempo i professionelle køkkener.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#dishwasher" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Cleaning Assistant -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'cleaning'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'cleaning' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/cleaning-industry.jpg') }}"
+                            alt="{{ __('Cleaning Assistant') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#cleaning" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Cleaning Assistant' : 'Rengøringsassistent' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Thorough commercial cleaners for daily office maintenance, kitchen deep cleaning, hotels, and warehouse facility services.' 
+                                    : 'Grundige rengøringsassistenter til daglig kontorrengøring, dybderengøring af storkøkkener, hoteller og lagerfaciliteter.' }}
+                                <span class="block mt-1 text-xs text-brand-muted">
+                                    <a href="{{ route('industries') }}#warehouse" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Warehouse & facility services' : 'Lager- & erhvervsrengøring' }}</a>
+                                </span>
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#cleaning" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Kitchen Assistant -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'kitchen'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'kitchen' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/restaurant-industry.jpg') }}"
+                            alt="{{ __('Kitchen Assistant') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#kitchen" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Kitchen Assistant' : 'Køkkenmedhjælper' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Reliable kitchen assistants for mise en place, vegetable prep, cold stations, and assisting chefs during busy dining services.' 
+                                    : 'Pålidelige køkkenmedhjælpere til mise en place, grøntklargøring, anretning og assistance til kokke under travle serveringer.' }}
+                                <span class="block mt-1 text-xs text-brand-muted">
+                                    <a href="{{ route('industries') }}#restaurant" class="underline hover:text-[#5A1429]">{{ $isEn ? 'View restaurant staffing' : 'Se restaurantbemanding' }}</a>
+                                </span>
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#kitchen" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Chefs -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'chef'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'chef' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/chef-grill-steaks.jpg') }}"
+                            alt="{{ __('Chefs') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#chef" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Chefs' : 'Kokke' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Skilled culinary chefs (a la carte, buffet, banquets) capable of running kitchen sections independently with top culinary standards.' 
+                                    : 'Faglærte og erfarne kokke (a la carte, buffet, selskaber), der kan varetage partier selvstændigt med høj gastronomisk kvalitet.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#chef" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Hostess / Stewards -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'steward'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'steward' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/hotel-industry.jpg') }}"
+                            alt="{{ __('Hostess / Stewards') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#steward" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Hostess / Stewards' : 'Værter & Værtinder' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Welcoming hostesses, hosts, and stewards ensuring first-class guest reception, cloaking, and VIP hospitality services for premier hotels.' 
+                                    : 'Imødekommende værter, værtinder og stewards, der sikrer førsteklasses gæstemodtagelse, garderobe og VIP-service på hoteller.' }}
+                                <span class="block mt-1 text-xs text-brand-muted">
+                                    <a href="{{ route('industries') }}#hotel" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Hotel & Hospitality Staffing' : 'Hotel- & Værtindebemanding' }}</a>
+                                </span>
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#steward" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Serving Staff -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'waiter'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'waiter' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/restaurant-industry.jpg') }}"
+                            alt="{{ __('Serving Staff') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#waiter" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Serving Staff' : 'Tjenere & Servering' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Professional waitstaff and servers trained in plate service, wine presentation, order-taking, and banquet operations.' 
+                                    : 'Professionelle tjenere og serveringspersonale med kendskab til tallerkenservering, vinpræsentation og selskabsafvikling.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#waiter" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. Catering -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'catering'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'catering' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/chef-pastry-piping.jpg') }}"
+                            alt="{{ __('Catering') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#catering" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Catering' : 'Catering' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Specialized catering staff for buffet assembly, temperature holding, plating, and large-scale delivery events.' 
+                                    : 'Specialiseret cateringpersonale til buffetopstilling, varmholdelse, anretning og store leverancer over hele landet.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#catering" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8. Canteen -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'canteen'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'canteen' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/office-industry.jpg') }}"
+                            alt="{{ __('Canteen') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#canteen" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Canteen' : 'Kantine' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Flexible canteen personnel for corporate office lunch buffets, salad bars, employee service, and kitchen sanitation.' 
+                                    : 'Fleksible kantinemedarbejdere til frokostbuffeter i virksomheder, salatbar, gæstebetjening og god køkkenhygiejne.' }}
+                                <span class="block mt-1 text-xs text-brand-muted">
+                                    <a href="{{ route('industries') }}#office" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Corporate Office Canteens' : 'Kantineservice til kontorer' }}</a>
+                                </span>
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#canteen" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 9. Events & Banquets -->
+                <div 
+                    x-show="activeSector === 'all' || activeSector === 'events'"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    :class="activeSector === 'events' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                    class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+                >
+                    <!-- Top High-Quality Topic Image -->
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                        <img
+                            src="{{ asset('images/banquet-plating-rack.jpg') }}"
+                            alt="{{ __('Events & Banquets') }}"
+                            loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
+                        <div>
+                            <!-- Card Heading -->
+                            <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                                <a href="{{ route('services') }}#events" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                    {{ $isEn ? 'Events & Banquets' : 'Events & Selskaber' }}
+                                </a>
+                            </h3>
+
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                                {{ $isEn 
+                                    ? 'Energetic and experienced event staff for weddings, corporate galas, festive banquets, and large-scale celebrations.' 
+                                    : 'Engagerede teams til bryllupper, firmafester, konferencer og festivaler, der kræver hurtig koordination og høj energi.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Outline Pill Button -->
+                        <a href="{{ route('services') }}#events" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                            {{ $isEn ? 'Read more' : 'Læs mere' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order Temps in 3 Steps Section (Ordered List) -->
+    <section id="how-it-works" class="py-10 sm:py-14 lg:py-16 w-full relative overflow-hidden bg-sand-50/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+                <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
+                    {{ __('How to order temps in 3 steps') }}
+                </h2>
+                <p class="mt-2 text-xs sm:text-sm text-brand-body leading-relaxed max-w-2xl mx-auto">
+                    {{ __('Ordering qualified temporary workers is straightforward and takes less than two minutes from your computer or phone.') }}
+                </p>
+            </div>
+
+            <!-- Semantic Ordered List -->
+            <ol class="grid md:grid-cols-3 gap-8 list-none">
+                <!-- Step 1 -->
+                <li class="bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 lg:p-6 xl:p-8 flex flex-col justify-between text-center items-center group">
+                    <div>
+                        <!-- Step Badge Shape -->
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-[#5A1429] text-white shadow-xs flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#C9A24B] transition-all duration-300">
+                            <span class="text-lg font-black leading-none text-white">01</span>
+                        </div>
+
+                        <!-- Uppercase Kicker Tag -->
+                        <span class="block text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-brand-muted mb-2">
+                            {{ $isEn ? 'STEP 01' : 'TRIN 01' }}
+                        </span>
+
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug">
+                            {{ __('1. Request your staffing requirements') }}
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ __('Specify your industry, number of temps, location and shift times via our online portal or 24/7 emergency line (+45 28 26 09 26).') }}
+                        </p>
+                    </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('how-it-works') }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs">
+                        {{ $isEn ? 'Read more' : 'Læs mere' }}
+                    </a>
+                </li>
+
+                <!-- Step 2 -->
+                <li class="bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 lg:p-6 xl:p-8 flex flex-col justify-between text-center items-center group">
+                    <div>
+                        <!-- Step Badge Shape -->
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-[#5A1429] text-white shadow-xs flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#C9A24B] transition-all duration-300">
+                            <span class="text-lg font-black leading-none text-white">02</span>
+                        </div>
+
+                        <!-- Uppercase Kicker Tag -->
+                        <span class="block text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-brand-muted mb-2">
+                            {{ $isEn ? 'STEP 02' : 'TRIN 02' }}
+                        </span>
+
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug">
+                            {{ __('2. Vetted temps dispatched in under 2 hours') }}
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ __('We match and dispatch pre-screened, collective agreement compliant workers to your workplace in under 2 hours.') }}
+                        </p>
+                    </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('how-it-works') }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs">
+                        {{ $isEn ? 'Read more' : 'Læs mere' }}
+                    </a>
+                </li>
+
+                <!-- Step 3 -->
+                <li class="bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 lg:p-6 xl:p-8 flex flex-col justify-between text-center items-center group">
+                    <div>
+                        <!-- Step Badge Shape -->
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-[#5A1429] text-white shadow-xs flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#C9A24B] transition-all duration-300">
+                            <span class="text-lg font-black leading-none text-white">03</span>
+                        </div>
+
+                        <!-- Uppercase Kicker Tag -->
+                        <span class="block text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-brand-muted mb-2">
+                            {{ $isEn ? 'STEP 03' : 'TRIN 03' }}
+                        </span>
+
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug">
+                            {{ __('3. Digital QR check-in and transparent invoicing') }}
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ __('Workers check in on-site with a QR scan. You approve verified hours digitally with zero onboarding or lock-in fees.') }}
+                        </p>
+                    </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('how-it-works') }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs">
+                        {{ $isEn ? 'Read more' : 'Læs mere' }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </section>
 
     <!-- Why Choose Freya Service Section (5-Step Staggered Flow UI from Design) -->
     <section id="why-choose" class="py-12 sm:py-16 lg:pt-16 lg:pb-28 bg-[#FAF6F0] border-y border-brand-border relative overflow-hidden">
@@ -898,198 +1465,6 @@
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <!-- Industries Section (Hotel, Restaurant, Warehouse, Office with Links and One-line Descriptions) -->
-    <section id="industries" class="py-10 sm:py-14 lg:py-16 bg-sand-200/50 border-y border-brand-border relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
-                <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-navy tracking-tight">
-                    {{ __('Industries we staff with qualified temps') }}
-                </h2>
-                <p class="mt-2 text-xs sm:text-sm text-ink/80 leading-relaxed max-w-2xl mx-auto">
-                    {{ __('Freya Service provides pre-screened temporary workers across four core sectors in Denmark, matching required certifications, experience and language skills to every shift.') }}
-                </p>
-            </div>
-
-            <!-- Sector Tags Chip Group (mist background with ink text, teal bg with white text on every 3rd tag) -->
-            <div class="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto mb-6 lg:mb-7 sector-tags">
-                <span class="sector-tag">{{ __('Healthcare') }}</span>
-                <span class="sector-tag">{{ __('Hospitality') }}</span>
-                <span class="sector-tag">{{ __('Logistics') }}</span>
-                <span class="sector-tag">{{ __('Construction') }}</span>
-                <span class="sector-tag">{{ __('Retail') }}</span>
-                <span class="sector-tag">{{ __('Office & Admin') }}</span>
-                <span class="sector-tag">{{ __('IT') }}</span>
-                <span class="sector-tag">{{ __('Industry') }}</span>
-                <span class="sector-tag">{{ __('Cleaning') }}</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-4 xl:gap-6">
-                <!-- 1. Hotel Temps -->
-                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-action-50 text-brand-action flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-building-office class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-brand-action" />
-                        </div>
-                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
-                            <a href="{{ route('industries') }}#hotel" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
-                                {{ __('Hotel temps') }}
-                            </a>
-                        </h3>
-                        <p class="text-xs text-brand-muted leading-relaxed">
-                            {{ __('Experienced receptionists, night auditors and housekeeping staff for hotels across Denmark.') }}
-                        </p>
-                    </div>
-                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
-                        <a href="{{ route('industries') }}#hotel" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
-                            <span>{{ __('Read about hotel staffing') }}</span>
-                            <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
-                        </a>
-                    </div>
-                </x-card>
-
-                <!-- 2. Restaurant & Catering Temps -->
-                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-action-50 text-brand-action flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-cake class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-brand-action" />
-                        </div>
-                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
-                            <a href="{{ route('industries') }}#restaurant" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
-                                {{ __('Restaurant and catering temps') }}
-                            </a>
-                        </h3>
-                        <p class="text-xs text-brand-muted leading-relaxed">
-                            {{ __('Qualified chefs, waiters, kitchen assistants and dishwashers for busy dining venues.') }}
-                        </p>
-                    </div>
-                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
-                        <a href="{{ route('industries') }}#restaurant" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
-                            <span>{{ __('Read about restaurant staffing') }}</span>
-                            <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
-                        </a>
-                    </div>
-                </x-card>
-
-                <!-- 3. Warehouse & Logistics Temps -->
-                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-navy-100 text-brand-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-truck class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-brand-primary" />
-                        </div>
-                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
-                            <a href="{{ route('industries') }}#warehouse" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
-                                {{ __('Warehouse and logistics temps') }}
-                            </a>
-                        </h3>
-                        <p class="text-xs text-brand-muted leading-relaxed">
-                            {{ __('Certified forklift drivers, pick-and-pack operators and inventory staff for distribution hubs.') }}
-                        </p>
-                    </div>
-                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
-                        <a href="{{ route('industries') }}#warehouse" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
-                            <span>{{ __('Read about warehouse staffing') }}</span>
-                            <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
-                        </a>
-                    </div>
-                </x-card>
-
-                <!-- 4. Office Temps -->
-                <x-card variant="surface" hover="true" padding="none" class="p-5 lg:p-4 xl:p-6 text-center flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 lg:w-11 lg:h-11 xl:w-12 xl:h-12 mx-auto rounded-2xl bg-forest-50 text-forest flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                            <x-heroicon-o-building-office-2 class="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-forest" />
-                        </div>
-                        <h3 class="font-bold text-base lg:text-base xl:text-lg text-brand-secondary mb-1.5 group-hover:text-brand-action transition-colors">
-                            <a href="{{ route('industries') }}#office" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
-                                {{ __('Office temps') }}
-                            </a>
-                        </h3>
-                        <p class="text-xs text-brand-muted leading-relaxed">
-                            {{ __('Vetted administrative assistants, receptionists, data entry clerks and customer support staff.') }}
-                        </p>
-                    </div>
-                    <div class="pt-3.5 mt-3.5 border-t border-brand-border/60">
-                        <a href="{{ route('industries') }}#office" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-action hover:text-brand-action-hover focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none transition-colors">
-                            <span>{{ __('Read about office staffing') }}</span>
-                            <x-heroicon-o-arrow-right class="w-3.5 h-3.5" />
-                        </a>
-                    </div>
-                </x-card>
-            </div>
-        </div>
-    </section>
-
-    <!-- How to Order Temps in 3 Steps Section (Ordered List) -->
-    <section id="how-it-works" class="py-10 sm:py-14 lg:py-16 w-full relative overflow-hidden bg-sand-50/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-                <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
-                    {{ __('How to order temps in 3 steps') }}
-                </h2>
-                <p class="mt-2 text-xs sm:text-sm text-brand-body leading-relaxed max-w-2xl mx-auto">
-                    {{ __('Ordering qualified temporary workers is straightforward and takes less than two minutes from your computer or phone.') }}
-                </p>
-            </div>
-
-            <!-- Semantic Ordered List -->
-            <ol class="grid md:grid-cols-3 gap-8 list-none">
-                <!-- Step 1 -->
-                <li class="bg-brand-surface p-6 sm:p-7 lg:p-6 xl:p-8 rounded-2xl border border-brand-border shadow-xs relative flex flex-col justify-between hover:shadow-md transition">
-                    <div>
-                        <div class="w-11 h-11 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-xl bg-action-50 text-brand-action font-black text-base lg:text-base xl:text-lg flex items-center justify-center mb-4 lg:mb-4 xl:mb-5 shadow-xs" aria-hidden="true">
-                            1
-                        </div>
-                        <h3 class="text-lg lg:text-lg xl:text-xl font-bold text-brand-secondary mb-2 lg:mb-2 xl:mb-3">
-                            {{ __('1. Request your staffing requirements') }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-brand-body leading-relaxed">
-                            {{ __('Specify your industry, number of temps, location and shift times via our online portal or 24/7 emergency line (+45 28 26 09 26).') }}
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 lg:pt-4 lg:mt-4 xl:pt-6 xl:mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
-                        <span>{{ __('Estimeret tid: 2 minutter') }}</span>
-                    </div>
-                </li>
-
-                <!-- Step 2 -->
-                <li class="bg-brand-surface p-6 sm:p-7 lg:p-6 xl:p-8 rounded-2xl border border-brand-border shadow-xs relative flex flex-col justify-between hover:shadow-md transition">
-                    <div>
-                        <div class="w-11 h-11 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-xl bg-navy-50 text-brand-secondary font-black text-base lg:text-base xl:text-lg flex items-center justify-center mb-4 lg:mb-4 xl:mb-5 shadow-xs" aria-hidden="true">
-                            2
-                        </div>
-                        <h3 class="text-lg lg:text-lg xl:text-xl font-bold text-brand-secondary mb-2 lg:mb-2 xl:mb-3">
-                            {{ __('2. Vetted temps dispatched in under 2 hours') }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-brand-body leading-relaxed">
-                            {{ __('We match and dispatch pre-screened, collective agreement compliant workers to your workplace in under 2 hours.') }}
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 lg:pt-4 lg:mt-4 xl:pt-6 xl:mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
-                        <span>{{ __('Udrykningstid: Under 2 timer') }}</span>
-                    </div>
-                </li>
-
-                <!-- Step 3 -->
-                <li class="bg-brand-surface p-6 sm:p-7 lg:p-6 xl:p-8 rounded-2xl border border-brand-border shadow-xs relative flex flex-col justify-between hover:shadow-md transition">
-                    <div>
-                        <div class="w-11 h-11 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-xl bg-forest-50 text-forest font-black text-base lg:text-base xl:text-lg flex items-center justify-center mb-4 lg:mb-4 xl:mb-5 shadow-xs" aria-hidden="true">
-                            3
-                        </div>
-                        <h3 class="text-lg lg:text-lg xl:text-xl font-bold text-brand-secondary mb-2 lg:mb-2 xl:mb-3">
-                            {{ __('3. Digital QR check-in and transparent invoicing') }}
-                        </h3>
-                        <p class="text-xs sm:text-sm text-brand-body leading-relaxed">
-                            {{ __('Workers check in on-site with a QR scan. You approve verified hours digitally with zero onboarding or lock-in fees.') }}
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 lg:pt-4 lg:mt-4 xl:pt-6 xl:mt-6 border-t border-brand-border/60 text-xs font-semibold text-brand-muted">
-                        <span>{{ __('Ingen binding • 100% digitalt') }}</span>
-                    </div>
-                </li>
-            </ol>
         </div>
     </section>
 

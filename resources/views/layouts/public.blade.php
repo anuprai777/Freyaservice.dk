@@ -73,11 +73,9 @@
             </a>
 
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold" aria-label="Hovednavigation">
-                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
-                    <x-heroicon-o-briefcase class="w-4 h-4 text-teal" /><span>{{ __('Ydelser') }}</span>
-                </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('industries') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
-                    <x-heroicon-o-building-office-2 class="w-4 h-4 text-teal" /><span>{{ __('Brancher') }}</span>
+                <a href="{{ route('services') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('services') || request()->routeIs('industries') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }} focus-visible:ring-2 focus-visible:ring-burgundy rounded-sm focus:outline-none">
+                    <x-heroicon-o-briefcase class="w-4 h-4 text-teal" />
+                    <span>{{ __('Services & Sectors') }}</span>
                 </a>
                 <a href="{{ route('about') }}" class="flex items-center gap-1.5 transition-colors px-1 pb-0.5 border-b-2 {{ request()->routeIs('about') ? 'text-white border-burgundy' : 'text-sand-200 hover:text-white border-transparent hover:border-sand-300' }}">
                     <x-heroicon-o-user-group class="w-4 h-4 text-teal" /><span>{{ __('Om os') }}</span>
@@ -133,11 +131,9 @@
             </div>
 
             <div class="px-4 py-3 space-y-1">
-                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('services') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
-                    <x-heroicon-o-briefcase class="w-5 h-5 text-teal" />{{ __('Ydelser') }}
-                </a>
-                <a href="{{ route('industries') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('industries') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
-                    <x-heroicon-o-building-office-2 class="w-5 h-5 text-teal" />{{ __('Brancher') }}
+                <a href="{{ route('services') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('services') || request()->routeIs('industries') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
+                    <x-heroicon-o-briefcase class="w-5 h-5 text-teal" />
+                    <span>{{ __('Services & Sectors') }}</span>
                 </a>
                 <a href="{{ route('about') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('about') ? 'bg-navy-800 text-white font-bold border-l-4 border-burgundy' : 'text-sand-200 hover:bg-navy-800 hover:text-white' }}">
                     <x-heroicon-o-user-group class="w-5 h-5 text-teal" />{{ __('Om os') }}

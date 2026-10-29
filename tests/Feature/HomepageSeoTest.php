@@ -99,7 +99,7 @@ class HomepageSeoTest extends TestCase
 
         $responseEn = $this->withSession(['locale' => 'en'])->get('/');
         $responseEn->assertSee('Services');
-        $responseEn->assertSee('Industries');
+        $responseEn->assertSee('Sectors');
         $responseEn->assertSee('About Us');
         $responseEn->assertSee('How It Works');
         $responseEn->assertSee('Contact');
