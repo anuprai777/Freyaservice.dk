@@ -19,9 +19,6 @@
     <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Sector Tags Chip Group (mist background with ink text, teal bg with white text on every 3rd tag) -->
         <div class="mb-14">
-            <div class="text-center mb-6">
-                <span class="text-xs font-bold text-navy uppercase tracking-widest">{{ __('Alle Brancher & Sektorer') }}</span>
-            </div>
             <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto sector-tags">
                 <span class="sector-tag">{{ __('Sundhed & Pleje') }}</span>
                 <span class="sector-tag">{{ __('Hotel & Restauration') }}</span>

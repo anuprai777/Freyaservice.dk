@@ -905,7 +905,6 @@
     <section id="industries" class="py-10 sm:py-14 lg:py-16 bg-sand-200/50 border-y border-brand-border relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
-                <div class="text-xs font-bold text-burgundy uppercase tracking-widest mb-1.5">{{ __('Specialized sectors') }}</div>
                 <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-navy tracking-tight">
                     {{ __('Industries we staff with qualified temps') }}
                 </h2>
@@ -1027,7 +1026,6 @@
     <section id="how-it-works" class="py-10 sm:py-14 lg:py-16 w-full relative overflow-hidden bg-sand-50/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-                <div class="text-xs font-bold text-brand-action uppercase tracking-widest mb-1.5">{{ __('Quick ordering process') }}</div>
                 <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
                     {{ __('How to order temps in 3 steps') }}
                 </h2>
@@ -1099,11 +1097,8 @@
     <section id="faq" class="py-10 sm:py-14 lg:py-16 bg-sand-200/40 border-t border-brand-border relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-action-50 text-brand-action mb-1.5 tracking-wide uppercase">
-                    {{ __('Frequently asked questions') }}
-                </span>
                 <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
-                    FAQ
+                    {{ __('Frequently asked questions') }}
                 </h2>
                 <p class="mt-2 text-brand-muted text-xs sm:text-sm max-w-2xl mx-auto">
                     {{ __('Factual, straightforward answers about response times, pricing, collective agreements, vetting and booking terms.') }}

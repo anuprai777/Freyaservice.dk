@@ -73,9 +73,6 @@
 
         <!-- Sector Tags Chip Group -->
         <div class="mb-16">
-            <div class="text-center mb-6">
-                <span class="text-xs font-bold text-navy uppercase tracking-widest">{{ __('Brancher vi dækker') }}</span>
-            </div>
             <div class="flex flex-wrap justify-center gap-2.5 max-w-4xl mx-auto sector-tags">
                 <span class="sector-tag">{{ __('Sundhed & Pleje') }}</span>
                 <span class="sector-tag">{{ __('Hotel & Restauration') }}</span>
@@ -92,7 +89,6 @@
         <!-- Why FreyaService Section Makeover -->
         <div class="bg-sand rounded-3xl border border-mist p-8 sm:p-12 mb-16 shadow-sm">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <div class="text-xs font-bold text-burgundy uppercase tracking-widest mb-3">{{ __('Vores Værdier & Fordele') }}</div>
                 <h2 class="text-3xl font-black text-navy tracking-tight">{{ __('Hvorfor vælge FreyaService?') }}</h2>
                 <p class="text-sm text-ink/70 mt-2">{{ __('Et moderne vikarbureau bygget på gennemsigtighed og kvalitet') }}</p>
             </div>

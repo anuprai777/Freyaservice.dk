@@ -147,7 +147,6 @@ class LocaleSwitchTest extends TestCase
         $responseEn->assertSee('Permanent Hiring');
         $responseEn->assertSee('Part-Time Staff');
         $responseEn->assertSee('Flexible Part-Time Staffing');
-        $responseEn->assertSee('Industries We Cover');
         $responseEn->assertSee('Healthcare');
         $responseEn->assertSee('Hospitality');
         $responseEn->assertSee('Vetted temp workers with verified references');
@@ -159,7 +158,6 @@ class LocaleSwitchTest extends TestCase
         $responseDa->assertSee('Fast Rekruttering');
         $responseDa->assertSee('Deltidsbemanding');
         $responseDa->assertSee('Fleksibel deltidsbemanding');
-        $responseDa->assertSee('Brancher vi dækker');
         $responseDa->assertSee('Sundhed &amp; Pleje', false);
         $responseDa->assertSee('Hotel &amp; Restauration', false);
         $responseDa->assertSee('Gennemtestede vikarer med referencer');
