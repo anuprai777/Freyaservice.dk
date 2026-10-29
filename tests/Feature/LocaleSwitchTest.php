@@ -137,4 +137,22 @@ class LocaleSwitchTest extends TestCase
         $responseDa->assertSee('Vikar (Arbejdstager)');
         $responseDa->assertSee('Opret din profil og vælg kompetencer');
     }
+
+    public function test_top_bar_language_switch_shows_low_underline_for_active_locale(): void
+    {
+        // Default / Danish
+        $responseDa = $this->withSession(['locale' => 'da'])->get('/');
+        $responseDa->assertStatus(200);
+        $responseDa->assertSee('underline underline-offset-4 decoration-2 decoration-teal');
+
+        // English switch
+        $responseEn = $this->withSession(['locale' => 'en'])->get('/');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('underline underline-offset-4 decoration-2 decoration-teal');
+
+        // Public layout page (services)
+        $responseServices = $this->withSession(['locale' => 'en'])->get('/services');
+        $responseServices->assertStatus(200);
+        $responseServices->assertSee('underline underline-offset-4 decoration-2 decoration-teal');
+    }
 }

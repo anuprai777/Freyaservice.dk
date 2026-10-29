@@ -171,21 +171,21 @@
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-4 text-center sm:text-left">
                 <span class="flex items-center gap-1">
-                    <x-heroicon-o-phone class="w-3.5 h-3.5 text-brand-action" />
-                    <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4528260926" class="text-white hover:text-brand-action font-semibold">+45 28 26 09 26</a></span>
+                    <x-heroicon-o-phone class="w-3.5 h-3.5 text-teal" />
+                    <span>{{ __('Akut vagttelefon') }}: <a href="tel:+4528260926" class="text-white hover:text-teal font-semibold">+45 28 26 09 26</a></span>
                 </span>
-                <span class="hidden md:inline text-navy-700">•</span>
+                <span class="hidden md:inline text-sand-400/60">•</span>
                 <span class="hidden sm:inline text-sand-300">CVR: 44556677</span>
             </div>
             <div class="flex items-center gap-3 sm:gap-4">
                 <!-- Top bar language switch -->
                 <div class="flex items-center gap-1 text-xs font-medium" role="group" aria-label="Sprogvælger">
-                    <a href="{{ route('locale.switch', 'da') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-sand-300 hover:text-white' }}" aria-label="Skift til dansk">
+                    <a href="{{ route('locale.switch', 'da') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}" aria-label="Skift til dansk">
                         <span>🇩🇰</span>
                         <span>DA</span>
                     </a>
-                    <span class="text-navy-700 select-none">/</span>
-                    <a href="{{ route('locale.switch', 'en') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'en' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-brand-action' : 'text-sand-300 hover:text-white' }}" aria-label="Switch to English">
+                    <span class="text-sand-400/60 select-none">/</span>
+                    <a href="{{ route('locale.switch', 'en') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'en' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}" aria-label="Switch to English">
                         <span>🇬🇧</span>
                         <span>EN</span>
                     </a>
@@ -272,10 +272,10 @@
             <div class="px-4 py-3 flex items-center justify-between border-b border-navy-800 bg-navy-900/60">
                 <span class="text-xs font-bold text-sand-300 uppercase tracking-wider">{{ __('Sprog / Language') }}</span>
                 <div class="flex items-center gap-1 bg-navy-950 p-1 rounded-lg border border-navy-800 text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-burgundy text-white font-bold' : 'text-sand-300 hover:text-white' }}">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-burgundy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}">
                         <span>🇩🇰</span><span>Dansk</span>
                     </a>
-                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-burgundy text-white font-bold' : 'text-sand-300 hover:text-white' }}">
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1.5 min-h-[36px] rounded-md transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-burgundy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}">
                         <span>🇬🇧</span><span>English</span>
                     </a>
                 </div>

@@ -88,11 +88,11 @@
 
                 <!-- Language Switcher -->
                 <div class="flex items-center gap-1 bg-navy-800/80 p-1 rounded-xl border border-navy-700 text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-navy text-white shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-burgundy' : 'text-sand-300 hover:text-white font-medium' }}">
+                    <a href="{{ route('locale.switch', 'da') }}" title="Dansk" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-navy text-white shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white font-medium' }}">
                         <span>🇩🇰</span>
                         <span>DA</span>
                     </a>
-                    <a href="{{ route('locale.switch', 'en') }}" title="English" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'en' ? 'bg-navy text-white shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-burgundy' : 'text-sand-300 hover:text-white font-medium' }}">
+                    <a href="{{ route('locale.switch', 'en') }}" title="English" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1 {{ app()->getLocale() === 'en' ? 'bg-navy text-white shadow-sm font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white font-medium' }}">
                         <span>🇬🇧</span>
                         <span>EN</span>
                     </a>
@@ -183,10 +183,10 @@
         <div class="px-4 py-3 flex items-center justify-between border-b border-navy-800 bg-navy-900/80">
             <span class="text-xs font-bold text-sand-400 uppercase">{{ __('Sprog') }}</span>
             <div class="flex items-center gap-1 bg-navy-800 p-1 rounded-lg border border-navy-700 text-xs">
-                <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-md transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-burgundy shadow-sm' : 'text-sand-300 font-medium' }}">
+                <a href="{{ route('locale.switch', 'da') }}" class="px-3 py-1 rounded-md transition flex items-center gap-1 {{ app()->getLocale() === 'da' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-sm' : 'text-sand-300 font-medium' }}">
                     <span>🇩🇰</span> Dansk
                 </a>
-                <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-md transition flex items-center gap-1 {{ app()->getLocale() === 'en' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-burgundy shadow-sm' : 'text-sand-300 font-medium' }}">
+                <a href="{{ route('locale.switch', 'en') }}" class="px-3 py-1 rounded-md transition flex items-center gap-1 {{ app()->getLocale() === 'en' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-sm' : 'text-sand-300 font-medium' }}">
                     <span>🇬🇧</span> English
                 </a>
             </div>
