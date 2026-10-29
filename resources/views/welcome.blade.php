@@ -651,9 +651,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <!-- Section Header: Why Choose Freya Service -->
             <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-burgundy/10 text-burgundy mb-2 tracking-wide uppercase">
-                    {{ $isEn ? 'Why Choose Us' : 'Hvorfor vælge os' }}
-                </span>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight">
                     {{ $isEn ? 'Why Choose Freya Service?' : 'Hvorfor vælge Freya Service?' }}
                 </h2>
