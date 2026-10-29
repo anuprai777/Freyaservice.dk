@@ -47,7 +47,7 @@
     <!-- Structured Data (JSON-LD): EmploymentAgency + FAQPage -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
+        "@@context": "https://schema.org",
         "@graph": [
             {
                 "@type": "EmploymentAgency",
@@ -644,203 +644,236 @@
         })();
     </script>
 
-    <!-- Why Choose Freya Service Section (Comprehensive Makeover: Premium, Structured & Trust-Building) -->
-    <section id="why-choose" class="py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg border-y border-brand-border relative overflow-hidden">
+    <!-- Why Choose Freya Service Section (5-Step Staggered Flow UI from Design) -->
+    <section id="why-choose" class="py-12 sm:py-16 lg:pt-16 lg:pb-24 bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg border-y border-brand-border relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#5A1429 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <!-- Section Header: Why Choose Freya Service -->
-            <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-action-50 text-brand-action mb-1.5 tracking-wide uppercase">
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-burgundy/10 text-burgundy mb-2 tracking-wide uppercase">
                     {{ $isEn ? 'Why Choose Us' : 'Hvorfor vælge os' }}
                 </span>
-                <h2 class="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy tracking-tight">
                     {{ $isEn ? 'Why Choose Freya Service?' : 'Hvorfor vælge Freya Service?' }}
                 </h2>
-                <p class="mt-2 text-brand-muted text-xs sm:text-sm lg:text-sm max-w-2xl mx-auto leading-relaxed">
+                <p class="mt-2 text-brand-muted text-xs sm:text-sm lg:text-base max-w-2xl mx-auto leading-relaxed">
                     {{ $isEn
-                        ? 'Built on 16 years of hands-on experience, we provide dependable, vetted staff across Denmark with rapid dispatch and transparent terms.'
-                        : 'Bygget på 16 års praktisk erfaring leverer vi pålidelige, screenede vikarer i hele Danmark med hurtig udrykning og klare vilkår.' }}
+                        ? 'Our 5-step commitment to quality, rapid dispatch, and transparent staffing across Denmark.'
+                        : 'Vores 5-trins kvalitetsløfte om hurtig udrykning, personlig matching og gennemskuelige vilkår i hele landet.' }}
                 </p>
             </div>
 
-            <!-- Why Choose Bento Table: Single Unified Container with Seamless Dividers & Quality Keystone -->
-            <x-card padding="none" class="relative overflow-hidden">
-                <!-- Top Row (3 Primary Pillars on Desktop) -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200/90">
-                    <!-- Top Col 1: 16+ Years Hands-on Experience -->
-                    <div class="p-5 sm:p-6 lg:p-5 xl:p-6 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
-                        <div>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="w-10 h-10 rounded-xl bg-burgundy/10 text-burgundy flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <x-heroicon-o-sparkles class="w-5 h-5 text-burgundy" />
-                                </div>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-burgundy bg-burgundy/5 px-2.5 py-0.5 rounded-full border border-burgundy/15">
-                                    {{ $isEn ? 'Experience' : 'Brancheerfaring' }}
-                                </span>
-                            </div>
-                            <h3 class="text-sm sm:text-base lg:text-base font-bold text-navy mb-1.5 group-hover:text-burgundy transition-colors leading-snug">
-                                <span class="text-burgundy font-extrabold">{{ $isEn ? '16+ years of' : '16+ års praktisk' }}</span>
-                                {{ $isEn ? 'hands-on experience' : 'brancheerfaring' }}
+            <!-- 5-Step Staggered Cards Flow -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-7 lg:gap-4 xl:gap-6 relative items-start">
+
+                <!-- Step 01 (Elevated) -->
+                <div class="relative flex flex-col">
+                    <div class="relative bg-white rounded-2xl border-2 border-burgundy/30 hover:border-burgundy shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-10 pb-5 flex flex-col justify-between min-h-[310px] group">
+                        <!-- Top Step Badge -->
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-burgundy transition-colors z-10">
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
+                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">01</span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="text-center">
+                            <h3 class="text-sm sm:text-base font-bold text-navy mb-2 group-hover:text-burgundy transition-colors leading-snug">
+                                {{ $isEn ? '16+ Years Hands-on Experience' : '16+ års praktisk brancheerfaring' }}
                             </h3>
-                            <p class="text-xs sm:text-xs xl:text-sm text-ink/70 leading-relaxed">
+                            <p class="text-xs text-ink/75 leading-relaxed">
                                 {{ $isEn
-                                    ? 'Founded on hands-on chef and hospitality roots. We understand the pressure, hygiene standards, and fast pace on your floor and in your kitchen.'
-                                    : 'Grundlagt på praktisk kokerfaring fra branchen. Vi forstår presset, hygiejnekravene og det høje tempo på gulvet og i køkkenet.' }}
+                                    ? 'Founded on hands-on chef and service roots. We understand the rapid pace, hygiene standards, and operational demands on your floor.'
+                                    : 'Grundlagt på praktisk kokerfaring fra branchen. Vi forstår presset, hygiejnekravene og det høje tempo på gulvet og i driften.' }}
                             </p>
+                        </div>
+
+                        <!-- Bottom Icon -->
+                        <div class="mt-4 pt-3 border-t border-mist/40 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-burgundy/10 text-burgundy flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <x-heroicon-o-user class="w-5 h-5 text-burgundy" />
+                            </div>
+                        </div>
+
+                        <!-- Desktop Arrow Connector to Step 02 -->
+                        <div class="hidden lg:flex absolute -right-3 top-2/3 -translate-y-1/2 translate-x-1/2 z-20 items-center justify-center pointer-events-none">
+                            <div class="w-6 h-6 rounded-full bg-white border border-teal/50 shadow-xs flex items-center justify-center text-teal">
+                                <x-heroicon-s-arrow-right class="w-3.5 h-3.5 text-teal" />
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Top Col 2: Urgent Dispatch under 2 Hours -->
-                    <div class="p-5 sm:p-6 lg:p-5 xl:p-6 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
-                        <div>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="w-10 h-10 rounded-xl bg-action-50 text-brand-action flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <x-heroicon-o-bolt class="w-5 h-5 text-brand-action" />
-                                </div>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-brand-action bg-action-50 px-2.5 py-0.5 rounded-full border border-brand-action/20">
-                                    {{ $isEn ? 'Response' : 'Responstid' }}
-                                </span>
-                            </div>
-                            <h3 class="text-sm sm:text-base lg:text-base font-bold text-navy mb-1.5 group-hover:text-brand-action transition-colors leading-snug">
-                                {{ $isEn ? 'Urgent dispatch in' : 'Akut udrykning på' }}
-                                <span class="text-brand-action font-extrabold">{{ $isEn ? 'under 2 hours' : 'under 2 timer' }}</span>
-                            </h3>
-                            <p class="text-xs sm:text-xs xl:text-sm text-ink/70 leading-relaxed">
-                                {{ $isEn
-                                    ? 'When sudden illness or peak workloads hit, we dispatch experienced workers within under 2 hours across Denmark 24/7.'
-                                    : 'Når akut sygdom rammer eller travlheden spidser til, stiller vores erfarne vikarer med få timers varsel i hele landet døgnet rundt.' }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Top Col 3: Thoroughly Vetted -->
-                    <div class="p-5 sm:p-6 lg:p-5 xl:p-6 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
-                        <div>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <x-heroicon-o-shield-check class="w-5 h-5 text-teal" />
-                                </div>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-teal bg-teal/5 px-2.5 py-0.5 rounded-full border border-teal/20">
-                                    {{ $isEn ? 'Vetting' : 'Kvalitet' }}
-                                </span>
-                            </div>
-                            <h3 class="text-sm sm:text-base lg:text-base font-bold text-navy mb-1.5 group-hover:text-teal transition-colors leading-snug">
-                                <span class="text-teal font-extrabold">{{ $isEn ? '100% vetted' : '100% godkendte' }}</span>
-                                {{ $isEn ? '& personally screened staff' : '& screenede vikarer' }}
-                            </h3>
-                            <p class="text-xs sm:text-xs xl:text-sm text-ink/70 leading-relaxed">
-                                {{ $isEn
-                                    ? 'Every temp undergoes personal interviews, reference validation, criminal record checks, and verified work permits before deployment.'
-                                    : 'Alle vikarer gennemgår personlig samtale, referencetjek, ren straffeattest og validerede arbejdstilladelser før udsendelse.' }}
-                            </p>
+                    <!-- Mobile Down Connector -->
+                    <div class="flex lg:hidden justify-center my-2 text-teal">
+                        <div class="w-6 h-6 rounded-full bg-white border border-teal/40 shadow-xs flex items-center justify-center">
+                            <x-heroicon-s-arrow-down class="w-3.5 h-3.5 text-teal" />
                         </div>
                     </div>
                 </div>
 
-                <!-- Golden 4-Point Sparkle Seal at Exact Grid Intersection -->
-                <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center pointer-events-none" aria-hidden="true">
-                    <div class="w-8 h-8 rounded-full bg-white border border-neutral-200/90 shadow-xs flex items-center justify-center">
-                        <svg class="w-4 h-4 text-[#C9A24B] drop-shadow-xs" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Bottom Row (4 Operational Standards on Desktop, 2x2 on Tablet, Stacked on Mobile) -->
-                <div class="border-t border-neutral-200/90 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-neutral-200/90">
-                    <!-- Bottom Col 1: Right Person Match -->
-                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 sm:border-r sm:border-b lg:border-b-0 border-neutral-200/90 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
-                        <div>
-                            <div class="flex items-center justify-between mb-2.5">
-                                <div class="w-8 h-8 rounded-lg bg-navy/10 text-navy flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <x-heroicon-o-user-group class="w-4.5 h-4.5 text-navy" />
-                                </div>
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-navy bg-navy/5 px-2 py-0.5 rounded-full border border-navy/15">
-                                    {{ $isEn ? 'Matching' : 'Præcision' }}
-                                </span>
+                <!-- Step 02 (Staggered Down on Desktop) -->
+                <div class="relative flex flex-col lg:translate-y-12">
+                    <div class="relative bg-white rounded-2xl border-2 border-teal/40 hover:border-teal shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-5 pb-10 flex flex-col justify-between min-h-[310px] group">
+                        <!-- Top Icon -->
+                        <div class="mb-3 pb-3 border-b border-mist/40 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-teal/15 text-teal flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <x-heroicon-o-cog-6-tooth class="w-5 h-5 text-teal" />
                             </div>
-                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-navy transition-colors leading-snug">
-                                <span class="text-navy font-extrabold">{{ $isEn ? 'The right person' : 'Det rette menneske' }}</span>
-                                {{ $isEn ? 'for the task' : 'til rette opgave' }}
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="text-center">
+                            <h3 class="text-sm sm:text-base font-bold text-navy mb-2 group-hover:text-teal transition-colors leading-snug">
+                                {{ $isEn ? 'Precision Staff Matching' : 'Præcis personlig matching' }}
                             </h3>
-                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
+                            <p class="text-xs text-ink/75 leading-relaxed">
                                 {{ $isEn
-                                    ? 'Matched based on operational insight and work culture, ensuring seamless integration into your team.'
-                                    : 'Matcher baseret på reel brancheforståelse og arbejdsstil, så vikaren passer direkte ind i dit faste team.' }}
+                                    ? 'We match staff based on verified competencies and work style, ensuring seamless integration into your team from day one.'
+                                    : 'Matcher vikarer ud fra reelle faglige kompetencer og arbejdskultur, så vikaren skaber værdi og passer ind fra første minut.' }}
                             </p>
+                        </div>
+
+                        <!-- Bottom Step Badge -->
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-teal group-hover:text-navy transition-colors z-10">
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
+                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">02</span>
+                        </div>
+
+                        <!-- Desktop Arrow Connector to Step 03 -->
+                        <div class="hidden lg:flex absolute -right-3 top-1/3 -translate-y-1/2 translate-x-1/2 z-20 items-center justify-center pointer-events-none">
+                            <div class="w-6 h-6 rounded-full bg-white border border-teal/50 shadow-xs flex items-center justify-center text-teal">
+                                <x-heroicon-s-arrow-right class="w-3.5 h-3.5 text-teal" />
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Bottom Col 2: Collective Agreement Compliance -->
-                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 sm:border-b lg:border-b-0 lg:border-r border-neutral-200/90 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
-                        <div>
-                            <div class="flex items-center justify-between mb-2.5">
-                                <div class="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <x-heroicon-o-scale class="w-4.5 h-4.5 text-teal" />
-                                </div>
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-teal bg-teal/5 px-2 py-0.5 rounded-full border border-teal/20">
-                                    {{ $isEn ? 'Compliance' : 'Tryghed' }}
-                                </span>
-                            </div>
-                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-teal transition-colors leading-snug">
-                                <span class="text-teal font-extrabold">{{ $isEn ? '100% collective' : '100% overenskomst' }}</span>
-                                {{ $isEn ? 'agreement terms' : 'og juridisk tryghed' }}
-                            </h3>
-                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
-                                {{ $isEn
-                                    ? 'Strict compliance with Danish collective agreements, statutory pension, holiday pay, and mandatory accident insurance.'
-                                    : 'Garant for overenskomstmæssig løn, feriepenge, pension og lovpligtig arbejdsskadeforsikring på alle vagter.' }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Col 3: Digital QR Check-in -->
-                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 sm:border-r lg:border-r border-neutral-200/90 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
-                        <div>
-                            <div class="flex items-center justify-between mb-2.5">
-                                <div class="w-8 h-8 rounded-lg bg-burgundy/10 text-burgundy flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <x-heroicon-o-qr-code class="w-4.5 h-4.5 text-burgundy" />
-                                </div>
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-burgundy bg-burgundy/5 px-2 py-0.5 rounded-full border border-burgundy/15">
-                                    {{ $isEn ? 'Digital' : 'Digitalt' }}
-                                </span>
-                            </div>
-                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-burgundy transition-colors leading-snug">
-                                <span class="text-burgundy font-extrabold">{{ $isEn ? 'Digital QR check-in' : 'Digital QR-tjek ind' }}</span>
-                                {{ $isEn ? '& timesheets' : '& timesedler' }}
-                            </h3>
-                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
-                                {{ $isEn
-                                    ? 'Accurate check-in and check-out via on-site QR code. Zero manual paper timesheets – verified hours approved online.'
-                                    : 'Ingen manuelle papirsedler. Præcis stempling on-site via QR-kode og digital godkendelse direkte i din portal.' }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Col 4: Zero Lock-in & Direct Support -->
-                    <div class="p-4.5 sm:p-5 lg:p-4 xl:p-5 flex flex-col justify-between hover:bg-neutral-50/70 transition-colors duration-150 group">
-                        <div>
-                            <div class="flex items-center justify-between mb-2.5">
-                                <div class="w-8 h-8 rounded-lg bg-navy/10 text-navy flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <x-heroicon-o-hand-raised class="w-4.5 h-4.5 text-navy" />
-                                </div>
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-navy bg-navy/5 px-2 py-0.5 rounded-full border border-navy/15">
-                                    {{ $isEn ? 'Terms' : 'Vilkår' }}
-                                </span>
-                            </div>
-                            <h3 class="text-xs sm:text-sm lg:text-[13px] xl:text-sm font-bold text-navy mb-1 group-hover:text-navy transition-colors leading-snug">
-                                <span class="text-navy font-extrabold">{{ $isEn ? 'Zero lock-in' : 'Ingen binding' }}</span>{{ $isEn ? ' & clear pricing' : ' & faste priser' }}
-                            </h3>
-                            <p class="text-[11px] sm:text-xs xl:text-xs text-ink/70 leading-relaxed">
-                                {{ $isEn
-                                    ? 'Zero onboarding fees or surprise charges. You only pay for approved hours worked with direct advisor support.'
-                                    : 'Ingen oprettelsesgebyrer eller uigennemskuelige tillæg. Du betaler udelukkende for faktiske godkendte timer.' }}
-                            </p>
+                    <!-- Mobile Down Connector -->
+                    <div class="flex lg:hidden justify-center my-2 text-teal">
+                        <div class="w-6 h-6 rounded-full bg-white border border-teal/40 shadow-xs flex items-center justify-center">
+                            <x-heroicon-s-arrow-down class="w-3.5 h-3.5 text-teal" />
                         </div>
                     </div>
                 </div>
-            </x-card>
+
+                <!-- Step 03 (Elevated) -->
+                <div class="relative flex flex-col">
+                    <div class="relative bg-white rounded-2xl border-2 border-burgundy/30 hover:border-burgundy shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-10 pb-5 flex flex-col justify-between min-h-[310px] group">
+                        <!-- Top Step Badge -->
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-burgundy transition-colors z-10">
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
+                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">03</span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="text-center">
+                            <h3 class="text-sm sm:text-base font-bold text-navy mb-2 group-hover:text-burgundy transition-colors leading-snug">
+                                {{ $isEn ? 'Urgent Dispatch < 2 Hours' : 'Akut udrykning under 2 timer' }}
+                            </h3>
+                            <p class="text-xs text-ink/75 leading-relaxed">
+                                {{ $isEn
+                                    ? 'When sudden illness strikes, our qualified staff arrive on-site across Denmark within 2 hours with 24/7 manned support.'
+                                    : 'Når akut sygdom rammer eller travlheden spidser til, stiller vores erfarne vikarer med få timers varsel i hele landet 24/7.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Icon -->
+                        <div class="mt-4 pt-3 border-t border-mist/40 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-burgundy/10 text-burgundy flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <x-heroicon-o-clock class="w-5 h-5 text-burgundy" />
+                            </div>
+                        </div>
+
+                        <!-- Desktop Arrow Connector to Step 04 -->
+                        <div class="hidden lg:flex absolute -right-3 top-2/3 -translate-y-1/2 translate-x-1/2 z-20 items-center justify-center pointer-events-none">
+                            <div class="w-6 h-6 rounded-full bg-white border border-teal/50 shadow-xs flex items-center justify-center text-teal">
+                                <x-heroicon-s-arrow-right class="w-3.5 h-3.5 text-teal" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Down Connector -->
+                    <div class="flex lg:hidden justify-center my-2 text-teal">
+                        <div class="w-6 h-6 rounded-full bg-white border border-teal/40 shadow-xs flex items-center justify-center">
+                            <x-heroicon-s-arrow-down class="w-3.5 h-3.5 text-teal" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 04 (Staggered Down on Desktop) -->
+                <div class="relative flex flex-col lg:translate-y-12">
+                    <div class="relative bg-white rounded-2xl border-2 border-teal/40 hover:border-teal shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-5 pb-10 flex flex-col justify-between min-h-[310px] group">
+                        <!-- Top Icon -->
+                        <div class="mb-3 pb-3 border-b border-mist/40 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-teal/15 text-teal flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <x-heroicon-o-qr-code class="w-5 h-5 text-teal" />
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="text-center">
+                            <h3 class="text-sm sm:text-base font-bold text-navy mb-2 group-hover:text-teal transition-colors leading-snug">
+                                {{ $isEn ? '100% Digital QR Check-in' : '100% digital QR-tjek ind' }}
+                            </h3>
+                            <p class="text-xs text-ink/75 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Zero manual paper timesheets. Accurate on-site QR verification with instant 1-click hour approval in your digital portal.'
+                                    : 'Ingen manuelle papirsedler. Præcis stempling on-site via QR-kode og digital godkendelse af timer direkte i din portal.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Step Badge -->
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-teal group-hover:text-navy transition-colors z-10">
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
+                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">04</span>
+                        </div>
+
+                        <!-- Desktop Arrow Connector to Step 05 -->
+                        <div class="hidden lg:flex absolute -right-3 top-1/3 -translate-y-1/2 translate-x-1/2 z-20 items-center justify-center pointer-events-none">
+                            <div class="w-6 h-6 rounded-full bg-white border border-teal/50 shadow-xs flex items-center justify-center text-teal">
+                                <x-heroicon-s-arrow-right class="w-3.5 h-3.5 text-teal" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Down Connector -->
+                    <div class="flex lg:hidden justify-center my-2 text-teal">
+                        <div class="w-6 h-6 rounded-full bg-white border border-teal/40 shadow-xs flex items-center justify-center">
+                            <x-heroicon-s-arrow-down class="w-3.5 h-3.5 text-teal" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 05 (Elevated) -->
+                <div class="relative flex flex-col">
+                    <div class="relative bg-white rounded-2xl border-2 border-burgundy/30 hover:border-burgundy shadow-sm hover:shadow-lg transition-all duration-300 p-5 pt-10 pb-5 flex flex-col justify-between min-h-[310px] group">
+                        <!-- Top Step Badge -->
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy text-white border-4 border-white shadow-md flex flex-col items-center justify-center group-hover:bg-burgundy transition-colors z-10">
+                            <span class="text-[9px] font-bold uppercase tracking-wider text-sand-300 leading-none">step</span>
+                            <span class="text-sm sm:text-base font-black text-white leading-none mt-0.5">05</span>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="text-center">
+                            <h3 class="text-sm sm:text-base font-bold text-navy mb-2 group-hover:text-burgundy transition-colors leading-snug">
+                                {{ $isEn ? 'Zero Lock-in & Clear Pricing' : 'Ingen binding & faste priser' }}
+                            </h3>
+                            <p class="text-xs text-ink/75 leading-relaxed">
+                                {{ $isEn
+                                    ? 'Zero onboarding fees or surprise charges. You pay solely for actual approved hours worked with direct advisor support.'
+                                    : 'Ingen oprettelsesgebyrer eller uigennemskuelige tillæg. Du betaler udelukkende for faktiske godkendte timer med fast rådgiver.' }}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Icon -->
+                        <div class="mt-4 pt-3 border-t border-mist/40 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-burgundy/10 text-burgundy flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <x-heroicon-o-arrow-trending-up class="w-5 h-5 text-burgundy" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
