@@ -1,3 +1,7 @@
+@php
+    $isEn = app()->getLocale() === 'en';
+@endphp
+
 <x-public-layout>
     <x-slot name="title">{{ __('Services & Sectors') }}</x-slot>
 
@@ -140,205 +144,433 @@
             </div>
         </div>
 
-        <!-- 9 Specialized Roles Cards Grid -->
-        <div class="grid md:grid-cols-2 gap-8 mb-20">
+        <!-- 9 Specialized Roles Cards Grid (Matching Home Page Section Fitup) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 transition-all duration-300">
             <!-- 1. Dishwasher -->
-            <x-card padding="none" hover="true" id="dishwasher" class="overflow-hidden group hover:border-burgundy/40" x-show="activeSector === 'all' || activeSector === 'dishwasher'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/dishwasher-pre-rinse.jpg') }}" alt="{{ __('Dishwasher') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="dishwasher"
+                x-show="activeSector === 'all' || activeSector === 'dishwasher'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'dishwasher' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/dishwasher-pre-rinse.jpg') }}"
+                        alt="{{ __('Dishwasher') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Dishwasher') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Professionelle opvaskere og stewarding-personale med erfaring i industrielle opvaskemaskiner.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#dishwasher" @click.prevent="activeSector = 'dishwasher'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Dishwasher' : 'Opvasker' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Professional dishwashers and stewarding staff trained in industrial dishwashing machines, HACCP hygiene regulations, and fast-paced kitchen operations.' 
+                                : 'Professionelle opvaskere og stewarding-personale med erfaring i industrielle opvaskemaskiner, HACCP-hygiejnekrav og højt arbejdstempo i professionelle køkkener.' }}
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Hætteopvaskere & Båndopvaskere') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('HACCP & Fødevarehygiejne') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Hurtig afrydning og sortering') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Klar med under 2 timers varsel') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 2. Cleaning Assistant -->
-            <x-card padding="none" hover="true" id="cleaning" class="overflow-hidden group hover:border-burgundy/40" x-show="activeSector === 'all' || activeSector === 'cleaning'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/cleaning-industry.jpg') }}" alt="{{ __('Cleaning Assistant') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="cleaning"
+                x-show="activeSector === 'all' || activeSector === 'cleaning'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'cleaning' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/cleaning-industry.jpg') }}"
+                        alt="{{ __('Cleaning Assistant') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Cleaning Assistant') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Erhvervsrengøring, dybderengøring af køkkener, hoteller og lagerfaciliteter.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#cleaning" @click.prevent="activeSector = 'cleaning'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Cleaning Assistant' : 'Rengøringsassistent' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Thorough commercial cleaners for daily office maintenance, kitchen deep cleaning, hotels, and warehouse facility services.' 
+                                : 'Grundige rengøringsassistenter til daglig kontorrengøring, dybderengøring af storkøkkener, hoteller og lagerfaciliteter.' }}
+                            <span class="block mt-1 text-xs text-brand-muted">
+                                <a href="{{ route('industries') }}#warehouse" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Warehouse & facility services' : 'Lager- & erhvervsrengøring' }}</a>
+                            </span>
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Erhvervs- & kontorrengøring') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Køkkendesinfektion & Slutrengøring') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Housekeeping & Værelsesrengøring') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Lager- og facilitetsrengøring') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 3. Kitchen Assistant -->
-            <x-card padding="none" hover="true" id="kitchen" class="overflow-hidden group hover:border-navy/40" x-show="activeSector === 'all' || activeSector === 'kitchen'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/restaurant-industry.jpg') }}" alt="{{ __('Kitchen Assistant') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="kitchen"
+                x-show="activeSector === 'all' || activeSector === 'kitchen'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'kitchen' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/restaurant-industry.jpg') }}"
+                        alt="{{ __('Kitchen Assistant') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Kitchen Assistant') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Pålidelige køkkenmedhjælpere til mise en place, grøntklargøring og assistance til kokke.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#kitchen" @click.prevent="activeSector = 'kitchen'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Kitchen Assistant' : 'Køkkenmedhjælper' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Reliable kitchen assistants for mise en place, vegetable prep, cold stations, and assisting chefs during busy dining services.' 
+                                : 'Pålidelige køkkenmedhjælpere til mise en place, grøntklargøring, anretning og assistance til kokke under travle serveringer.' }}
+                            <span class="block mt-1 text-xs text-brand-muted">
+                                <a href="{{ route('industries') }}#restaurant" class="underline hover:text-[#5A1429]">{{ $isEn ? 'View restaurant staffing' : 'Se restaurantbemanding' }}</a>
+                            </span>
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Mise en place & Råvareforberedelse') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Kolde anretninger & Salatbar') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Assistance på varme partier') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Fødevaresikkerhed og hygiejne') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 4. Chefs -->
-            <x-card padding="none" hover="true" id="chef" class="overflow-hidden group hover:border-navy/40" x-show="activeSector === 'all' || activeSector === 'chef'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/chef-grill-steaks.jpg') }}" alt="{{ __('Chefs') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="chef"
+                x-show="activeSector === 'all' || activeSector === 'chef'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'chef' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/chef-grill-steaks.jpg') }}"
+                        alt="{{ __('Chefs') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Chefs') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Faglærte og erfarne kokke til a la carte, buffet, selskaber og travle restauranter.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#chef" @click.prevent="activeSector = 'chef'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Chefs' : 'Kokke' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Skilled culinary chefs (a la carte, buffet, banquets) capable of running kitchen sections independently with top culinary standards.' 
+                                : 'Faglærte og erfarne kokke (a la carte, buffet, selskaber), der kan varetage partier selvstændigt med høj gastronomisk kvalitet.' }}
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('A la carte & Selskabskokke') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Selvstændig partiledelse') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Kvalitetskontrol & Menuafvikling') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Høj gastronomisk standard') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 5. Hostess / Stewards -->
-            <x-card padding="none" hover="true" id="steward" class="overflow-hidden group hover:border-burgundy/40" x-show="activeSector === 'all' || activeSector === 'steward'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/hotel-industry.jpg') }}" alt="{{ __('Hostess / Stewards') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="steward"
+                x-show="activeSector === 'all' || activeSector === 'steward'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'steward' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/hotel-industry.jpg') }}"
+                        alt="{{ __('Hostess / Stewards') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Hostess / Stewards') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Imødekommende værter, værtinder og stewards til hoteller, VIP-arrangementer og receptioner.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#steward" @click.prevent="activeSector = 'steward'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Hostess / Stewards' : 'Værter & Værtinder' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Welcoming hostesses, hosts, and stewards ensuring first-class guest reception, cloaking, and VIP hospitality services for premier hotels.' 
+                                : 'Imødekommende værter, værtinder og stewards, der sikrer førsteklasses gæstemodtagelse, garderobe og VIP-service på hoteller.' }}
+                            <span class="block mt-1 text-xs text-brand-muted">
+                                <a href="{{ route('industries') }}#hotel" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Hotel & Hospitality Staffing' : 'Hotel- & Værtindebemanding' }}</a>
+                            </span>
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Gæstemodtagelse & Registrering') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('VIP Hospitality & Loungeservice') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Garderobe & Salstilsyn') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Flersproget kundebetjening') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 6. Serving Staff -->
-            <x-card padding="none" hover="true" id="waiter" class="overflow-hidden group hover:border-teal/40" x-show="activeSector === 'all' || activeSector === 'waiter'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/restaurant-industry.jpg') }}" alt="{{ __('Serving Staff') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="waiter"
+                x-show="activeSector === 'all' || activeSector === 'waiter'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'waiter' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/restaurant-industry.jpg') }}"
+                        alt="{{ __('Serving Staff') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Serving Staff') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Erfarne tjenere og serveringspersonale med kendskab til tallerkenservering og selskabsafvikling.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#waiter" @click.prevent="activeSector = 'waiter'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Serving Staff' : 'Tjenere & Servering' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Professional waitstaff and servers trained in plate service, wine presentation, order-taking, and banquet operations.' 
+                                : 'Professionelle tjenere og serveringspersonale med kendskab til tallerkenservering, vinpræsentation og selskabsafvikling.' }}
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('A la carte & Selskabsservering') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Vinpræsentation & Bæring af 3-4 tallerkener') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Kasse- og POS-betjening') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Imødekommende gæstekontakt') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 7. Catering -->
-            <x-card padding="none" hover="true" id="catering" class="overflow-hidden group hover:border-teal/40" x-show="activeSector === 'all' || activeSector === 'catering'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/chef-pastry-piping.jpg') }}" alt="{{ __('Catering') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="catering"
+                x-show="activeSector === 'all' || activeSector === 'catering'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'catering' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/chef-pastry-piping.jpg') }}"
+                        alt="{{ __('Catering') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Catering') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Specialiseret cateringpersonale til buffetopstilling, varmholdelse, anretning og store selskabsleverancer.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#catering" @click.prevent="activeSector = 'catering'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Catering' : 'Catering' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Specialized catering staff for buffet assembly, temperature holding, plating, and large-scale delivery events.' 
+                                : 'Specialiseret cateringpersonale til buffetopstilling, varmholdelse, anretning og store leverancer over hele landet.' }}
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Buffetopstilling & Anretning') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Termobokse & Varmholdelse') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Udkørsel & Onsite assistance') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Store erhvervs- og privatleverancer') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 8. Canteen -->
-            <x-card padding="none" hover="true" id="canteen" class="overflow-hidden group hover:border-navy/40" x-show="activeSector === 'all' || activeSector === 'canteen'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/office-industry.jpg') }}" alt="{{ __('Canteen') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="canteen"
+                x-show="activeSector === 'all' || activeSector === 'canteen'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'canteen' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/canteen-industry.jpg') }}"
+                        alt="{{ __('Canteen') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Canteen') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Fleksible kantinemedarbejdere til frokostbuffeter i virksomheder, salatbar og gæstebetjening.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#canteen" @click.prevent="activeSector = 'canteen'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Canteen' : 'Kantine' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Flexible canteen personnel for corporate office lunch buffets, salad bars, employee service, and kitchen sanitation.' 
+                                : 'Fleksible kantinemedarbejdere til frokostbuffeter i virksomheder, salatbar, gæstebetjening og god køkkenhygiejne.' }}
+                            <span class="block mt-1 text-xs text-brand-muted">
+                                <a href="{{ route('industries') }}#office" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Corporate Office Canteens' : 'Kantineservice til kontorer' }}</a>
+                            </span>
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Frokostbuffet opsætning & genopfyldning') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Frisk salatbar & kolde retter') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Køkkenrengøring & Egenkontrol') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Smilende service til medarbejdere') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
 
             <!-- 9. Events & Banquets -->
-            <x-card padding="none" hover="true" id="events" class="overflow-hidden group hover:border-teal/40" x-show="activeSector === 'all' || activeSector === 'events'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
-                <div class="relative w-full h-44 sm:h-52 overflow-hidden bg-sand-200">
-                    <img src="{{ asset('images/banquet-plating-rack.jpg') }}" alt="{{ __('Events & Banquets') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60"></div>
+            <div 
+                id="events"
+                x-show="activeSector === 'all' || activeSector === 'events'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="activeSector === 'events' ? 'border-[#C9A24B] ring-2 ring-[#C9A24B]/70 shadow-xl' : 'border-[#EADBCC] shadow-sm'"
+                class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
+            >
+                <!-- Top High-Quality Topic Image -->
+                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <img
+                        src="{{ asset('images/banquet-plating-rack.jpg') }}"
+                        alt="{{ __('Events & Banquets') }}"
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="bg-sand p-6 sm:p-8 flex items-start gap-4 sm:gap-6 border-b border-mist">
+
+                <!-- Card Content -->
+                <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 text-center items-center">
                     <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">{{ __('Events & Banquets') }}</h3>
-                        <p class="text-sm text-ink/80 leading-relaxed">{{ __('Engagerede teams til bryllupper, firmafester, konferencer og festivaler.') }}</p>
+                        <!-- Card Heading -->
+                        <h3 class="font-bold text-lg sm:text-xl text-[#5A1429] mb-3 leading-snug group-hover:text-brand-action transition-colors">
+                            <a href="#events" @click.prevent="activeSector = 'events'" class="focus-visible:ring-2 focus-visible:ring-brand-action rounded focus:outline-none">
+                                {{ $isEn ? 'Events & Banquets' : 'Events & Selskaber' }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                            {{ $isEn 
+                                ? 'Energetic and experienced event staff for weddings, corporate galas, festive banquets, and large-scale celebrations.' 
+                                : 'Engagerede teams til bryllupper, firmafester, konferencer og festivaler, der kræver hurtig koordination og høj energi.' }}
+                        </p>
                     </div>
+
+                    <!-- Bottom Outline Pill Button -->
+                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
+                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
+                    </a>
                 </div>
-                <div class="p-6 sm:p-8">
-                    <ul class="text-xs text-ink/90 space-y-2.5">
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Bryllupper & Gallamiddage') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Konference- & Mødeafvikling') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Festivaler & Pop-up events') }}</li>
-                        <li class="flex items-center gap-2"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /> {{ __('Komplet afviklingsteam fra start til slut') }}</li>
-                    </ul>
-                </div>
-            </x-card>
+            </div>
         </div>
 
         <!-- Why FreyaService Section Makeover -->

@@ -1020,7 +1020,7 @@
                     <!-- Top High-Quality Topic Image -->
                     <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
                         <img
-                            src="{{ asset('images/office-industry.jpg') }}"
+                            src="{{ asset('images/canteen-industry.jpg') }}"
                             alt="{{ __('Canteen') }}"
                             loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
