@@ -155,4 +155,60 @@ class LocaleSwitchTest extends TestCase
         $responseServices->assertStatus(200);
         $responseServices->assertSee('underline underline-offset-4 decoration-2 decoration-teal');
     }
+
+    public function test_locale_switched_before_login_persists_to_portal_and_user_profile(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'locale' => 'da',
+            'password' => bcrypt('Admin2026!'),
+        ]);
+
+        // 1. Switch locale to English on the landing/login page
+        $this->get('/locale/en');
+
+        // 2. Perform login
+        $loginResponse = $this->post('/login', [
+            'email' => $admin->email,
+            'password' => 'Admin2026!',
+        ]);
+
+        $loginResponse->assertRedirect(route('admin.dashboard'));
+
+        // 3. Admin user database profile is now updated to English
+        $this->assertEquals('en', $admin->fresh()->locale);
+
+        // 4. Portal renders entirely in English
+        $portalResponse = $this->get('/admin/dashboard');
+        $portalResponse->assertStatus(200);
+        $portalResponse->assertSee('Workers (CRM)');
+        $portalResponse->assertSee('Invoices');
+    }
+
+    public function test_portal_navbar_does_not_contain_language_switcher_but_public_and_login_do(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+        ]);
+
+        // Portal navbar should NOT contain language switcher
+        $portalResponse = $this->actingAs($admin)->get('/admin/dashboard');
+        $portalResponse->assertStatus(200);
+        $portalResponse->assertDontSee('/locale/da');
+        $portalResponse->assertDontSee('/locale/en');
+        $portalResponse->assertSee('Admin Portal');
+
+        // Public and login pages should contain language switcher
+        auth()->logout();
+
+        $homeResponse = $this->get('/');
+        $homeResponse->assertStatus(200);
+        $homeResponse->assertSee('/locale/da');
+        $homeResponse->assertSee('/locale/en');
+
+        $loginResponse = $this->get('/login');
+        $loginResponse->assertStatus(200);
+        $loginResponse->assertSee('/locale/da');
+        $loginResponse->assertSee('/locale/en');
+    }
 }

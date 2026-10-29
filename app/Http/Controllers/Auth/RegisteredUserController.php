@@ -66,7 +66,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validated['password']),
             'role' => $role,
             'phone' => $validated['phone'],
-            'locale' => 'da',
+            'locale' => session('locale', config('app.locale', 'da')),
             'gdpr_consent_at' => now(),
             'is_active' => true,
         ]);

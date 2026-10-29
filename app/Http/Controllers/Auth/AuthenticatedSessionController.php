@@ -30,6 +30,18 @@ class AuthenticatedSessionController extends Controller
 
         $user = $request->user();
 
+        // Synchronize language: persist session locale to user profile, or activate user's saved locale
+        $sessionLocale = $request->session()->get('locale');
+        if ($sessionLocale && in_array($sessionLocale, ['da', 'en'], true)) {
+            if ($user->locale !== $sessionLocale) {
+                $user->update(['locale' => $sessionLocale]);
+            }
+            app()->setLocale($sessionLocale);
+        } elseif ($user->locale && in_array($user->locale, ['da', 'en'], true)) {
+            $request->session()->put('locale', $user->locale);
+            app()->setLocale($user->locale);
+        }
+
         $defaultRoute = match ($user->role) {
             'admin' => route('admin.dashboard'),
             'client' => route('client.dashboard'),
