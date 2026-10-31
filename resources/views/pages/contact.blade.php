@@ -246,15 +246,6 @@
                                 </div>
                             </div>
                         </dl>
-
-                        <div class="flex items-start gap-3 border-t border-mist bg-sand/60 p-5 sm:px-8">
-                            <x-heroicon-s-shield-check class="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                            <p class="text-xs text-ink/70 leading-relaxed">
-                                {{ $isEn
-                                    ? 'No CPR numbers are stored in the system. Bank details are encrypted with AES-256. GDPR compliant and covered by the Danish collective agreement.'
-                                    : 'Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256. Vi overholder EU’s GDPR-lovgivning samt dansk overenskomst.' }}
-                            </p>
-                        </div>
                     </div>
                 </div>
 
