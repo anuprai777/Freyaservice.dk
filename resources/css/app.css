@@ -346,28 +346,6 @@ textarea:focus {
     box-shadow: 0 0 0 1px var(--success) !important;
 }
 
-/* 6. Section Divider: Burgundy, Champagne gold and Deep burgundy */
-.brand-divider {
-    height: 4px;
-    width: 100%;
-    display: flex;
-    overflow: hidden;
-}
-.brand-divider > :nth-child(1), .brand-divider-burgundy {
-    background-color: var(--primary);
-    flex: 1;
-    height: 100%;
-}
-.brand-divider > :nth-child(2), .brand-divider-teal {
-    background-color: var(--accent);
-    flex: 1;
-    height: 100%;
-}
-.brand-divider > :nth-child(3), .brand-divider-mist {
-    background-color: var(--secondary);
-    flex: 1;
-    height: 100%;
-}
 
 /* 7. Focus State Accessibility:
    Visible focus state on all interactive elements */

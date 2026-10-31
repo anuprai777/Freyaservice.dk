@@ -9,13 +9,6 @@
         </div>
     </section>
 
-    <!-- 6px Brand Section Divider (Burgundy, Teal, Mist segments) -->
-    <div class="brand-divider">
-        <div class="brand-divider-burgundy"></div>
-        <div class="brand-divider-teal"></div>
-        <div class="brand-divider-mist"></div>
-    </div>
-
     <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @php
             $isEn = app()->getLocale() === 'en';

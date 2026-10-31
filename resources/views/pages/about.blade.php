@@ -78,13 +78,6 @@
         </div>
     </section>
 
-    <!-- 6px Brand Section Divider (Burgundy, Teal, Mist) -->
-    <div class="brand-divider">
-        <div class="brand-divider-burgundy"></div>
-        <div class="brand-divider-teal"></div>
-        <div class="brand-divider-mist"></div>
-    </div>
-
     <main class="bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
 

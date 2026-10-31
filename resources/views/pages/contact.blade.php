@@ -105,13 +105,6 @@
         </div>
     </section>
 
-    <!-- Brand Divider -->
-    <div class="brand-divider">
-        <div class="brand-divider-burgundy"></div>
-        <div class="brand-divider-teal"></div>
-        <div class="brand-divider-mist"></div>
-    </div>
-
     <!-- Company Structure / Departments -->
     <section class="py-16 sm:py-24 bg-brand-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
