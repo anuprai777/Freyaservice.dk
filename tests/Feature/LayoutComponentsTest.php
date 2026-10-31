@@ -87,4 +87,19 @@ class LayoutComponentsTest extends TestCase
         $responseEn->assertSee('16+');
         $responseEn->assertSee('YEARS EXP.');
     }
+
+    public function test_public_cta_renders_phone_client_and_worker_registration_buttons(): void
+    {
+        $responseDa = $this->withSession(['locale' => 'da'])->get('/');
+        $responseDa->assertStatus(200);
+        $responseDa->assertSee('tel:+4528260926');
+        $responseDa->assertSee('Opret virksomhedskonto');
+        $responseDa->assertSee('Opret vikarprofil');
+        $responseDa->assertSee(route('register', ['role' => 'worker']));
+
+        $responseEn = $this->withSession(['locale' => 'en'])->get('/');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('Create company account');
+        $responseEn->assertSee('Create worker account');
+    }
 }
