@@ -1109,7 +1109,7 @@
     </section>
 
     <!-- How to Order Temps in 3 Steps Section (Ordered List) -->
-    <section id="how-it-works" class="py-10 sm:py-14 lg:py-16 w-full relative overflow-hidden bg-sand-50/60">
+    <section id="how-it-works" class="py-10 sm:py-14 lg:py-16 w-full relative overflow-hidden bg-[#FAF5F2]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
                 <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">
@@ -1216,7 +1216,7 @@
     </section>
 
     <!-- Why Choose Freya Service Section (5-Step Staggered Flow UI from Design) -->
-    <section id="why-choose" class="py-12 sm:py-16 lg:pt-16 lg:pb-28 bg-[#FAF6F0] border-y border-brand-border relative overflow-hidden">
+    <section id="why-choose" class="py-12 sm:py-16 lg:pt-16 lg:pb-28 bg-[#FAF5F2] border-y border-brand-border relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.025] pointer-events-none" style="background-image: radial-gradient(#5A1429 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -1473,7 +1473,7 @@
     </section>
 
     <!-- Frequently Asked Questions Section (AI-Search Ready & JSON-LD Mirrored) -->
-    <section id="faq" class="py-10 sm:py-14 lg:py-16 bg-sand-200/40 border-t border-brand-border relative overflow-hidden">
+    <section id="faq" class="py-10 sm:py-14 lg:py-16 bg-[#FAF5F2] border-t border-brand-border relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
                 <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-extrabold text-brand-secondary tracking-tight">

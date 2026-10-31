@@ -144,7 +144,7 @@
     </section>
 
     <!-- Company Details + Get Started -->
-    <section class="py-16 sm:py-24 bg-white border-t border-mist">
+    <section class="py-16 sm:py-24 bg-[#FAF5F2] border-t border-mist">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                 <!-- Company registration -->

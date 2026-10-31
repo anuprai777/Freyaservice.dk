@@ -42,7 +42,7 @@
             }
         </style>
     </head>
-    <body class="font-sans text-ink antialiased bg-white selection:bg-navy selection:text-white relative" style="background-image: radial-gradient(rgba(18, 40, 76, 0.04) 1.5px, transparent 0); background-size: 24px 24px;">
+    <body class="font-sans text-ink antialiased bg-[#FAF5F2] selection:bg-navy selection:text-white relative" style="background-image: radial-gradient(rgba(18, 40, 76, 0.04) 1.5px, transparent 0); background-size: 24px 24px;">
         <!-- Floating Toast Notifications for Form Success & Alerts -->
         <x-notification-toast />
 

@@ -15,7 +15,7 @@
         @endphp
 
         <!-- HOW IT WORKS / 4 Steps Staggered Zigzag Workflow (Matching Uploaded Reference UI) -->
-        <div class="mb-24 py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12 bg-[#FAF7F2] rounded-3xl border border-[#EBE4D8] shadow-xs relative overflow-hidden">
+        <div class="mb-24 py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12 bg-[#FAF5F2] rounded-3xl border border-[#EBE4D8] shadow-xs relative overflow-hidden">
             <!-- Subtle Radial Texture Background -->
             <div class="absolute inset-0 opacity-[0.035] pointer-events-none" style="background-image: radial-gradient(#D97746 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
 

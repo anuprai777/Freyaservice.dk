@@ -1,5 +1,5 @@
-<!-- Call to action (matches the FAQ section background across the site) -->
-<section id="contact" class="py-12 sm:py-14 bg-sand-200/40 border-t border-brand-border relative overflow-hidden">
+<!-- Call to action (matches the section background across the site) -->
+<section id="contact" class="py-12 sm:py-14 bg-[#FAF5F2] border-t border-brand-border relative overflow-hidden">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-secondary tracking-tight text-balance">
             {{ __('Ready to book staff: temp, part-time or full-time?') }}

@@ -78,7 +78,7 @@
         </div>
     </section>
 
-    <main class="bg-white">
+    <main class="bg-[#FAF5F2]">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
 
             <!-- Section header: heading left, introduction right -->
