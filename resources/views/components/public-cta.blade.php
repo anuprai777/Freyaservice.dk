@@ -1,11 +1,11 @@
 <!-- Call to action (matches the section background across the site) -->
 <section id="contact" class="py-14 sm:py-20 bg-[#FAF5F2] border-t border-brand-border relative overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-3xl mx-auto">
-            <h2 class="text-2xl sm:text-4xl font-black text-[#5A1429] tracking-tight text-balance">
+        <div class="text-center max-w-5xl mx-auto">
+            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#5A1429] tracking-tight sm:whitespace-nowrap">
                 {{ __('Ready to book staff: temp, part-time or full-time?') }}
             </h2>
-            <p class="mt-3.5 text-[#5A4E47] text-xs sm:text-sm md:text-base leading-relaxed">
+            <p class="mt-3.5 text-[#5A4E47] text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl mx-auto">
                 {{ __('Need urgent cover, or looking for shifts yourself? Call our 24/7 dispatch line or create your account online in two minutes.') }}
             </p>
         </div>
