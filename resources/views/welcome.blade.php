@@ -429,12 +429,12 @@
                         </a>
                     @endauth
                 </div>
-
-                <!-- 16+ Years Experience Element: Positioned far right beside 'Apply as worker' on desktop, stacked cleanly on mobile -->
-                <div class="mt-6 md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 flex justify-center">
-                    <x-experience-badge />
-                </div>
             </div>
+        </div>
+
+        <!-- 16+ Years Experience Badge: Positioned in bottom-right corner of the Hero Section -->
+        <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 md:bottom-8 md:right-10 lg:bottom-10 lg:right-12 z-20 pointer-events-auto">
+            <x-experience-badge />
         </div>
     </section>
 
