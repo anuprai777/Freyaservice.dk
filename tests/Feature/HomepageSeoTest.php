@@ -150,7 +150,7 @@ class HomepageSeoTest extends TestCase
         $response->assertSee('id="faq"', false);
         $response->assertSee('Hvor hurtigt kan jeg få en vikar i Danmark?');
         $response->assertSee('Er der bindingsperiode eller oprettelsesgebyrer?');
-        $response->assertSee('Følger vikarerne danske overenskomster?');
+        $response->assertSee('Kan vi genbestille vores favoritvikarer?');
         $response->assertSee('Hvad koster en vikar gennem Freya Service?');
         $response->assertSee('Hvilke brancher leverer Freya Service vikarer til?');
         $response->assertSee('Hvordan kvalitetssikres og godkendes vikarerne?');

@@ -91,7 +91,8 @@
         </div>
 
         <!-- 9 Specialized Roles Cards Grid (Matching Home Page Section Fitup) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 transition-all duration-300">
+        <div class="grid gap-6 mb-20 transition-all duration-300"
+             :class="activeSector === 'all' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 max-w-md mx-auto'">
             <!-- 1. Dishwasher -->
             <div 
                 id="dishwasher"
@@ -103,7 +104,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/dishwasher-pre-rinse.jpg') }}"
                         alt="{{ __('Dishwasher') }}"
@@ -149,12 +150,12 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/cleaning-industry.jpg') }}"
                         alt="{{ __('Cleaning Assistant') }}"
                         loading="lazy"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                 </div>
@@ -198,7 +199,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/restaurant-industry.jpg') }}"
                         alt="{{ __('Kitchen Assistant') }}"
@@ -247,7 +248,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/chef-grill-steaks.jpg') }}"
                         alt="{{ __('Chefs') }}"
@@ -293,7 +294,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/hotel-industry.jpg') }}"
                         alt="{{ __('Hostess / Stewards') }}"
@@ -342,7 +343,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/restaurant-industry.jpg') }}"
                         alt="{{ __('Serving Staff') }}"
@@ -388,7 +389,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/chef-pastry-piping.jpg') }}"
                         alt="{{ __('Catering') }}"
@@ -434,7 +435,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/canteen-industry.jpg') }}"
                         alt="{{ __('Canteen') }}"
@@ -483,7 +484,7 @@
                 class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
             >
                 <!-- Top High-Quality Topic Image -->
-                <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
                         src="{{ asset('images/banquet-plating-rack.jpg') }}"
                         alt="{{ __('Events & Banquets') }}"
@@ -605,25 +606,6 @@
                     <p class="text-xs text-ink/80 leading-relaxed">{{ __('Præcis tjek-ind og tjek-ud via QR-kode på arbejdspladsen. Ingen manuelle papirsedler – kun godkendte timer.') }}</p>
                 </x-card>
             </div>
-
-            <x-card variant="navy" class="p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-                <div>
-                    <div class="text-2xl font-black text-[#C9A24B]">{{ app()->getLocale() === 'en' ? '< 2h' : '< 2t' }}</div>
-                    <div class="text-[11px] text-sand-200 mt-0.5">{{ __('Gennemsnitlig responstid') }}</div>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-white">100%</div>
-                    <div class="text-[11px] text-sand-200 mt-0.5">{{ __('Overenskomstdækning') }}</div>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-white">2.500+</div>
-                    <div class="text-[11px] text-sand-200 mt-0.5">{{ __('Kvalificerede vikarer') }}</div>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-[#C9A24B]">24/7</div>
-                    <div class="text-[11px] text-sand-200 mt-0.5">{{ __('Bemandet vagtcentral') }}</div>
-                </div>
-            </x-card>
         </div>
 
         <div class="text-center">

@@ -107,10 +107,10 @@
                     },
                     {
                         "@type": "Question",
-                        "name": "{{ $isEn ? 'Do Freya Service temps follow Danish collective agreements?' : 'Følger vikarerne danske overenskomster?' }}",
+                        "name": "{{ $isEn ? 'Can we re-book our favourite workers?' : 'Kan vi genbestille vores favoritvikarer?' }}",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "{{ $isEn ? 'Yes. 100% of temporary workers dispatched by Freya Service are employed under Danish collective agreement terms (overenskomst), including statutory pension, holiday pay (feriepenge), sick pay, and mandatory workplace injury insurance.' : 'Ja. 100% af vikarer udsendt af Freya Service arbejder under gældende danske overenskomster. Dette sikrer ordnede løn- og arbejdsvilkår, feriepenge, pension, sygeløn samt lovpligtig arbejdsskadeforsikring.' }}"
+                            "text": "{{ $isEn ? 'Yes. In your client portal, you can mark high-performing temps as preferred and request them directly for upcoming shifts to maintain seamless workflow and team continuity.' : 'Ja. I din kundeportal kan du markere dine foretrukne vikarer som favoritter og anmode om dem direkte til fremtidige vagter, så du opretholder fast kontinuitet og et velkendt team.' }}"
                         }
                     },
                     {
@@ -353,12 +353,7 @@
             <div class="absolute inset-0 bg-black/20"></div>
         </div>
 
-        <div class="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
-            
-            <!-- Giant Outline 16+ Years Experience Element (Right-Aligned, Responsive Fit) -->
-            <div class="w-full flex justify-end pr-2 sm:pr-4 md:pr-6 mb-2 sm:mb-3">
-                <x-experience-badge />
-            </div>
+        <div class="max-w-6xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
 
             <!-- Headline (H1): Exactly one H1 in sentence case with verified claims -->
             <h1 
@@ -377,17 +372,40 @@
                 @endif
             </h1>
 
-            <!-- Intro Copy: Plain, specific language with main keyword, vikarbureau, 16+ years exp and core offer -->
+            <!-- Intro Copy: Harmonious, balanced, centered typography -->
             <p class="mt-6 text-base sm:text-lg lg:text-xl text-sand-100 max-w-3xl mx-auto text-center leading-relaxed drop-shadow-md">
                 {{ __('With 16+ years of experience, Freya Service is a Danish vikarbureau providing nationwide temp staffing for hotels, restaurants, warehouses and offices in under 2 hours, with no lock-in or onboarding fees.') }}
             </p>
 
-            <!-- Action Bar (CTA Buttons) -->
-            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
-                <!-- Primary CTA Button (Burgundy #7B1E3A, white text, 8px radius, bold; 2px border rgba(255,255,255,0.35) on navy) -->
-                @auth
-                    @if(auth()->user()->isClient())
-                        <a href="{{ route('client.requests.create') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
+            <!-- Action Bar (CTA Buttons) & 16+ Years Experience Badge Beside Apply as Worker -->
+            <div class="mt-8 sm:mt-10 relative w-full flex items-center justify-center">
+                <!-- Centered Buttons Group -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
+                    <!-- Primary CTA Button (Burgundy #7B1E3A, white text, 8px radius, bold; 2px border rgba(255,255,255,0.35) on navy) -->
+                    @auth
+                        @if(auth()->user()->isClient())
+                            <a href="{{ route('client.requests.create') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
+                                <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
+                                @if($isEn)
+                                    <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
+                                @else
+                                    <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
+                                @endif
+                                <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
+                            </a>
+                        @else
+                            <a href="{{ route('dashboard') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
+                                <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
+                                @if($isEn)
+                                    <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
+                                @else
+                                    <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
+                                @endif
+                                <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
                             <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
                             @if($isEn)
                                 <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
@@ -395,42 +413,27 @@
                                 <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
                             @endif
                             <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
+                        </a>
+                    @endauth
+
+                    <!-- Secondary CTA Button: White Text "Apply as worker" with Frosted Glass Surface -->
+                    @auth
+                        <a href="{{ auth()->user()->isWorker() ? route('worker.dashboard') : route('dashboard') }}" class="btn-secondary border-2 border-white bg-white/15 hover:bg-white/25 backdrop-blur-md text-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold min-h-[48px]">
+                            <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-white" />
+                            <span class="text-white">{{ $isEn ? 'Apply as worker' : 'Ansøg som vikar' }}</span>
                         </a>
                     @else
-                        <a href="{{ route('dashboard') }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
-                            <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
-                            @if($isEn)
-                                <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
-                            @else
-                                <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
-                            @endif
-                            <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="btn-secondary border-2 border-white bg-white/15 hover:bg-white/25 backdrop-blur-md text-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold min-h-[48px]">
+                            <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-white" />
+                            <span class="text-white">{{ $isEn ? 'Apply as worker' : 'Ansøg som vikar' }}</span>
                         </a>
-                    @endif
-                @else
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="btn-primary border-2 border-white/35 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold text-white bg-burgundy hover:bg-burgundy-dark shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[48px] min-w-[280px] sm:min-w-[310px]">
-                        <x-heroicon-o-briefcase class="w-5 h-5 text-white shrink-0" />
-                        @if($isEn)
-                            <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Order</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">temp</span></span><span>staff now</span></span>
-                        @else
-                            <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><span>Bestil</span><span class="hero-btn-flip-container" style="display:inline-block; white-space:nowrap; perspective:600px;"><span class="hero-btn-flip-word font-extrabold text-white" style="display:inline-block; white-space:nowrap; transform-origin:50% 50%;">vikar</span></span><span>nu</span></span>
-                        @endif
-                        <x-heroicon-o-arrow-right class="w-5 h-5 shrink-0" />
-                    </a>
-                @endauth
+                    @endauth
+                </div>
 
-                <!-- Secondary CTA Button: White Text "Apply as worker" with Frosted Glass Surface -->
-                @auth
-                    <a href="{{ auth()->user()->isWorker() ? route('worker.dashboard') : route('dashboard') }}" class="btn-secondary border-2 border-white bg-white/15 hover:bg-white/25 backdrop-blur-md text-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold min-h-[48px]">
-                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-white" />
-                        <span class="text-white">{{ $isEn ? 'Apply as worker' : 'Ansøg som vikar' }}</span>
-                    </a>
-                @else
-                    <a href="{{ route('register', ['role' => 'worker']) }}" class="btn-secondary border-2 border-white bg-white/15 hover:bg-white/25 backdrop-blur-md text-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-lg text-base font-extrabold min-h-[48px]">
-                        <x-heroicon-o-user-plus class="w-5 h-5 shrink-0 text-white" />
-                        <span class="text-white">{{ $isEn ? 'Apply as worker' : 'Ansøg som vikar' }}</span>
-                    </a>
-                @endauth
+                <!-- 16+ Years Experience Element: Positioned far right beside 'Apply as worker' on desktop, stacked cleanly on mobile -->
+                <div class="mt-6 md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 flex justify-center">
+                    <x-experience-badge />
+                </div>
             </div>
         </div>
     </section>
@@ -641,10 +644,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10" x-data="{ activeSector: 'all' }">
             <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6">
                 <h2 class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-navy tracking-tight">
-                    {{ __('Sectors we staff with qualified temps') }}
+                    {{ __('Qualified temps, ready when you are.') }}
                 </h2>
                 <p class="mt-2 text-xs sm:text-sm text-ink/80 leading-relaxed max-w-2xl mx-auto">
-                    {{ __('Freya Service provides pre-screened temporary workers across all core sectors in Denmark, matching required certifications, experience and language skills to every shift.') }}
+                    {{ __('Freya Service provides pre-screened temporary and full-time staff across Denmark, matched to every role by certification, experience and language.') }}
                 </p>
             </div>
 
@@ -683,7 +686,8 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300">
+            <div class="grid gap-6 transition-all duration-300"
+                 :class="activeSector === 'all' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 max-w-md mx-auto'">
                 <!-- 1. Dishwasher -->
                 <div 
                     x-show="activeSector === 'all' || activeSector === 'dishwasher'"
@@ -694,7 +698,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/dishwasher-pre-rinse.jpg') }}"
                             alt="{{ __('Dishwasher') }}"
@@ -739,12 +743,12 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/cleaning-industry.jpg') }}"
                             alt="{{ __('Cleaning Assistant') }}"
                             loading="lazy"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                         />
                         <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
                     </div>
@@ -787,7 +791,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/restaurant-industry.jpg') }}"
                             alt="{{ __('Kitchen Assistant') }}"
@@ -835,7 +839,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/chef-grill-steaks.jpg') }}"
                             alt="{{ __('Chefs') }}"
@@ -880,7 +884,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/hotel-industry.jpg') }}"
                             alt="{{ __('Hostess / Stewards') }}"
@@ -928,7 +932,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/restaurant-industry.jpg') }}"
                             alt="{{ __('Serving Staff') }}"
@@ -973,7 +977,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/chef-pastry-piping.jpg') }}"
                             alt="{{ __('Catering') }}"
@@ -1018,7 +1022,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/canteen-industry.jpg') }}"
                             alt="{{ __('Canteen') }}"
@@ -1066,7 +1070,7 @@
                     class="bg-white rounded-3xl border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group w-full"
                 >
                     <!-- Top High-Quality Topic Image -->
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-sand-200">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                         <img
                             src="{{ asset('images/banquet-plating-rack.jpg') }}"
                             alt="{{ __('Events & Banquets') }}"
@@ -1264,12 +1268,12 @@
 
                         <!-- Card Header & Body -->
                         <div>
-                            <div class="text-center mb-3">
+                            <div class="text-left mb-2.5">
                                 <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
                                     {{ $isEn ? '16+ Years Hands-on Experience' : '16+ års praktisk brancheerfaring' }}
                                 </h3>
                             </div>
-                            <p class="text-center text-xs text-ink/75 leading-relaxed">
+                            <p class="text-left text-xs text-ink/75 leading-relaxed">
                                 {{ $isEn
                                     ? 'Founded on hands-on chef and service roots. We understand the rapid pace, hygiene standards, and operational demands on your floor.'
                                     : 'Grundlagt på praktisk kokerfaring fra branchen. Vi forstår presset, hygiejnekravene og det høje tempo på gulvet og i driften.' }}
@@ -1301,12 +1305,12 @@
                     <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md transition-all duration-300 p-6 pt-7 pb-10 flex flex-col justify-between min-h-[380px] group">
                         <!-- Card Header & Body -->
                         <div>
-                            <div class="text-center mb-3">
+                            <div class="text-left mb-2.5">
                                 <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
                                     {{ $isEn ? 'Precision Staff Matching' : 'Præcis personlig matching' }}
                                 </h3>
                             </div>
-                            <p class="text-center text-xs text-ink/75 leading-relaxed">
+                            <p class="text-left text-xs text-ink/75 leading-relaxed">
                                 {{ $isEn
                                     ? 'We match staff based on verified competencies and work style, ensuring seamless integration into your team from day one.'
                                     : 'Matcher vikarer ud fra reelle faglige kompetencer og arbejdskultur, så vikaren skaber værdi og passer ind fra første minut.' }}
@@ -1348,12 +1352,12 @@
 
                         <!-- Card Header & Body -->
                         <div>
-                            <div class="text-center mb-3">
-                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
-                                    {{ $isEn ? 'Urgent Dispatch < 2 Hours' : 'Akut udrykning under 2 timer' }}
+                            <div class="text-left mb-2.5">
+                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug text-balance">
+                                    {{ $isEn ? 'Urgent Dispatch 24 Hours' : 'Akut udrykning 24 timer' }}
                                 </h3>
                             </div>
-                            <p class="text-center text-xs text-ink/75 leading-relaxed">
+                            <p class="text-left text-xs text-ink/75 leading-relaxed">
                                 {{ $isEn
                                     ? 'When sudden illness strikes, our qualified staff arrive on-site across Denmark within 2 hours with 24/7 manned support.'
                                     : 'Når akut sygdom rammer eller travlheden spidser til, stiller vores erfarne vikarer med få timers varsel i hele landet 24/7.' }}
@@ -1385,12 +1389,12 @@
                     <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md transition-all duration-300 p-6 pt-7 pb-10 flex flex-col justify-between min-h-[380px] group">
                         <!-- Card Header & Body -->
                         <div>
-                            <div class="text-center mb-3">
+                            <div class="text-left mb-2.5">
                                 <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
                                     {{ $isEn ? '100% Digital QR Check-in' : '100% digital QR-tjek ind' }}
                                 </h3>
                             </div>
-                            <p class="text-center text-xs text-ink/75 leading-relaxed">
+                            <p class="text-left text-xs text-ink/75 leading-relaxed">
                                 {{ $isEn
                                     ? 'Zero manual paper timesheets. Accurate on-site QR verification with instant 1-click hour approval in your digital portal.'
                                     : 'Ingen manuelle papirsedler. Præcis stempling on-site via QR-kode og digital godkendelse af timer direkte i din portal.' }}
@@ -1432,12 +1436,12 @@
 
                         <!-- Card Header & Body -->
                         <div>
-                            <div class="text-center mb-3">
+                            <div class="text-left mb-2.5">
                                 <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
                                     {{ $isEn ? 'Zero Lock-in & Clear Pricing' : 'Ingen binding & faste priser' }}
                                 </h3>
                             </div>
-                            <p class="text-center text-xs text-ink/75 leading-relaxed">
+                            <p class="text-left text-xs text-ink/75 leading-relaxed">
                                 {{ $isEn
                                     ? 'Zero onboarding fees or surprise charges. You pay solely for actual approved hours worked with direct advisor support.'
                                     : 'Ingen oprettelsesgebyrer eller uigennemskuelige tillæg. Du betaler udelukkende for faktiske godkendte timer med fast rådgiver.' }}
@@ -1530,30 +1534,29 @@
                 </svg>
 
                 <!-- Independent 2-Column Grid (Prevents cross-column row height jumping) -->
-                <div class="relative z-10 grid md:grid-cols-2 gap-3.5 sm:gap-4 lg:gap-3.5 xl:gap-4 items-start">
+                <div x-data="{ openFaq: null }" class="relative z-10 grid md:grid-cols-2 gap-3.5 sm:gap-4 lg:gap-3.5 xl:gap-4 items-start">
                     <!-- Left Column: Booking, Response Time & Agreements -->
                     <div class="flex flex-col gap-3 sm:gap-3.5 lg:gap-3 xl:gap-3.5">
                         <!-- Q1 -->
-                        <div x-data="{ open: false }"
-                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
-                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
-                            <button @click="open = !open"
+                        <div class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': openFaq === 1 }">
+                            <button @click="openFaq = openFaq === 1 ? null : 1"
                                     type="button"
                                     class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
-                                    :aria-expanded="open.toString()">
+                                    :aria-expanded="(openFaq === 1).toString()">
                                 <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
                                     <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
-                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                          :class="{ 'bg-brand-action text-white': openFaq === 1 }">Q</span>
                                     <span>{{ __('How fast can I get a temp in Denmark?') }}</span>
                                 </h3>
                                 <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
-                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': openFaq === 1 }">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
                             </button>
-                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': openFaq === 1 }" x-cloak>
                                 <div class="faq-grid-inner">
                                     <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
                                         <p class="m-0">
@@ -1565,26 +1568,25 @@
                         </div>
 
                         <!-- Q2 -->
-                        <div x-data="{ open: false }"
-                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
-                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
-                            <button @click="open = !open"
+                        <div class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': openFaq === 2 }">
+                            <button @click="openFaq = openFaq === 2 ? null : 2"
                                     type="button"
                                     class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
-                                    :aria-expanded="open.toString()">
+                                    :aria-expanded="(openFaq === 2).toString()">
                                 <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
                                     <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
-                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                          :class="{ 'bg-brand-action text-white': openFaq === 2 }">Q</span>
                                     <span>{{ __('Are there any lock-in periods or onboarding fees?') }}</span>
                                 </h3>
                                 <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
-                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': openFaq === 2 }">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
                             </button>
-                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': openFaq === 2 }" x-cloak>
                                 <div class="faq-grid-inner">
                                     <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
                                         <p class="m-0">
@@ -1596,30 +1598,29 @@
                         </div>
 
                         <!-- Q3 -->
-                        <div x-data="{ open: false }"
-                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
-                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
-                            <button @click="open = !open"
+                        <div class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': openFaq === 3 }">
+                            <button @click="openFaq = openFaq === 3 ? null : 3"
                                     type="button"
                                     class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
-                                    :aria-expanded="open.toString()">
+                                    :aria-expanded="(openFaq === 3).toString()">
                                 <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
                                     <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
-                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
-                                    <span>{{ __('Do Freya Service temps follow Danish collective agreements?') }}</span>
+                                          :class="{ 'bg-brand-action text-white': openFaq === 3 }">Q</span>
+                                    <span>{{ __('Can we re-book our favourite workers?') }}</span>
                                 </h3>
                                 <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
-                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': openFaq === 3 }">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
                             </button>
-                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': openFaq === 3 }" x-cloak>
                                 <div class="faq-grid-inner">
                                     <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
                                         <p class="m-0">
-                                            {{ __('Yes. 100% of temporary workers dispatched by Freya Service are employed under Danish collective agreement terms (overenskomst), including statutory pension, holiday pay (feriepenge), sick pay, and mandatory workplace injury insurance.') }}
+                                            {{ __('Yes. In your client portal, you can mark high-performing temps as preferred and request them directly for upcoming shifts to maintain seamless workflow and team continuity.') }}
                                         </p>
                                     </div>
                                 </div>
@@ -1630,26 +1631,25 @@
                     <!-- Right Column: Costs, Industries & Candidate Vetting -->
                     <div class="flex flex-col gap-3 sm:gap-3.5 lg:gap-3 xl:gap-3.5">
                         <!-- Q4 -->
-                        <div x-data="{ open: false }"
-                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
-                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
-                            <button @click="open = !open"
+                        <div class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': openFaq === 4 }">
+                            <button @click="openFaq = openFaq === 4 ? null : 4"
                                     type="button"
                                     class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
-                                    :aria-expanded="open.toString()">
+                                    :aria-expanded="(openFaq === 4).toString()">
                                 <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
                                     <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
-                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                          :class="{ 'bg-brand-action text-white': openFaq === 4 }">Q</span>
                                     <span>{{ __('What does temp staffing cost with Freya Service?') }}</span>
                                 </h3>
                                 <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
-                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': openFaq === 4 }">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
                             </button>
-                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': openFaq === 4 }" x-cloak>
                                 <div class="faq-grid-inner">
                                     <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
                                         <p class="m-0">
@@ -1661,26 +1661,25 @@
                         </div>
 
                         <!-- Q5 -->
-                        <div x-data="{ open: false }"
-                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
-                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
-                            <button @click="open = !open"
+                        <div class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': openFaq === 5 }">
+                            <button @click="openFaq = openFaq === 5 ? null : 5"
                                     type="button"
                                     class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
-                                    :aria-expanded="open.toString()">
+                                    :aria-expanded="(openFaq === 5).toString()">
                                 <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
                                     <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
-                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                          :class="{ 'bg-brand-action text-white': openFaq === 5 }">Q</span>
                                     <span>{{ __('Which industries does Freya Service provide staff for?') }}</span>
                                 </h3>
                                 <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
-                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': openFaq === 5 }">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
                             </button>
-                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': openFaq === 5 }" x-cloak>
                                 <div class="faq-grid-inner">
                                     <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
                                         <p class="m-0">
@@ -1692,26 +1691,25 @@
                         </div>
 
                         <!-- Q6 -->
-                        <div x-data="{ open: false }"
-                             class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
-                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': open }">
-                            <button @click="open = !open"
+                        <div class="bg-brand-surface rounded-2xl p-4 sm:p-5 lg:p-3.5 xl:p-4.5 border border-brand-border shadow-xs hover:border-brand-action/40 transition-[border-color,box-shadow,background-color] duration-200 ease-out"
+                             :class="{ 'border-brand-action/50 shadow-md ring-1 ring-brand-action/20': openFaq === 6 }">
+                            <button @click="openFaq = openFaq === 6 ? null : 6"
                                     type="button"
                                     class="w-full text-left flex items-start justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-action rounded-lg group cursor-pointer select-none"
-                                    :aria-expanded="open.toString()">
+                                    :aria-expanded="(openFaq === 6).toString()">
                                 <h3 class="text-sm sm:text-base lg:text-sm xl:text-base font-bold text-brand-secondary group-hover:text-brand-action transition-colors duration-200 flex items-start gap-2.5">
                                     <span class="w-5 h-5 rounded-md bg-action-50 text-brand-action flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 transition-colors duration-200"
-                                          :class="{ 'bg-brand-action text-white': open }">Q</span>
+                                          :class="{ 'bg-brand-action text-white': openFaq === 6 }">Q</span>
                                     <span>{{ __('How does Freya Service vet and verify temp workers?') }}</span>
                                 </h3>
                                 <span class="w-6 h-6 rounded-full bg-sand-200/80 group-hover:bg-sand-300/80 flex items-center justify-center shrink-0 mt-0.5 text-brand-secondary transition-[transform,background-color,color] duration-300 ease-out"
-                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': open }">
+                                      :class="{ 'rotate-180 bg-brand-action text-white group-hover:bg-brand-action': openFaq === 6 }">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </span>
                             </button>
-                            <div class="faq-grid-collapse" :class="{ 'is-open': open }" x-cloak>
+                            <div class="faq-grid-collapse" :class="{ 'is-open': openFaq === 6 }" x-cloak>
                                 <div class="faq-grid-inner">
                                     <div class="pt-2.5 text-xs sm:text-sm text-brand-body leading-relaxed pl-7.5">
                                         <p class="m-0">
