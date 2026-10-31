@@ -5,11 +5,68 @@
 <x-public-layout>
     <x-slot name="title">{{ __('Services & Sectors') }}</x-slot>
 
-    <!-- Hero Header (Cream Background #FAF5F2) -->
-    <section class="bg-[#FAF5F2] text-ink py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-[#EADBCC]" style="background-image:radial-gradient(rgba(90,20,41,0.035) 1.5px,transparent 0);background-size:24px 24px;">
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[#5A1429]">{{ __('Services & Sectors') }}</h1>
-            <p class="text-base sm:text-lg text-ink/80 max-w-2xl mx-auto leading-relaxed">{{ __('Skræddersyede bemanningsløsninger og faglærte vikarer til Danmarks førende virksomheder. Hvad enten du mangler en opvasker i aften eller 10 vikarer i tre måneder, har vi den rette løsning.') }}</p>
+    <!-- Services & Sectors Hero + Core Staffing Models Section (Cream Background #FAF5F2) -->
+    <section class="bg-[#FAF5F2] text-ink pt-16 sm:pt-20 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-[#EADBCC]" style="background-image:radial-gradient(rgba(90,20,41,0.035) 1.5px,transparent 0);background-size:24px 24px;">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Header (Services & Sectors + Statement) -->
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+                <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[#5A1429]">{{ __('Services & Sectors') }}</h1>
+                <p class="text-base sm:text-lg text-ink/80 leading-relaxed">{{ __('Skræddersyede bemanningsløsninger og faglærte vikarer til Danmarks førende virksomheder. Hvad enten du mangler en opvasker i aften eller 10 vikarer i tre måneder, har vi den rette løsning.') }}</p>
+            </div>
+
+            <!-- 3 Specific Service Models: Temporary, Permanent, Part-Time -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 1. Temporary Staff: Burgundy 5px top border -->
+                <x-card variant="sand" hover="true" accent="burgundy" class="service-card service-card-temp flex flex-col justify-between p-8 bg-[#FAF6F0] border-[#EADBCC]">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                            <x-heroicon-o-clock class="w-6 h-6 text-burgundy" />
+                        </div>
+                        <div class="text-xs font-bold text-burgundy uppercase tracking-wider mb-1">{{ __('Vikarbemanding') }}</div>
+                        <h2 class="text-xl font-bold text-navy mb-3">{{ __('Akut og kortvarig vikardækning') }}</h2>
+                        <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Dækning fra dag til dag ved akut sygdom, ferie eller uventet spidsbelastning. Vores vikarer er klar med få timers varsel.') }}</p>
+                    </div>
+                    <ul class="text-xs text-ink/90 space-y-2.5 border-t border-mist pt-4">
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Under 2 timer') }} {{ __('responstid') }}</span></li>
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Digital time- & QR-registrering') }}</span></li>
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Overenskomstmæssige vilkår') }}</span></li>
+                    </ul>
+                </x-card>
+
+                <!-- 2. Permanent Hiring: Navy 5px top border -->
+                <x-card variant="sand" hover="true" accent="navy" class="service-card service-card-perm flex flex-col justify-between p-8 bg-[#FAF6F0] border-[#EADBCC]">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                            <x-heroicon-o-calendar-days class="w-6 h-6 text-navy" />
+                        </div>
+                        <div class="text-xs font-bold text-navy uppercase tracking-wider mb-1">{{ __('Fast Rekruttering') }}</div>
+                        <h2 class="text-xl font-bold text-navy mb-3">{{ __('Fast rekruttering & Try & Hire') }}</h2>
+                        <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Afprøv en medarbejder i en vikarperiode før fastansættelse. Minimer ansættelsesrisikoen og find det perfekte match til din virksomhed.') }}</p>
+                    </div>
+                    <ul class="text-xs text-ink/90 space-y-2.5 border-t border-mist pt-4">
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Gennemtestede vikarer med referencer') }}</span></li>
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Ensartet høj faglig kvalitet') }}</span></li>
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Fuld digital kontraktstyring') }}</span></li>
+                    </ul>
+                </x-card>
+
+                <!-- 3. Part-Time Staff: Teal 5px top border -->
+                <x-card variant="sand" hover="true" accent="teal" class="service-card service-card-part flex flex-col justify-between p-8 bg-[#FAF6F0] border-[#EADBCC]">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                            <x-heroicon-o-user-group class="w-6 h-6 text-teal" />
+                        </div>
+                        <div class="text-xs font-bold text-teal uppercase tracking-wider mb-1">{{ __('Deltidsbemanding') }}</div>
+                        <h2 class="text-xl font-bold text-navy mb-3">{{ __('Fleksibel deltidsbemanding') }}</h2>
+                        <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Stabile deltidsmedarbejdere til aften-, weekend- eller faste ugentlige vagter. Ideelt til spidsbelastninger uden faste omkostninger.') }}</p>
+                    </div>
+                    <ul class="text-xs text-ink/90 space-y-2.5 border-t border-mist pt-4">
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Fleksible vagtplaner') }}</span></li>
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Ingen binding eller oprettelsesgebyr') }}</span></li>
+                        <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Månedlig samlet fakturering') }}</span></li>
+                    </ul>
+                </x-card>
+            </div>
         </div>
     </section>
 
@@ -20,6 +77,7 @@
         <div class="brand-divider-mist"></div>
     </div>
 
+    <!-- Specialized Sectors & Roles Section -->
     <section 
         class="py-16 sm:py-20 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         x-data="{
@@ -42,60 +100,6 @@
             else if (h === 'office') activeSector = 'canteen';
         })"
     >
-        <!-- 3 Specific Service Models: Top Section directly under Services & Sectors Header -->
-        <div class="grid md:grid-cols-3 gap-8 mb-20 sm:mb-24">
-            <!-- 1. Temporary Staff: Burgundy 5px top border -->
-            <x-card variant="sand" hover="true" accent="burgundy" class="service-card service-card-temp flex flex-col justify-between p-8">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
-                        <x-heroicon-o-clock class="w-6 h-6 text-burgundy" />
-                    </div>
-                    <div class="text-xs font-bold text-burgundy uppercase tracking-wider mb-1">{{ __('Vikarbemanding') }}</div>
-                    <h2 class="text-xl font-bold text-navy mb-3">{{ __('Akut og kortvarig vikardækning') }}</h2>
-                    <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Dækning fra dag til dag ved akut sygdom, ferie eller uventet spidsbelastning. Vores vikarer er klar med få timers varsel.') }}</p>
-                </div>
-                <ul class="text-xs text-ink/90 space-y-2.5 border-t border-mist pt-4">
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Under 2 timer') }} {{ __('responstid') }}</span></li>
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Digital time- & QR-registrering') }}</span></li>
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Overenskomstmæssige vilkår') }}</span></li>
-                </ul>
-            </x-card>
-
-            <!-- 2. Permanent Hiring: Navy 5px top border -->
-            <x-card variant="sand" hover="true" accent="navy" class="service-card service-card-perm flex flex-col justify-between p-8">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
-                        <x-heroicon-o-calendar-days class="w-6 h-6 text-navy" />
-                    </div>
-                    <div class="text-xs font-bold text-navy uppercase tracking-wider mb-1">{{ __('Fast Rekruttering') }}</div>
-                    <h2 class="text-xl font-bold text-navy mb-3">{{ __('Fast rekruttering & Try & Hire') }}</h2>
-                    <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Afprøv en medarbejder i en vikarperiode før fastansættelse. Minimer ansættelsesrisikoen og find det perfekte match til din virksomhed.') }}</p>
-                </div>
-                <ul class="text-xs text-ink/90 space-y-2.5 border-t border-mist pt-4">
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Gennemtestede vikarer med referencer') }}</span></li>
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Ensartet høj faglig kvalitet') }}</span></li>
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Fuld digital kontraktstyring') }}</span></li>
-                </ul>
-            </x-card>
-
-            <!-- 3. Part-Time Staff: Teal 5px top border -->
-            <x-card variant="sand" hover="true" accent="teal" class="service-card service-card-part flex flex-col justify-between p-8">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
-                        <x-heroicon-o-user-group class="w-6 h-6 text-teal" />
-                    </div>
-                    <div class="text-xs font-bold text-teal uppercase tracking-wider mb-1">{{ __('Deltidsbemanding') }}</div>
-                    <h2 class="text-xl font-bold text-navy mb-3">{{ __('Fleksibel deltidsbemanding') }}</h2>
-                    <p class="text-sm text-ink/80 leading-relaxed mb-6">{{ __('Stabile deltidsmedarbejdere til aften-, weekend- eller faste ugentlige vagter. Ideelt til spidsbelastninger uden faste omkostninger.') }}</p>
-                </div>
-                <ul class="text-xs text-ink/90 space-y-2.5 border-t border-mist pt-4">
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Fleksible vagtplaner') }}</span></li>
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Ingen binding eller oprettelsesgebyr') }}</span></li>
-                    <li class="flex items-center gap-2 font-medium"><x-heroicon-s-check-circle class="w-4 h-4 text-teal shrink-0" /><span>{{ __('Månedlig samlet fakturering') }}</span></li>
-                </ul>
-            </x-card>
-        </div>
-
         <!-- Section Header for Specialized Sectors & Roles -->
         <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <h2 class="text-3xl sm:text-4xl font-black text-navy tracking-tight mb-2">
