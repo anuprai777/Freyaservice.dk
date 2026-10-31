@@ -156,6 +156,8 @@ class HomepageSeoTest extends TestCase
         $response->assertSee('Hvordan kvalitetssikres og godkendes vikarerne?');
 
         // Structured data JSON-LD EmploymentAgency + FAQPage
+        // The @@ escape keeps Blade 13's @context directive from compiling the JSON-LD key.
+        $response->assertSee('"@context": "https://schema.org"', false);
         $response->assertSee('"@type": "EmploymentAgency"', false);
         $response->assertSee('"@type": "FAQPage"', false);
         $response->assertSee('"telephone": "+4528260926"', false);

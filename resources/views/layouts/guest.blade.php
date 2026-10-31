@@ -52,16 +52,22 @@
                 <img src="{{ asset('images/logo.png') }}" alt="Freya Service" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
-            <!-- Language Switcher -->
-            <div class="flex items-center gap-1 bg-sand p-1 rounded-xl shadow-xs border border-mist text-xs">
-                <a href="{{ route('locale.switch', 'da') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
-                    <span>🇩🇰</span>
-                    <span>Dansk</span>
+            <div class="flex items-center gap-2">
+                <a href="{{ route('home') }}" class="px-3 py-2 rounded-xl border border-mist bg-sand text-xs font-semibold text-burgundy transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-burgundy">
+                    {{ __('Hjem') }}
                 </a>
-                <a href="{{ route('locale.switch', 'en') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
-                    <span>🇬🇧</span>
-                    <span>English</span>
-                </a>
+
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-1 bg-sand p-1 rounded-xl shadow-xs border border-mist text-xs">
+                    <a href="{{ route('locale.switch', 'da') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
+                        <span>🇩🇰</span>
+                        <span>Dansk</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
+                        <span>🇬🇧</span>
+                        <span>English</span>
+                    </a>
+                </div>
             </div>
         </div>
 

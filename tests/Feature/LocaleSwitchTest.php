@@ -23,6 +23,24 @@ class LocaleSwitchTest extends TestCase
         $response->assertRedirect('/');
     }
 
+    public function test_guest_login_has_home_link_and_password_visibility_control_in_both_locales(): void
+    {
+        $this->withSession(['locale' => 'en'])
+            ->get('/login')
+            ->assertOk()
+            ->assertSee('Home')
+            ->assertSee('href="' . route('home') . '"', false)
+            ->assertSee('Show password')
+            ->assertSee('Hide password');
+
+        $this->withSession(['locale' => 'da'])
+            ->get('/login')
+            ->assertOk()
+            ->assertSee('Hjem')
+            ->assertSee('Vis adgangskode')
+            ->assertSee('Skjul adgangskode');
+    }
+
     public function test_admin_dashboard_renders_in_english_and_danish(): void
     {
         $admin = User::factory()->create([

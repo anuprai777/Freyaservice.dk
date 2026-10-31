@@ -7,6 +7,7 @@
     <div x-data="{
         email: '{{ old('email', 'freyaservicevikar@gmail.com') }}',
         password: '',
+        showPassword: false,
         fill(role) {
             this.email = 'freyaservicevikar@gmail.com';
             if (role === 'admin') this.password = 'admin123';
@@ -66,12 +67,22 @@
             <div>
                 <x-input-label for="password" :value="__('Password')" />
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                x-model="password"
-                                required autocomplete="current-password"
-                                placeholder="••••••••" />
+                <div class="relative mt-1">
+                    <x-text-input id="password" class="block w-full pe-16"
+                                    x-bind:type="showPassword ? 'text' : 'password'"
+                                    name="password"
+                                    x-model="password"
+                                    required autocomplete="current-password"
+                                    placeholder="••••••••" />
+                    <button type="button"
+                            @click="showPassword = !showPassword"
+                            :aria-label="showPassword ? @js(__('Hide password')) : @js(__('Show password'))"
+                            aria-controls="password"
+                            :aria-pressed="showPassword"
+                            class="absolute inset-y-0 end-0 flex items-center rounded-e-xl px-3 text-xs font-semibold text-burgundy hover:text-burgundy-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-burgundy">
+                        <span x-text="showPassword ? @js(__('Hide')) : @js(__('Show'))"></span>
+                    </button>
+                </div>
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
