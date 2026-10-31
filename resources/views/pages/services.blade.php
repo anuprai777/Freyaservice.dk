@@ -391,7 +391,7 @@
                 <!-- Top High-Quality Topic Image -->
                 <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
-                        src="{{ asset('images/chef-pastry-piping.jpg') }}"
+                        src="{{ asset('images/catering-industry.jpg') }}"
                         alt="{{ __('Catering') }}"
                         loading="lazy"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
@@ -486,7 +486,7 @@
                 <!-- Top High-Quality Topic Image -->
                 <div class="relative w-full aspect-[16/10] overflow-hidden bg-sand-200">
                     <img
-                        src="{{ asset('images/banquet-plating-rack.jpg') }}"
+                        src="{{ asset('images/events-banquet-industry.jpg') }}"
                         alt="{{ __('Events & Banquets') }}"
                         loading="lazy"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
