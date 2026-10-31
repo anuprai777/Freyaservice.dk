@@ -140,7 +140,8 @@ class WorkerShiftsVisibilityTest extends TestCase
         $response = $this->actingAs($this->workerUser)->get(route('worker.dashboard'));
 
         $response->assertOk();
-        $response->assertSee('Åbne vagter oprettet af kunder');
+        $response->assertSee('Ledige vagter fra Grand Hotel A/S');
+        $response->assertSee('Registreret virksomhed');
         $response->assertSee('Opvasker');
         $response->assertSee('Grand Hotel A/S');
         $response->assertSee('København V');
@@ -167,6 +168,9 @@ class WorkerShiftsVisibilityTest extends TestCase
         $response = $this->actingAs($this->workerUser)->get(route('worker.offers.index'));
 
         $response->assertOk();
+        $response->assertSee('Ledige vagter fra Grand Hotel A/S');
+        $response->assertSee('Registreret virksomhed:');
+        $response->assertSee('Grand Hotel A/S');
         $response->assertSee('Lagerarbejder');
         $response->assertSee('Aarhus C');
         $response->assertSee('Accepter Vagt');
@@ -222,5 +226,32 @@ class WorkerShiftsVisibilityTest extends TestCase
         $dashboardResponse = $this->actingAs($this->workerUser)->get(route('worker.dashboard'));
         $dashboardResponse->assertSee('Dine accepterede opgaver og vagter');
         $dashboardResponse->assertSee('Tjener');
+    }
+
+    public function test_worker_sees_registered_company_name_in_english_on_offers_page(): void
+    {
+        $staffRequest = StaffRequest::create([
+            'client_id' => $this->clientProfile->id,
+            'request_type' => StaffRequestType::TEMPORARY_COVER,
+            'role' => 'Kok',
+            'workers_needed' => 1,
+            'reason' => StaffRequestReason::PEAK,
+            'location' => 'Strandvejen 5',
+            'city' => 'København Ø',
+            'postcode' => '2100',
+            'start_date' => now()->addDays(3)->toDateString(),
+            'status' => StaffRequestStatus::NEW,
+            'hourly_rate_offered' => 280.00,
+        ]);
+
+        $response = $this->actingAs($this->workerUser)
+            ->withSession(['locale' => 'en'])
+            ->get(route('worker.offers.index'));
+
+        $response->assertOk();
+        $response->assertSee('Open Shifts from Grand Hotel A/S');
+        $response->assertSee('Registered Company:');
+        $response->assertSee('Grand Hotel A/S');
+        $response->assertDontSee('Open Shifts Posted by Clients');
     }
 }

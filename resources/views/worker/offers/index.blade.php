@@ -55,11 +55,15 @@
                         <div class="space-y-1.5 flex-1">
                             <div class="flex items-center gap-2 flex-wrap">
                                 <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-burgundy/10 text-burgundy border border-burgundy/20">{{ __('Direkte tilbud') }}</span>
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#C9A24B]/15 text-[#8C6C27] border border-[#C9A24B]/30">
+                                    <x-heroicon-s-check-badge class="w-3.5 h-3.5 text-[#C9A24B]" />
+                                    <span>{{ $offer->staffRequest->client->company_name ?? __('Registreret virksomhed') }}</span>
+                                </span>
                                 <h3 class="text-base font-bold text-navy">{{ $offer->staffRequest->role }}</h3>
                             </div>
                             <div class="flex items-center gap-2 text-xs text-ink/75 flex-wrap">
-                                <span class="inline-flex items-center gap-1">
-                                    <x-heroicon-o-building-office-2 class="w-3.5 h-3.5 text-ink/40 shrink-0" />
+                                <span class="inline-flex items-center gap-1 font-semibold text-navy">
+                                    <x-heroicon-o-building-office-2 class="w-3.5 h-3.5 text-burgundy shrink-0" />
                                     <span>{{ $offer->staffRequest->client->company_name ?? __('Virksomhed') }}</span>
                                 </span>
                                 <span>•</span>
@@ -105,19 +109,32 @@
         </x-card>
 
         <!-- Open Client Requests Section -->
+        @php
+            $uniqueCompanies = $openRequests->map(fn($r) => $r->client->company_name ?? null)->filter()->unique()->values();
+        @endphp
         <x-card variant="white" class="space-y-4">
             <x-slot:header>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 w-full">
                     <div class="flex items-center gap-2.5">
                         <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
-                            <x-heroicon-o-sparkles class="w-4 h-4 text-emerald-700" />
+                            <x-heroicon-o-building-office-2 class="w-4 h-4 text-emerald-700" />
                         </div>
                         <div>
                             <h2 class="text-base font-bold text-navy flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                <span>{{ __('Ledige vagter oprettet af kunder') }} ({{ $openRequests->count() }})</span>
+                                @if($uniqueCompanies->count() === 1)
+                                    <span>{{ __('Ledige vagter fra') }} {{ $uniqueCompanies->first() }} ({{ $openRequests->count() }})</span>
+                                @else
+                                    <span>{{ __('Ledige vagter fra registrerede virksomheder') }} ({{ $openRequests->count() }})</span>
+                                @endif
                             </h2>
-                            <p class="text-xs text-ink/60 mt-0.5">{{ __('Kunder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt for at reservere din plads med det samme.') }}</p>
+                            <p class="text-xs text-ink/60 mt-0.5">
+                                @if($uniqueCompanies->count() === 1)
+                                    {{ __('Registreret virksomhed:') }} <strong class="text-navy">{{ $uniqueCompanies->first() }}</strong>. {{ __('Søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt for at reservere din plads med det samme.') }}
+                                @else
+                                    {{ __('Registrerede virksomheder søger personale til disse opgaver lige nu. Vælg og accepter en vagt for at reservere din plads med det samme.') }}
+                                @endif
+                            </p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 text-xs">
@@ -140,6 +157,19 @@
                     @endphp
                     <x-card variant="sand" hover="true" class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div class="space-y-2 flex-1">
+                            <!-- Prominent Registered Company Badge -->
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-burgundy/10 text-burgundy border border-burgundy/20">
+                                    <x-heroicon-s-check-badge class="w-3.5 h-3.5 text-[#C9A24B]" />
+                                    <span>{{ __('Registreret virksomhed:') }} <strong>{{ $req->client->company_name ?? __('Registreret virksomhed') }}</strong></span>
+                                </span>
+                                @if(!empty($req->client->cvr))
+                                    <span class="text-[10px] text-ink/60 font-semibold bg-white px-2 py-0.5 rounded border border-mist">
+                                        CVR: {{ $req->client->cvr }}
+                                    </span>
+                                @endif
+                            </div>
+
                             <div class="flex items-center gap-2 flex-wrap">
                                 <h3 class="text-base font-bold text-navy capitalize">{{ $req->role }}</h3>
                                 @if($isLocal)
@@ -159,15 +189,15 @@
                                         <span>{{ __('Akut') }}</span>
                                     </span>
                                 @endif
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sand text-navy border border-mist">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-white text-navy border border-mist">
                                     {{ $openSpots }} {{ __('ledige pladser ud af') }} {{ $req->workers_needed }}
                                 </span>
                             </div>
 
                             <div class="text-xs text-ink/75 flex items-center gap-2 flex-wrap">
-                                <span class="inline-flex items-center gap-1">
-                                    <x-heroicon-o-building-office-2 class="w-3.5 h-3.5 text-ink/40 shrink-0" />
-                                    <strong>{{ $req->client->company_name ?? __('Virksomhed') }}</strong>
+                                <span class="inline-flex items-center gap-1 font-semibold text-navy">
+                                    <x-heroicon-o-building-office-2 class="w-3.5 h-3.5 text-burgundy shrink-0" />
+                                    <span>{{ $req->client->company_name ?? __('Virksomhed') }}</span>
                                 </span>
                                 <span>•</span>
                                 <span class="inline-flex items-center gap-1">

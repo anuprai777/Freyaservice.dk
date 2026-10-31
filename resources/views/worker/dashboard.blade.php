@@ -227,21 +227,34 @@
             </x-card>
         @endif
 
-        <!-- Open Client Staff Requests Queue -->
+        <!-- Open Staff Requests from Registered Companies -->
         @if($openRequests->isNotEmpty())
+            @php
+                $dashboardUniqueCompanies = $openRequests->map(fn($r) => $r->client->company_name ?? null)->filter()->unique()->values();
+            @endphp
             <x-card variant="white" class="space-y-4">
                 <x-slot:header>
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 w-full">
                         <div class="flex items-center gap-2.5">
                             <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
-                                <x-heroicon-o-sparkles class="w-4 h-4 text-emerald-700" />
+                                <x-heroicon-o-building-office-2 class="w-4 h-4 text-emerald-700" />
                             </div>
                             <div>
                                 <h2 class="text-base font-bold text-navy flex items-center gap-2">
                                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    <span>{{ __('Åbne vagter oprettet af kunder') }} ({{ $openRequests->count() }})</span>
+                                    @if($dashboardUniqueCompanies->count() === 1)
+                                        <span>{{ __('Ledige vagter fra') }} {{ $dashboardUniqueCompanies->first() }} ({{ $openRequests->count() }})</span>
+                                    @else
+                                        <span>{{ __('Ledige vagter fra registrerede virksomheder') }} ({{ $openRequests->count() }})</span>
+                                    @endif
                                 </h2>
-                                <p class="text-xs text-ink/60 mt-0.5">{{ __('Kunder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt med ét klik.') }}</p>
+                                <p class="text-xs text-ink/60 mt-0.5">
+                                    @if($dashboardUniqueCompanies->count() === 1)
+                                        {{ __('Registreret virksomhed:') }} <strong class="text-navy">{{ $dashboardUniqueCompanies->first() }}</strong>. {{ __('Søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt med ét klik.') }}
+                                    @else
+                                        {{ __('Registrerede virksomheder søger vikarer til disse opgaver lige nu. Vælg og accepter en vagt med ét klik.') }}
+                                    @endif
+                                </p>
                             </div>
                         </div>
                         <a href="{{ route('worker.offers.index') }}" class="inline-flex items-center gap-1 text-xs font-bold text-burgundy hover:text-burgundy-dark transition">
@@ -264,6 +277,17 @@
                             <div>
                                 <div class="flex justify-between items-start gap-2">
                                     <div>
+                                        <div class="flex items-center gap-1.5 flex-wrap mb-1.5">
+                                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-burgundy/10 text-burgundy border border-burgundy/20">
+                                                <x-heroicon-s-check-badge class="w-3 h-3 text-[#C9A24B]" />
+                                                <span>{{ $req->client->company_name ?? __('Registreret virksomhed') }}</span>
+                                            </span>
+                                            @if(!empty($req->client->cvr))
+                                                <span class="text-[9px] text-ink/60 font-semibold bg-white px-1.5 py-0.5 rounded border border-mist">
+                                                    CVR: {{ $req->client->cvr }}
+                                                </span>
+                                            @endif
+                                        </div>
                                         <div class="flex items-center gap-2 flex-wrap">
                                             <h3 class="text-sm font-bold text-navy capitalize">{{ $req->role }}</h3>
                                             @if($isLocal)
