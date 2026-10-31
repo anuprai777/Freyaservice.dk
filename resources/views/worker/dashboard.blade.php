@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+            <div class="space-y-2">
+                <h1 class="text-2xl sm:text-3xl font-black text-navy tracking-tight">{{ __('Velkommen') }}, {{ Auth::user()->name }}</h1>
+
+                <!-- Status Badges & Ratings (Placed below Welcome) -->
+                <div class="flex items-center gap-2 flex-wrap">
                     <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase
                         @if($worker->status === 'approved') bg-emerald-100 text-emerald-800 border border-emerald-200
                         @elseif($worker->status === 'pending') bg-amber-100 text-amber-800 border border-amber-200
@@ -27,8 +30,7 @@
                     </span>
                 </div>
 
-                <h1 class="text-2xl sm:text-3xl font-black text-navy tracking-tight">{{ __('Velkommen') }}, {{ Auth::user()->name }}</h1>
-                <p class="text-xs text-ink/70 mt-0.5 flex items-center gap-2 flex-wrap">
+                <p class="text-xs text-ink/70 flex items-center gap-2 flex-wrap">
                     <span class="inline-flex items-center gap-1">
                         <x-heroicon-o-map-pin class="w-3.5 h-3.5 text-ink/40" />
                         <span>{{ __('By') }}: <strong>{{ $worker->city }}</strong></span>
@@ -43,7 +45,7 @@
                 </p>
             </div>
 
-            <div class="flex items-center gap-2.5 w-full sm:w-auto">
+            <div class="flex items-center gap-2.5 w-full sm:w-auto shrink-0">
                 <a href="{{ route('worker.offers.index') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-mist bg-white hover:bg-sand text-navy text-xs font-bold shadow-xs transition">
                     <x-heroicon-o-briefcase class="w-4 h-4 text-burgundy" />
                     <span>{{ __('Ledige vagter') }} ({{ $pendingOffers->count() + $openRequests->count() }})</span>

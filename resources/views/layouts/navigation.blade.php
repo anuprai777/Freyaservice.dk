@@ -8,22 +8,21 @@
                     <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service" class="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform">
                 </a>
 
-                <!-- Portal Context Badge -->
-                <div class="hidden xl:block h-5 w-px bg-white/15"></div>
-                <span class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide shadow-xs
-                    @if(Auth::user()->isAdmin()) bg-white/10 text-sand-100 border border-white/15
-                    @elseif(Auth::user()->isClient()) bg-[#C9A24B]/15 text-[#C9A24B] border border-[#C9A24B]/30
-                    @else bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 @endif">
-                    <span class="w-1.5 h-1.5 rounded-full
-                        @if(Auth::user()->isAdmin()) bg-sand-200
-                        @elseif(Auth::user()->isClient()) bg-[#C9A24B]
-                        @else bg-emerald-400 animate-pulse @endif"></span>
-                    <span>
-                        @if(Auth::user()->isAdmin()) {{ __('Admin Portal') }}
-                        @elseif(Auth::user()->isClient()) {{ __('Virksomhedsportal') }}
-                        @else {{ __('Vikarportal') }} @endif
+                @if(Auth::user()->isAdmin() || Auth::user()->isClient())
+                    <!-- Portal Context Badge -->
+                    <div class="hidden xl:block h-5 w-px bg-white/15"></div>
+                    <span class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide shadow-xs
+                        @if(Auth::user()->isAdmin()) bg-white/10 text-sand-100 border border-white/15
+                        @elseif(Auth::user()->isClient()) bg-[#C9A24B]/15 text-[#C9A24B] border border-[#C9A24B]/30 @endif">
+                        <span class="w-1.5 h-1.5 rounded-full
+                            @if(Auth::user()->isAdmin()) bg-sand-200
+                            @elseif(Auth::user()->isClient()) bg-[#C9A24B] @endif"></span>
+                        <span>
+                            @if(Auth::user()->isAdmin()) {{ __('Admin Portal') }}
+                            @elseif(Auth::user()->isClient()) {{ __('Virksomhedsportal') }} @endif
+                        </span>
                     </span>
-                </span>
+                @endif
             </div>
 
             <!-- Navigation Links by Role (Desktop) -->
