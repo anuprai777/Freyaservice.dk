@@ -2,15 +2,8 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-burgundy/10 text-burgundy border border-burgundy/20">
-                        <span class="w-1.5 h-1.5 rounded-full bg-burgundy"></span>
-                        {{ __('Backoffice Portal') }}
-                    </span>
-                    <span class="text-xs text-ink/60 font-medium hidden sm:inline">• {{ __('Live overvågning') }}</span>
-                </div>
                 <h1 class="text-2xl sm:text-3xl font-black text-navy tracking-tight">{{ __('Administration & Vagtstyring') }}</h1>
-                <p class="text-xs text-ink/70 mt-0.5">{{ __('FreyaService Backoffice • Live overvågning af kunder, vikarer og bemanding.') }}</p>
+                <p class="text-xs text-ink/70 mt-0.5">{{ __('Overblik over kunder, vikarer og bemanding.') }}</p>
             </div>
             <div class="flex items-center gap-2.5 w-full sm:w-auto">
                 <a href="{{ route('admin.requests.index') }}" class="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-burgundy hover:bg-burgundy-dark text-white font-bold text-xs shadow-sm hover:shadow-md transition">

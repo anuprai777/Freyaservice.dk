@@ -251,7 +251,7 @@ class LocaleSwitchTest extends TestCase
         $portalResponse->assertSee('/locale/da');
         $portalResponse->assertSee('/locale/en');
         $portalResponse->assertSee('aria-current="true"', false);
-        $portalResponse->assertSee('Admin Portal');
+        $portalResponse->assertSee('Administration & Vagtstyring');
 
         // Public and login pages should contain language switcher
         auth()->logout();
