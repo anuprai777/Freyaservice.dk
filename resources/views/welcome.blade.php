@@ -768,9 +768,6 @@
                                 {{ $isEn 
                                     ? 'Thorough commercial cleaners for daily office maintenance, kitchen deep cleaning, hotels, and warehouse facility services.' 
                                     : 'Grundige rengøringsassistenter til daglig kontorrengøring, dybderengøring af storkøkkener, hoteller og lagerfaciliteter.' }}
-                                <span class="block mt-1 text-xs text-brand-muted">
-                                    <a href="{{ route('industries') }}#warehouse" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Warehouse & facility services' : 'Lager- & erhvervsrengøring' }}</a>
-                                </span>
                             </p>
                         </div>
 
@@ -816,9 +813,6 @@
                                 {{ $isEn 
                                     ? 'Reliable kitchen assistants for mise en place, vegetable prep, cold stations, and assisting chefs during busy dining services.' 
                                     : 'Pålidelige køkkenmedhjælpere til mise en place, grøntklargøring, anretning og assistance til kokke under travle serveringer.' }}
-                                <span class="block mt-1 text-xs text-brand-muted">
-                                    <a href="{{ route('industries') }}#restaurant" class="underline hover:text-[#5A1429]">{{ $isEn ? 'View restaurant staffing' : 'Se restaurantbemanding' }}</a>
-                                </span>
                             </p>
                         </div>
 
@@ -909,9 +903,6 @@
                                 {{ $isEn 
                                     ? 'Welcoming hostesses, hosts, and stewards ensuring first-class guest reception, cloaking, and VIP hospitality services for premier hotels.' 
                                     : 'Imødekommende værter, værtinder og stewards, der sikrer førsteklasses gæstemodtagelse, garderobe og VIP-service på hoteller.' }}
-                                <span class="block mt-1 text-xs text-brand-muted">
-                                    <a href="{{ route('industries') }}#hotel" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Hotel & Hospitality Staffing' : 'Hotel- & Værtindebemanding' }}</a>
-                                </span>
                             </p>
                         </div>
 
@@ -1047,9 +1038,6 @@
                                 {{ $isEn 
                                     ? 'Flexible canteen personnel for corporate office lunch buffets, salad bars, employee service, and kitchen sanitation.' 
                                     : 'Fleksible kantinemedarbejdere til frokostbuffeter i virksomheder, salatbar, gæstebetjening og god køkkenhygiejne.' }}
-                                <span class="block mt-1 text-xs text-brand-muted">
-                                    <a href="{{ route('industries') }}#office" class="underline hover:text-[#5A1429]">{{ $isEn ? 'Corporate Office Canteens' : 'Kantineservice til kontorer' }}</a>
-                                </span>
                             </p>
                         </div>
 

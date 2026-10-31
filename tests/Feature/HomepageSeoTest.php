@@ -132,12 +132,12 @@ class HomepageSeoTest extends TestCase
     {
         $response = $this->get('/');
 
-        // Industries section with individual anchor links and descriptions
+        // Industries section with role cards and descriptions
         $response->assertSee('id="industries"', false);
-        $response->assertSee('/industries#hotel');
-        $response->assertSee('/industries#restaurant');
-        $response->assertSee('/industries#warehouse');
-        $response->assertSee('/industries#office');
+        $response->assertSee('Rengøringsassistent');
+        $response->assertSee('Køkkenmedhjælper');
+        $response->assertSee('Hostess / Stewards');
+        $response->assertSee('Kantine');
 
         // How it works 3-step ordered list
         $response->assertSee('id="how-it-works"', false);

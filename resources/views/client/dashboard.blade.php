@@ -271,7 +271,7 @@
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full">
                         <div>
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xs font-black tracking-wider uppercase text-burgundy">2 • {{ __('KANBAN BY STATUS') }}</span>
+                                <span class="text-xs font-black tracking-wider uppercase text-burgundy">2 · {{ __('KANBAN BY STATUS') }}</span>
                             </div>
                             <h2 class="text-base sm:text-lg font-bold text-navy">{{ __('Dine bemandingsforespørgsler') }}</h2>
                             <p class="text-xs text-ink/70 mt-0.5">{{ __('Overvåg status for aktuelle og afsluttede bestillinger.') }}</p>
@@ -321,50 +321,50 @@
                 <!-- 1. KANBAN BOARD VIEW -->
                 <div x-show="viewMode === 'kanban'" class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                     <!-- Column 1: NEW REQUEST -->
-                    <div class="bg-[#FAF5F2] border border-[#EADBCE] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
-                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-navy/80 px-1">
-                            <span>{{ __('NEW REQUEST') }} • {{ $kanban['new']->count() }}</span>
+                    <div class="bg-[#EDE5DE] border border-[#E3D7CC] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
+                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-[#5A4E47] px-1">
+                            <span>{{ __('NEW REQUEST') }} · {{ $kanban['new']->count() }}</span>
                         </div>
 
                         @forelse($kanban['new'] as $req)
-                            <div class="bg-white rounded-2xl p-4 border border-[#EADBCE]/80 shadow-2xs space-y-2.5 transition hover:shadow-xs">
+                            <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-2xs space-y-2.5 transition hover:shadow-xs">
                                 <div class="flex items-start justify-between gap-2">
-                                    <h4 class="text-sm sm:text-base font-extrabold text-navy capitalize">
+                                    <h4 class="text-base font-extrabold text-[#1F1914] capitalize">
                                         {{ $req->role }}{{ $req->workers_needed > 1 ? ' × ' . $req->workers_needed : '' }}
                                     </h4>
                                     @if($req->is_urgent)
-                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200 shrink-0">
+                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#FDE8E8] text-[#9B1C1C] shrink-0">
                                             {{ __('URGENT') }}
                                         </span>
                                     @endif
                                 </div>
 
-                                <div class="text-xs text-ink/75 font-medium">
+                                <div class="text-xs text-[#5A4E47] font-medium">
                                     {{ $req->start_date->format('d.m.Y') }}@if($req->end_date && $req->end_date->ne($req->start_date))–{{ $req->end_date->format('d.m.Y') }}@endif
-                                    @if($req->start_time && $req->end_time) • {{ substr($req->start_time, 0, 5) }}–{{ substr($req->end_time, 0, 5) }} @endif
-                                    • {{ $req->workers_needed }} {{ $req->workers_needed > 1 ? __('personer') : __('person') }}
+                                    @if($req->start_time && $req->end_time) · {{ substr($req->start_time, 0, 5) }}–{{ substr($req->end_time, 0, 5) }} @endif
+                                    · {{ $req->workers_needed }} {{ $req->workers_needed > 1 ? __('personer') : __('person') }}
                                 </div>
 
-                                <div class="text-xs text-ink/60">
-                                    {{ $req->request_type->label() }} • {{ __('Oprettet') }} {{ $req->created_at->diffForHumans() }}
+                                <div class="text-xs text-[#7A6B63]">
+                                    {{ $req->request_type->label() }} · {{ __('Oprettet') }} {{ $req->created_at->diffForHumans() }}
                                 </div>
 
-                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-burgundy text-white shadow-xs transition mt-2">
+                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-[#480F20] text-white shadow-xs transition mt-2">
                                     <span>{{ __('Details & QR') }}</span>
                                     <span class="text-xs">&rarr;</span>
                                 </a>
                             </div>
                         @empty
-                            <div class="border-2 border-dashed border-[#DAC7B7] rounded-2xl p-8 text-center text-xs font-medium text-ink/50 my-auto bg-white/40">
+                            <div class="border border-dashed border-[#C8B8AB] rounded-2xl p-8 text-center text-xs font-medium text-[#7C6E65] my-auto bg-transparent">
                                 {{ __('No new requests yet') }}
                             </div>
                         @endforelse
                     </div>
 
                     <!-- Column 2: UNDER PROCESSING -->
-                    <div class="bg-[#FAF5F2] border border-[#EADBCE] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
-                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-navy/80 px-1">
-                            <span>{{ __('UNDER PROCESSING') }} • {{ $kanban['in_progress']->count() }}</span>
+                    <div class="bg-[#EDE5DE] border border-[#E3D7CC] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
+                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-[#5A4E47] px-1">
+                            <span>{{ __('UNDER PROCESSING') }} · {{ $kanban['in_progress']->count() }}</span>
                         </div>
 
                         @forelse($kanban['in_progress'] as $req)
@@ -374,53 +374,53 @@
                                 $offered = $assignments->where('status', \App\Enums\AssignmentStatus::OFFERED)->count();
                                 $rejected = $assignments->whereIn('status', [\App\Enums\AssignmentStatus::DECLINED, \App\Enums\AssignmentStatus::CANCELLED])->count();
                             @endphp
-                            <div class="bg-white rounded-2xl p-4 border border-[#EADBCE]/80 shadow-2xs space-y-2.5 transition hover:shadow-xs">
+                            <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-2xs space-y-2.5 transition hover:shadow-xs">
                                 <div class="flex items-start justify-between gap-2">
-                                    <h4 class="text-sm sm:text-base font-extrabold text-navy capitalize">
+                                    <h4 class="text-base font-extrabold text-[#1F1914] capitalize">
                                         {{ $req->role }}{{ $req->workers_needed > 1 ? ' × ' . $req->workers_needed : '' }}
                                     </h4>
                                     @if($req->is_urgent)
-                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200 shrink-0">
+                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#FDE8E8] text-[#9B1C1C] shrink-0">
                                             {{ __('URGENT') }}
                                         </span>
                                     @endif
                                 </div>
 
-                                <div class="text-xs text-ink/75 font-medium">
+                                <div class="text-xs text-[#5A4E47] font-medium">
                                     {{ $req->start_date->format('d.m.Y') }}@if($req->end_date && $req->end_date->ne($req->start_date))–{{ $req->end_date->format('d.m.Y') }}@endif
-                                    • {{ $req->request_type->label() }}
+                                    · {{ $req->request_type->label() }}
                                 </div>
 
                                 <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#DEF7EC] text-[#03543F]">
                                         {{ $accepted }} {{ __('accepted') }}
                                     </span>
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#FEF08A] text-[#723B13]">
                                         {{ $offered }} {{ __('offered') }}
                                     </span>
                                     @if($rejected > 0)
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800 border border-rose-200">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#FDE8E8] text-[#9B1C1C]">
                                             {{ $rejected }} {{ __('rejected') }}
                                         </span>
                                     @endif
                                 </div>
 
-                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-burgundy text-white shadow-xs transition mt-2">
+                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-[#480F20] text-white shadow-xs transition mt-2">
                                     <span>{{ __('Details & QR') }}</span>
                                     <span class="text-xs">&rarr;</span>
                                 </a>
                             </div>
                         @empty
-                            <div class="border-2 border-dashed border-[#DAC7B7] rounded-2xl p-8 text-center text-xs font-medium text-ink/50 my-auto bg-white/40">
+                            <div class="border border-dashed border-[#C8B8AB] rounded-2xl p-8 text-center text-xs font-medium text-[#7C6E65] my-auto bg-transparent">
                                 {{ __('No orders under processing yet') }}
                             </div>
                         @endforelse
                     </div>
 
                     <!-- Column 3: CONFIRMED -->
-                    <div class="bg-[#FAF5F2] border border-[#EADBCE] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
-                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-navy/80 px-1">
-                            <span>{{ __('CONFIRMED') }} • {{ $kanban['confirmed']->count() }}</span>
+                    <div class="bg-[#EDE5DE] border border-[#E3D7CC] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
+                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-[#5A4E47] px-1">
+                            <span>{{ __('CONFIRMED') }} · {{ $kanban['confirmed']->count() }}</span>
                         </div>
 
                         @forelse($kanban['confirmed'] as $req)
@@ -428,34 +428,34 @@
                                 $assignments = $req->shifts->flatMap->assignments;
                                 $accepted = $assignments->whereIn('status', [\App\Enums\AssignmentStatus::ACCEPTED, \App\Enums\AssignmentStatus::ACTIVE, \App\Enums\AssignmentStatus::COMPLETED])->count();
                             @endphp
-                            <div class="bg-white rounded-2xl p-4 border border-[#EADBCE]/80 shadow-2xs space-y-2.5 transition hover:shadow-xs">
+                            <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-2xs space-y-2.5 transition hover:shadow-xs">
                                 <div class="flex items-start justify-between gap-2">
-                                    <h4 class="text-sm sm:text-base font-extrabold text-navy capitalize">
+                                    <h4 class="text-base font-extrabold text-[#1F1914] capitalize">
                                         {{ $req->role }}{{ $req->workers_needed > 1 ? ' × ' . $req->workers_needed : '' }}
                                     </h4>
-                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
+                                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
                                         {{ $req->status->label() }}
                                     </span>
                                 </div>
 
-                                <div class="text-xs text-ink/75 font-medium">
+                                <div class="text-xs text-[#5A4E47] font-medium">
                                     {{ $req->start_date->format('d.m.Y') }}@if($req->end_date && $req->end_date->ne($req->start_date))–{{ $req->end_date->format('d.m.Y') }}@endif
-                                    @if($req->start_time && $req->end_time) • {{ substr($req->start_time, 0, 5) }}–{{ substr($req->end_time, 0, 5) }} @endif
+                                    @if($req->start_time && $req->end_time) · {{ substr($req->start_time, 0, 5) }}–{{ substr($req->end_time, 0, 5) }} @endif
                                 </div>
 
                                 <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#DEF7EC] text-[#03543F]">
                                         {{ $accepted }} / {{ $req->workers_needed }} {{ __('bemandet') }}
                                     </span>
                                 </div>
 
-                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-burgundy text-white shadow-xs transition mt-2">
+                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-[#480F20] text-white shadow-xs transition mt-2">
                                     <span>{{ __('Details & QR') }}</span>
                                     <span class="text-xs">&rarr;</span>
                                 </a>
                             </div>
                         @empty
-                            <div class="border-2 border-dashed border-[#DAC7B7] rounded-2xl p-8 text-center text-xs font-medium text-ink/50 my-auto bg-white/40">
+                            <div class="border border-dashed border-[#C8B8AB] rounded-2xl p-8 text-center text-xs font-medium text-[#7C6E65] my-auto bg-transparent">
                                 {{ __('No confirmed orders yet') }}
                             </div>
                         @endforelse
