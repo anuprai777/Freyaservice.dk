@@ -111,7 +111,7 @@ class HomepageSeoTest extends TestCase
         $responseDa = $this->withSession(['locale' => 'da'])->get('/about');
         $responseDa->assertStatus(200);
         $responseDa->assertSee('Om os - Historien bag Freya Service ApS');
-        $responseDa->assertSee('Bygget på erfaring, drevet af forståelse og inspireret af mennesker');
+        $responseDa->assertSee('Bygget på erfaring. Drevet af mennesker.');
         $responseDa->assertSee('founder-portrait.jpg');
         $responseDa->assertSee('founder-meeting.jpg');
         $responseDa->assertSee('16+ års kokerfaring');
@@ -121,10 +121,10 @@ class HomepageSeoTest extends TestCase
         $responseEn = $this->withSession(['locale' => 'en'])->get('/about');
         $responseEn->assertStatus(200);
         $responseEn->assertSee('About Us - The Story Behind Freya Service ApS');
-        $responseEn->assertSee('Built on Experience, Driven by Understanding, and Inspired by People');
+        $responseEn->assertSee('Built on experience. Driven by people.');
         $responseEn->assertSee('founder-portrait.jpg');
         $responseEn->assertSee('founder-meeting.jpg');
-        $responseEn->assertSee('16+ Years Chef Experience');
+        $responseEn->assertSee('16+ years of chef experience');
         $responseEn->assertSee('Founder, Freya Service ApS');
     }
 

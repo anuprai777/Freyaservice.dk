@@ -12,8 +12,8 @@
                     : 'Efter 16 år som kok i restaurationsbranchen indså jeg noget afgørende: succesfuld service handler ikke kun om at have folk nok. Det handler om at have de rette mennesker på det rette sted. Gennem min karriere i forskellige køkkener, hoteller og restauranter oplevede jeg på nærmeste hold presset ved at drive en travl forretning.',
             ],
             [
-                'image' => 'founder-portrait.jpg',
-                'alt' => $isEn ? 'Founder of Freya Service ApS' : 'Stifter af Freya Service ApS',
+                'image' => 'canteen-industry.jpg',
+                'alt' => $isEn ? 'Corporate canteen during lunch service' : 'Virksomhedskantine under frokostservice',
                 'title' => $isEn ? 'Understanding the industry from the inside' : 'Forståelse af branchen indefra',
                 'body' => $isEn
                     ? 'Having spent 16 years on the operational side, I know that no two workplaces are alike. A busy hotel kitchen does not have the same requirements as a small restaurant, and a corporate canteen runs differently from an à la carte restaurant. Sending an available worker to fill an empty shift was never the solution. Understanding the workplace and finding the person who truly fits is.'
@@ -51,16 +51,29 @@
 
     <!-- Hero Header (Cream Background #FAF5F2) -->
     <section class="bg-[#FAF5F2] text-ink py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-[#EADBCC]" style="background-image:radial-gradient(rgba(90,20,41,0.035) 1.5px,transparent 0);background-size:24px 24px;">
-        <div class="max-w-7xl mx-auto relative z-10 text-center">
-            <div class="max-w-4xl mx-auto">
-                <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-[#5A1429] mb-5 leading-[1.1] text-balance">
-                    {{ $isEn ? 'Built on Experience, Driven by Understanding, and Inspired by People' : 'Bygget på erfaring, drevet af forståelse og inspireret af mennesker' }}
-                </h1>
-                <p class="text-base sm:text-lg text-ink/75 leading-relaxed max-w-2xl mx-auto">
-                    {{ $isEn
-                        ? 'Freya Service is a Danish staffing partner for hospitality and service businesses — built on 16 years in professional kitchens and one simple belief: the right person in the right place changes everything.'
-                        : 'Freya Service er en dansk bemandingspartner for hotel-, restaurant- og servicevirksomheder — bygget på 16 år i professionelle køkkener og en enkel overbevisning: det rette menneske på det rette sted gør hele forskellen.' }}
-                </p>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#5A1429] mb-5 leading-[1.08] text-balance">
+                        {{ $isEn ? 'Built on experience. Driven by people.' : 'Bygget på erfaring. Drevet af mennesker.' }}
+                    </h1>
+                    <p class="text-base sm:text-lg text-ink/75 leading-relaxed max-w-xl">
+                        {{ $isEn
+                            ? 'Freya Service is a Danish staffing partner for hospitality and service businesses — built on 16 years in professional kitchens and one simple belief: the right person in the right place changes everything.'
+                            : 'Freya Service er en dansk bemandingspartner for hotel-, restaurant- og servicevirksomheder — bygget på 16 år i professionelle køkkener og en enkel overbevisning: det rette menneske på det rette sted gør hele forskellen.' }}
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="{{ asset('images/founder-portrait.jpg') }}"
+                        alt="{{ $isEn ? 'Founder of Freya Service ApS' : 'Stifter af Freya Service ApS' }}"
+                        class="w-full aspect-[4/3] object-cover object-top rounded-3xl bg-[#F3E3E6]"
+                        width="720"
+                        height="540"
+                        loading="eager"
+                        decoding="async"
+                    >
+                </div>
             </div>
         </div>
     </section>
@@ -83,7 +96,7 @@
                     </h2>
                 </div>
                 <div class="lg:col-span-5">
-                    <p class="text-sm sm:text-base text-ink/75 leading-relaxed">
+                    <p class="text-base text-ink/75 leading-relaxed">
                         {{ $isEn
                             ? 'From a career in professional kitchens to a nationwide staffing partner — the values behind how we match people and workplaces.'
                             : 'Fra en karriere i professionelle køkkener til en landsdækkende bemandingspartner — værdierne bag den måde, vi matcher mennesker og arbejdspladser på.' }}
@@ -110,7 +123,7 @@
                             <h3 class="text-2xl sm:text-3xl font-black text-[#5A1429] tracking-tight leading-snug mb-4 text-balance">
                                 {{ $milestone['title'] }}
                             </h3>
-                            <p class="text-sm sm:text-base text-ink/80 leading-relaxed">
+                            <p class="text-base text-ink/80 leading-relaxed">
                                 {{ $milestone['body'] }}
                             </p>
                         </div>
@@ -139,7 +152,7 @@
                     >
                     <div class="text-left">
                         <div class="font-black text-[#5A1429] text-sm sm:text-base">{{ $isEn ? 'Founder, Freya Service ApS' : 'Stifter, Freya Service ApS' }}</div>
-                        <div class="text-xs text-ink/60 font-semibold">{{ $isEn ? '16+ Years Chef Experience • Hospitality operations' : '16+ års kokerfaring • Hotel- og restaurantdrift' }}</div>
+                        <div class="text-sm text-ink/60 font-semibold">{{ $isEn ? '16+ years of chef experience · Hospitality operations' : '16+ års kokerfaring · Hotel- og restaurantdrift' }}</div>
                     </div>
                 </div>
             </div>
