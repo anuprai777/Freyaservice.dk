@@ -219,7 +219,7 @@
                         <option value="">{{ __('Ingen specifik vikar (FreyaService finder bedste match)') }}</option>
                         @foreach($favouriteWorkers as $fav)
                             <option value="{{ $fav->id }}" {{ old('preferred_worker_id') == $fav->id ? 'selected' : '' }}>
-                                ★ {{ $fav->user->name }} ({{ __('Rating:') }} {{ $fav->rating_avg }} - {{ implode(', ', array_slice($fav->skills ?? [], 0, 3)) }})
+                                ★ {{ $fav->user->name }} ({{ __('Rating:') }} {{ $fav->rating_avg }} - {{ implode(', ', array_map(fn($s) => __($s), array_slice((array)($fav->skills ?? []), 0, 3))) }})
                             </option>
                         @endforeach
                     </select>

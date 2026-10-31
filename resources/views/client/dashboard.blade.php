@@ -84,7 +84,7 @@
                     <div class="flex flex-wrap w-full md:w-auto gap-2">
                         @foreach($activeShifts as $shift)
                             <button type="button"
-                                @click="activeQrShift = '{{ $shift->id }}'; activeQrToken = '{{ $shift->qr_secret_token }}'; activeQrTitle = '{{ addslashes($shift->staffRequest->role) }} - {{ $shift->start_at->format('H:i') }} til {{ $shift->end_at->format('H:i') }}'"
+                                @click="activeQrShift = '{{ $shift->id }}'; activeQrToken = '{{ $shift->qr_secret_token }}'; activeQrTitle = '{{ addslashes($shift->staffRequest->role) }} - {{ $shift->start_at->format('H:i') }} - {{ $shift->end_at->format('H:i') }}'"
                                 class="w-full sm:w-auto justify-center px-4 py-2.5 rounded-xl bg-burgundy hover:bg-burgundy-dark text-xs font-bold text-white shadow-sm flex items-center gap-2 transition min-h-[40px] border border-white/10">
                                 <x-heroicon-o-qr-code class="w-4 h-4 text-[#C9A24B]" />
                                 <span>{{ __('Vis QR') }}: {{ $shift->staffRequest->role }} ({{ $shift->start_at->format('H:i') }})</span>

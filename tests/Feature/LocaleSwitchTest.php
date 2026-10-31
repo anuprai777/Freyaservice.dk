@@ -341,6 +341,43 @@ class LocaleSwitchTest extends TestCase
             ->assertSee('Book Staff')
             ->assertSee('Invoices');
 
+        // Test Client Request Form in English
+        $this->actingAs($clientUser)
+            ->get(route('locale.switch', ['locale' => 'en', 'return_url' => '/client/requests/create']))
+            ->assertRedirect('/client/requests/create');
+
+        $this->actingAs($clientUser)
+            ->get('/client/requests/create')
+            ->assertOk()
+            ->assertSee('New Staff Request')
+            ->assertSee('Select Staffing Type')
+            ->assertSee('Position &amp; Number of Workers', false)
+            ->assertSee('Work Location')
+            ->assertSee('Schedule &amp; Working Hours', false)
+            ->assertSee('Additional Details &amp; Instructions', false)
+            ->assertSee('Urgent / Temporary Staff');
+
+        // Test Client Request Form back in Danish
+        $this->actingAs($clientUser)
+            ->get(route('locale.switch', ['locale' => 'da', 'return_url' => '/client/requests/create']))
+            ->assertRedirect('/client/requests/create');
+
+        $this->actingAs($clientUser)
+            ->get('/client/requests/create')
+            ->assertOk()
+            ->assertSee('Ny Rekvisition')
+            ->assertSee('Vælg type af bemanding')
+            ->assertSee('Stillingsbetegnelse og antal')
+            ->assertSee('Arbejdslokation')
+            ->assertSee('Tidsplan og arbejdstider')
+            ->assertSee('Yderligere detaljer og instruktioner')
+            ->assertSee('Akut / Midlertidig Vikar');
+
+        // Switch back to English for remaining tests
+        $this->actingAs($clientUser)
+            ->get(route('locale.switch', ['locale' => 'en', 'return_url' => '/client/dashboard']))
+            ->assertRedirect('/client/dashboard');
+
         // 3. Admin switching language with return_url
         $adminUser = User::factory()->create([
             'role' => 'admin',
