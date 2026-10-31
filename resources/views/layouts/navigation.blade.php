@@ -30,61 +30,61 @@
             <div class="hidden lg:flex items-center gap-0.5 xl:gap-1 -my-px min-w-0 whitespace-nowrap">
                 @if(Auth::user()->isAdmin())
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        <x-heroicon-o-squares-2x2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-squares-2x2 class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Oversigt') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.requests.index')" :active="request()->routeIs('admin.requests.*') || request()->routeIs('admin.matching.*')">
-                        <x-heroicon-o-clipboard-document-list class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-clipboard-document-list class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Forespørgsler') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.workers.index')" :active="request()->routeIs('admin.workers.*')">
-                        <x-heroicon-o-users class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-users class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Vikarer (CRM)') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.clients.index')" :active="request()->routeIs('admin.clients.*')">
-                        <x-heroicon-o-building-office-2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-building-office-2 class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Virksomheder') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.timesheets.index')" :active="request()->routeIs('admin.timesheets.*')">
-                        <x-heroicon-o-clock class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-clock class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Timesedler') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.invoices.index')" :active="request()->routeIs('admin.invoices.*')">
-                        <x-heroicon-o-document-currency-dollar class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-document-currency-dollar class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Fakturaer') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.audit.index')" :active="request()->routeIs('admin.audit.*')">
-                        <x-heroicon-o-shield-check class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-shield-check class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Audit Log') }}</span>
                     </x-nav-link>
                 @elseif(Auth::user()->isClient())
                     <x-nav-link :href="route('client.dashboard')" :active="request()->routeIs('client.dashboard')">
-                        <x-heroicon-o-squares-2x2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-squares-2x2 class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Dashboard') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('client.invoices.index')" :active="request()->routeIs('client.invoices.*')">
-                        <x-heroicon-o-document-text class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-document-text class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Fakturaer') }}</span>
                     </x-nav-link>
                 @elseif(Auth::user()->isWorker())
                     <x-nav-link :href="route('worker.dashboard')" :active="request()->routeIs('worker.dashboard')">
-                        <x-heroicon-o-squares-2x2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-squares-2x2 class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Dashboard') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.offers.index')" :active="request()->routeIs('worker.offers.*')">
-                        <x-heroicon-o-briefcase class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-briefcase class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Ledige Vagter') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.availability.index')" :active="request()->routeIs('worker.availability.*')">
-                        <x-heroicon-o-calendar-days class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-calendar-days class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Rådighedskalender') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.earnings.index')" :active="request()->routeIs('worker.earnings.*')">
-                        <x-heroicon-o-banknotes class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-banknotes class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Indtjening') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.documents.index')" :active="request()->routeIs('worker.documents.*')">
-                        <x-heroicon-o-folder-open class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
+                        <x-heroicon-o-folder-open class="w-4 h-4 mr-1.5 text-[#C9A24B] shrink-0" />
                         <span>{{ __('Dokumenter') }}</span>
                     </x-nav-link>
                 @endif

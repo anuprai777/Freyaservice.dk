@@ -6,7 +6,8 @@
 @php
     $isEn = app()->getLocale() === 'en';
     $fullLabel = $label ?? ($isEn ? 'YEARS EXP.' : 'ÅRS ERFARING');
-    $visibleLabel = $label ?? ($isEn ? 'YEARS EXP.' : 'ÅRS ERF.');
+    // Visual badge text retains rock-solid sizing and alignment matching the reference badge
+    $visibleLabel = $label ?? 'YEARS EXP.';
 @endphp
 
 <!-- Circular 16+ Experience Badge with Gold Arc -->

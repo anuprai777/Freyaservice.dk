@@ -1,12 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('Bekræft Tjek-Ind') }}</h1>
+        <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#C9A24B]"></span>
+            <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">{{ __('Bekræft Tjek-Ind') }}</h1>
+        </div>
     </x-slot>
 
     <div class="py-12 max-w-md mx-auto px-4 sm:px-6">
         <x-card padding="lg" class="text-center space-y-6 shadow-xl">
-            <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto text-3xl">
-                ✓
+            <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
+                <x-heroicon-s-check-circle class="w-10 h-10 text-emerald-600" />
             </div>
 
             <div>
@@ -14,18 +17,29 @@
                     {{ __('Korrekt QR-kode verificeret') }}
                 </span>
                 <h2 class="text-xl font-black text-slate-900 mt-2">{{ $shift->title }}</h2>
-                <div class="text-xs text-slate-600 mt-1">
-                    🏢 {{ $shift->staffRequest->client->company_name ?? __('Kunde') }}
+                <div class="text-xs text-slate-600 mt-1 flex items-center justify-center gap-1">
+                    <x-heroicon-o-building-office-2 class="w-3.5 h-3.5 text-slate-400" />
+                    <span>{{ $shift->staffRequest->client->company_name ?? __('Kunde') }}</span>
                 </div>
-                <div class="text-xs text-slate-500 mt-1">
-                    📍 {{ $shift->staffRequest->location }}, {{ $shift->staffRequest->city }}
+                <div class="text-xs text-slate-500 mt-0.5 flex items-center justify-center gap-1">
+                    <x-heroicon-o-map-pin class="w-3.5 h-3.5 text-slate-400" />
+                    <span>{{ $shift->staffRequest->location }}, {{ $shift->staffRequest->city }}</span>
                 </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 text-left space-y-1">
-                <div><strong>{{ __('Planlagt tid:') }}</strong> {{ $shift->start_at->format('H:i') }} {{ __('til') }} {{ $shift->end_at->format('H:i') }}</div>
-                <div><strong>{{ __('Nuværende tid:') }}</strong> {{ now()->format('H:i:s') }}</div>
-                <div><strong>{{ __('Dato:') }}</strong> {{ now()->format('d. F Y') }}</div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 text-left space-y-1.5">
+                <div class="flex items-center gap-1.5">
+                    <x-heroicon-o-clock class="w-3.5 h-3.5 text-slate-400" />
+                    <span><strong>{{ __('Planlagt tid:') }}</strong> {{ $shift->start_at->format('H:i') }} {{ __('til') }} {{ $shift->end_at->format('H:i') }}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <x-heroicon-o-arrow-path class="w-3.5 h-3.5 text-slate-400" />
+                    <span><strong>{{ __('Nuværende tid:') }}</strong> {{ now()->format('H:i:s') }}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <x-heroicon-o-calendar-days class="w-3.5 h-3.5 text-slate-400" />
+                    <span><strong>{{ __('Dato:') }}</strong> {{ now()->format('d. F Y') }}</span>
+                </div>
             </div>
 
             <form method="POST" action="{{ route('worker.shifts.clock-in') }}">
@@ -33,13 +47,15 @@
                 <input type="hidden" name="shift_id" value="{{ $shift->id }}">
                 <input type="hidden" name="token" value="{{ $token }}">
 
-                <button type="submit" class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base shadow-lg shadow-emerald-600/20 transition transform hover:-translate-y-0.5">
-                    ⏱️ {{ __('Start Vagt & Stempel Ind Nu') }}
+                <button type="submit" class="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base shadow-lg shadow-emerald-600/20 transition transform hover:-translate-y-0.5">
+                    <x-heroicon-s-clock class="w-5 h-5 text-white" />
+                    <span>{{ __('Start Vagt & Stempel Ind Nu') }}</span>
                 </button>
             </form>
 
-            <a href="{{ route('worker.dashboard') }}" class="block text-xs text-slate-400 hover:text-slate-600">
-                {{ __('Annuller og vend tilbage') }}
+            <a href="{{ route('worker.dashboard') }}" class="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition">
+                <x-heroicon-o-arrow-left class="w-3.5 h-3.5" />
+                <span>{{ __('Annuller og vend tilbage') }}</span>
             </a>
         </x-card>
     </div>
