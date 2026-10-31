@@ -102,4 +102,41 @@ class AuthenticationTest extends TestCase
         $this->assertGuest();
         $response->assertRedirect('/');
     }
+
+    public function test_user_can_switch_roles_without_logging_out_first(): void
+    {
+        $admin = User::factory()->create(['email' => 'freyaservicevikar@gmail.com', 'role' => 'admin', 'password' => 'admin123']);
+        $client = User::factory()->create(['email' => 'freyaservicevikar@gmail.com', 'role' => 'client', 'password' => 'client123']);
+
+        // Log in as admin
+        $this->actingAs($admin);
+        $this->assertAuthenticatedAs($admin);
+
+        // While still logged in as admin (not logged out), log in as client
+        $response = $this->post('/login', [
+            'email' => 'freyaservicevikar@gmail.com',
+            'password' => 'client123',
+        ]);
+
+        $this->assertAuthenticatedAs($client);
+        $response->assertRedirect(route('client.dashboard'));
+    }
+
+    public function test_worker_with_custom_email_can_authenticate_via_shared_email_and_worker_password(): void
+    {
+        // Custom worker email like anuplimbu70@gmail.com
+        $worker = User::factory()->create([
+            'email' => 'anuplimbu70@gmail.com',
+            'role' => 'worker',
+            'password' => 'worker123',
+        ]);
+
+        $response = $this->post('/login', [
+            'email' => 'freyaservicevikar@gmail.com',
+            'password' => 'worker123',
+        ]);
+
+        $this->assertAuthenticatedAs($worker);
+        $response->assertRedirect(route('worker.dashboard'));
+    }
 }

@@ -25,6 +25,12 @@
             <p class="text-xs text-ink/70 mt-1">{{ __('Få adgang til din virksomheds- eller vikarportal') }}</p>
         </div>
 
+        @auth
+            <div class="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-center justify-between shadow-2xs">
+                <span>{{ __('Du er logget ind som') }} <strong>{{ Auth::user()->name }} ({{ Auth::user()->role }})</strong>. {{ __('Vælg en profil herunder for at skifte direkte.') }}</span>
+            </div>
+        @endauth
+
         <!-- Demo Credentials Quick-Select Pill Box -->
         <div class="mb-5 p-3.5 bg-sand border border-mist rounded-2xl text-xs space-y-2">
             <div class="flex items-center justify-between">
@@ -90,7 +96,7 @@
             <!-- Remember Me -->
             <div class="flex items-center justify-between pt-1">
                 <label for="remember_me" class="inline-flex items-center cursor-pointer">
-                    <input id="remember_me" type="checkbox" class="rounded border-mist text-burgundy shadow-xs focus:ring-burgundy" name="remember">
+                    <input id="remember_me" type="checkbox" class="rounded border-mist text-burgundy shadow-xs focus:ring-burgundy" name="remember" checked>
                     <span class="ms-2 text-xs font-medium text-ink/70">{{ __('Husk mig') }}</span>
                 </label>
 
