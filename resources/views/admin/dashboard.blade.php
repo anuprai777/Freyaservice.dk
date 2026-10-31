@@ -15,62 +15,97 @@
 
     <div class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
-        <!-- KPI Metrics Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <x-stat-card
-                label="{{ __('Nye ordrer') }}"
-                value="{{ $newRequestsCount }}"
-                sublabel="{{ __('Afventer match') }}"
-                accent="burgundy"
-                icon="sparkles"
-                href="{{ route('admin.requests.index', ['status' => 'new']) }}"
-            />
+        <!-- KPI Metrics Grid (Desktop) -->
+<div class="hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <x-stat-card
+        label="{{ __('Nye ordrer') }}"
+        value="{{ $newRequestsCount }}"
+        sublabel="{{ __('Afventer match') }}"
+        accent="burgundy"
+        icon="sparkles"
+        href="{{ route('admin.requests.index', ['status' => 'new']) }}"
+    />
 
-            <x-stat-card
-                label="{{ __('Under behandling') }}"
-                value="{{ $inProgressRequestsCount }}"
-                sublabel="{{ __('Tilbud sendt') }}"
-                accent="navy"
-                icon="arrow-path"
-                href="{{ route('admin.requests.index', ['status' => 'in_progress']) }}"
-            />
+    <x-stat-card
+        label="{{ __('Under behandling') }}"
+        value="{{ $inProgressRequestsCount }}"
+        sublabel="{{ __('Tilbud sendt') }}"
+        accent="navy"
+        icon="arrow-path"
+        href="{{ route('admin.requests.index', ['status' => 'in_progress']) }}"
+    />
 
-            <x-stat-card
-                label="{{ __('Aktive vagter') }}"
-                value="{{ $activeShiftsCount }}"
-                sublabel="{{ __('Besat / I gang') }}"
-                accent="teal"
-                icon="briefcase"
-                href="{{ route('admin.requests.index', ['status' => 'active']) }}"
-            />
+    <x-stat-card
+        label="{{ __('Aktive vagter') }}"
+        value="{{ $activeShiftsCount }}"
+        sublabel="{{ __('Besat / I gang') }}"
+        accent="teal"
+        icon="briefcase"
+        href="{{ route('admin.requests.index', ['status' => 'active']) }}"
+    />
 
-            <x-stat-card
-                label="{{ __('Nye vikarer') }}"
-                value="{{ $pendingWorkersCount }}"
-                sublabel="{{ __('Afventer godkendelse') }}"
-                accent="navy"
-                icon="user-group"
-                href="{{ route('admin.workers.index', ['status' => 'pending']) }}"
-            />
+    <x-stat-card
+        label="{{ __('Nye vikarer') }}"
+        value="{{ $pendingWorkersCount }}"
+        sublabel="{{ __('Afventer godkendelse') }}"
+        accent="navy"
+        icon="user-group"
+        href="{{ route('admin.workers.index', ['status' => 'pending']) }}"
+    />
 
-            <x-stat-card
-                label="{{ __('Dokumenter') }}"
-                value="{{ $pendingDocumentsCount }}"
-                sublabel="{{ __('Klar til verifikation') }}"
-                accent="navy"
-                icon="document-check"
-                href="{{ route('admin.workers.index') }}"
-            />
+    <x-stat-card
+        label="{{ __('Dokumenter') }}"
+        value="{{ $pendingDocumentsCount }}"
+        sublabel="{{ __('Klar til verifikation') }}"
+        accent="navy"
+        icon="document-check"
+        href="{{ route('admin.workers.index') }}"
+    />
 
-            <x-stat-card
-                label="{{ __('Timesedler') }}"
-                value="{{ $unapprovedTimesheetsCount }}"
-                sublabel="{{ __('Afventer kundegodkendelse') }}"
-                accent="burgundy"
-                icon="clock"
-                href="{{ route('admin.timesheets.index', ['status' => 'submitted']) }}"
-            />
+    <x-stat-card
+        label="{{ __('Timesedler') }}"
+        value="{{ $unapprovedTimesheetsCount }}"
+        sublabel="{{ __('Afventer kundegodkendelse') }}"
+        accent="burgundy"
+        icon="clock"
+        href="{{ route('admin.timesheets.index', ['status' => 'submitted']) }}"
+    />
+</div>
+
+<!-- KPI Metrics (Mobile - Single Card) -->
+<div class="sm:hidden">
+    <div class="bg-white p-4 rounded-lg shadow-sm">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="text-center">
+                <div class="text-xs font-medium text-slate-600">{{ __('Nye ordrer') }}</div>
+                <div class="text-lg font-bold text-burgundy">{{ $newRequestsCount }}</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xs font-medium text-slate-600">{{ __('Under behandling') }}</div>
+                <div class="text-lg font-bold text-navy">{{ $inProgressRequestsCount }}</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xs font-medium text-slate-600">{{ __('Aktive vagter') }}</div>
+                <div class="text-lg font-bold text-teal">{{ $activeShiftsCount }}</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xs font-medium text-slate-600">{{ __('Nye vikarer') }}</div>
+                <div class="text-lg font-bold text-navy">{{ $pendingWorkersCount }}</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xs font-medium text-slate-600">{{ __('Dokumenter') }}</div>
+                <div class="text-lg font-bold text-navy">{{ $pendingDocumentsCount }}</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xs font-medium text-slate-600">{{ __('Timesedler') }}</div>
+                <div class="text-lg font-bold text-burgundy">{{ $unapprovedTimesheetsCount }}</div>
+            </div>
         </div>
+        <a href="{{ route('admin.dashboard') }}" class="block mt-4 text-center text-sm text-brand-action hover:underline">
+            {{ __('Se detaljer') }}
+        </a>
+    </div>
+</div>
 
         <div class="grid lg:grid-cols-12 gap-8">
 

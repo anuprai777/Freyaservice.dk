@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-navy text-white border-b border-navy-800 sticky top-0 z-40 shadow-md">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 sm:h-18 items-center gap-4">
+    <div class="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 sm:h-18 items-center gap-3 xl:gap-5">
             <div class="flex items-center gap-3 md:gap-4 shrink-0">
                 <!-- Logo -->
                 <a href="{{ route('dashboard') }}" class="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy rounded-lg" aria-label="Freya Service">
@@ -9,8 +9,8 @@
                 </a>
 
                 <!-- Portal Context Badge -->
-                <div class="hidden sm:block h-5 w-px bg-white/15"></div>
-                <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide shadow-xs
+                <div class="hidden xl:block h-5 w-px bg-white/15"></div>
+                <span class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide shadow-xs
                     @if(Auth::user()->isAdmin()) bg-white/10 text-sand-100 border border-white/15
                     @elseif(Auth::user()->isClient()) bg-[#C9A24B]/15 text-[#C9A24B] border border-[#C9A24B]/30
                     @else bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 @endif">
@@ -27,71 +27,71 @@
             </div>
 
             <!-- Navigation Links by Role (Desktop) -->
-            <div class="hidden lg:flex items-center space-x-1 xl:space-x-2 -my-px">
+            <div class="hidden lg:flex items-center gap-0.5 xl:gap-1 -my-px min-w-0 whitespace-nowrap">
                 @if(Auth::user()->isAdmin())
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        <x-heroicon-o-squares-2x2 class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-squares-2x2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Oversigt') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.requests.index')" :active="request()->routeIs('admin.requests.*') || request()->routeIs('admin.matching.*')">
-                        <x-heroicon-o-clipboard-document-list class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-clipboard-document-list class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Forespørgsler') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.workers.index')" :active="request()->routeIs('admin.workers.*')">
-                        <x-heroicon-o-users class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-users class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Vikarer (CRM)') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.clients.index')" :active="request()->routeIs('admin.clients.*')">
-                        <x-heroicon-o-building-office-2 class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-building-office-2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Virksomheder') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.timesheets.index')" :active="request()->routeIs('admin.timesheets.*')">
-                        <x-heroicon-o-clock class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-clock class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Timesedler') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.invoices.index')" :active="request()->routeIs('admin.invoices.*')">
-                        <x-heroicon-o-document-currency-dollar class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-document-currency-dollar class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Fakturaer') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.audit.index')" :active="request()->routeIs('admin.audit.*')">
-                        <x-heroicon-o-shield-check class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-shield-check class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Audit Log') }}</span>
                     </x-nav-link>
                 @elseif(Auth::user()->isClient())
                     <x-nav-link :href="route('client.dashboard')" :active="request()->routeIs('client.dashboard')">
-                        <x-heroicon-o-squares-2x2 class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-squares-2x2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Dashboard') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('client.invoices.index')" :active="request()->routeIs('client.invoices.*')">
-                        <x-heroicon-o-document-text class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-document-text class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Fakturaer') }}</span>
                     </x-nav-link>
                 @elseif(Auth::user()->isWorker())
                     <x-nav-link :href="route('worker.dashboard')" :active="request()->routeIs('worker.dashboard')">
-                        <x-heroicon-o-squares-2x2 class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-squares-2x2 class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Dashboard') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.offers.index')" :active="request()->routeIs('worker.offers.*')">
-                        <x-heroicon-o-briefcase class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-briefcase class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Ledige Vagter') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.availability.index')" :active="request()->routeIs('worker.availability.*')">
-                        <x-heroicon-o-calendar-days class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-calendar-days class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Rådighedskalender') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.earnings.index')" :active="request()->routeIs('worker.earnings.*')">
-                        <x-heroicon-o-banknotes class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-banknotes class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Indtjening') }}</span>
                     </x-nav-link>
                     <x-nav-link :href="route('worker.documents.index')" :active="request()->routeIs('worker.documents.*')">
-                        <x-heroicon-o-folder-open class="w-4 h-4 mr-1.5 text-sand-300" />
+                        <x-heroicon-o-folder-open class="hidden 2xl:block w-4 h-4 mr-1.5 text-sand-300 shrink-0" />
                         <span>{{ __('Dokumenter') }}</span>
                     </x-nav-link>
                 @endif
             </div>
 
             <!-- Right Controls: Useful Role Actions & User Profile Dropdown -->
-            <div class="hidden sm:flex sm:items-center gap-3">
+            <div class="flex items-center gap-2 xl:gap-3 shrink-0">
                 <!-- Useful Quick Action Button by Role -->
                 @if(Auth::user()->isClient())
                     <a href="{{ route('client.requests.create') }}" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#C9A24B] hover:bg-[#B08A37] text-navy shadow-sm transition hover:shadow-md transform active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
@@ -104,11 +104,21 @@
                         <span>{{ __('QR Tjek-ind') }}</span>
                     </a>
                 @elseif(Auth::user()->isAdmin())
-                    <a href="{{ route('admin.requests.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 hover:bg-white/15 text-sand-200 border border-white/15 shadow-xs transition">
+                    <a href="{{ route('admin.requests.index') }}" class="hidden min-[1720px]:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 hover:bg-white/15 text-sand-200 border border-white/15 shadow-xs transition">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                         <span>{{ __('Bemandingscenter') }}</span>
                     </a>
                 @endif
+
+                <!-- Language Switcher -->
+                <div class="inline-flex items-center rounded-lg border border-white/15 bg-white/5 p-0.5 shrink-0" role="group" aria-label="{{ __('Sprog') }}">
+                    <a href="{{ route('locale.switch', 'da') }}"
+                       class="px-1.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition {{ app()->getLocale() === 'da' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
+                       title="Dansk" aria-label="Skift til dansk" @if(app()->getLocale() === 'da') aria-current="true" @endif>DA</a>
+                    <a href="{{ route('locale.switch', 'en') }}"
+                       class="px-1.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition {{ app()->getLocale() === 'en' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
+                       title="English" aria-label="Switch to English" @if(app()->getLocale() === 'en') aria-current="true" @endif>EN</a>
+                </div>
 
                 <!-- User Dropdown Menu -->
                 <x-dropdown align="right" width="56">
@@ -181,7 +191,7 @@
                 </x-dropdown>
             </div>
 
-            <!-- Mobile Controls & Hamburger (No language switcher) -->
+            <!-- Mobile Controls & Hamburger -->
             <div class="-me-2 flex items-center gap-2 lg:hidden">
                 <!-- Mobile Quick Action Button -->
                 @if(Auth::user()->isClient())
@@ -206,7 +216,7 @@
 
     <!-- Responsive Navigation Menu (Mobile Drawer) -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden bg-navy border-t border-navy-800 shadow-xl">
-        <!-- User Information Card in Mobile Menu (Clean, no switcher) -->
+        <!-- User Information Card in Mobile Menu -->
         <div class="px-4 py-3 border-b border-navy-800 bg-navy-900/80 flex items-center gap-3">
             <div class="w-9 h-9 rounded-lg bg-burgundy flex items-center justify-center font-bold text-sm text-white border border-white/20 shadow-xs shrink-0">
                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
@@ -331,6 +341,22 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-3 border-t border-navy-800 px-4">
+            <!-- Language Switcher -->
+            <div class="flex items-center justify-between gap-2 pb-3 mb-1 border-b border-navy-800/70">
+                <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-sand-300">
+                    <x-heroicon-o-language class="w-4 h-4" />
+                    <span>{{ __('Sprog') }}</span>
+                </span>
+                <div class="inline-flex items-center rounded-lg border border-white/15 bg-white/5 p-0.5" role="group" aria-label="{{ __('Sprog') }}">
+                    <a href="{{ route('locale.switch', 'da') }}"
+                       class="px-2.5 py-1 rounded-md text-[11px] font-bold transition {{ app()->getLocale() === 'da' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
+                       aria-label="Skift til dansk">🇩🇰 Dansk</a>
+                    <a href="{{ route('locale.switch', 'en') }}"
+                       class="px-2.5 py-1 rounded-md text-[11px] font-bold transition {{ app()->getLocale() === 'en' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
+                       aria-label="Switch to English">🇬🇧 English</a>
+                </div>
+            </div>
+
             <div class="space-y-1">
                 @if(Auth::user()->isWorker())
                     <x-responsive-nav-link :href="route('worker.profile')">

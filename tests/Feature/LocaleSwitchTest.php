@@ -55,6 +55,9 @@ class LocaleSwitchTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Workers (CRM)');
         $response->assertSee('Invoices');
+        $response->assertSee(route('locale.switch', 'da'), false);
+        $response->assertSee(route('locale.switch', 'en'), false);
+        $response->assertSee('Switch to English', false);
 
         $responseDa = $this->actingAs($admin)
             ->withSession(['locale' => 'da'])
@@ -63,6 +66,9 @@ class LocaleSwitchTest extends TestCase
         $responseDa->assertStatus(200);
         $responseDa->assertSee('Vikarer (CRM)');
         $responseDa->assertSee('Fakturaer');
+        $responseDa->assertSee(route('locale.switch', 'da'), false);
+        $responseDa->assertSee(route('locale.switch', 'en'), false);
+        $responseDa->assertSee('Skift til dansk', false);
     }
 
     public function test_client_dashboard_renders_in_english_and_danish(): void
@@ -228,17 +234,19 @@ class LocaleSwitchTest extends TestCase
         $portalResponse->assertSee('Invoices');
     }
 
-    public function test_portal_navbar_does_not_contain_language_switcher_but_public_and_login_do(): void
+    public function test_portal_navbar_includes_language_switcher_like_public_and_login_pages(): void
     {
         $admin = User::factory()->create([
             'role' => 'admin',
+            'locale' => 'da',
         ]);
 
-        // Portal navbar should NOT contain language switcher
+        // Portal navbar should expose the language switcher for the current admin
         $portalResponse = $this->actingAs($admin)->get('/admin/dashboard');
         $portalResponse->assertStatus(200);
-        $portalResponse->assertDontSee('/locale/da');
-        $portalResponse->assertDontSee('/locale/en');
+        $portalResponse->assertSee('/locale/da');
+        $portalResponse->assertSee('/locale/en');
+        $portalResponse->assertSee('aria-current="true"', false);
         $portalResponse->assertSee('Admin Portal');
 
         // Public and login pages should contain language switcher
