@@ -1234,23 +1234,23 @@
 
             <!-- Upper Workflow Process Line (Request → Match → Dispatch → QR Check-in → Approve & Pay) -->
             <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12 sm:mb-16">
-                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC]">
+                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
                     {{ $isEn ? 'Request' : 'Forespørgsel' }}
                 </div>
-                <span class="text-[#C9A24B] font-bold text-sm sm:text-base select-none">→</span>
-                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC]">
+                <span class="inline-block text-[#C9A24B] font-bold text-sm sm:text-base select-none hover:translate-x-1 hover:text-[#5A1429] hover:scale-125 transition-all duration-200 cursor-pointer" aria-hidden="true">→</span>
+                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
                     {{ $isEn ? 'Match' : 'Match' }}
                 </div>
-                <span class="text-[#C9A24B] font-bold text-sm sm:text-base select-none">→</span>
-                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC]">
+                <span class="inline-block text-[#C9A24B] font-bold text-sm sm:text-base select-none hover:translate-x-1 hover:text-[#5A1429] hover:scale-125 transition-all duration-200 cursor-pointer" aria-hidden="true">→</span>
+                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
                     {{ $isEn ? 'Dispatch' : 'Udrykning' }}
                 </div>
-                <span class="text-[#C9A24B] font-bold text-sm sm:text-base select-none">→</span>
-                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC]">
+                <span class="inline-block text-[#C9A24B] font-bold text-sm sm:text-base select-none hover:translate-x-1 hover:text-[#5A1429] hover:scale-125 transition-all duration-200 cursor-pointer" aria-hidden="true">→</span>
+                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
                     {{ $isEn ? 'QR Check-in' : 'QR-tjek ind' }}
                 </div>
-                <span class="text-[#C9A24B] font-bold text-sm sm:text-base select-none">→</span>
-                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC]">
+                <span class="inline-block text-[#C9A24B] font-bold text-sm sm:text-base select-none hover:translate-x-1 hover:text-[#5A1429] hover:scale-125 transition-all duration-200 cursor-pointer" aria-hidden="true">→</span>
+                <div class="px-4 py-1.5 rounded-full bg-white text-[#5A1429] font-bold text-xs sm:text-sm shadow-xs border border-[#EADBCC] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
                     {{ $isEn ? 'Approve & Pay' : 'Godkend & Betal' }}
                 </div>
             </div>
@@ -1260,16 +1260,16 @@
 
                 <!-- Step 01 (Elevated) -->
                 <div class="relative flex flex-col">
-                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md transition-all duration-300 p-6 pt-10 pb-7 flex flex-col justify-between min-h-[380px] group">
+                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#5A1429]/40 transition-all duration-300 ease-out p-6 pt-10 pb-7 flex flex-col justify-between min-h-[380px] group cursor-pointer">
                         <!-- Top Step Badge -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform z-10">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-110 group-hover:ring-4 group-hover:ring-[#C9A24B]/35 transition-all duration-300 z-10">
                             <span class="text-base sm:text-lg font-black text-white leading-none">01</span>
                         </div>
 
                         <!-- Card Header & Body -->
                         <div>
                             <div class="text-left mb-2.5">
-                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
+                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug group-hover:text-brand-action transition-colors">
                                     {{ $isEn ? '16+ Years Hands-on Experience' : '16+ års praktisk brancheerfaring' }}
                                 </h3>
                             </div>
@@ -1281,18 +1281,18 @@
                         </div>
 
                         <!-- Divider & Checklist -->
-                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC]">
+                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC] group-hover:border-[#5A1429]/30 transition-colors">
                             <ul class="space-y-2 text-left text-xs text-ink/85">
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Team of former chefs, kitchen and service professionals' : 'Team af tidligere kokke, køkken- og servicefolk' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Fluent in peak-hour pressure and hygiene routines' : 'Kender spidsbelastning, tempo og hygiejnerutiner' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Staff briefed on your standards before shift one' : 'Vikarer instrueres i dine krav inden første vagt' }}</span>
                                 </li>
                             </ul>
@@ -1302,11 +1302,11 @@
 
                 <!-- Step 02 (Staggered Down on Desktop) -->
                 <div class="relative flex flex-col lg:translate-y-12">
-                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md transition-all duration-300 p-6 pt-7 pb-10 flex flex-col justify-between min-h-[380px] group">
+                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#5A1429]/40 transition-all duration-300 ease-out p-6 pt-7 pb-10 flex flex-col justify-between min-h-[380px] group cursor-pointer">
                         <!-- Card Header & Body -->
                         <div>
                             <div class="text-left mb-2.5">
-                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
+                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug group-hover:text-brand-action transition-colors">
                                     {{ $isEn ? 'Precision Staff Matching' : 'Præcis personlig matching' }}
                                 </h3>
                             </div>
@@ -1318,25 +1318,25 @@
                         </div>
 
                         <!-- Divider & Checklist -->
-                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC]">
+                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC] group-hover:border-[#5A1429]/30 transition-colors">
                             <ul class="space-y-2 text-left text-xs text-ink/85">
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Matched on role, certifications, languages and experience' : 'Matchet på rolle, certifikater, sprog og erfaring' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Work-style fit: fast line vs. guest-facing service' : 'Rigtigt match: højt tempo i drift vs. gæstekontakt' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Request your favourite staff again for continuity' : 'Genbestil dine favoritvikarer for fast kontinuitet' }}</span>
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Bottom Step Badge -->
-                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform z-10">
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-110 group-hover:ring-4 group-hover:ring-[#C9A24B]/35 transition-all duration-300 z-10">
                             <span class="text-base sm:text-lg font-black text-white leading-none">02</span>
                         </div>
                     </div>
@@ -1344,16 +1344,16 @@
 
                 <!-- Step 03 (Elevated) -->
                 <div class="relative flex flex-col">
-                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md transition-all duration-300 p-6 pt-10 pb-7 flex flex-col justify-between min-h-[380px] group">
+                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#5A1429]/40 transition-all duration-300 ease-out p-6 pt-10 pb-7 flex flex-col justify-between min-h-[380px] group cursor-pointer">
                         <!-- Top Step Badge -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform z-10">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-110 group-hover:ring-4 group-hover:ring-[#C9A24B]/35 transition-all duration-300 z-10">
                             <span class="text-base sm:text-lg font-black text-white leading-none">03</span>
                         </div>
 
                         <!-- Card Header & Body -->
                         <div>
                             <div class="text-left mb-2.5">
-                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug text-balance">
+                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug text-balance group-hover:text-brand-action transition-colors">
                                     {{ $isEn ? 'Urgent Dispatch 24 Hours' : 'Akut udrykning 24 timer' }}
                                 </h3>
                             </div>
@@ -1365,18 +1365,18 @@
                         </div>
 
                         <!-- Divider & Checklist -->
-                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC]">
+                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC] group-hover:border-[#5A1429]/30 transition-colors">
                             <ul class="space-y-2 text-left text-xs text-ink/85">
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Covers sick calls, no-shows and unexpected rushes' : 'Dækker sygemeldinger, udeblivelser og uventet travlhed' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Nationwide coverage across Denmark' : 'Dækker i hele Danmark med lokal forankring' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'A real person answers, day or night' : 'Et rigtigt menneske svarer telefonen dag og nat' }}</span>
                                 </li>
                             </ul>
@@ -1386,11 +1386,11 @@
 
                 <!-- Step 04 (Staggered Down on Desktop) -->
                 <div class="relative flex flex-col lg:translate-y-12">
-                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md transition-all duration-300 p-6 pt-7 pb-10 flex flex-col justify-between min-h-[380px] group">
+                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#5A1429]/40 transition-all duration-300 ease-out p-6 pt-7 pb-10 flex flex-col justify-between min-h-[380px] group cursor-pointer">
                         <!-- Card Header & Body -->
                         <div>
                             <div class="text-left mb-2.5">
-                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
+                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug group-hover:text-brand-action transition-colors">
                                     {{ $isEn ? '100% Digital QR Check-in' : '100% digital QR-tjek ind' }}
                                 </h3>
                             </div>
@@ -1402,25 +1402,25 @@
                         </div>
 
                         <!-- Divider & Checklist -->
-                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC]">
+                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC] group-hover:border-[#5A1429]/30 transition-colors">
                             <ul class="space-y-2 text-left text-xs text-ink/85">
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Staff scan in and out, so times are verified on-site' : 'Vikarer scanner ind og ud, så timer verificeres on-site' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Hours appear instantly in your portal' : 'Timer vises øjeblikkeligt i din portal klar til godkendelse' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Downloadable records for payroll and invoice checks' : 'Eksportérbare data til løn og fakturakontrol' }}</span>
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Bottom Step Badge -->
-                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform z-10">
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-110 group-hover:ring-4 group-hover:ring-[#C9A24B]/35 transition-all duration-300 z-10">
                             <span class="text-base sm:text-lg font-black text-white leading-none">04</span>
                         </div>
                     </div>
@@ -1428,16 +1428,16 @@
 
                 <!-- Step 05 (Elevated) -->
                 <div class="relative flex flex-col">
-                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-md transition-all duration-300 p-6 pt-10 pb-7 flex flex-col justify-between min-h-[380px] group">
+                    <div class="relative bg-white rounded-3xl border border-[#EADBCC] shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#5A1429]/40 transition-all duration-300 ease-out p-6 pt-10 pb-7 flex flex-col justify-between min-h-[380px] group cursor-pointer">
                         <!-- Top Step Badge -->
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform z-10">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#5A1429] text-white border-4 border-white shadow-md flex items-center justify-center group-hover:scale-110 group-hover:ring-4 group-hover:ring-[#C9A24B]/35 transition-all duration-300 z-10">
                             <span class="text-base sm:text-lg font-black text-white leading-none">05</span>
                         </div>
 
                         <!-- Card Header & Body -->
                         <div>
                             <div class="text-left mb-2.5">
-                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug">
+                                <h3 class="text-base sm:text-lg font-bold text-[#5A1429] leading-snug group-hover:text-brand-action transition-colors">
                                     {{ $isEn ? 'Zero Lock-in & Clear Pricing' : 'Ingen binding & faste priser' }}
                                 </h3>
                             </div>
@@ -1449,18 +1449,18 @@
                         </div>
 
                         <!-- Divider & Checklist -->
-                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC]">
+                        <div class="mt-4 pt-4 border-t border-dashed border-[#EADBCC] group-hover:border-[#5A1429]/30 transition-colors">
                             <ul class="space-y-2 text-left text-xs text-ink/85">
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'No minimum contract or cancellation penalty' : 'Ingen bindingsperiode eller afbestillingsgebyrer' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Rate shown before you book' : 'Fast timepris oplyses altid inden du bestiller' }}</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5">✓</span>
+                                    <span class="text-[#C9A24B] font-bold text-sm shrink-0 leading-none mt-0.5 group-hover:scale-110 transition-transform">✓</span>
                                     <span>{{ $isEn ? 'Direct advisor for any invoice question' : 'Fast personlig rådgiver til alle fakturaspørgsmål' }}</span>
                                 </li>
                             </ul>

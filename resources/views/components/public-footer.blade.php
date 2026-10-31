@@ -11,6 +11,10 @@
             <div class="text-xs text-sand-400">
                 CVR: 44556677 • Moms nr. DK44556677
             </div>
+            <div class="pt-4 border-t border-white/10">
+                <p class="text-[10px] font-bold text-sand-400 uppercase tracking-wider mb-3">{{ __('Følg os') }}</p>
+                <x-social-links variant="dark" aria-label="{{ __('Freya Service på sociale medier') }}" />
+            </div>
         </div>
 
         <div>
