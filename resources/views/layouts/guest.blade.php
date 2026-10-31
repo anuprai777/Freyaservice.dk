@@ -59,11 +59,11 @@
 
                 <!-- Language Switcher -->
                 <div class="flex items-center gap-1 bg-sand p-1 rounded-xl shadow-xs border border-mist text-xs">
-                    <a href="{{ route('locale.switch', 'da') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
+                    <a href="{{ route('locale.switch', ['locale' => 'da', 'return_url' => request()->getRequestUri()]) }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'da' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
                         <span>🇩🇰</span>
                         <span>Dansk</span>
                     </a>
-                    <a href="{{ route('locale.switch', 'en') }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
+                    <a href="{{ route('locale.switch', ['locale' => 'en', 'return_url' => request()->getRequestUri()]) }}" class="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 {{ app()->getLocale() === 'en' ? 'bg-navy text-white font-bold underline underline-offset-4 decoration-2 decoration-teal shadow-xs' : 'text-ink/60 hover:text-navy font-medium' }}">
                         <span>🇬🇧</span>
                         <span>English</span>
                     </a>

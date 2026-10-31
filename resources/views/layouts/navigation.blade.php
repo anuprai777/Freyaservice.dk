@@ -112,10 +112,10 @@
 
                 <!-- Language Switcher -->
                 <div class="inline-flex items-center rounded-lg border border-white/15 bg-white/5 p-0.5 shrink-0" role="group" aria-label="{{ __('Sprog') }}">
-                    <a href="{{ route('locale.switch', 'da') }}"
+                    <a href="{{ route('locale.switch', ['locale' => 'da', 'return_url' => request()->getRequestUri()]) }}"
                        class="px-1.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition {{ app()->getLocale() === 'da' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
                        title="Dansk" aria-label="Skift til dansk" @if(app()->getLocale() === 'da') aria-current="true" @endif>DA</a>
-                    <a href="{{ route('locale.switch', 'en') }}"
+                    <a href="{{ route('locale.switch', ['locale' => 'en', 'return_url' => request()->getRequestUri()]) }}"
                        class="px-1.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition {{ app()->getLocale() === 'en' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
                        title="English" aria-label="Switch to English" @if(app()->getLocale() === 'en') aria-current="true" @endif>EN</a>
                 </div>
@@ -348,10 +348,10 @@
                     <span>{{ __('Sprog') }}</span>
                 </span>
                 <div class="inline-flex items-center rounded-lg border border-white/15 bg-white/5 p-0.5" role="group" aria-label="{{ __('Sprog') }}">
-                    <a href="{{ route('locale.switch', 'da') }}"
+                    <a href="{{ route('locale.switch', ['locale' => 'da', 'return_url' => request()->getRequestUri()]) }}"
                        class="px-2.5 py-1 rounded-md text-[11px] font-bold transition {{ app()->getLocale() === 'da' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
                        aria-label="Skift til dansk">🇩🇰 Dansk</a>
-                    <a href="{{ route('locale.switch', 'en') }}"
+                    <a href="{{ route('locale.switch', ['locale' => 'en', 'return_url' => request()->getRequestUri()]) }}"
                        class="px-2.5 py-1 rounded-md text-[11px] font-bold transition {{ app()->getLocale() === 'en' ? 'bg-white/20 text-white shadow-xs' : 'text-sand-300 hover:text-white hover:bg-white/10' }}"
                        aria-label="Switch to English">🇬🇧 English</a>
                 </div>

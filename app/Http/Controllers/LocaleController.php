@@ -13,12 +13,22 @@ class LocaleController extends Controller
     {
         if (in_array($locale, ['da', 'en'], true)) {
             Session::put('locale', $locale);
+            Session::save();
             App::setLocale($locale);
-            if ($request->user()) {
-                $request->user()->update(['locale' => $locale]);
+
+            if ($user = $request->user()) {
+                $user->forceFill(['locale' => $locale])->save();
             }
         }
 
-        return redirect()->back(fallback: route('home'));
+        // Support explicit safe return_url parameter
+        $returnUrl = $request->query('return_url');
+        if ($returnUrl && str_starts_with($returnUrl, '/') && !str_starts_with($returnUrl, '//')) {
+            return redirect()->to($returnUrl);
+        }
+
+        // Context-aware fallback: authenticated users go to their dashboard, guests to home
+        $fallback = $request->user() ? route('dashboard') : route('home');
+        return redirect()->back(fallback: $fallback);
     }
 }

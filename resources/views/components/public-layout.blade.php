@@ -49,11 +49,11 @@
             </div>
             <div class="flex items-center gap-4">
                 <div class="flex items-center gap-1.5 text-xs font-medium" role="group" aria-label="Sprogvælger">
-                    <a href="{{ route('locale.switch', 'da') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}" aria-label="Skift til dansk">
+                    <a href="{{ route('locale.switch', ['locale' => 'da', 'return_url' => request()->getRequestUri()]) }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'da' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}" aria-label="Skift til dansk">
                         <span>🇩🇰</span><span>DA</span>
                     </a>
                     <span class="text-sand-400/60 select-none">/</span>
-                    <a href="{{ route('locale.switch', 'en') }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'en' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}" aria-label="Switch to English">
+                    <a href="{{ route('locale.switch', ['locale' => 'en', 'return_url' => request()->getRequestUri()]) }}" class="inline-flex items-center gap-1 transition-colors px-1.5 py-0.5 rounded {{ app()->getLocale() === 'en' ? 'text-white font-bold underline underline-offset-4 decoration-2 decoration-teal' : 'text-sand-300 hover:text-white' }}" aria-label="Switch to English">
                         <span>🇬🇧</span><span>EN</span>
                     </a>
                 </div>

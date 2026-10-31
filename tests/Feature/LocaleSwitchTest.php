@@ -266,4 +266,99 @@ class LocaleSwitchTest extends TestCase
         $loginResponse->assertSee('/locale/da');
         $loginResponse->assertSee('/locale/en');
     }
+
+    public function test_admin_client_worker_can_switch_languages_seamlessly(): void
+    {
+        // 1. Worker switching language with return_url
+        $workerUser = User::factory()->create([
+            'role' => 'worker',
+            'locale' => 'da',
+        ]);
+        WorkerProfile::create([
+            'user_id' => $workerUser->id,
+            'city' => 'København',
+            'postcode' => '1456',
+            'status' => 'approved',
+            'skills' => ['Tjener'],
+        ]);
+
+        $this->actingAs($workerUser)
+            ->get(route('locale.switch', ['locale' => 'en', 'return_url' => '/worker/dashboard']))
+            ->assertRedirect('/worker/dashboard');
+
+        $this->assertEquals('en', $workerUser->fresh()->locale);
+        $this->assertEquals('en', session('locale'));
+
+        $this->actingAs($workerUser)
+            ->get('/worker/dashboard')
+            ->assertOk()
+            ->assertSee('New Shift Offers &amp; Open Shifts', false)
+            ->assertSee('Available Shifts')
+            ->assertSee('Earnings');
+
+        // Switch back to Danish
+        $this->actingAs($workerUser)
+            ->get(route('locale.switch', ['locale' => 'da', 'return_url' => '/worker/dashboard']))
+            ->assertRedirect('/worker/dashboard');
+
+        $this->assertEquals('da', $workerUser->fresh()->locale);
+        $this->assertEquals('da', session('locale'));
+
+        $this->actingAs($workerUser)
+            ->get('/worker/dashboard')
+            ->assertOk()
+            ->assertSee('Nye vagttilbud &amp; ledige vagter', false)
+            ->assertSee('Ledige Vagter')
+            ->assertSee('Indtjening');
+
+        // 2. Client switching language with return_url
+        $clientUser = User::factory()->create([
+            'role' => 'client',
+            'locale' => 'da',
+        ]);
+        ClientProfile::create([
+            'user_id' => $clientUser->id,
+            'company_name' => 'Nordic Hospitality ApS',
+            'cvr' => '12345678',
+            'address' => 'Vestergade 12',
+            'city' => 'København',
+            'postcode' => '1456',
+            'contact_person' => 'Frederik Hansen',
+            'phone' => '28260926',
+            'status' => 'active',
+        ]);
+
+        $this->actingAs($clientUser)
+            ->get(route('locale.switch', ['locale' => 'en', 'return_url' => '/client/dashboard']))
+            ->assertRedirect('/client/dashboard');
+
+        $this->assertEquals('en', $clientUser->fresh()->locale);
+        $this->assertEquals('en', session('locale'));
+
+        $this->actingAs($clientUser)
+            ->get('/client/dashboard')
+            ->assertOk()
+            ->assertSee('Book Staff')
+            ->assertSee('Invoices');
+
+        // 3. Admin switching language with return_url
+        $adminUser = User::factory()->create([
+            'role' => 'admin',
+            'locale' => 'da',
+        ]);
+
+        $this->actingAs($adminUser)
+            ->get(route('locale.switch', ['locale' => 'en', 'return_url' => '/admin/dashboard']))
+            ->assertRedirect('/admin/dashboard');
+
+        $this->assertEquals('en', $adminUser->fresh()->locale);
+        $this->assertEquals('en', session('locale'));
+
+        $this->actingAs($adminUser)
+            ->get('/admin/dashboard')
+            ->assertOk()
+            ->assertSee('Workers (CRM)')
+            ->assertSee('Invoices')
+            ->assertSee('Overview');
+    }
 }
