@@ -183,10 +183,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -232,10 +237,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -281,10 +291,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -327,10 +342,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -376,10 +396,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -422,10 +447,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -468,10 +498,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -517,10 +552,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -563,10 +603,15 @@
                         </p>
                     </div>
 
-                    <!-- Bottom Outline Pill Button -->
-                    <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#C9A24B] text-[#5A1429] hover:bg-[#5A1429] hover:text-white hover:border-[#5A1429] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs mt-auto">
-                        {{ $isEn ? 'Book staffing' : 'Bestil bemanding' }}
-                    </a>
+                    <!-- Bottom Action Buttons: Request Staffing & Apply as Worker -->
+                    <div class="grid grid-cols-2 gap-2 mt-auto w-full pt-2">
+                        <a href="{{ route('register', ['role' => 'client']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#C9A24B] bg-[#5A1429] text-white hover:bg-[#480F20] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Request staffing' : 'Bestil bemanding' }}
+                        </a>
+                        <a href="{{ route('register', ['role' => 'worker']) }}" class="inline-flex items-center justify-center px-2 py-2 sm:py-2.5 rounded-full border border-[#EADBCC] bg-white text-[#5A1429] hover:bg-[#FAF5F2] hover:border-[#5A1429] text-[11px] sm:text-xs font-bold transition-all duration-200 shadow-2xs text-center">
+                            {{ $isEn ? 'Apply as worker' : 'Bliv vikar' }}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

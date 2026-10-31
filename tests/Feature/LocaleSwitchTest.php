@@ -174,6 +174,8 @@ class LocaleSwitchTest extends TestCase
         $responseEn->assertSee('Healthcare');
         $responseEn->assertSee('Hospitality');
         $responseEn->assertSee('Vetted temp workers with verified references');
+        $responseEn->assertSee('Request staffing');
+        $responseEn->assertSee('Apply as worker');
 
         $responseDa = $this->withSession(['locale' => 'da'])->get('/services');
         $responseDa->assertStatus(200);
@@ -185,6 +187,8 @@ class LocaleSwitchTest extends TestCase
         $responseDa->assertSee('Sundhed &amp; Pleje', false);
         $responseDa->assertSee('Hotel &amp; Restauration', false);
         $responseDa->assertSee('Gennemtestede vikarer med referencer');
+        $responseDa->assertSee('Bestil bemanding');
+        $responseDa->assertSee('Bliv vikar');
     }
 
     public function test_top_bar_language_switch_shows_low_underline_for_active_locale(): void

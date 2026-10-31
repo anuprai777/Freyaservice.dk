@@ -8,8 +8,14 @@
                 <span class="w-2 h-2 rounded-full bg-burgundy"></span>
                 <span>{{ __('FreyaService Portal') }}</span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black text-navy tracking-tight">{{ __('Opret profil hos FreyaService') }}</h2>
-            <p class="text-xs sm:text-sm text-ink/70 mt-1.5">{{ __('Vælg venligst din profiltype herunder for at komme i gang') }}</p>
+            <h2 class="text-2xl sm:text-3xl font-black text-navy tracking-tight">
+                <span x-show="role === 'client'">{{ __('Opret virksomhedskonto') }}</span>
+                <span x-show="role === 'worker'" x-cloak>{{ __('Opret vikarprofil') }}</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-ink/70 mt-1.5">
+                <span x-show="role === 'client'">{{ __('Bestil kvalificerede vikarer og styr bemandingen digitalt') }}</span>
+                <span x-show="role === 'worker'" x-cloak>{{ __('Tilmeld dig som vikar og få adgang til ledige vagter') }}</span>
+            </p>
 
             <!-- Role Selector Toggle -->
             <div class="grid grid-cols-2 gap-2 p-1.5 mt-5 bg-sand rounded-2xl max-w-md mx-auto border border-mist shadow-xs">
@@ -63,30 +69,30 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="company_name" :value="__('Virksomhedsnavn')" />
-                        <x-text-input id="company_name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')" placeholder="Eks. Hotel Nordic A/S" />
+                        <x-text-input id="company_name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')" placeholder="Eks. Hotel Nordic A/S" x-bind:disabled="role !== 'client'" />
                         <x-input-error :messages="$errors->get('company_name')" class="mt-2" />
                     </div>
                     <div>
                         <x-input-label for="cvr" :value="__('CVR-nummer (8 cifre)')" />
-                        <x-text-input id="cvr" class="block mt-1 w-full" type="text" maxlength="8" name="cvr" :value="old('cvr')" placeholder="12345678" />
+                        <x-text-input id="cvr" class="block mt-1 w-full" type="text" maxlength="8" name="cvr" :value="old('cvr')" placeholder="12345678" x-bind:disabled="role !== 'client'" />
                         <x-input-error :messages="$errors->get('cvr')" class="mt-2" />
                     </div>
                 </div>
 
                 <div>
                     <x-input-label for="address" :value="__('Adresse')" />
-                    <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" placeholder="Gadenavn og nummer" autocomplete="street-address" />
+                    <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" placeholder="Gadenavn og nummer" autocomplete="street-address" x-bind:disabled="role !== 'client'" />
                     <x-input-error :messages="$errors->get('address')" class="mt-2" />
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="postcode_client" :value="__('Postnummer')" />
-                        <x-text-input id="postcode_client" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 1620" autocomplete="postal-code" />
+                        <x-text-input id="postcode_client" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 1620" autocomplete="postal-code" x-bind:disabled="role !== 'client'" />
                     </div>
                     <div>
                         <x-input-label for="city_client" :value="__('By')" />
-                        <x-text-input id="city_client" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København V" autocomplete="address-level2" />
+                        <x-text-input id="city_client" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København V" autocomplete="address-level2" x-bind:disabled="role !== 'client'" />
                     </div>
                 </div>
             </div>
@@ -101,17 +107,17 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <x-input-label for="postcode_worker" :value="__('Dit Postnummer')" />
-                        <x-text-input id="postcode_worker" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 2100" autocomplete="postal-code" />
+                        <x-text-input id="postcode_worker" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" placeholder="Eks. 2100" autocomplete="postal-code" x-bind:disabled="role !== 'worker'" />
                     </div>
                     <div>
                         <x-input-label for="city_worker" :value="__('Din By')" />
-                        <x-text-input id="city_worker" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København Ø" autocomplete="address-level2" />
+                        <x-text-input id="city_worker" class="block mt-1 w-full" type="text" name="city" :value="old('city')" placeholder="Eks. København Ø" autocomplete="address-level2" x-bind:disabled="role !== 'worker'" />
                     </div>
                 </div>
 
                 <div>
                     <x-input-label for="availability_type" :value="__('Ønsket ansættelsesform')" />
-                    <select id="availability_type" name="availability_type" class="mt-1 block w-full rounded-lg border-mist bg-white shadow-xs focus:border-burgundy focus:ring-2 focus:ring-burgundy text-sm text-ink">
+                    <select id="availability_type" name="availability_type" x-bind:disabled="role !== 'worker'" class="mt-1 block w-full rounded-lg border-mist bg-white shadow-xs focus:border-burgundy focus:ring-2 focus:ring-burgundy text-sm text-ink">
                         <option value="any">{{ __('Alle vagttyper (fleksibel)') }}</option>
                         <option value="temporary">{{ __('Tilkaldevikar (akut dækning / timer)') }}</option>
                         <option value="part_time">{{ __('Deltid (faste dage / weekender)') }}</option>
@@ -131,7 +137,7 @@
                             'Chauffør' => __('Bud / Chauffør (B-kørekort)')
                         ] as $skillKey => $skillLabel)
                             <label class="flex items-center gap-2.5 p-2 rounded-lg bg-white border border-mist hover:border-teal/40 transition cursor-pointer">
-                                <input type="checkbox" name="skills[]" value="{{ $skillKey }}" class="rounded border-mist text-teal shadow-xs focus:ring-teal">
+                                <input type="checkbox" name="skills[]" value="{{ $skillKey }}" x-bind:disabled="role !== 'worker'" class="rounded border-mist text-teal shadow-xs focus:ring-teal">
                                 <span class="font-medium text-navy">{{ $skillLabel }}</span>
                             </label>
                         @endforeach
@@ -173,7 +179,8 @@
                 </a>
 
                 <x-primary-button class="w-full sm:w-auto px-7 py-3 text-sm">
-                    {{ __('Opret Profil') }} &rarr;
+                    <span x-show="role === 'client'">{{ __('Opret virksomhedskonto') }} &rarr;</span>
+                    <span x-show="role === 'worker'" x-cloak>{{ __('Opret vikarprofil') }} &rarr;</span>
                 </x-primary-button>
             </div>
         </form>

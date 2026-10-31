@@ -34,4 +34,25 @@ class RegistrationTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect(route('worker.dashboard'));
     }
+
+    public function test_new_clients_can_register(): void
+    {
+        $response = $this->post('/register', [
+            'name' => 'Client Admin',
+            'email' => 'clientcorp@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+            'role' => 'client',
+            'phone' => '+45 28 26 09 26',
+            'gdpr_consent' => '1',
+            'company_name' => 'Nordic Hospitality ApS',
+            'cvr' => '12345678',
+            'address' => 'Vestergade 10',
+            'city' => 'København',
+            'postcode' => '1456',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(route('client.dashboard'));
+    }
 }
