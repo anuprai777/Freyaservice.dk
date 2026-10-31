@@ -79,6 +79,7 @@ class LayoutComponentsTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('16+');
         $response->assertSee('ÅRS ERFARING');
+        $response->assertSee('ÅRS ERF.');
 
         $responseEn = $this->get('/locale/en');
         $responseEn = $this->get('/');

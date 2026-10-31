@@ -4,13 +4,15 @@
 ])
 
 @php
-    $displayLabel = $label ?? (app()->getLocale() === 'en' ? 'YEARS EXP.' : 'ÅRS ERFARING');
+    $isEn = app()->getLocale() === 'en';
+    $fullLabel = $label ?? ($isEn ? 'YEARS EXP.' : 'ÅRS ERFARING');
+    $visibleLabel = $label ?? ($isEn ? 'YEARS EXP.' : 'ÅRS ERF.');
 @endphp
 
 <!-- Circular 16+ Experience Badge with Gold Arc -->
-<div {{ $attributes->merge(['class' => 'relative flex items-center justify-center select-none group']) }}>
-    <!-- Accessible text for SEO & automated tests -->
-    <span class="sr-only">16+ {{ $displayLabel }}</span>
+<div {{ $attributes->merge(['class' => 'relative flex items-center justify-center select-none group']) }} title="{{ $years }}+ {{ $isEn ? 'Years Experience' : 'Års erfaring' }}">
+    <!-- Accessible text for screen readers, SEO & automated test suite -->
+    <span class="sr-only">{{ $years }}+ {{ $fullLabel }}</span>
 
     <!-- Circular Badge Frame -->
     <div class="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 flex items-center justify-center">
@@ -39,18 +41,18 @@
             />
         </svg>
 
-        <!-- Inner Content: 16 (white) + (gold) and YEARS EXP. / ÅRS ERFARING (gold) -->
+        <!-- Inner Content: 16 (white) + (gold) and YEARS EXP. / ÅRS ERF. (gold) -->
         <div class="absolute inset-0 flex flex-col items-center justify-center text-center leading-none" aria-hidden="true">
             <div class="flex items-baseline justify-center">
                 <span class="text-2xl sm:text-3xl lg:text-[34px] font-black text-white tracking-tight" style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
-                    16
+                    {{ $years }}
                 </span>
                 <span class="text-xl sm:text-2xl lg:text-[26px] font-black text-[#C9A45C] ml-0.5 leading-none">
                     +
                 </span>
             </div>
-            <span class="text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] font-extrabold text-[#C9A45C] uppercase tracking-[0.18em] sm:tracking-[0.2em] mt-1 sm:mt-1.5 leading-none">
-                {{ $displayLabel }}
+            <span class="text-[8.5px] sm:text-[9.5px] lg:text-[10px] font-extrabold text-[#C9A45C] uppercase tracking-[0.16em] sm:tracking-[0.18em] mt-1 sm:mt-1.5 whitespace-nowrap leading-none">
+                {{ $visibleLabel }}
             </span>
         </div>
     </div>
