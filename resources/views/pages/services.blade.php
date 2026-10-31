@@ -98,7 +98,7 @@
             <h2 class="text-3xl sm:text-4xl font-black text-navy tracking-tight mb-2">
                 {{ __('Specialized sectors') }}
             </h2>
-            <p class="text-xs font-semibold text-ink/60 uppercase tracking-wider mb-3">
+            <p class="text-xs sm:text-sm font-semibold text-ink/70 mb-3">
                 {{ __('Specialiserede roller inden for') }} {{ __('Healthcare') }}, {{ __('Hospitality') }} {{ __('og servicefag') }}:
             </p>
             <p class="text-sm text-ink/80 leading-relaxed max-w-2xl mx-auto">
