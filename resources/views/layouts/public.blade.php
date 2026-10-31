@@ -202,12 +202,11 @@
                 <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('GDPR & Sikkerhed') }}</h5>
                 <ul class="text-xs space-y-2">
                     <li class="flex items-start gap-1.5"><x-heroicon-s-shield-check class="w-4 h-4 text-teal shrink-0 mt-0.5" /><span class="text-sand-200">{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }}</span></li>
-                    <li class="flex items-start gap-1.5"><x-heroicon-s-check class="w-4 h-4 text-teal shrink-0 mt-0.5" /><span class="text-sand-200">{{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</span></li>
                 </ul>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-navy-800 text-center text-xs text-sand-400">
-            &copy; {{ date('Y') }} FreyaService.dk — {{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}
+            &copy; {{ date('Y') }} FreyaService.dk — {{ __('Alle rettigheder forbeholdes.') }}
         </div>
     </footer>
 
