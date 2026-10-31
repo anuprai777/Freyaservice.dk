@@ -264,40 +264,207 @@
             </x-card>
         @endif
 
-        <!-- Staff Requests Status Tabs & List -->
-        <x-card variant="white" class="space-y-6">
-            <x-slot:header>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full">
-                    <div>
-                        <h2 class="text-base sm:text-lg font-bold text-navy">{{ __('Dine bemandingsforespørgsler') }}</h2>
-                        <p class="text-xs text-ink/70 mt-0.5">{{ __('Overvåg status for aktuelle og afsluttede bestillinger.') }}</p>
-                    </div>
+        <!-- 2 • Staff Requests / Kanban Section -->
+        <div x-data="{ viewMode: 'kanban' }" class="space-y-4">
+            <x-card variant="white" class="space-y-6">
+                <x-slot:header>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xs font-black tracking-wider uppercase text-burgundy">2 • {{ __('KANBAN BY STATUS') }}</span>
+                            </div>
+                            <h2 class="text-base sm:text-lg font-bold text-navy">{{ __('Dine bemandingsforespørgsler') }}</h2>
+                            <p class="text-xs text-ink/70 mt-0.5">{{ __('Overvåg status for aktuelle og afsluttede bestillinger.') }}</p>
+                        </div>
 
-                    <!-- Status Filter Tabs (horizontally scrollable on mobile) -->
-                    <div class="w-full sm:w-auto overflow-x-auto scrollbar-none pb-1 sm:pb-0">
-                        <div class="flex items-center gap-1.5 p-1 bg-sand rounded-xl text-xs font-semibold text-ink/70 min-w-max border border-mist">
-                            <a href="{{ route('client.dashboard', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'all' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
-                                {{ __('Alle') }} ({{ $counts['all'] }})
-                            </a>
-                            <a href="{{ route('client.dashboard', ['status' => 'new']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'new' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
-                                {{ __('Nye') }} ({{ $counts['new'] }})
-                            </a>
-                            <a href="{{ route('client.dashboard', ['status' => 'in_progress']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'in_progress' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
-                                {{ __('Under match') }} ({{ $counts['in_progress'] }})
-                            </a>
-                            <a href="{{ route('client.dashboard', ['status' => 'matched']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'matched' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
-                                {{ __('Matchet') }} ({{ $counts['matched'] }})
-                            </a>
-                            <a href="{{ route('client.dashboard', ['status' => 'active']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'active' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
-                                {{ __('Aktive') }} ({{ $counts['active'] }})
-                            </a>
+                        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end flex-wrap">
+                            <!-- View Toggle (Kanban / List) -->
+                            <div class="inline-flex items-center p-1 bg-sand rounded-xl text-xs font-semibold border border-mist">
+                                <button type="button" @click="viewMode = 'kanban'"
+                                    :class="viewMode === 'kanban' ? 'bg-burgundy text-white shadow-xs font-bold' : 'text-ink/70 hover:text-navy hover:bg-white/60'"
+                                    class="px-3 py-1.5 rounded-lg transition inline-flex items-center gap-1.5 cursor-pointer">
+                                    <x-heroicon-s-view-columns class="w-3.5 h-3.5" />
+                                    <span>{{ __('Kanban') }}</span>
+                                </button>
+                                <button type="button" @click="viewMode = 'list'"
+                                    :class="viewMode === 'list' ? 'bg-burgundy text-white shadow-xs font-bold' : 'text-ink/70 hover:text-navy hover:bg-white/60'"
+                                    class="px-3 py-1.5 rounded-lg transition inline-flex items-center gap-1.5 cursor-pointer">
+                                    <x-heroicon-s-bars-3 class="w-3.5 h-3.5" />
+                                    <span>{{ __('Liste') }}</span>
+                                </button>
+                            </div>
+
+                            <!-- Status Filter Tabs (Shown in list mode) -->
+                            <div x-show="viewMode === 'list'" class="w-full sm:w-auto overflow-x-auto scrollbar-none pb-1 sm:pb-0">
+                                <div class="flex items-center gap-1.5 p-1 bg-sand rounded-xl text-xs font-semibold text-ink/70 min-w-max border border-mist">
+                                    <a href="{{ route('client.dashboard', ['status' => 'all']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'all' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
+                                        {{ __('Alle') }} ({{ $counts['all'] }})
+                                    </a>
+                                    <a href="{{ route('client.dashboard', ['status' => 'new']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'new' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
+                                        {{ __('Nye') }} ({{ $counts['new'] }})
+                                    </a>
+                                    <a href="{{ route('client.dashboard', ['status' => 'in_progress']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'in_progress' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
+                                        {{ __('Under match') }} ({{ $counts['in_progress'] }})
+                                    </a>
+                                    <a href="{{ route('client.dashboard', ['status' => 'matched']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'matched' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
+                                        {{ __('Matchet') }} ({{ $counts['matched'] }})
+                                    </a>
+                                    <a href="{{ route('client.dashboard', ['status' => 'active']) }}" class="px-3 py-1.5 rounded-lg transition {{ $status === 'active' ? 'bg-burgundy text-white shadow-xs font-bold' : 'hover:text-navy hover:bg-white/60' }}">
+                                        {{ __('Aktive') }} ({{ $counts['active'] }})
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </x-slot:header>
+                </x-slot:header>
 
-            <!-- Requests Grid -->
-            <div class="grid md:grid-cols-2 gap-4">
+                <!-- 1. KANBAN BOARD VIEW -->
+                <div x-show="viewMode === 'kanban'" class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Column 1: NEW REQUEST -->
+                    <div class="bg-[#FAF5F2] border border-[#EADBCE] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
+                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-navy/80 px-1">
+                            <span>{{ __('NEW REQUEST') }} • {{ $kanban['new']->count() }}</span>
+                        </div>
+
+                        @forelse($kanban['new'] as $req)
+                            <div class="bg-white rounded-2xl p-4 border border-[#EADBCE]/80 shadow-2xs space-y-2.5 transition hover:shadow-xs">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h4 class="text-sm sm:text-base font-extrabold text-navy capitalize">
+                                        {{ $req->role }}{{ $req->workers_needed > 1 ? ' × ' . $req->workers_needed : '' }}
+                                    </h4>
+                                    @if($req->is_urgent)
+                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200 shrink-0">
+                                            {{ __('URGENT') }}
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="text-xs text-ink/75 font-medium">
+                                    {{ $req->start_date->format('d.m.Y') }}@if($req->end_date && $req->end_date->ne($req->start_date))–{{ $req->end_date->format('d.m.Y') }}@endif
+                                    @if($req->start_time && $req->end_time) • {{ substr($req->start_time, 0, 5) }}–{{ substr($req->end_time, 0, 5) }} @endif
+                                    • {{ $req->workers_needed }} {{ $req->workers_needed > 1 ? __('personer') : __('person') }}
+                                </div>
+
+                                <div class="text-xs text-ink/60">
+                                    {{ $req->request_type->label() }} • {{ __('Oprettet') }} {{ $req->created_at->diffForHumans() }}
+                                </div>
+
+                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-burgundy text-white shadow-xs transition mt-2">
+                                    <span>{{ __('Details & QR') }}</span>
+                                    <span class="text-xs">&rarr;</span>
+                                </a>
+                            </div>
+                        @empty
+                            <div class="border-2 border-dashed border-[#DAC7B7] rounded-2xl p-8 text-center text-xs font-medium text-ink/50 my-auto bg-white/40">
+                                {{ __('No new requests yet') }}
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <!-- Column 2: UNDER PROCESSING -->
+                    <div class="bg-[#FAF5F2] border border-[#EADBCE] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
+                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-navy/80 px-1">
+                            <span>{{ __('UNDER PROCESSING') }} • {{ $kanban['in_progress']->count() }}</span>
+                        </div>
+
+                        @forelse($kanban['in_progress'] as $req)
+                            @php
+                                $assignments = $req->shifts->flatMap->assignments;
+                                $accepted = $assignments->whereIn('status', [\App\Enums\AssignmentStatus::ACCEPTED, \App\Enums\AssignmentStatus::ACTIVE, \App\Enums\AssignmentStatus::COMPLETED])->count();
+                                $offered = $assignments->where('status', \App\Enums\AssignmentStatus::OFFERED)->count();
+                                $rejected = $assignments->whereIn('status', [\App\Enums\AssignmentStatus::DECLINED, \App\Enums\AssignmentStatus::CANCELLED])->count();
+                            @endphp
+                            <div class="bg-white rounded-2xl p-4 border border-[#EADBCE]/80 shadow-2xs space-y-2.5 transition hover:shadow-xs">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h4 class="text-sm sm:text-base font-extrabold text-navy capitalize">
+                                        {{ $req->role }}{{ $req->workers_needed > 1 ? ' × ' . $req->workers_needed : '' }}
+                                    </h4>
+                                    @if($req->is_urgent)
+                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-200 shrink-0">
+                                            {{ __('URGENT') }}
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="text-xs text-ink/75 font-medium">
+                                    {{ $req->start_date->format('d.m.Y') }}@if($req->end_date && $req->end_date->ne($req->start_date))–{{ $req->end_date->format('d.m.Y') }}@endif
+                                    • {{ $req->request_type->label() }}
+                                </div>
+
+                                <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                        {{ $accepted }} {{ __('accepted') }}
+                                    </span>
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                                        {{ $offered }} {{ __('offered') }}
+                                    </span>
+                                    @if($rejected > 0)
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800 border border-rose-200">
+                                            {{ $rejected }} {{ __('rejected') }}
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-burgundy text-white shadow-xs transition mt-2">
+                                    <span>{{ __('Details & QR') }}</span>
+                                    <span class="text-xs">&rarr;</span>
+                                </a>
+                            </div>
+                        @empty
+                            <div class="border-2 border-dashed border-[#DAC7B7] rounded-2xl p-8 text-center text-xs font-medium text-ink/50 my-auto bg-white/40">
+                                {{ __('No orders under processing yet') }}
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <!-- Column 3: CONFIRMED -->
+                    <div class="bg-[#FAF5F2] border border-[#EADBCE] rounded-2xl p-4 flex flex-col justify-start gap-3.5 min-h-[380px]">
+                        <div class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-navy/80 px-1">
+                            <span>{{ __('CONFIRMED') }} • {{ $kanban['confirmed']->count() }}</span>
+                        </div>
+
+                        @forelse($kanban['confirmed'] as $req)
+                            @php
+                                $assignments = $req->shifts->flatMap->assignments;
+                                $accepted = $assignments->whereIn('status', [\App\Enums\AssignmentStatus::ACCEPTED, \App\Enums\AssignmentStatus::ACTIVE, \App\Enums\AssignmentStatus::COMPLETED])->count();
+                            @endphp
+                            <div class="bg-white rounded-2xl p-4 border border-[#EADBCE]/80 shadow-2xs space-y-2.5 transition hover:shadow-xs">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h4 class="text-sm sm:text-base font-extrabold text-navy capitalize">
+                                        {{ $req->role }}{{ $req->workers_needed > 1 ? ' × ' . $req->workers_needed : '' }}
+                                    </h4>
+                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
+                                        {{ $req->status->label() }}
+                                    </span>
+                                </div>
+
+                                <div class="text-xs text-ink/75 font-medium">
+                                    {{ $req->start_date->format('d.m.Y') }}@if($req->end_date && $req->end_date->ne($req->start_date))–{{ $req->end_date->format('d.m.Y') }}@endif
+                                    @if($req->start_time && $req->end_time) • {{ substr($req->start_time, 0, 5) }}–{{ substr($req->end_time, 0, 5) }} @endif
+                                </div>
+
+                                <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                        {{ $accepted }} / {{ $req->workers_needed }} {{ __('bemandet') }}
+                                    </span>
+                                </div>
+
+                                <a href="{{ route('client.requests.show', $req) }}" class="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#5A1429] hover:bg-burgundy text-white shadow-xs transition mt-2">
+                                    <span>{{ __('Details & QR') }}</span>
+                                    <span class="text-xs">&rarr;</span>
+                                </a>
+                            </div>
+                        @empty
+                            <div class="border-2 border-dashed border-[#DAC7B7] rounded-2xl p-8 text-center text-xs font-medium text-ink/50 my-auto bg-white/40">
+                                {{ __('No confirmed orders yet') }}
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
+
+                <!-- 2. TRADITIONAL LIST VIEW (When toggled to List) -->
+                <div x-show="viewMode === 'list'" class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
                 @forelse($requests as $req)
                     <x-card variant="sand" hover="true" class="flex flex-col justify-between space-y-4">
                         <div>
@@ -384,7 +551,9 @@
             <div class="pt-4">
                 {{ $requests->links() }}
             </div>
+        </div>
         </x-card>
+        </div>
 
         <!-- QR Code Modal (Live shift scanning) -->
         <div x-show="activeQrShift !== null" x-cloak class="fixed inset-0 z-50 bg-navy-950/80 flex items-center justify-center p-4">

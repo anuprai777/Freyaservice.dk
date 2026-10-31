@@ -62,7 +62,23 @@ class ClientDashboardController extends Controller
             'completed' => StaffRequest::where('client_id', $client->id)->where('status', 'completed')->count(),
         ];
 
-        return view('client.dashboard', compact('client', 'requests', 'pendingTimesheets', 'activeShifts', 'counts', 'status'));
+        // Kanban categorized requests
+        $allClientRequests = StaffRequest::with(['shifts.assignments.worker.user', 'preferredWorker.user'])
+            ->where('client_id', $client->id)
+            ->latest()
+            ->get();
+
+        $kanban = [
+            'new' => $allClientRequests->where('status', \App\Enums\StaffRequestStatus::NEW)->values(),
+            'in_progress' => $allClientRequests->where('status', \App\Enums\StaffRequestStatus::IN_PROGRESS)->values(),
+            'confirmed' => $allClientRequests->filter(fn($r) => in_array($r->status, [
+                \App\Enums\StaffRequestStatus::MATCHED,
+                \App\Enums\StaffRequestStatus::ACTIVE,
+                \App\Enums\StaffRequestStatus::COMPLETED,
+            ], true))->values(),
+        ];
+
+        return view('client.dashboard', compact('client', 'requests', 'pendingTimesheets', 'activeShifts', 'counts', 'status', 'kanban'));
     }
 
     /**
