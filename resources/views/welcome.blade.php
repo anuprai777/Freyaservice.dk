@@ -1725,87 +1725,8 @@
         </div>
     </section>
 
-    <!-- Call to action / Contact (Primary Dark: Deep burgundy #5A1429) -->
-    <section id="contact" class="py-10 sm:py-12 bg-navy text-white relative overflow-hidden border-t border-navy-800">
-        <!-- Subtle atmospheric ambient background glows -->
-        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
-            <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-burgundy/20 blur-2xl"></div>
-            <div class="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-gold/10 blur-2xl"></div>
-        </div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                {{ __('Ready to order temps or need immediate staffing?') }}
-            </h2>
-            <p class="text-sand-200 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
-                {{ __('Call our 24/7 emergency dispatch line directly or create your client account online in two minutes.') }}
-            </p>
-            <div class="flex flex-wrap justify-center gap-3.5 pt-2">
-                <!-- Primary Action Button: Burgundy #7B1E3A with 2px white/35 border -->
-                <a href="tel:+4528260926" class="btn-primary border-2 border-white/35 inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-burgundy focus:outline-none">
-                    <x-heroicon-s-phone class="w-4 h-4 text-white" />
-                    <span>{{ __('Ring +45 28 26 09 26') }}</span>
-                </a>
-                <!-- Secondary Action Button: Transparent with 2px teal border, white text on navy -->
-                <a href="{{ route('register', ['role' => 'client']) }}" class="btn-secondary border-2 border-teal bg-transparent hover:bg-teal/15 inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-white font-bold text-xs sm:text-sm shadow-xs hover:shadow-sm transition-all duration-200 transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-teal focus:outline-none">
-                    <x-heroicon-o-building-office class="w-4 h-4 text-teal" />
-                    <span>{{ __('Opret virksomhedskonto') }}</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (Primary Dark: Deep burgundy #5A1429, Border: Deep burgundy 800) -->
-    <footer class="bg-navy text-sand-300 py-12 border-t border-navy-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-            <div class="space-y-4">
-                <a href="/" class="inline-block group focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none" aria-label="Freya Service">
-                    <img src="{{ asset('images/logo-white.png') }}" alt="Freya Service vikarbureau logo hvid" class="h-10 w-auto object-contain group-hover:opacity-90 transition" width="160" height="40" loading="lazy" decoding="async">
-                </a>
-                <p class="text-xs leading-relaxed text-sand-200">
-                    {{ __('Dansk vikarbureau med fokus på fleksibilitet, pålidelighed og digital gennemsigtighed.') }}
-                </p>
-                <div class="text-xs text-sand-400">
-                    CVR: 44556677 • Moms nr. DK44556677
-                </div>
-            </div>
-
-            <div>
-                <p class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Virksomheder') }}</p>
-                <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('register', ['role' => 'client']) }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Bestil Vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Timesedler') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Fakturaer') }}</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <p class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('Vikarer') }}</p>
-                <ul class="text-xs space-y-2">
-                    <li><a href="{{ route('register', ['role' => 'worker']) }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Tilmeld dig som vikar') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('Ledige Vagter') }}</a></li>
-                    <li><a href="{{ route('login') }}" class="text-sand-300 hover:text-white flex items-center gap-1.5 transition focus-visible:ring-2 focus-visible:ring-burgundy rounded focus:outline-none"><x-heroicon-o-chevron-right class="w-3 h-3 text-teal" />{{ __('QR Tjek-ind') }}</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <p class="text-xs font-bold text-white uppercase tracking-wider mb-3">{{ __('GDPR & Sikkerhed') }}</p>
-                <ul class="text-xs space-y-2">
-                    <li class="flex items-start gap-1.5">
-                        <x-heroicon-s-shield-check class="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                        <span class="text-sand-200">{{ __('Ingen CPR-numre gemmes i systemet. Bankoplysninger krypteres med AES-256.') }}</span>
-                    </li>
-                    <li class="flex items-start gap-1.5">
-                        <x-heroicon-s-check class="w-4 h-4 text-teal shrink-0 mt-0.5" />
-                        <span class="text-sand-200">{{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-navy-800 text-center text-xs text-sand-400">
-            &copy; {{ date('Y') }} FreyaService.dk — {{ __('Alle rettigheder forbeholdes. Overholder gældende EU GDPR-lovgivning samt dansk overenskomst.') }} Timezone: Europe/Copenhagen.
-        </div>
-    </footer>
+    <x-public-cta />
+    <x-public-footer />
 
     <!-- Back to Top Button -->
     <x-back-to-top />

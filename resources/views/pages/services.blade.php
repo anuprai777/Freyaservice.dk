@@ -42,7 +42,7 @@
             else if (h === 'office') activeSector = 'canteen';
         })"
     >
-        <!-- 3 Specific Service Models: Sand bg, 14px radius, 5px coloured top border -->
+        <!-- 3 Specific Service Models: Top Section directly under Services & Sectors Header -->
         <div class="grid md:grid-cols-3 gap-8 mb-20 sm:mb-24">
             <!-- 1. Temporary Staff: Burgundy 5px top border -->
             <x-card variant="sand" hover="true" accent="burgundy" class="service-card service-card-temp flex flex-col justify-between p-8">
