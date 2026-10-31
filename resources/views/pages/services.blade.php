@@ -145,7 +145,7 @@
         </div>
 
         <!-- 9 Specialized Roles Cards Grid (Matching Home Page Section Fitup) -->
-        <div class="grid gap-6 mb-20 transition-all duration-300"
+        <div class="grid gap-6 mb-6 sm:mb-8 transition-all duration-300"
              :class="activeSector === 'all' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 max-w-md mx-auto'">
             <!-- 1. Dishwasher -->
             <div 
@@ -572,47 +572,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-
-        <!-- Why FreyaService Section Makeover -->
-        <div class="bg-sand rounded-3xl border border-mist p-8 sm:p-12 mb-16 shadow-sm">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-black text-navy tracking-tight">{{ __('Hvorfor vælge FreyaService?') }}</h2>
-                <p class="text-sm text-ink/70 mt-2">{{ __('Et moderne vikarbureau bygget på gennemsigtighed og kvalitet') }}</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 mb-10">
-                <x-card variant="white" hover="true" class="p-6">
-                    <div class="w-12 h-12 rounded-xl bg-mist flex items-center justify-center mb-4">
-                        <x-heroicon-o-bolt class="w-6 h-6 text-burgundy" />
-                    </div>
-                    <h3 class="font-bold text-navy mb-2">{{ __('Akut vikardækning døgnet rundt') }}</h3>
-                    <p class="text-xs text-ink/80 leading-relaxed">{{ __('Når sygdom eller uventet travlhed rammer, stiller vi med erfarne vikarer med få timers varsel i hele landet.') }}</p>
-                </x-card>
-
-                <x-card variant="white" hover="true" class="p-6">
-                    <div class="w-12 h-12 rounded-xl bg-mist flex items-center justify-center mb-4">
-                        <x-heroicon-o-shield-check class="w-6 h-6 text-navy" />
-                    </div>
-                    <h3 class="font-bold text-navy mb-2">{{ __('Gennemtestede vikarer') }}</h3>
-                    <p class="text-xs text-ink/80 leading-relaxed">{{ __('Alle vikarer screenes personligt, straffeattest og arbejdstilladelser tjekkes, og referencer indhentes før udsendelse.') }}</p>
-                </x-card>
-
-                <x-card variant="white" hover="true" class="p-6">
-                    <div class="w-12 h-12 rounded-xl bg-mist flex items-center justify-center mb-4">
-                        <x-heroicon-o-qr-code class="w-6 h-6 text-teal" />
-                    </div>
-                    <h3 class="font-bold text-navy mb-2">{{ __('Digital time- & QR-registrering') }}</h3>
-                    <p class="text-xs text-ink/80 leading-relaxed">{{ __('Præcis tjek-ind og tjek-ud via QR-kode på arbejdspladsen. Ingen manuelle papirsedler – kun godkendte timer.') }}</p>
-                </x-card>
-            </div>
-        </div>
-
-        <div class="text-center">
-            <a href="{{ route('register', ['role' => 'client']) }}" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-burgundy hover:bg-burgundy-dark text-white font-bold text-base shadow-lg transition transform hover:-translate-y-0.5">
-                <x-heroicon-o-briefcase class="w-5 h-5 text-white" /><span>{{ __('Bestil vikar nu') }}</span><x-heroicon-o-arrow-right class="w-5 h-5 text-white" />
-            </a>
-            <p class="text-xs text-ink/60 mt-3">{{ __('Ring +45 28 26 09 26') }} — {{ __('Akut vagttelefon') }}</p>
         </div>
     </section>
 </x-public-layout>
