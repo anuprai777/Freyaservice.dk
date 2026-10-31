@@ -95,11 +95,21 @@ class LayoutComponentsTest extends TestCase
         $responseDa->assertSee('tel:+4528260926');
         $responseDa->assertSee('Opret virksomhedskonto');
         $responseDa->assertSee('Opret vikarprofil');
+        $responseDa->assertSee('FOR VIRKSOMHEDER');
+        $responseDa->assertSee('FOR VIKARER');
+        $responseDa->assertSee('Mangler du personale i dag?');
+        $responseDa->assertSee('Leder du efter vagter?');
+        $responseDa->assertSee('Se ledige vagter');
         $responseDa->assertSee(route('register', ['role' => 'worker']));
 
         $responseEn = $this->withSession(['locale' => 'en'])->get('/');
         $responseEn->assertStatus(200);
         $responseEn->assertSee('Create company account');
         $responseEn->assertSee('Create worker account');
+        $responseEn->assertSee('FOR COMPANIES');
+        $responseEn->assertSee('FOR WORKERS');
+        $responseEn->assertSee('Need staff today?');
+        $responseEn->assertSee('Looking for shifts?');
+        $responseEn->assertSee('Browse available shifts');
     }
 }
